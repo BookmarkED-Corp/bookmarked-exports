@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Bookmarked — Founder's Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --eigengrau: #101828;
+            --sea-green: #15B79E;
+            --deep-green: #107569;
+            --white: #FFFFFF;
+            --muted-gray: #9CA3AF;
+            --card-surface: #1F2937;
+            --pumpkin: #FF692E;
+            --light-gray: #F9FAFB;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--eigengrau);
+            color: var(--white);
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--sea-green);
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 32px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 span {
+            color: var(--sea-green);
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--muted-gray);
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        .hero-meta {
+            margin-top: 48px;
+            font-size: 14px;
+            color: var(--muted-gray);
+        }
+
+        .hero-meta strong {
+            color: var(--white);
+        }
+
+        section {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section-divider {
+            width: 48px;
+            height: 3px;
+            background: var(--sea-green);
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            letter-spacing: -0.3px;
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 48px;
+            margin-bottom: 16px;
+            color: var(--sea-green);
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        .highlight {
+            color: var(--sea-green);
+            font-weight: 500;
+        }
+
+        .pull-quote {
+            border-left: 3px solid var(--sea-green);
+            padding: 24px 32px;
+            margin: 40px 0;
+            background: var(--card-surface);
+            border-radius: 0 8px 8px 0;
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--white);
+            font-weight: 400;
+        }
+
+        .pull-quote em {
+            font-style: normal;
+            color: var(--sea-green);
+        }
+
+        .moment-card {
+            background: var(--card-surface);
+            border-radius: 12px;
+            padding: 32px;
+            margin: 24px 0;
+        }
+
+        .moment-card .moment-title {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--sea-green);
+            margin-bottom: 16px;
+        }
+
+        .gateway-chain {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin: 40px 0;
+            padding: 32px;
+            background: var(--card-surface);
+            border-radius: 12px;
+        }
+
+        .gateway-step {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .gateway-arrow {
+            color: var(--sea-green);
+            font-size: 18px;
+        }
+
+        .career-timeline {
+            margin: 32px 0;
+        }
+
+        .career-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            align-items: baseline;
+        }
+
+        .career-year {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--sea-green);
+            min-width: 100px;
+            flex-shrink: 0;
+        }
+
+        .career-desc {
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        .career-desc strong {
+            color: var(--white);
+        }
+
+        .vulnerability-section {
+            background: var(--card-surface);
+            border-radius: 12px;
+            padding: 40px;
+            margin: 32px 0;
+        }
+
+        .vulnerability-section h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--pumpkin);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .vulnerability-section p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .vision-close {
+            text-align: center;
+            padding: 100px 40px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .vision-close .section-divider {
+            margin: 0 auto 40px;
+        }
+
+        .vision-close p {
+            font-size: 22px;
+            line-height: 1.6;
+            color: var(--white);
+            font-weight: 400;
+        }
+
+        .vision-close .signature {
+            margin-top: 48px;
+            font-size: 16px;
+            color: var(--muted-gray);
+        }
+
+        .vision-close .signature strong {
+            color: var(--white);
+            display: block;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 13px;
+            color: var(--muted-gray);
+            border-top: 1px solid var(--card-surface);
+        }
+
+        @media (max-width: 640px) {
+            .hero { padding: 60px 24px; }
+            .hero h1 { font-size: 32px; }
+            section { padding: 60px 24px; }
+            .career-item { flex-direction: column; gap: 4px; }
+            .gateway-chain { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="hero-label">Founder's Vision</div>
+    <h1>Why I'm Building <span>Bookmarked</span></h1>
+    <p class="hero-subtitle">The story of a kid who never found the right book — and grew up to build the company that finds it for everyone.</p>
+    <div class="hero-meta">
+        <strong>Steve Wandler</strong> &middot; Founder & CEO, Bookmarked<br>
+        March 2026
+    </div>
+</div>
+
+<section>
+    <div class="section-divider"></div>
+    <h2>The Report Card</h2>
+
+    <p>If you were told three times a year, for eleven years, that you're really bad at your job — would you stay? Would you love it?</p>
+
+    <p>Probably not. But that's what school did to me. Every report card was a message that whatever the system expected, I wasn't delivering. So eventually, I left.</p>
+
+    <p>Not because I didn't care. Not because I didn't try. But because nobody understood how I learned.</p>
+
+    <p>I have dyslexia, ADHD, and likely dysgraphia. But back then, we didn't talk about different learning styles or neurodiversity. Kids weren't asked what worked for them. We weren't guided toward what we might love. I spent my entire childhood — and dropped out of high school — believing I wasn't smart.</p>
+
+    <p>I knew I had lots of things in my brain to share. It was never an environment to allow me to do that.</p>
+
+    <p>The library — supposed to be the center of discovery — was just a giant room of thousands of books and no direction. "Pick something you enjoy." But how? I didn't know where to start. Most kids still don't.</p>
+</section>
+
+<section>
+    <div class="section-divider"></div>
+    <h2>The Moments That Made This Personal</h2>
+
+    <div class="moment-card">
+        <div class="moment-title">Fourth Grade</div>
+        <p>Everyone in my class got red and blue ink Bic pens to write with. I had to use a pencil — because the teacher couldn't read my writing. That one image is the whole story of what it feels like to be singled out: everyone gets the ink pen, you get the pencil.</p>
+    </div>
+
+    <div class="moment-card">
+        <div class="moment-title">Third Grade</div>
+        <p>I couldn't do my multiplication tables. I literally could not memorize them. So I wrote the answers on my arm — I had to improvise. My teacher locked me in a closet for it. I was shamed in front of the class. The kid wasn't cheating. He was problem-solving.</p>
+    </div>
+
+    <div class="moment-card">
+        <div class="moment-title">The Report Card That Told the Story</div>
+        <p>My grade 5 report card has a line item called "Shows Interest in Reading." At the start of the year: A. By the end: B-. The system literally documented my love of reading declining in real time — and coded it as <em>my</em> failure. Meanwhile, Art, Music, and Phys Ed were straight A's all year. I wasn't a bad student. I was a misunderstood one.</p>
+    </div>
+
+    <p>I was good at athletics — hockey, track and field, volleyball. That was where I could show I was great at something. Then ulcerative colitis took that away. I had my large intestine removed, and my whole life came to a halt. I couldn't do sports. I wasn't good at school. I didn't graduate.</p>
+
+    <p>In my 11th grade yearbook, I wrote that I was going to own my own business and own a Ferrari.</p>
+
+    <p>I've been an entrepreneur ever since.</p>
+</section>
+
+<section>
+    <div class="section-divider"></div>
+    <h2>One Career, One Mission</h2>
+
+    <p>Every company I've built after the first has been some version of the same mission: <span class="highlight">help people — especially kids — find what's right for them.</span></p>
+
+    <div class="career-timeline">
+        <div class="career-item">
+            <span class="career-year">~2000</span>
+            <span class="career-desc"><strong>YourTechOnline</strong> — Beat Geek Squad, #1 online tech support in North America. Acquired by Support.com.</span>
+        </div>
+        <div class="career-item">
+            <span class="career-year">2008</span>
+            <span class="career-desc"><strong>MetaBridge</strong> — Returned to Canada from Silicon Valley. Built a community connecting entrepreneurs with mentors. Portfolio raised $450M+, 22 acquisitions.</span>
+        </div>
+        <div class="career-item">
+            <span class="career-year">~2013</span>
+            <span class="career-desc"><strong>FreshGrade</strong> — EdTech. Digital portfolios replacing traditional report cards — the very system that failed me as a kid. Seven-year build. Acquired.</span>
+        </div>
+        <div class="career-item">
+            <span class="career-year">~2019</span>
+            <span class="career-desc"><strong>Thrively</strong> — Platform helping children discover their strengths.</span>
+        </div>
+        <div class="career-item">
+            <span class="career-year">2022</span>
+            <span class="career-desc"><strong>Bookmarked</strong> — Helping kids find the books they'll love. The other half of the same problem.</span>
+        </div>
+    </div>
+
+    <p>FreshGrade was fixing how we measure kids. Bookmarked is fixing how we connect kids with books. Same wound, different side.</p>
+</section>
+
+<section>
+    <div class="section-divider"></div>
+    <h2>Faith's Insight</h2>
+
+    <p>About four years ago, when we were first thinking about the Bookmarked idea, I talked to my daughter Faith. She's an avid reader — she almost reads too much.</p>
+
+    <p>Faith helped me find a book I actually wanted to read by connecting it to a movie we both loved, so I already knew the outcome and could follow along. She suggested I use Audible alongside the book — someone reading to me — because of my dyslexia and ADHD.</p>
+
+    <p>She was my first Book Intelligence engine. She matched me with the right book through what I already connected with, and made it accessible for how my brain works.</p>
+
+    <div class="pull-quote">
+        "Dad, people don't read more because <em>they haven't found the right book.</em>"
+    </div>
+
+    <p>She was right. The Hunger Games was the first book she ever loved, and it changed everything for her. I never had that moment as a kid. That's what Bookmarked is building for every student.</p>
+
+    <p>Meanwhile, my son Noah has dyslexia, dysgraphia, ADHD, and bipolar. He lived the same experience I did in school. I see both sides of this problem in my own family every day.</p>
+</section>
+
+<section>
+    <div class="section-divider"></div>
+    <h2>The Library That Changed Everything</h2>
+
+    <p>I was standing in the Frisco Public Library. 250,000 books. And the thought hit me: <span class="highlight">where do you even start?</span></p>
+
+    <p>No wonder literacy is declining. We don't make it easy to find the right book.</p>
+
+    <p>A school library holds roughly 10,000 or 11,000 books. There are over 20 million in the world. The students walking in have wildly different backgrounds, interests, curiosities, challenges, and motivations. Expecting a human to match every kid with the right story, at the right moment — it's not realistic.</p>
+
+    <p>Kids live in a world where everything else adapts to them. They can find the exact information they need online instantly — but not the next book that could change their life.</p>
+
+    <p>The system isn't failing because people aren't trying. It's failing because the world changed and the system didn't.</p>
+</section>
+
+<section>
+    <div class="section-divider"></div>
+    <h2>The Gateway</h2>
+
+    <p>People do more of what they love. If they can't find something they love, they stop doing it. We've spent years tweaking instruction, updating standards, and adding programs. But we haven't fixed the most fundamental part of reading: <span class="highlight">helping kids discover books that ignite something in them.</span></p>
+
+    <div class="gateway-chain">
+        <span class="gateway-step">Find the right book</span>
+        <span class="gateway-arrow">→</span>
+        <span class="gateway-step">Love reading</span>
+        <span class="gateway-arrow">→</span>
+        <span class="gateway-step">Read more</span>
+        <span class="gateway-arrow">→</span>
+        <span class="gateway-step">Put the phone down</span>
+        <span class="gateway-arrow">→</span>
+        <span class="gateway-step">Never stop</span>
+        <span class="gateway-arrow">→</span>
+        <span class="gateway-step">Books get sold</span>
+        <span class="gateway-arrow">→</span>
+        <span class="gateway-step">Literacy rises</span>
+        <span class="gateway-arrow">→</span>
+        <span class="gateway-step">Society changes</span>
+    </div>
+
+    <p>Once a reader, always a reader. If I can affect people reading in lower elementary — find the right book they're going to love — they'll read more as a young reader, as a high school reader, and they don't stop. The cascade effect on society, on GDP, on everything.</p>
+
+    <p>Why are book sales in America only at $34 billion? Why can't it be $60 billion? You do that by helping people find the right next book.</p>
+
+    <p>We start in K-12 public schools. But the mission doesn't stop at students. If I can find the right book for a student, I can find the right book for anyone.</p>
+</section>
+
+<section>
+    <div class="section-divider"></div>
+    <h2>Why Compliance Is the Door — Not the Destination</h2>
+
+    <p>In 2022, Dr. Jason Cochrane, superintendent at Krum ISD, was introduced to me with a problem he didn't know how to solve without technology. Conservative groups were mobilizing across Texas demanding schools remove books. State legislators were moving. The laws were coming.</p>
+
+    <p>I made a strategic decision that cost me personally. I testified before the Texas State Senate in favor of SB 13 — not because I'm for censorship, but because the law was going to happen regardless. The best way to protect books was to be inside the system shaping implementation, not outside protesting something that was inevitable.</p>
+
+    <p>People labeled me as pro-censorship. Articles framed me as profiting from book bans. But I was playing the long game.</p>
+
+    <div class="pull-quote">
+        They're worried about a few books. I'm worried about the <em>millions and millions of books</em> that people have access to that don't even know about.
+    </div>
+
+    <p>The book ban propaganda gets inflated due to a lack of data. PEN America tracks bans, but they don't know every book in every district. Just because a book was removed doesn't mean it didn't go back on the shelf. Several of our own customers are on ban lists — but the books are actually in their libraries.</p>
+
+    <p>Compliance is the door. Once we know what "shouldn't" be in the library according to law, we can identify the millions of books that <em>should</em> be there. That's the real mission. That's Book Intelligence.</p>
+</section>
+
+<section>
+    <div class="section-divider"></div>
+    <h2>The Honest Parts</h2>
+
+    <div class="vulnerability-section">
+        <h4>What scares me</h4>
+        <p>Getting it wrong on First Amendment rights. We're talking about what people have access to, and I want to protect that — not just in America but around the world. AI could guide people in the wrong direction if we're not careful. I know we're going to make mistakes, and that terrifies me.</p>
+        <p>Putting my voice out there scares me. Because of my dyslexia and ADHD, because I didn't graduate from high school, I don't have that degree. I don't have the articulation and the ability to recall things that the well-educated do. That's intimidating.</p>
+    </div>
+
+    <div class="vulnerability-section">
+        <h4>What I've been wrong about</h4>
+        <p>The SB 13 decision and its consequences. Some of the censorship perception was earned — early on, we framed ourselves too closely to compliance enforcement. We've made a ton of mistakes, as startups do. The data we draw from is imperfect at best. We're rebuilding the product from the ground up to get it right.</p>
+    </div>
+
+    <div class="vulnerability-section">
+        <h4>What keeps me going</h4>
+        <p>My kids. Noah living the same experience I did. Faith demonstrating the solution. And the report cards — I can still feel what it felt like to be that kid. Not enough. Not worthy. I knew I wasn't stupid. I knew I had things in my brain to share. Every kid who walks into a library and doesn't know where to start is that kid.</p>
+    </div>
+</section>
+
+<div class="vision-close">
+    <div class="section-divider"></div>
+    <p>I lived the experience of not finding the right books. I watched my daughter articulate the simplicity of the problem. And I believe that every kid deserves the chance to fall in love with reading — <span class="highlight">not by luck, but by design.</span></p>
+    <br>
+    <p>Finding the right book is the gateway to loving reading.<br>
+    Loving reading is the gateway to literacy.<br>
+    And literacy is the gateway to everything else.</p>
+    <br>
+    <p>That's why I'm building Bookmarked.<br>
+    To help kids find what they love.<br>
+    Because when we do that, everything else follows.</p>
+
+    <div class="signature">
+        <strong>Steve Wandler</strong>
+        Founder & CEO, Bookmarked<br>
+        The Book Intelligence Company
+    </div>
+</div>
+
+<footer>
+    Bookmarked &middot; The Book Intelligence Company &middot; Confidential — Internal & Team Use
+</footer>
+
+</body>
+</html>
