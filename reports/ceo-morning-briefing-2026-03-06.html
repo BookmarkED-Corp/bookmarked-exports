@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEO Morning Briefing — March 6, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --eigengrau: #101828;
+    --sea-green: #15B79E;
+    --deep-green: #107569;
+    --pumpkin: #FF692E;
+    --white: #FFFFFF;
+    --muted: #9CA3AF;
+    --card: #1F2937;
+    --card-hover: #283548;
+    --border: #374151;
+    --surface-dim: #0D1117;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Urbanist', sans-serif;
+    background: var(--eigengrau);
+    color: var(--white);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, var(--eigengrau) 0%, #0f2b2a 50%, var(--eigengrau) 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 0 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(21,183,158,0.08) 0%, transparent 70%);
+  }
+  .hero-eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sea-green);
+    margin-bottom: 8px;
+  }
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+  }
+  .hero-date {
+    font-size: 18px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .hero-subtitle {
+    margin-top: 16px;
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 700px;
+    line-height: 1.7;
+  }
+
+  /* Stats Row */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin: -24px 0 40px;
+    position: relative;
+    z-index: 2;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-number {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--sea-green);
+    line-height: 1;
+  }
+  .stat-number.warn { color: var(--pumpkin); }
+  .stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 6px;
+  }
+
+  /* Section */
+  section { padding: 40px 0; border-bottom: 1px solid var(--border); }
+  section:last-child { border-bottom: none; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .section-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(21,183,158,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+  .section-count {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 16px;
+    padding: 14px 18px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: border-color 0.2s;
+  }
+  .timeline-item:hover { border-color: var(--sea-green); }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 20px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+    border: 2px solid var(--eigengrau);
+  }
+  .timeline-item.active { border-color: var(--sea-green); background: rgba(21,183,158,0.06); }
+  .timeline-item.active::before { background: var(--sea-green); box-shadow: 0 0 8px rgba(21,183,158,0.4); }
+  .timeline-time {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sea-green);
+    margin-bottom: 2px;
+  }
+  .timeline-title { font-size: 15px; font-weight: 600; }
+  .timeline-meta { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  /* District Cards */
+  .district-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 20px;
+  }
+  .district-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .district-card:hover { transform: translateY(-2px); border-color: var(--sea-green); }
+  .district-card-header {
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .district-name { font-size: 17px; font-weight: 700; }
+  .district-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
+  .badge-hot { background: rgba(255,105,46,0.15); color: var(--pumpkin); }
+  .badge-warm { background: rgba(21,183,158,0.15); color: var(--sea-green); }
+  .badge-new { background: rgba(156,163,175,0.15); color: var(--muted); }
+  .district-contacts {
+    padding: 12px 20px;
+    font-size: 13px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .district-contacts strong { color: var(--white); font-weight: 600; }
+  .district-email-preview {
+    padding: 16px 20px;
+    background: var(--surface-dim);
+  }
+  .email-preview-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--sea-green);
+    margin-bottom: 8px;
+  }
+  .email-preview-subject {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--white);
+  }
+  .email-preview-body {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+
+  /* Pipeline */
+  .pipeline-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+  }
+  .pipeline-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .pipeline-district { font-size: 18px; font-weight: 700; }
+  .pipeline-status {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .status-active { background: rgba(21,183,158,0.15); color: var(--sea-green); }
+  .status-blocked { background: rgba(255,105,46,0.15); color: var(--pumpkin); }
+  .status-stalled { background: rgba(156,163,175,0.15); color: var(--muted); }
+  .pipeline-detail { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 12px; }
+  .pipeline-action {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sea-green);
+    padding: 8px 14px;
+    background: rgba(21,183,158,0.08);
+    border-radius: 8px;
+    display: inline-block;
+  }
+
+  /* Task List */
+  .task-list { list-style: none; }
+  .task-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  .task-priority {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+  .priority-p1 { background: var(--pumpkin); box-shadow: 0 0 6px rgba(255,105,46,0.4); }
+  .priority-p2 { background: var(--sea-green); }
+  .priority-p3 { background: var(--muted); }
+  .task-content { flex: 1; }
+  .task-title { font-size: 14px; font-weight: 600; }
+  .task-meta { font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+  /* Work Log */
+  .log-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .log-item {
+    display: flex;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .log-check {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(21,183,158,0.15);
+    color: var(--sea-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .log-text { font-size: 14px; line-height: 1.5; }
+  .log-detail { font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+  /* Footer */
+  .footer {
+    padding: 32px 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .footer a { color: var(--sea-green); text-decoration: none; }
+
+  /* Utility */
+  .mt-8 { margin-top: 8px; }
+  .mt-16 { margin-top: 16px; }
+  .text-sea { color: var(--sea-green); }
+  .text-pumpkin { color: var(--pumpkin); }
+  .text-muted { color: var(--muted); }
+  .fw-700 { font-weight: 700; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(21,183,158,0.1);
+    color: var(--sea-green);
+    margin-right: 6px;
+  }
+  .tag-warn {
+    background: rgba(255,105,46,0.1);
+    color: var(--pumpkin);
+  }
+  .divider { height: 1px; background: var(--border); margin: 24px 0; }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 28px; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .district-grid { grid-template-columns: 1fr; }
+    .log-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== HERO ========== -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Chief of Staff Agent</div>
+    <h1>CEO Morning Briefing</h1>
+    <div class="hero-date">Friday, March 6, 2026</div>
+    <p class="hero-subtitle">
+      Overnight work session completed. 10 new HubSpot contacts created from the ESC 13 Lunch and Learn.
+      10 personalized follow-up emails drafted and ready for your review. Calendar block set for this afternoon.
+      Pipeline status pulled for Granbury, Belton, and Garland ISDs. Here's everything organized for your morning.
+    </p>
+  </div>
+</div>
+
+<!-- ========== STATS ========== -->
+<div class="container">
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-number">10</div>
+      <div class="stat-label">New HubSpot Contacts</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">10</div>
+      <div class="stat-label">Districts to Follow Up</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">10</div>
+      <div class="stat-label">Email Drafts Ready</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">22</div>
+      <div class="stat-label">Marketing Emails Cleaned</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number warn">3</div>
+      <div class="stat-label">Pipeline Items Need Action</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">4.5h</div>
+      <div class="stat-label">Work Block Today</div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== CALENDAR ========== -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-icon">📅</div>
+      <div>
+        <div class="section-title">Today's Schedule</div>
+        <div class="section-count">8 events &middot; Work block starts at noon</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">7:00 – 8:00 AM</div>
+        <div class="timeline-title">ESC16 Call Debrief — Prep for Charlie Meeting</div>
+        <div class="timeline-meta">Review bifurcated proposal: $75K base + 15% rev share. 4 options in Confluence. Charlie draft needed.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">8:00 AM – 12:00 PM</div>
+        <div class="timeline-title">Bookmarked Team Event — Day 2 Morning</div>
+        <div class="timeline-meta">Breakfast → Marketing 101 (Jan) → Create Plans → Present Plans → Awards. Location: ESC Round Up, Granbury.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">9:15 – 9:30 AM</div>
+        <div class="timeline-title">Dev: V2 Stand</div>
+        <div class="timeline-meta">Sarah, Raju, Patrick, Anil. Quick standup during Team Event break.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">9:30 – 9:40 AM</div>
+        <div class="timeline-title">Daily Updates (10 Mins)</div>
+        <div class="timeline-meta">Facts and numbers only. Raju, Jan, Sarah, Patrick, Anil.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">11:30 AM – 12:00 PM</div>
+        <div class="timeline-title">Bookmarked x Toyo: Weekly Sync</div>
+        <div class="timeline-meta">Design partnership with Erin &amp; Stuart (Layercode). Jan attending.</div>
+      </div>
+      <div class="timeline-item active">
+        <div class="timeline-time">12:00 – 4:30 PM</div>
+        <div class="timeline-title">🧠 CEO Work Block — Email, Tasks &amp; Week Planning</div>
+        <div class="timeline-meta">Deep work with Claude: inbox processing, ESC 13 follow-ups, Granbury workflow, Belton/Garland sandbox, weekly planning.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">4:30 – 5:00 PM</div>
+        <div class="timeline-title">Medication Protocol Session</div>
+        <div class="timeline-meta">Prep + session. Peer treatment monitor required.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ESC 13 FOLLOW-UPS ========== -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-icon">🏫</div>
+      <div>
+        <div class="section-title">ESC 13 Lunch and Learn — District Follow-Ups</div>
+        <div class="section-count">10 districts &middot; 21 attendees &middot; Hosted by Moak Casey at Round Rock ISD</div>
+      </div>
+    </div>
+
+    <p style="font-size:14px; color:var(--muted); margin-bottom:24px; line-height:1.7;">
+      Plaud transcript captured the full presentation. Key pain points that resonated: SB13/HB412 compliance pressure,
+      librarians spending 40 hours/month on manual review, boards getting 800-book spreadsheets, staff using ChatGPT with
+      inconsistent results, and classroom libraries as a "black box." Each email below is customized to district size and
+      attendee signals. All emails are drafted in Gmail — review and send during this afternoon's work block.
+    </p>
+
+    <div class="district-grid">
+
+      <!-- Liberty Hill ISD -->
+      <div class="district-card">
+        <div class="district-card-header">
+          <div class="district-name">Liberty Hill ISD</div>
+          <div class="district-badge badge-hot">🔥 SUPERINTENDENT</div>
+        </div>
+        <div class="district-contacts">
+          <strong>3 attendees:</strong> Travis Motal, Paula Kaderka, <span class="text-pumpkin fw-700">Superintendent</span><br>
+          <span class="tag tag-warn">Superintendent attended</span> <span class="tag">Growing suburban</span>
+        </div>
+        <div class="district-email-preview">
+          <div class="email-preview-label">Draft Email Preview</div>
+          <div class="email-preview-subject">Subject: Following up from our ESC 13 session — Liberty Hill</div>
+          <div class="email-preview-body">Hi Travis, Paula —
+
+Great meeting you both at the Moak Casey Lunch and Learn yesterday. It was encouraging to see Liberty Hill send three team members, including your superintendent — that tells me you're taking the SB 13 compliance question seriously at the leadership level.
+
+One thing that came up in the discussion that I think hits home for a growing district like Liberty Hill: the challenge isn't just reviewing books today, it's keeping up as your collection grows. The districts dealing with this manually are spending 40+ hours a month on spreadsheets and inconsistent ChatGPT checks. That's not sustainable.
+
+Bookmarked sits right on top of your existing library system (Destiny or Follett) and continuously scans everything — new acquisitions, existing collection, even classroom libraries. Your board gets a clean audit trail instead of an 800-book spreadsheet.
+
+I'd love to set up a quick 15-minute walkthrough with your leadership team. We can scan a sample of your collection live so you can see exactly what the output looks like before committing to anything.
+
+Worth a call next week?
+
+Steve Wandler
+CEO, Bookmarked
+steve@bookmarked.com</div>
+        </div>
+      </div>
+
+      <!-- Lago Vista ISD -->
+      <div class="district-card">
+        <div class="district-card-header">
+          <div class="district-name">Lago Vista ISD</div>
+          <div class="district-badge badge-hot">4 ATTENDEES</div>
+        </div>
+        <div class="district-contacts">
+          <strong>4 attendees:</strong> Tina Pasak, M Curran, H Jackson, Jason Stoner<br>
+          <span class="tag tag-warn">Highest attendance</span> <span class="tag">Strong team interest</span>
+        </div>
+        <div class="district-email-preview">
+          <div class="email-preview-label">Draft Email Preview</div>
+          <div class="email-preview-subject">Subject: Following up from our ESC 13 session — Lago Vista</div>
+          <div class="email-preview-body">Hi Tina, Jason, and team —
+
+Really appreciated the strong showing from Lago Vista at yesterday's Lunch and Learn. Four people from one district is a clear signal that this is on your radar, and I'm glad the conversation was useful.
+
+Something I heard loud and clear in the room: managing SB 13 compliance manually just doesn't scale. Whether it's a librarian spending hours per book on manual research or a board member staring at an 800-line spreadsheet trying to make sense of it — the current approach breaks down.
+
+Bookmarked automates that entire workflow. We overlay on your existing library management system, continuously scan your collection, and flag anything that needs attention — with a full audit trail your board can actually use. About 150 Texas districts are already on the platform, and you can purchase through ESC 13.
+
+Since you had a full team there, I'd love to do a quick walkthrough with your group — 20 minutes, and we'll scan a sample of your collection live. Would sometime next week work?
+
+Steve Wandler
+CEO, Bookmarked
+steve@bookmarked.com</div>
+        </div>
+      </div>
+
+      <!-- Del Valle ISD -->
+      <div class="district-card">
+        <div class="district-card-header">
+          <div class="district-name">Del Valle ISD</div>
+          <div class="district-badge badge-warm">3 ATTENDEES</div>
+        </div>
+        <div class="district-contacts">
+          <strong>3 attendees:</strong> Mark Willoughby, Danica Murillo, Katrina Bailey<br>
+          <span class="tag">Mid-size district</span> <span class="tag">3 contacts in HubSpot</span>
+        </div>
+        <div class="district-email-preview">
+          <div class="email-preview-label">Draft Email Preview</div>
+          <div class="email-preview-subject">Subject: Following up from our ESC 13 session — Del Valle</div>
+          <div class="email-preview-body">Hi Mark, Danica, and Katrina —
+
+Great to meet the Del Valle team at yesterday's Moak Casey Lunch and Learn. Glad you could make it.
+
+The challenge we kept hearing in the room — and I'd bet this resonates with you — is that SB 13 has created a compliance burden that doesn't match the resources districts actually have. Librarians are spending hours researching individual books, using ChatGPT and getting inconsistent results, and then handing boards a spreadsheet that nobody can realistically act on.
+
+Bookmarked replaces that entire manual process. We sit on top of Destiny or Follett, continuously scan your full collection, and give you a clean dashboard with everything flagged, rated, and documented. Your board gets an audit trail instead of a spreadsheet. And classroom libraries — which are basically invisible right now — get covered too.
+
+Happy to do a quick 15-minute walkthrough so you can see what it actually looks like. Would next week work?
+
+Steve Wandler
+CEO, Bookmarked
+steve@bookmarked.com</div>
+        </div>
+      </div>
+
+      <!-- Austin ISD -->
+      <div class="district-card">
+        <div class="district-card-header">
+          <div class="district-name">Austin ISD</div>
+          <div class="district-badge badge-warm">2 ATTENDEES</div>
+        </div>
+        <div class="district-contacts">
+          <strong>2 attendees:</strong> Katrina Montgomery, Christine Steenport<br>
+          <span class="tag">Large urban district</span> <span class="tag">Scale challenge</span>
+        </div>
+        <div class="district-email-preview">
+          <div class="email-preview-label">Draft Email Preview</div>
+          <div class="email-preview-subject">Subject: Following up from our ESC 13 session — Austin ISD</div>
+          <div class="email-preview-body">Hi Katrina and Christine —
+
+Really glad you both could join us at the Moak Casey Lunch and Learn yesterday. The conversation was candid, and I think it reflected what a lot of large districts are navigating right now.
+
+For a district the size of Austin ISD, the scale question is the real issue. We heard it in the room — how does a librarian manage tens of thousands of books against SB 13 requirements? Manual review at that volume is simply not possible, and the tools people are cobbling together (spreadsheets, ChatGPT) aren't consistent or auditable.
+
+Bookmarked was built specifically for this. We overlay on your existing library management system and continuously scan your entire collection — flagging issues, documenting decisions, and creating the audit trail your board and community need. We also cover classroom libraries, which at a district your size is a significant blind spot.
+
+I'd love to walk you through what the platform looks like for a large-district deployment. 15 minutes, and I can scan a sample of your collection live. Would that be useful?
+
+Steve Wandler
+CEO, Bookmarked
+steve@bookmarked.com</div>
+        </div>
+      </div>
+
+      <!-- Eanes ISD -->
+      <div class="district-card">
+        <div class="district-card-header">
+          <div class="district-name">Eanes ISD</div>
+          <div class="district-badge badge-warm">2 ATTENDEES</div>
+        </div>
+        <div class="district-contacts">
+          <strong>2 attendees:</strong> Kirk Koennecke, C Scott<br>
+          <span class="tag">Affluent suburban</span> <span class="tag">Westlake area</span>
+        </div>
+        <div class="district-email-preview">
+          <div class="email-preview-label">Draft Email Preview</div>
+          <div class="email-preview-subject">Subject: Following up from our ESC 13 session — Eanes</div>
+          <div class="email-preview-body">Hi Kirk —
+
+Good to meet you at yesterday's Lunch and Learn. Great discussion all around.
+
+For a district like Eanes, I imagine the board scrutiny and parent engagement around library materials runs high. What we heard consistently in the room was that challengers don't go away — some districts have been dealing with the same individuals for two years, and it's escalated to the point of threatening board members.
+
+Bookmarked gives you a proactive defense. Instead of waiting for a challenge and scrambling to respond, your collection is continuously monitored. Every book has a documented review trail — who flagged it, who reviewed it, what the decision was. When a parent or board member asks "why is this book here?", you have an answer that same day, not two weeks later.
+
+Worth a quick call to walk you through it? 15 minutes and I can show you exactly what the board-facing reporting looks like.
+
+Steve Wandler
+CEO, Bookmarked
+steve@bookmarked.com</div>
+        </div>
+      </div>
+
+      <!-- La Grange ISD -->
+      <div class="district-card">
+        <div class="district-card-header">
+          <div class="district-name">La Grange ISD</div>
+          <div class="district-badge badge-warm">2 ATTENDEES</div>
+        </div>
+        <div class="district-contacts">
+          <strong>2 attendees:</strong> Andy McHazlett, Tina Huenefeld<br>
+          <span class="tag">Small rural</span> <span class="tag">Existing HubSpot contact</span>
+        </div>
+        <div class="district-email-preview">
+          <div class="email-preview-label">Draft Email Preview</div>
+          <div class="email-preview-subject">Subject: Following up from our ESC 13 session — La Grange</div>
+          <div class="email-preview-body">Hi Andy and Tina —
+
+Great meeting you both at yesterday's Moak Casey event. Appreciate you making the trip.
+
+I know smaller districts feel this compliance squeeze differently — you have the same SB 13 requirements as the big districts but a fraction of the staff to manage it. The idea of a librarian spending 40 hours a month reviewing books when they're probably the only one covering multiple campuses — that's just not realistic.
+
+Bookmarked is designed to take that off their plate. We sit on top of your existing system, scan your collection automatically, and handle the compliance documentation so your team can focus on actually running the library. You can purchase through ESC 13, which keeps the procurement simple.
+
+Happy to do a quick-start scan of one of your libraries so you can see what it actually looks like. No commitment — just a look. Would that be helpful?
+
+Steve Wandler
+CEO, Bookmarked
+steve@bookmarked.com</div>
+        </div>
+      </div>
+
+      <!-- Thrall ISD -->
+      <div class="district-card">
+        <div class="district-card-header">
+          <div class="district-name">Thrall ISD</div>
+          <div class="district-badge badge-new">2 ATTENDEES</div>
+        </div>
+        <div class="district-contacts">
+          <strong>2 attendees:</strong> Tommy Hooker, B Schneider<br>
+          <span class="tag">Small rural</span> <span class="tag">Existing HubSpot contact</span>
+        </div>
+        <div class="district-email-preview">
+          <div class="email-preview-label">Draft Email Preview</div>
+          <div class="email-preview-subject">Subject: Following up from our ESC 13 session — Thrall</div>
+          <div class="email-preview-body">Hi Tommy —
+
+Great to see you at the Moak Casey Lunch and Learn yesterday. Hope you found it useful.
+
+For a smaller district like Thrall, the compliance burden from SB 13 hits differently — you don't have a big team to throw at it, but the requirements are the same as everyone else. What I kept hearing in the room was that librarians are spending hours on manual research per book, and the tools they're using (ChatGPT, spreadsheets) give inconsistent results.
+
+Bookmarked handles all of that automatically. We overlay on your existing system, continuously scan your collection, and give you a clean audit trail. Your librarian gets those hours back, and your board gets documentation they can actually use. Purchasable through ESC 13.
+
+Want to do a quick-start scan of your library? Takes about 15 minutes and you can see the output firsthand. No strings attached.
+
+Steve Wandler
+CEO, Bookmarked
+steve@bookmarked.com</div>
+        </div>
+      </div>
+
+      <!-- San Marcos CISD -->
+      <div class="district-card">
+        <div class="district-card-header">
+          <div class="district-name">San Marcos CISD</div>
+          <div class="district-badge badge-new">1 ATTENDEE</div>
+        </div>
+        <div class="district-contacts">
+          <strong>1 attendee:</strong> Michael Cardona<br>
+          <span class="tag">Mid-size district</span> <span class="tag">Existing HubSpot contact</span>
+        </div>
+        <div class="district-email-preview">
+          <div class="email-preview-label">Draft Email Preview</div>
+          <div class="email-preview-subject">Subject: Following up from our ESC 13 session — San Marcos</div>
+          <div class="email-preview-body">Hi Michael —
+
+Great to meet you at yesterday's Lunch and Learn. Appreciate you taking the time.
+
+The SB 13 compliance conversation resonated with everyone in the room, and I imagine San Marcos is feeling it too — especially the gap between what the law requires and what your team can realistically manage manually. The manual research process (5-20 minutes per book, inconsistent results from ChatGPT, spreadsheets for the board) just doesn't hold up at scale.
+
+Bookmarked automates the entire workflow. We sit on top of your existing library system, continuously scan and monitor your collection, and produce an audit trail your board and community can rely on. About 150 Texas districts are already using it, and you can purchase through ESC 13.
+
+Would a 15-minute walkthrough be worth your time? I can scan a sample from your collection live so you see exactly what the output looks like.
+
+Steve Wandler
+CEO, Bookmarked
+steve@bookmarked.com</div>
+        </div>
+      </div>
+
+      <!-- Elgin ISD -->
+      <div class="district-card">
+        <div class="district-card-header">
+          <div class="district-name">Elgin ISD</div>
+          <div class="district-badge badge-new">1 ATTENDEE</div>
+        </div>
+        <div class="district-contacts">
+          <strong>1 attendee:</strong> Clark Motley<br>
+          <span class="tag">Small district</span> <span class="tag">New to HubSpot</span>
+        </div>
+        <div class="district-email-preview">
+          <div class="email-preview-label">Draft Email Preview</div>
+          <div class="email-preview-subject">Subject: Following up from our ESC 13 session — Elgin</div>
+          <div class="email-preview-body">Hi Clark —
+
+Good to meet you at the Moak Casey Lunch and Learn yesterday.
+
+I wanted to follow up while it's fresh. The conversation around SB 13 compliance hit on something I hear from every district we work with: the manual process just doesn't scale. Whether it's a librarian spending 15-20 minutes researching a single book, or a board member receiving a spreadsheet they can't realistically review — the current approach creates risk, not clarity.
+
+Bookmarked replaces that with an automated overlay on your existing library system. Continuous scanning, flagging, and a complete audit trail — so when questions come (and they always do), you have answers ready.
+
+About 150 Texas districts are using the platform, and it's purchasable through ESC 13. Happy to do a quick demo if that would be helpful — 15 minutes and I can scan a sample from your collection live.
+
+Steve Wandler
+CEO, Bookmarked
+steve@bookmarked.com</div>
+        </div>
+      </div>
+
+      <!-- Granger ISD -->
+      <div class="district-card">
+        <div class="district-card-header">
+          <div class="district-name">Granger ISD</div>
+          <div class="district-badge badge-new">1 ATTENDEE</div>
+        </div>
+        <div class="district-contacts">
+          <strong>1 attendee:</strong> Stephen Brosch<br>
+          <span class="tag">Very small rural</span> <span class="tag">New to HubSpot</span>
+        </div>
+        <div class="district-email-preview">
+          <div class="email-preview-label">Draft Email Preview</div>
+          <div class="email-preview-subject">Subject: Following up from our ESC 13 session — Granger</div>
+          <div class="email-preview-body">Hi Stephen —
+
+Great to meet you at the Lunch and Learn yesterday.
+
+I know for a district Granger's size, the SB 13 requirements can feel especially heavy — you've got the same compliance expectations as districts ten times your size but a fraction of the staff. The librarians we work with in similar districts tell us they're spending their entire week on compliance instead of actually running their library.
+
+Bookmarked is built to make that manageable. We sit on top of your existing library system, handle the scanning and compliance documentation automatically, and give you a clean report for your board. Simple, and purchasable through ESC 13.
+
+Would a quick-start scan of your library be useful? No commitment — just a look at what the platform produces for your collection. 15 minutes and you'll know if it's worth pursuing.
+
+Steve Wandler
+CEO, Bookmarked
+steve@bookmarked.com</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== PIPELINE STATUS ========== -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-icon">🎯</div>
+      <div>
+        <div class="section-title">Active Pipeline — Needs Your Attention</div>
+        <div class="section-count">3 districts with open items</div>
+      </div>
+    </div>
+
+    <div class="pipeline-card">
+      <div class="pipeline-card-header">
+        <div class="pipeline-district">Granbury ISD</div>
+        <div class="pipeline-status status-active">ACTIVE — PROTOTYPE SHARED</div>
+      </div>
+      <div class="pipeline-detail">
+        You shared the interactive prototype of the OnShelf Review board experience with Patrick on Slack. Superintendent Dr. Morawski has responded to your meeting request.
+        The ESC Round Up team event is happening in Granbury TODAY — you're literally at Pecan Plantation Country Club. This is a high-leverage moment.
+      </div>
+      <div class="pipeline-action">📋 Build test pilot + board workflow during afternoon work block</div>
+    </div>
+
+    <div class="pipeline-card">
+      <div class="pipeline-card-header">
+        <div class="pipeline-district">Belton ISD</div>
+        <div class="pipeline-status status-blocked">BLOCKED — AWAITING DECISION</div>
+      </div>
+      <div class="pipeline-detail">
+        Patrick prepped the Belton sandbox but didn't send it because Book Intelligence was incomplete. Patrick asked:
+        <strong>"Do you want me to add a different district instead?"</strong> — this question is still unresolved.
+        You need to decide: fix BI and send to Belton, or redirect Patrick's effort to a different district.
+      </div>
+      <div class="pipeline-action">⚡ Reply to Patrick with direction on Belton vs. alternate district</div>
+    </div>
+
+    <div class="pipeline-card">
+      <div class="pipeline-card-header">
+        <div class="pipeline-district">Garland ISD</div>
+        <div class="pipeline-status status-stalled">STALLED — METADATA ISSUE</div>
+      </div>
+      <div class="pipeline-detail">
+        Patrick created the Garland sandbox on Feb 28 and populated it. You were added as a librarian. However, the sandbox has blank book covers — metadata isn't attaching properly on upload.
+        You said on March 1: "I'll take a look at it today." Status unknown — may not have been shared with Garland contacts yet.
+      </div>
+      <div class="pipeline-action">🔍 Check Garland sandbox status and resolve metadata issue</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== AFTERNOON PRIORITIES ========== -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-icon">⚡</div>
+      <div>
+        <div class="section-title">Afternoon Work Block — Priority Stack</div>
+        <div class="section-count">12:00 – 4:30 PM &middot; 4.5 hours of deep work</div>
+      </div>
+    </div>
+
+    <ul class="task-list">
+      <li class="task-item">
+        <div class="task-priority priority-p1"></div>
+        <div class="task-content">
+          <div class="task-title">Review &amp; send 10 ESC 13 follow-up emails</div>
+          <div class="task-meta">P1 — Revenue &middot; All 10 Gmail drafts are ready. Review, personalize any final touches, and send. Liberty Hill (superintendent!) and Lago Vista (4 attendees) are highest priority.</div>
+        </div>
+      </li>
+      <li class="task-item">
+        <div class="task-priority priority-p1"></div>
+        <div class="task-content">
+          <div class="task-title">ESC16 proposal — Draft with Charlie</div>
+          <div class="task-meta">P1 — Revenue &middot; You told Nathan "I'm talking to Charlie this evening." The 7 AM debrief sets up the proposal. Confluence page has 4 options. Need to lock terms today.</div>
+        </div>
+      </li>
+      <li class="task-item">
+        <div class="task-priority priority-p1"></div>
+        <div class="task-content">
+          <div class="task-title">Reply to Patrick — Belton ISD decision</div>
+          <div class="task-meta">P1 — Unblock team &middot; Patrick is waiting on your call: fix BI and send Belton sandbox, or redirect to a different district?</div>
+        </div>
+      </li>
+      <li class="task-item">
+        <div class="task-priority priority-p2"></div>
+        <div class="task-content">
+          <div class="task-title">Build Granbury ISD test pilot + board workflow</div>
+          <div class="task-meta">P2 — Pipeline &middot; You're in Granbury today. Superintendent Morawski responded. Build the OnShelf Review board experience workflow.</div>
+        </div>
+      </li>
+      <li class="task-item">
+        <div class="task-priority priority-p2"></div>
+        <div class="task-content">
+          <div class="task-title">Check &amp; fix Garland ISD sandbox</div>
+          <div class="task-meta">P2 — Pipeline &middot; Blank book covers / metadata issue. Resolve and share with Garland contacts.</div>
+        </div>
+      </li>
+      <li class="task-item">
+        <div class="task-priority priority-p2"></div>
+        <div class="task-content">
+          <div class="task-title">Review Raju 4:30 PM meeting transcript</div>
+          <div class="task-meta">P2 — Overdue (March 4) &middot; Extract action items from March 3 meeting with Raju Datla.</div>
+        </div>
+      </li>
+      <li class="task-item">
+        <div class="task-priority priority-p3"></div>
+        <div class="task-content">
+          <div class="task-title">BILL Spend &amp; Expense application</div>
+          <div class="task-meta">P3 — Admin &middot; Due March 7.</div>
+        </div>
+      </li>
+      <li class="task-item">
+        <div class="task-priority priority-p3"></div>
+        <div class="task-content">
+          <div class="task-title">Insperity renewal docs review</div>
+          <div class="task-meta">P3 — Admin &middot; Due March 5 (overdue). 2026 renewal documents ready.</div>
+        </div>
+      </li>
+      <li class="task-item">
+        <div class="task-priority priority-p3"></div>
+        <div class="task-content">
+          <div class="task-title">Review Tila's ESC document</div>
+          <div class="task-meta">P3 — Overdue (March 3) &middot; Look at the ESC document from Tila.</div>
+        </div>
+      </li>
+      <li class="task-item">
+        <div class="task-priority priority-p3"></div>
+        <div class="task-content">
+          <div class="task-title">Call Tim Eads</div>
+          <div class="task-meta">P3 — Overdue (March 3).</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== COMPLETED WORK ========== -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-icon">✅</div>
+      <div>
+        <div class="section-title">Completed Overnight — Work Log</div>
+        <div class="section-count">Everything your Chief of Staff agent handled</div>
+      </div>
+    </div>
+
+    <div class="log-grid">
+      <div class="log-item">
+        <div class="log-check">✓</div>
+        <div>
+          <div class="log-text">Inbox cleaned: 22 marketing emails archived</div>
+          <div class="log-detail">12 senders unsubscribed (Late, Wispr Flow, ZoomInfo, LinkedIn x3, EdWeek, NotebookLM, SA Express-News, QuickBooks, FIRE, Alignable)</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-check">✓</div>
+        <div>
+          <div class="log-text">Calendar block scheduled: 12–4:30 PM</div>
+          <div class="log-detail">CEO Work Block — Email, Tasks & Week Planning with Claude</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-check">✓</div>
+        <div>
+          <div class="log-text">Plaud transcript retrieved and analyzed</div>
+          <div class="log-detail">Full ESC 13 presentation: SB13/HB412 compliance, pain points, value props, action items extracted</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-check">✓</div>
+        <div>
+          <div class="log-text">21 attendee contacts extracted</div>
+          <div class="log-detail">From Jodi Duron's attendee email — 10 districts identified and categorized</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-check">✓</div>
+        <div>
+          <div class="log-text">10 new HubSpot contacts created</div>
+          <div class="log-detail">Katrina Montgomery, Mark Willoughby, B Schneider, K Koennecke, C Scott, Clark Motley, Tina Huenefeld, M Curran, H Jackson, J Stoner</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-check">✓</div>
+        <div>
+          <div class="log-text">6 existing contacts updated</div>
+          <div class="log-detail">Added missing company names: Michael Cardona, Christine Steenport, Danica Murillo, Katrina Bailey, Paula Kaderka, Erin Lawrence</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-check">✓</div>
+        <div>
+          <div class="log-text">Pipeline intel gathered from Slack</div>
+          <div class="log-detail">Granbury (prototype shared, superintendent responding), Belton (blocked on BI), Garland (metadata issue)</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-check">✓</div>
+        <div>
+          <div class="log-text">10 follow-up email drafts composed</div>
+          <div class="log-detail">Personalized per district size, attendee count, and presentation pain points</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-check">✓</div>
+        <div>
+          <div class="log-text">Morning briefing dashboard built</div>
+          <div class="log-detail">You're reading it right now. Published to GitHub Pages for permanent access.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<div class="footer">
+  <div class="container">
+    <p>Generated by <strong>Chief of Staff Agent</strong> &middot; Bookmarked CEO OS &middot; March 6, 2026</p>
+    <p style="margin-top:6px;">Session work: March 5–6, 2026 &middot; <a href="https://bookmarked.com">bookmarked.com</a></p>
+  </div>
+</div>
+
+</body>
+</html>
