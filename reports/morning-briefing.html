@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEO Morning Briefing — March 6, 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #101828;
+    color: #E4E7EC;
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 32px 24px; }
+  @media (max-width: 600px) {
+    .container { padding: 20px 14px; }
+  }
+
+  /* Header */
+  .header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 40px; padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    gap: 16px; flex-wrap: wrap;
+  }
+  .header h1 {
+    font-size: 28px; font-weight: 800; color: #fff;
+    letter-spacing: -0.5px;
+  }
+  .header .subtitle {
+    font-size: 15px; color: #667085; margin-top: 4px;
+  }
+  .header .one-thing-badge {
+    background: linear-gradient(135deg, #15B79E, #0E9384);
+    color: #fff; padding: 12px 20px; border-radius: 12px;
+    font-weight: 600; font-size: 14px; text-align: right;
+    max-width: 340px;
+  }
+  .header .one-thing-badge .label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+    opacity: 0.8; margin-bottom: 4px;
+  }
+  @media (max-width: 600px) {
+    .header { flex-direction: column; }
+    .header h1 { font-size: 24px; }
+    .header .one-thing-badge {
+      text-align: left; max-width: 100%; width: 100%;
+    }
+  }
+
+  /* Section headers */
+  .section { margin-bottom: 40px; }
+  .section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 16px; flex-wrap: wrap;
+  }
+  .section-header h2 {
+    font-size: 18px; font-weight: 700; color: #fff;
+    letter-spacing: -0.3px;
+  }
+  .section-header .count {
+    background: rgba(21,183,158,0.15); color: #15B79E;
+    font-size: 12px; font-weight: 600; padding: 2px 10px;
+    border-radius: 100px;
+  }
+  .section-header .icon {
+    font-size: 20px; width: 32px; text-align: center;
+  }
+  .section-divider {
+    width: 100%; height: 1px;
+    background: rgba(255,255,255,0.06);
+    margin: 8px 0 20px;
+  }
+  .subsection-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: #667085; margin: 20px 0 12px; font-weight: 600;
+  }
+
+  /* Cards */
+  .card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px; padding: 16px 20px;
+    margin-bottom: 10px; transition: all 0.15s ease;
+    cursor: default;
+  }
+  @media (max-width: 600px) {
+    .card { padding: 14px 14px; border-radius: 10px; }
+  }
+  .card:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(21,183,158,0.3);
+  }
+  .card a { color: inherit; text-decoration: none; }
+  .card-clickable { cursor: pointer; }
+  .card-clickable:active {
+    background: rgba(255,255,255,0.1);
+  }
+
+  .card .title {
+    font-size: 15px; font-weight: 600; color: #fff;
+    margin-bottom: 4px; display: flex; align-items: center;
+    gap: 8px; flex-wrap: wrap;
+  }
+  @media (max-width: 600px) {
+    .card .title { font-size: 14px; }
+  }
+  .card .detail {
+    font-size: 13px; color: #98A2B3; line-height: 1.5;
+  }
+  .card .meta {
+    display: flex; gap: 16px; margin-top: 8px; flex-wrap: wrap;
+  }
+  .card .meta span {
+    font-size: 11px; color: #667085; display: flex;
+    align-items: center; gap: 4px;
+  }
+  .card .link-btn {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: rgba(21,183,158,0.12); color: #15B79E;
+    font-size: 12px; font-weight: 500; padding: 6px 14px;
+    border-radius: 6px; text-decoration: none;
+    margin-top: 8px; border: 1px solid rgba(21,183,158,0.2);
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .card .link-btn:hover, .card .link-btn:active {
+    background: rgba(21,183,158,0.25);
+  }
+
+  /* Priority badges */
+  .badge {
+    font-size: 10px; font-weight: 700; padding: 2px 8px;
+    border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .badge-p1 { background: rgba(240,68,56,0.15); color: #F04438; }
+  .badge-p2 { background: rgba(247,144,9,0.15); color: #F79009; }
+  .badge-p3 { background: rgba(102,112,133,0.2); color: #98A2B3; }
+  .badge-new { background: rgba(21,183,158,0.15); color: #15B79E; }
+  .badge-hubspot { background: rgba(255,122,69,0.15); color: #FF7A45; }
+  .badge-canceled { background: rgba(240,68,56,0.1); color: #F04438; text-decoration: line-through; }
+  .badge-declined { background: rgba(102,112,133,0.15); color: #667085; }
+  .badge-overdue { background: rgba(240,68,56,0.12); color: #F04438; }
+  .badge-fyi { background: rgba(54,128,255,0.12); color: #3680FF; }
+  .badge-noise { background: rgba(102,112,133,0.12); color: #667085; }
+  .badge-action { background: rgba(21,183,158,0.15); color: #15B79E; }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 24px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px;
+    width: 2px; background: rgba(255,255,255,0.06);
+  }
+  .timeline-item {
+    position: relative; margin-bottom: 16px;
+    padding: 12px 16px; border-radius: 10px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  @media (max-width: 600px) {
+    .timeline { padding-left: 20px; }
+    .timeline-item { padding: 10px 12px; }
+  }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -21px; top: 18px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #15B79E; border: 2px solid #101828;
+  }
+  @media (max-width: 600px) {
+    .timeline-item::before { left: -17px; width: 8px; height: 8px; }
+  }
+  .timeline-item.past::before { background: #667085; }
+  .timeline-item.canceled::before { background: #F04438; }
+  .timeline-item.active::before {
+    background: #15B79E;
+    box-shadow: 0 0 0 4px rgba(21,183,158,0.2);
+  }
+  .timeline-item .time {
+    font-size: 12px; font-weight: 600; color: #15B79E;
+  }
+  .timeline-item.past .time { color: #667085; }
+  .timeline-item.canceled .time { color: #F04438; text-decoration: line-through; }
+  .timeline-item .event-title {
+    font-size: 14px; font-weight: 600; color: #fff; margin: 2px 0;
+  }
+  .timeline-item .event-detail {
+    font-size: 12px; color: #98A2B3;
+  }
+  .timeline-item .attendees {
+    font-size: 11px; color: #667085; margin-top: 4px;
+  }
+  .timeline-item .prep {
+    font-size: 12px; color: #D0D5DD; margin-top: 8px;
+    padding: 8px 12px; background: rgba(21,183,158,0.06);
+    border-radius: 6px; border-left: 2px solid #15B79E;
+  }
+
+  /* Email grid */
+  .email-card {
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .email-card .email-badge { flex-shrink: 0; margin-top: 2px; }
+  .email-card .email-content { flex: 1; min-width: 0; }
+
+  /* Priorities section */
+  .priority-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;
+  }
+  @media (max-width: 768px) {
+    .priority-grid { grid-template-columns: 1fr; }
+  }
+  .priority-card {
+    background: rgba(21,183,158,0.06);
+    border: 1px solid rgba(21,183,158,0.15);
+    border-radius: 12px; padding: 20px;
+  }
+  .priority-card .rank {
+    font-size: 36px; font-weight: 800; color: #15B79E;
+    opacity: 0.4; line-height: 1;
+  }
+  .priority-card .p-title {
+    font-size: 15px; font-weight: 600; color: #fff; margin: 8px 0 4px;
+  }
+  .priority-card .p-reason {
+    font-size: 12px; color: #98A2B3;
+  }
+
+  .one-thing-banner {
+    background: linear-gradient(135deg, rgba(21,183,158,0.15), rgba(14,147,132,0.08));
+    border: 2px solid rgba(21,183,158,0.3);
+    border-radius: 16px; padding: 28px 32px;
+    margin-top: 20px; text-align: center;
+  }
+  @media (max-width: 600px) {
+    .one-thing-banner { padding: 20px 16px; border-radius: 12px; }
+  }
+  .one-thing-banner .ot-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 2px;
+    color: #15B79E; font-weight: 700; margin-bottom: 8px;
+  }
+  .one-thing-banner .ot-title {
+    font-size: 22px; font-weight: 800; color: #fff;
+  }
+  @media (max-width: 600px) {
+    .one-thing-banner .ot-title { font-size: 18px; }
+  }
+  .one-thing-banner .ot-reason {
+    font-size: 14px; color: #98A2B3; margin-top: 8px;
+    max-width: 600px; margin-left: auto; margin-right: auto;
+  }
+
+  .hours-bar {
+    display: flex; align-items: center; gap: 12px;
+    margin-top: 20px; justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hours-bar .hours-num {
+    font-size: 48px; font-weight: 800; color: #15B79E; line-height: 1;
+  }
+  .hours-bar .hours-label {
+    font-size: 14px; color: #667085; text-align: left;
+  }
+
+  /* Overdue section */
+  .overdue-warning {
+    background: rgba(240,68,56,0.06);
+    border: 1px solid rgba(240,68,56,0.15);
+    border-radius: 10px; padding: 14px 18px;
+    margin-bottom: 10px;
+  }
+  .overdue-warning .ow-title {
+    font-size: 14px; font-weight: 600; color: #F04438;
+  }
+  .overdue-warning .ow-detail {
+    font-size: 12px; color: #98A2B3; margin-top: 2px;
+  }
+
+  .stale-summary {
+    background: rgba(247,144,9,0.06);
+    border: 1px solid rgba(247,144,9,0.12);
+    border-radius: 10px; padding: 14px 18px;
+  }
+  .stale-summary .ss-title {
+    font-size: 14px; font-weight: 600; color: #F79009;
+  }
+  .stale-summary .ss-detail {
+    font-size: 12px; color: #98A2B3; margin-top: 2px;
+  }
+
+  .timestamp {
+    text-align: center; padding: 32px 0 16px;
+    font-size: 11px; color: #475467;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    margin-top: 40px;
+  }
+
+  /* Task group labels */
+  .task-group-header {
+    display: flex; align-items: center; gap: 8px;
+    margin: 20px 0 12px;
+  }
+  .task-group-header .tg-icon {
+    width: 20px; height: 20px; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700;
+  }
+  .tg-hubspot { background: rgba(255,122,69,0.15); color: #FF7A45; }
+  .tg-google { background: rgba(21,183,158,0.15); color: #15B79E; }
+  .task-group-header .tg-label {
+    font-size: 12px; font-weight: 600; color: #667085;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+
+  /* Collapsible sections for mobile */
+  .collapse-toggle {
+    display: none; cursor: pointer;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px; padding: 10px 16px;
+    color: #98A2B3; font-size: 13px; font-weight: 500;
+    width: 100%; text-align: left;
+    margin-bottom: 8px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .collapse-toggle:active { background: rgba(255,255,255,0.08); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <h1>Morning Briefing</h1>
+    <div class="subtitle">Friday, March 6, 2026 &middot; Granbury, TX (Team Event Day 2)</div>
+  </div>
+  <div class="one-thing-badge">
+    <div class="label">Your ONE THING today</div>
+    Send the 10 ESC 13 follow-up emails
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 1. ACTION ITEMS -->
+<!-- ============================================ -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon">&#9889;</div>
+    <h2>Action Items</h2>
+    <span class="count">11 tasks due today</span>
+  </div>
+  <div class="section-divider"></div>
+
+  <!-- HubSpot Tasks -->
+  <div class="task-group-header">
+    <div class="tg-icon tg-hubspot">H</div>
+    <div class="tg-label">Customer / District Tasks (HubSpot)</div>
+  </div>
+
+  <div class="card card-clickable" onclick="window.open('https://app-na2.hubspot.com/contacts/39855019/objects/0-27/views/all/list','_blank')">
+    <div class="title">
+      <span class="badge badge-hubspot">HubSpot</span>
+      <span class="badge badge-new">New</span>
+      Add ESC 13 Lunch &amp; Learn contacts + follow up
+    </div>
+    <div class="detail">
+      Jodi Duron (MoakCasey) sent the attendee list from March 4 event at Round Rock ISD. 9 districts represented including Liberty Hill (superintendent attended &mdash; high value). Cross-reference with 10 follow-up email drafts already in Gmail.
+    </div>
+    <div class="meta">
+      <span>&#128205; Austin ISD, Del Valle, Thrall, Eanes, Elgin, Granger, Liberty Hill, Lago Vista, San Marcos</span>
+    </div>
+    <a class="link-btn" href="https://app-na2.hubspot.com/contacts/39855019/objects/0-27/views/all/list" target="_blank">Open in HubSpot &rarr;</a>
+  </div>
+
+  <!-- Google Tasks -->
+  <div class="task-group-header">
+    <div class="tg-icon tg-google">G</div>
+    <div class="tg-label">Personal / Operational Tasks (Google Tasks)</div>
+  </div>
+
+  <div class="card card-clickable" onclick="window.open('https://tasks.google.com','_blank')">
+    <div class="title">
+      <span class="badge badge-p1">P1</span>
+      Review &amp; send 10 ESC 13 follow-up emails
+    </div>
+    <div class="detail">
+      All 10 Gmail drafts are ready. Liberty Hill superintendent attended &mdash; highest priority. Pure revenue activation. 30 minutes max.
+    </div>
+    <a class="link-btn" href="https://tasks.google.com" target="_blank">Open Google Tasks &rarr;</a>
+  </div>
+
+  <div class="card card-clickable" onclick="window.open('https://tasks.google.com','_blank')">
+    <div class="title">
+      <span class="badge badge-p1">P1</span>
+      ESC16 proposal &mdash; Draft with Charlie
+    </div>
+    <div class="detail">
+      Bifurcated proposal: $75K base + 15% rev share. 4 options in Confluence. You told Nathan "I'm talking to Charlie this evening." Charlie wants a draft term sheet, not talking points.
+    </div>
+    <div class="meta">
+      <span>&#128176; $75K+ deal</span>
+      <span>&#128221; <a href="https://bookmarked-team.atlassian.net/wiki/spaces/E1SP/pages/83263490" target="_blank" style="color:#15B79E;">Confluence debrief</a></span>
+    </div>
+    <a class="link-btn" href="https://tasks.google.com" target="_blank">Open Google Tasks &rarr;</a>
+  </div>
+
+  <div class="card card-clickable" onclick="window.open('https://tasks.google.com','_blank')">
+    <div class="title">
+      <span class="badge badge-p1">P1</span>
+      Reply to Patrick &mdash; Belton ISD sandbox decision
+    </div>
+    <div class="detail">
+      Patrick prepped sandbox but Book Intelligence was incomplete. He asked: "Do you want me to turn it on anyway?" Unblocks Patrick &mdash; 2-minute decision.
+    </div>
+    <a class="link-btn" href="https://tasks.google.com" target="_blank">Open Google Tasks &rarr;</a>
+  </div>
+
+  <div class="card card-clickable" onclick="window.open('https://tasks.google.com','_blank')">
+    <div class="title">
+      <span class="badge badge-p2">P2</span>
+      Send follow-up email to ESC 10 + ESC 15 contacts
+    </div>
+    <div class="detail">
+      Same day as presentation. Thank them, reference the story, reiterate the ask (20% of districts in 30 days).
+    </div>
+    <a class="link-btn" href="https://tasks.google.com" target="_blank">Open Google Tasks &rarr;</a>
+  </div>
+
+  <div class="card card-clickable" onclick="window.open('https://tasks.google.com/task/nWIv2M4EfStqyHfl?sa=6','_blank')">
+    <div class="title">
+      <span class="badge badge-p2">P2</span>
+      <span class="badge badge-new">New</span>
+      Email Kristi Nichols Arnold at TEA re: RFO 701-25-009
+    </div>
+    <div class="detail">
+      Ginger Murray (MoakCasey) provided TEA contact: Kristi.nicholsarnold@tea.texas.gov. Reference RFO number. Keep neutral &mdash; not registered to lobby on your behalf.
+    </div>
+    <a class="link-btn" href="https://tasks.google.com/task/nWIv2M4EfStqyHfl?sa=6" target="_blank">Open Task &rarr;</a>
+  </div>
+
+  <div class="card card-clickable" onclick="window.open('https://tasks.google.com','_blank')">
+    <div class="title">
+      <span class="badge badge-p2">P2</span>
+      Reply to Natasha &mdash; Saddleback pilot MOU + who joins
+    </div>
+    <div class="detail">
+      Tim McHugh (Saddleback) wants 1-page MOU for content scanner pilot &mdash; "Welcome Newcomers" series (18 books). He wants: usage scope, limits, cancellation clause. Natasha drafting but needs your input on team involvement.
+    </div>
+    <a class="link-btn" href="https://tasks.google.com" target="_blank">Open Google Tasks &rarr;</a>
+  </div>
+
+  <div class="card card-clickable" onclick="window.open('https://tasks.google.com','_blank')">
+    <div class="title">
+      <span class="badge badge-p2">P2</span>
+      Build Granbury ISD test pilot + board workflow
+    </div>
+    <div class="detail">
+      You're physically in Granbury today. Superintendent Dr. Morawski responded. Leverage proximity.
+    </div>
+    <a class="link-btn" href="https://tasks.google.com" target="_blank">Open Google Tasks &rarr;</a>
+  </div>
+
+  <div class="card card-clickable" onclick="window.open('https://tasks.google.com','_blank')">
+    <div class="title">
+      <span class="badge badge-p3">P3</span>
+      Review PostHog GitHub permissions
+    </div>
+    <div class="detail">
+      PostHog requesting updated permissions on BookmarkED-Corp GitHub org. 2-minute approval.
+    </div>
+    <a class="link-btn" href="https://tasks.google.com" target="_blank">Open Google Tasks &rarr;</a>
+  </div>
+
+  <div class="card card-clickable" onclick="window.open('https://tasks.google.com','_blank')">
+    <div class="title">
+      <span class="badge badge-p3">P3</span>
+      Review Pilot Tax 2025 extensions &mdash; $860 CA auto-debit
+    </div>
+    <div class="detail">
+      $0 federal, $860 California (bank ending 0762), $0 Texas. Due April 15. Verify no ACH blockers. Michelle cc'd.
+    </div>
+    <a class="link-btn" href="https://tasks.google.com" target="_blank">Open Google Tasks &rarr;</a>
+  </div>
+
+  <div class="card card-clickable" onclick="window.open('https://tasks.google.com','_blank')">
+    <div class="title">
+      <span class="badge badge-p3">P3</span>
+      Accept BILL Spend &amp; Expense $10K credit
+    </div>
+    <div class="detail">
+      Approved for $10K. Log into apply.divvy.co (Chrome on computer), accept offer. Asia's 3rd follow-up.
+    </div>
+    <a class="link-btn" href="https://tasks.google.com" target="_blank">Open Google Tasks &rarr;</a>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 2. CALENDAR -->
+<!-- ============================================ -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon">&#128197;</div>
+    <h2>Today's Calendar</h2>
+    <span class="count">5 events (2 declined, 1 canceled)</span>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="timeline">
+    <div class="timeline-item past">
+      <div class="time">7:00 &ndash; 8:00 AM</div>
+      <div class="event-title">ESC16 Call Debrief &mdash; Prep for Charlie Meeting</div>
+      <div class="event-detail">Solo prep session. 4 proposal options in Confluence. Nathan's post-call vibe positive.</div>
+      <div class="prep">
+        <strong>Key decisions for Charlie:</strong> What triggers the 15%? Re-attach conditions to $75K? Step-downs in proposal or save for renewal? Conroe grandfathering? Texas Exchange scope?
+      </div>
+    </div>
+
+    <div class="timeline-item past">
+      <div class="time">8:00 AM &ndash; 12:00 PM</div>
+      <div class="event-title">Bookmarked Team Event &mdash; Day 2 Morning</div>
+      <div class="event-detail">Pecan Plantation Country Club, Granbury</div>
+      <div class="attendees">Jan, Patrick, Teela, Steve + team</div>
+      <div class="prep">
+        <strong>Agenda:</strong> 8:00 Breakfast &bull; 8:30 Marketing 101 (Jan) &bull; 9:45 Create Plans &bull; 10:45 Present Plans &bull; Awards: Most Opportunities, Most District Outreach, Most Creative
+      </div>
+    </div>
+
+    <div class="timeline-item canceled">
+      <div class="time">9:15 AM &bull; DECLINED</div>
+      <div class="event-title" style="color:#667085;">Dev: V2 Standup</div>
+      <div class="attendees">Raju, Anil, Sarah, Patrick &mdash; you declined</div>
+    </div>
+
+    <div class="timeline-item canceled">
+      <div class="time">9:30 AM &bull; DECLINED</div>
+      <div class="event-title" style="color:#667085;">Daily Updates (10 Mins)</div>
+      <div class="attendees">Raju, Jan, Anil, Sarah, Patrick &mdash; you declined</div>
+    </div>
+
+    <div class="timeline-item active">
+      <div class="time">12:00 &ndash; 4:30 PM &bull; NOW</div>
+      <div class="event-title">CEO Work Block &mdash; Email, Tasks &amp; Week Planning</div>
+      <div class="event-detail">Deep work session. This briefing is your launchpad.</div>
+      <div class="prep">
+        <strong>Block plan:</strong> ESC 13 emails (30 min) &rarr; Patrick reply (5 min) &rarr; ESC 10/15 follow-ups (20 min) &rarr; TEA email (10 min) &rarr; Natasha MOU input (15 min) &rarr; ESC16 proposal thinking (60 min) &rarr; Admin cleanup (remaining)
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="time">4:30 &ndash; 5:00 PM</div>
+      <div class="event-title">Medication Protocol Prep Session</div>
+      <div class="event-detail">30-min video appointment. Peer treatment monitor must be present. Have pharmacy package ready.</div>
+    </div>
+  </div>
+
+  <p style="font-size: 12px; color: #667085; margin-top: 12px; padding-left: 24px;">
+    <em>Note: Toyo/Layercode 11:30 AM sync was <span style="color:#F04438;">canceled</span> by Erin Sullivan.</em>
+  </p>
+</div>
+
+<!-- ============================================ -->
+<!-- 3. EMAIL TRIAGE -->
+<!-- ============================================ -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon">&#128232;</div>
+    <h2>Email Triage</h2>
+    <span class="count">20 unread &rarr; 8 action, 4 FYI, 8 noise</span>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="subsection-label">Action Required</div>
+
+  <div class="card">
+    <div class="email-card">
+      <div class="email-badge"><span class="badge badge-action">Action</span></div>
+      <div class="email-content">
+        <div class="title"><a href="https://mail.google.com/mail/u/0/#all/19cc407ce9a90d0d" target="_blank">Ginger Murray (MoakCasey) &mdash; TEA RFO contact</a></div>
+        <div class="detail">Gave you the TEA contact: Kristi.nicholsarnold@tea.texas.gov. Reference the RFO number. Warned: not registered to lobby on your behalf. <strong>Task created.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="email-card">
+      <div class="email-badge"><span class="badge badge-action">Action</span></div>
+      <div class="email-content">
+        <div class="title"><a href="https://mail.google.com/mail/u/0/#all/19cc3fdebc8f109a" target="_blank">Theresa Morris (mpasseducation) &mdash; Catching up</a></div>
+        <div class="detail">Wants to reconnect. Available: March 12 (1 PM EST), March 23 (11 AM EST), March 25-26 (all day). <strong>Task created.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="email-card">
+      <div class="email-badge"><span class="badge badge-action">Action</span></div>
+      <div class="email-content">
+        <div class="title"><a href="https://mail.google.com/mail/u/0/#all/19cbf0aafed293ba" target="_blank">Natasha &rarr; Patrick &amp; Steve &mdash; Saddleback pilot</a></div>
+        <div class="detail">Tim McHugh wants 1-page MOU for content scanner pilot (18-book series). Natasha drafting. Needs your input on who joins. <strong>Existing task.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="email-card">
+      <div class="email-badge"><span class="badge badge-action">Action</span></div>
+      <div class="email-content">
+        <div class="title"><a href="https://mail.google.com/mail/u/0/#all/19cbac062db509d1" target="_blank">Jodi Duron (MoakCasey) &mdash; ESC 13 attendee list</a></div>
+        <div class="detail">Full attendee list from March 4 event. 9 districts including Liberty Hill superintendent. <strong>HubSpot task created.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="email-card">
+      <div class="email-badge"><span class="badge badge-action">Action</span></div>
+      <div class="email-content">
+        <div class="title"><a href="https://mail.google.com/mail/u/0/#all/19cc2cf6061aa4eb" target="_blank">GitHub &mdash; PostHog permissions update</a></div>
+        <div class="detail">PostHog needs updated permissions on BookmarkED-Corp. 2-min review. <strong>Existing task.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="email-card">
+      <div class="email-badge"><span class="badge badge-action">Action</span></div>
+      <div class="email-content">
+        <div class="title"><a href="https://mail.google.com/mail/u/0/#all/19cc236aede5f001" target="_blank">Pilot Tax (Gil Ceniza) &mdash; 2025 extensions ready</a></div>
+        <div class="detail">$860 CA payment auto-debiting from bank 0762. $0 federal, $0 Texas. Verify no ACH blockers. <strong>Existing task.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="email-card">
+      <div class="email-badge"><span class="badge badge-action">Action</span></div>
+      <div class="email-content">
+        <div class="title"><a href="https://mail.google.com/mail/u/0/#all/19cc457765b69d58" target="_blank">Asia Arens (BILL) &mdash; Accept $10K credit</a></div>
+        <div class="detail">Approved. Go to apply.divvy.co (Chrome), accept offer. 3rd follow-up. <strong>Existing task.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="email-card">
+      <div class="email-badge"><span class="badge badge-action">Action</span></div>
+      <div class="email-content">
+        <div class="title"><a href="https://mail.google.com/mail/u/0/#all/19cc2c8bbeb24fa0" target="_blank">AWS &mdash; Aurora PostgreSQL deprecation (dev + prod)</a></div>
+        <div class="detail">Both accounts running versions that deprecate May 31. Forward to Raju. <strong>Existing task.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection-label">FYI &mdash; No Action Needed</div>
+
+  <div class="card" style="opacity:0.7;">
+    <div class="email-card">
+      <div class="email-badge"><span class="badge badge-fyi">FYI</span></div>
+      <div class="email-content">
+        <div class="title">Toyo/Layercode weekly sync &mdash; CANCELED</div>
+        <div class="detail">Erin Sullivan canceled today's 11:30 AM meeting.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="opacity:0.7;">
+    <div class="email-card">
+      <div class="email-badge"><span class="badge badge-fyi">FYI</span></div>
+      <div class="email-content">
+        <div class="title">Raju &rarr; Michelle &mdash; AWS invoice $11,600 (Feb)</div>
+        <div class="detail">Raju says $3-4K max once V1 retired. Won't approach $12K.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="opacity:0.7;">
+    <div class="email-card">
+      <div class="email-badge"><span class="badge badge-fyi">FYI</span></div>
+      <div class="email-content">
+        <div class="title">Raju &amp; Tim Eads &mdash; AI document fraud</div>
+        <div class="detail">Tim asked if Bookmarked tech could apply to banking docs. Raju: big deviation, would need custom open-source model. Interesting, not actionable.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="opacity:0.7;">
+    <div class="email-card">
+      <div class="email-badge"><span class="badge badge-fyi">FYI</span></div>
+      <div class="email-content">
+        <div class="title">Marble Press &mdash; New distributor (Stable / Hachette)</div>
+        <div class="detail">Publisher newsletter. Now distributed by Stable Distribution.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection-label" style="opacity:0.5;">Noise &mdash; Archived / Ignored</div>
+  <p style="font-size: 12px; color: #475467; margin-bottom: 16px;">
+    i8CLOUD/Odoo cold email &bull; Light3 Capital "sell your company" spam &bull; Route 53 domain contact (bookmarked-staging.net) &bull; 3 duplicate thread messages
+  </p>
+</div>
+
+<!-- ============================================ -->
+<!-- 4. EXISTING TASKS -->
+<!-- ============================================ -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon">&#9745;</div>
+    <h2>Existing Tasks</h2>
+    <span class="count">12 due today &bull; 15+ overdue</span>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="subsection-label">Due Today (CEO Daily)</div>
+
+  <div class="card">
+    <div class="title"><span class="badge badge-p1">P1</span> Review &amp; send 10 ESC 13 follow-up emails</div>
+    <div class="detail">Drafts ready in Gmail. Liberty Hill superintendent attended.</div>
+  </div>
+  <div class="card">
+    <div class="title"><span class="badge badge-p1">P1</span> ESC16 proposal &mdash; Draft with Charlie</div>
+    <div class="detail">$75K base + 15% rev share. 4 options in Confluence.</div>
+  </div>
+  <div class="card">
+    <div class="title"><span class="badge badge-p1">P1</span> Reply to Patrick &mdash; Belton ISD sandbox</div>
+    <div class="detail">Unblocks Patrick. Quick yes/no.</div>
+  </div>
+  <div class="card">
+    <div class="title"><span class="badge badge-p2">P2</span> Send follow-up email to ESC 10 + ESC 15</div>
+    <div class="detail">Thank them, reference story, reiterate 20%-of-districts ask.</div>
+  </div>
+  <div class="card">
+    <div class="title"><span class="badge badge-p2">P2</span> Reply to Natasha &mdash; Saddleback MOU</div>
+    <div class="detail">Input on who joins meetings + MOU scope.</div>
+  </div>
+  <div class="card" style="opacity: 0.5;">
+    <div class="title"><span class="badge badge-canceled">Canceled</span> Meeting prep: Toyo/Layercode</div>
+    <div class="detail">Meeting canceled by Erin Sullivan. Skip.</div>
+  </div>
+
+  <div class="subsection-label">Due Today (Master List)</div>
+
+  <div class="card">
+    <div class="title"><span class="badge badge-p2">P2</span> Review Raju meeting transcript</div>
+    <div class="detail">Extract action items from March 3 meeting. Overdue.</div>
+  </div>
+  <div class="card">
+    <div class="title"><span class="badge badge-p2">P2</span> Check &amp; fix Garland ISD sandbox</div>
+    <div class="detail">Blank book covers &mdash; metadata not attaching on upload.</div>
+  </div>
+  <div class="card">
+    <div class="title"><span class="badge badge-p2">P2</span> Build Granbury ISD test pilot</div>
+    <div class="detail">You're in Granbury. Dr. Morawski responded. Leverage proximity.</div>
+  </div>
+  <div class="card">
+    <div class="title"><span class="badge badge-p3">P3</span> Insperity 2026 renewal review</div>
+    <div class="detail">Overdue from March 5.</div>
+  </div>
+  <div class="card">
+    <div class="title"><span class="badge badge-p3">P3</span> PostHog GitHub permissions</div>
+    <div class="detail">2-minute approval.</div>
+  </div>
+
+  <div class="subsection-label" style="color: #F04438;">Overdue &mdash; Needs Triage</div>
+
+  <div class="overdue-warning">
+    <div class="ow-title">7 tasks overdue from this week (March 3-5)</div>
+    <div class="ow-detail">
+      Notebook LM knowledge/quiz &bull; AI coaching skill &bull; Granbury ISD prototype &bull;
+      Tila's ESC document &bull; Call Tim Eads &bull; Advisory Board agreement &bull; BILL application (dup)
+    </div>
+  </div>
+
+  <div class="stale-summary">
+    <div class="ss-title">15+ stale tasks from Jan-Feb</div>
+    <div class="ss-detail">
+      TechDome notice &bull; Bridge Note McClelland &bull; Seed Financing &bull; TLA Membership &bull; Hayes CISD &bull; Forney ISD &bull; Cherry Lake &bull; Ashley May (Spring Branch) &bull; Whiteboard Advisors &bull; AWS Symposium &bull; Webflow payment &bull; Bill Brick &bull; more
+      <br><strong style="color:#F79009;">Recommendation: Schedule 30 min for task bankruptcy &mdash; close or reschedule these.</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5. ONBOARDING HEALTH -->
+<!-- ============================================ -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon">&#127891;</div>
+    <h2>Onboarding Health</h2>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="card">
+    <div class="title"><span class="badge badge-p2">Attention</span> Belton ISD</div>
+    <div class="detail">Sandbox created but Book Intelligence incomplete. Patrick blocked waiting for your go/no-go. <strong>Unblock today.</strong></div>
+  </div>
+
+  <div class="card">
+    <div class="title"><span class="badge badge-p2">Attention</span> Garland ISD</div>
+    <div class="detail">Sandbox created Feb 28. Blank book covers &mdash; metadata not attaching. Needs engineering investigation.</div>
+  </div>
+
+  <div class="card">
+    <div class="title"><span class="badge badge-new">New</span> Granbury ISD</div>
+    <div class="detail">Dr. Morawski (Superintendent) responded. You're in Granbury today. Natural opportunity.</div>
+  </div>
+
+  <div class="card">
+    <div class="title"><span class="badge badge-new">New</span> Saddleback Educational (Publisher Pilot)</div>
+    <div class="detail">Tim McHugh agreed to content scanner pilot. "Welcome Newcomers" series (18 books). Natasha drafting MOU.</div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 6. PRIORITIES -->
+<!-- ============================================ -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon">&#127919;</div>
+    <h2>Priorities</h2>
+  </div>
+  <div class="section-divider"></div>
+
+  <div class="priority-grid">
+    <div class="priority-card">
+      <div class="rank">#1</div>
+      <div class="p-title">Send 10 ESC 13 follow-up emails</div>
+      <div class="p-reason">
+        <strong>Rock:</strong> ESC Channel<br>
+        <strong>Time:</strong> Drafts ready, 30 min<br>
+        <strong>Customer:</strong> 9 ISDs incl superintendent<br>
+        <strong>Energy:</strong> Low effort, high payoff
+      </div>
+    </div>
+    <div class="priority-card">
+      <div class="rank">#2</div>
+      <div class="p-title">ESC16 proposal prep</div>
+      <div class="p-reason">
+        <strong>Rock:</strong> ESC Partnership Revenue<br>
+        <strong>Time:</strong> Told Nathan "tonight"<br>
+        <strong>Customer:</strong> $75K+ deal<br>
+        <strong>Energy:</strong> Deep thinking block
+      </div>
+    </div>
+    <div class="priority-card">
+      <div class="rank">#3</div>
+      <div class="p-title">Unblock Patrick &mdash; Belton ISD</div>
+      <div class="p-reason">
+        <strong>Rock:</strong> Customer pipeline<br>
+        <strong>Time:</strong> Team blocked now<br>
+        <strong>Customer:</strong> Active sandbox<br>
+        <strong>Energy:</strong> 2-minute decision
+      </div>
+    </div>
+  </div>
+
+  <div class="one-thing-banner">
+    <div class="ot-label">&#9733; Your ONE THING &#9733;</div>
+    <div class="ot-title">Send the 10 ESC 13 follow-up emails</div>
+    <div class="ot-reason">
+      Drafts are ready. Liberty Hill superintendent attended. Highest-leverage 30 minutes of your day &mdash; pure revenue activation with zero prep needed. Do this first, everything else flows.
+    </div>
+  </div>
+
+  <div class="hours-bar">
+    <div class="hours-num">4.25</div>
+    <div class="hours-label">
+      unblocked hours today<br>
+      <span style="font-size:12px; color:#475467;">12:00 &ndash; 4:30 PM work block (minus 15 min buffer)</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="timestamp">
+  Generated by Claude Chief of Staff &bull; Friday, March 6, 2026 at <span id="gen-time"></span> CT
+  <script>
+    document.getElementById('gen-time').textContent = new Date().toLocaleTimeString('en-US', {
+      hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/Chicago'
+    });
+  </script>
+</div>
+
+</div>
+</body>
+</html>
