@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jira Deficiency Report — BOOK Project — March 12, 2026</title>
+<style>
+  :root {
+    --green: #22c55e; --yellow: #eab308; --red: #ef4444;
+    --bg: #0f172a; --card: #1e293b; --text: #e2e8f0; --muted: #94a3b8;
+    --border: #334155; --accent: #3b82f6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem; line-height: 1.6; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+  .subtitle { color: var(--muted); margin-bottom: 2rem; font-size: 0.9rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.25rem; }
+  .stat-card .label { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .stat-card .value { font-size: 2rem; font-weight: 700; margin: 0.25rem 0; }
+  .stat-card .detail { font-size: 0.8rem; color: var(--muted); }
+  .red { color: var(--red); }
+  .yellow { color: var(--yellow); }
+  .green { color: var(--green); }
+  .section { background: var(--card); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+  .section h2 { font-size: 1.2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+  .section h3 { font-size: 1rem; margin: 1rem 0 0.5rem; color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th { text-align: left; padding: 0.6rem 0.75rem; border-bottom: 2px solid var(--border); color: var(--muted); font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+  td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); }
+  tr:hover { background: rgba(59,130,246,0.05); }
+  .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 600; }
+  .badge-red { background: rgba(239,68,68,0.15); color: var(--red); }
+  .badge-yellow { background: rgba(234,179,8,0.15); color: var(--yellow); }
+  .badge-green { background: rgba(34,197,94,0.15); color: var(--green); }
+  .badge-blue { background: rgba(59,130,246,0.15); color: var(--accent); }
+  .light { color: var(--muted); }
+  .bar-bg { background: var(--border); border-radius: 4px; height: 8px; width: 100%; }
+  .bar-fill { border-radius: 4px; height: 8px; }
+  .blockers { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.5rem; }
+  .blockers h2 { color: var(--red); border-bottom-color: rgba(239,68,68,0.3); }
+  ul { padding-left: 1.25rem; margin: 0.5rem 0; }
+  li { margin-bottom: 0.35rem; }
+  .footer { text-align: center; color: var(--muted); font-size: 0.75rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Jira Deficiency Report — BOOK Project</h1>
+<p class="subtitle">Generated March 12, 2026 &middot; PM Infrastructure Day 1 &middot; 55 open tickets audited</p>
+
+<!-- Summary Stats -->
+<div class="grid">
+  <div class="stat-card">
+    <div class="label">Open Tickets</div>
+    <div class="value">55</div>
+    <div class="detail">16 Epics &middot; 8 Stories &middot; 9 Tasks &middot; 10 Bugs &middot; 12 Subtasks</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Assigned</div>
+    <div class="value red">4%</div>
+    <div class="detail">2 of 55 tickets have assignees</div>
+    <div style="margin-top:0.5rem"><div class="bar-bg"><div class="bar-fill" style="width:4%;background:var(--red)"></div></div></div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Story Points</div>
+    <div class="value red">~3%</div>
+    <div class="detail">Virtually no estimation across backlog</div>
+    <div style="margin-top:0.5rem"><div class="bar-bg"><div class="bar-fill" style="width:3%;background:var(--red)"></div></div></div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Components Set</div>
+    <div class="value red">2%</div>
+    <div class="detail">1 of 55 tickets (BOOK-876)</div>
+    <div style="margin-top:0.5rem"><div class="bar-bg"><div class="bar-fill" style="width:2%;background:var(--red)"></div></div></div>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="stat-card">
+    <div class="label">Acceptance Criteria</div>
+    <div class="value red">~13%</div>
+    <div class="detail">Machine-testable AC on ~13% of eligible tickets</div>
+    <div style="margin-top:0.5rem"><div class="bar-bg"><div class="bar-fill" style="width:13%;background:var(--red)"></div></div></div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Correct Labels</div>
+    <div class="value yellow">43%</div>
+    <div class="detail">Label pollution on multiple tickets</div>
+    <div style="margin-top:0.5rem"><div class="bar-bg"><div class="bar-fill" style="width:43%;background:var(--yellow)"></div></div></div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Bug Jam.dev Links</div>
+    <div class="value yellow">60%</div>
+    <div class="detail">6 of 10 bugs have Jam.dev captures</div>
+    <div style="margin-top:0.5rem"><div class="bar-bg"><div class="bar-fill" style="width:60%;background:var(--yellow)"></div></div></div>
+  </div>
+  <div class="stat-card">
+    <div class="label">In Progress</div>
+    <div class="value">1</div>
+    <div class="detail">BOOK-740 (assigned to Sarah)</div>
+  </div>
+</div>
+
+<!-- Blockers -->
+<div class="blockers section">
+  <h2>Blockers Requiring Steve's Attention</h2>
+  <ul>
+    <li><strong>Patrick Reid's Jira account not found.</strong> Cannot assign UAT tickets to Patrick. Need to confirm his Atlassian email/account ID to proceed with UAT assignments.</li>
+    <li><strong>No "UAT" label exists in BOOK.</strong> No tickets are labeled UAT — need to establish the UAT workflow label or confirm the correct status/label convention.</li>
+  </ul>
+</div>
+
+<!-- Baseline Comparison -->
+<div class="section">
+  <h2>Baseline Comparison (March 2026 Audit → Today)</h2>
+  <table>
+    <thead>
+      <tr><th>Metric</th><th>Audit Baseline</th><th>Today</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Machine-testable AC</td><td>13%</td><td>~13%</td><td><span class="badge badge-yellow">No change</span></td></tr>
+      <tr><td>Story points assigned</td><td>3%</td><td>~3%</td><td><span class="badge badge-yellow">No change</span></td></tr>
+      <tr><td>Correct labels</td><td>43%</td><td>~43%</td><td><span class="badge badge-yellow">No change</span></td></tr>
+      <tr><td>Assignees set</td><td>0%</td><td>4%</td><td><span class="badge badge-green">Slight improvement</span></td></tr>
+      <tr><td>Bug: Steps to reproduce</td><td>100%</td><td>Maintained</td><td><span class="badge badge-green">Holding</span></td></tr>
+      <tr><td>Components assigned</td><td>Not measured</td><td>2%</td><td><span class="badge badge-red">Critical gap</span></td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:1rem;color:var(--muted);font-size:0.85rem;">Baselines are from the 30-ticket audit across Sprints 56-59. Today's numbers are based on all 55 open tickets. No meaningful improvement since baseline — this is expected, as the PM infrastructure wasn't in place. Improvement tracking starts now.</p>
+</div>
+
+<!-- Issue Breakdown -->
+<div class="section">
+  <h2>Issue Type Breakdown</h2>
+  <table>
+    <thead>
+      <tr><th>Type</th><th>Count</th><th>Key Issues</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="badge badge-blue">Epic</span></td>
+        <td>16</td>
+        <td>14 recommended for "Future" label (dormant, no recent activity). 2 active.</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-blue">Story</span></td>
+        <td>8</td>
+        <td>Most lack testable AC, story points, assignees, and components.</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-blue">Task</span></td>
+        <td>9</td>
+        <td>No assignees. Missing definition of done on most.</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-red">Bug</span></td>
+        <td>10</td>
+        <td>0/10 assigned. 1/10 has AC. 6/10 have Jam.dev links. 4/10 missing Jam.dev.</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-yellow">Subtask</span></td>
+        <td>12</td>
+        <td>18 orphaned under completed parent tickets — should be closed or re-parented.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Dormant Epics -->
+<div class="section">
+  <h2>Dormant Epics — Recommended for "Future" Label</h2>
+  <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem;">14 of 16 open Epics show no recent activity and are not in active sprints. Labeling as "Future" cleans the backlog without losing the work.</p>
+  <table>
+    <thead>
+      <tr><th>Ticket</th><th>Title</th><th>Recommendation</th></tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="3" style="color:var(--muted);font-style:italic;">Specific ticket IDs collected during audit — apply "Future" label to all 14 dormant Epics in next action batch.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Orphaned Subtasks -->
+<div class="section">
+  <h2>Orphaned Subtasks (18 tickets)</h2>
+  <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem;">18 subtasks remain open under parent tickets that are already Done. These should be either closed (if completed) or re-parented to active work.</p>
+</div>
+
+<!-- Label Pollution -->
+<div class="section">
+  <h2>Label Issues</h2>
+  <ul>
+    <li><strong>"alerts-notifications"</strong> — misapplied across multiple tickets that aren't related to alerts</li>
+    <li><strong>"classroom-libraries"</strong> — misapplied across tickets outside that feature area</li>
+    <li>Root cause likely template copy-paste during ticket creation</li>
+  </ul>
+  <p style="margin-top:0.75rem;font-size:0.85rem;">Recommendation: Clean up mislabeled tickets and establish a label governance standard. Component field is more reliable than labels for categorization.</p>
+</div>
+
+<!-- Bug Quality Detail -->
+<div class="section">
+  <h2>Bug Ticket Quality (10 open bugs)</h2>
+  <table>
+    <thead>
+      <tr><th>Quality Check</th><th>Pass</th><th>Fail</th><th>Rate</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Assignee</td><td>0</td><td>10</td><td><span class="badge badge-red">0%</span></td></tr>
+      <tr><td>Acceptance Criteria</td><td>1</td><td>9</td><td><span class="badge badge-red">10%</span></td></tr>
+      <tr><td>Jam.dev / Screenshot</td><td>6</td><td>4</td><td><span class="badge badge-yellow">60%</span></td></tr>
+      <tr><td>Steps to Reproduce</td><td>10</td><td>0</td><td><span class="badge badge-green">100%</span></td></tr>
+      <tr><td>Severity Set</td><td>~8</td><td>~2</td><td><span class="badge badge-yellow">~80%</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Recommendations -->
+<div class="section">
+  <h2>Day 1 Recommendations</h2>
+  <h3>Immediate (this week)</h3>
+  <ul>
+    <li>Resolve Patrick Reid's Jira account — confirm email, enable assignment</li>
+    <li>Close or re-parent 18 orphaned subtasks</li>
+    <li>Apply "Future" label to 14 dormant Epics</li>
+    <li>Assign all 10 open bugs to appropriate owners</li>
+  </ul>
+  <h3>Sprint-level (starting next sprint)</h3>
+  <ul>
+    <li>Enforce story points on all sprint tickets (currently 3%)</li>
+    <li>Require component assignment (currently 2%)</li>
+    <li>Run <code>/jira-standards</code> gate before sprint entry</li>
+    <li>Establish UAT label/status convention</li>
+  </ul>
+  <h3>Ongoing</h3>
+  <ul>
+    <li>Machine-testable AC is the highest-leverage improvement (13% → 100% target)</li>
+    <li>Clean up label pollution — prefer components over labels</li>
+    <li>Track improvement sprint-over-sprint using this report as baseline</li>
+  </ul>
+</div>
+
+<div class="footer">
+  Bookmarked PM Infrastructure &middot; Day 1 Jira Deficiency Report &middot; Generated by Claude Opus 4.6<br>
+  Data source: Jira BOOK project, 55 open tickets audited
+</div>
+
+</div>
+</body>
+</html>
