@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UAT Tracking Report — March 12, 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0f172a; color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 1.75rem; font-weight: 700; color: #f1f5f9; margin-bottom: 0.25rem; }
+  .subtitle { color: #94a3b8; font-size: 0.95rem; margin-bottom: 2rem; }
+  .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.25rem; }
+  .card h2 { font-size: 1.15rem; font-weight: 600; color: #f8fafc; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+  .badge { display: inline-block; padding: 0.15rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+  .badge-red { background: #7f1d1d; color: #fca5a5; }
+  .badge-amber { background: #78350f; color: #fcd34d; }
+  .badge-green { background: #14532d; color: #86efac; }
+  .badge-gray { background: #334155; color: #94a3b8; }
+  .badge-blue { background: #1e3a5f; color: #93c5fd; }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+  .stat { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 1rem; text-align: center; }
+  .stat .number { font-size: 2rem; font-weight: 700; }
+  .stat .label { font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .number-red { color: #f87171; }
+  .number-amber { color: #fbbf24; }
+  .number-green { color: #4ade80; }
+  .number-gray { color: #64748b; }
+  table { width: 100%; border-collapse: collapse; margin-top: 0.75rem; }
+  th { text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; padding: 0.5rem 0.75rem; border-bottom: 1px solid #334155; }
+  td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #1e293b; font-size: 0.9rem; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+  .ticket-key { color: #60a5fa; font-weight: 600; font-family: 'SF Mono', Menlo, monospace; font-size: 0.85rem; }
+  .priority-high { color: #f87171; }
+  .priority-medium { color: #fbbf24; }
+  .status-todo { color: #94a3b8; }
+  .status-done { color: #4ade80; }
+  .callout { background: #1a1a2e; border-left: 4px solid #f59e0b; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin-bottom: 1.25rem; }
+  .callout-info { border-left-color: #3b82f6; }
+  .callout p { font-size: 0.9rem; color: #cbd5e1; }
+  .callout strong { color: #f8fafc; }
+  .rec-list { list-style: none; padding: 0; }
+  .rec-list li { padding: 0.75rem 1rem; border-left: 3px solid #334155; margin-bottom: 0.5rem; background: #0f172a; border-radius: 0 6px 6px 0; }
+  .rec-list li strong { color: #e2e8f0; }
+  .rec-list li p { font-size: 0.85rem; color: #94a3b8; margin-top: 0.25rem; }
+  .section-divider { border: none; border-top: 1px solid #1e293b; margin: 2rem 0; }
+  .footer { text-align: center; color: #475569; font-size: 0.75rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #1e293b; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>UAT Tracking Report</h1>
+<p class="subtitle">Baseline scan — March 12, 2026 | PM Infrastructure Day 3</p>
+
+<div class="callout">
+  <p><strong>Baseline report.</strong> No UAT labels exist in Jira today. This is expected — the label-based UAT tracking convention starts now. This report establishes the starting point and identifies what needs attention.</p>
+</div>
+
+<!-- Key Metrics -->
+<div class="stat-row">
+  <div class="stat">
+    <div class="number number-gray">0</div>
+    <div class="label">Tickets with UAT Label</div>
+  </div>
+  <div class="stat">
+    <div class="number number-red">10</div>
+    <div class="label">Open Bugs (Unassigned)</div>
+  </div>
+  <div class="stat">
+    <div class="number number-amber">1</div>
+    <div class="label">In Progress</div>
+  </div>
+  <div class="stat">
+    <div class="number number-green">20</div>
+    <div class="label">Done This Week</div>
+  </div>
+</div>
+
+<!-- UAT Label Adoption -->
+<div class="card">
+  <h2><span class="badge badge-gray">NOT STARTED</span> UAT Label Adoption</h2>
+  <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:1rem;">Zero tickets in the BOOK project carry a "UAT" label. No "Ready for UAT" or "In UAT" labels have ever been applied. This is the starting point — the label convention begins today.</p>
+  <p style="color:#cbd5e1; font-size:0.9rem;"><strong>Convention going forward:</strong> When a developer finishes implementation, they add the <span class="badge badge-blue">UAT</span> label. Patrick reviews. When review passes, the label is removed and the ticket moves to Done. If it fails, the label stays and a comment documents the failure.</p>
+</div>
+
+<!-- Current UAT Queue -->
+<div class="card">
+  <h2><span class="badge badge-gray">EMPTY</span> Current UAT Queue</h2>
+  <p style="color:#94a3b8; font-size:0.9rem;">No tickets are currently waiting for UAT review. Once the label convention is adopted, tickets labeled "UAT" will appear here with time-in-review tracking.</p>
+</div>
+
+<!-- Open Bugs — The Real Problem -->
+<div class="card">
+  <h2><span class="badge badge-red">ATTENTION</span> Open Bugs — All Unassigned</h2>
+  <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:1rem;">10 bugs are open with no owner. These cannot enter UAT review until they are assigned, worked, and labeled. Oldest bug is 51 days old.</p>
+  <table>
+    <thead>
+      <tr><th>Ticket</th><th>Summary</th><th>Priority</th><th>Age</th><th>Labels</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="ticket-key">BOOK-688</span></td>
+        <td>OnShelf Review: Book list creation incorrectly applies quantity multiplier</td>
+        <td><span class="priority-medium">Medium</span></td>
+        <td>51 days</td>
+        <td><span class="badge badge-gray">book-orders</span></td>
+      </tr>
+      <tr>
+        <td><span class="ticket-key">BOOK-761</span></td>
+        <td>Librarian cannot assign users to campus/classroom - 500 error</td>
+        <td><span class="priority-medium">Medium</span></td>
+        <td>29 days</td>
+        <td><span class="badge badge-gray">alerts-notifications</span></td>
+      </tr>
+      <tr>
+        <td><span class="ticket-key">BOOK-767</span></td>
+        <td>Librarian: API Errors on Students Page for SFTP and ClassLink Status</td>
+        <td><span class="priority-medium">Medium</span></td>
+        <td>29 days</td>
+        <td><span class="badge badge-gray">bug</span></td>
+      </tr>
+      <tr>
+        <td><span class="ticket-key">BOOK-776</span></td>
+        <td>Teacher: No Lock Icons Displayed on Restricted/Banned Books</td>
+        <td><span class="priority-medium">Medium</span></td>
+        <td>29 days</td>
+        <td><span class="badge badge-gray">bug</span></td>
+      </tr>
+      <tr>
+        <td><span class="ticket-key">BOOK-829</span></td>
+        <td>Superintendent: cannot create classroom</td>
+        <td><span class="priority-high">High</span></td>
+        <td>15 days</td>
+        <td><span class="badge badge-gray">bug</span> <span class="badge badge-gray">role-permissions</span></td>
+      </tr>
+      <tr>
+        <td><span class="ticket-key">BOOK-837</span></td>
+        <td>CSV Upload: Books import without metadata (flags, cover images, author info, ratings)</td>
+        <td><span class="priority-medium">Medium</span></td>
+        <td>14 days</td>
+        <td><span class="badge badge-gray">bug</span> <span class="badge badge-gray">high-priority</span> <span class="badge badge-gray">silent-failure</span></td>
+      </tr>
+      <tr>
+        <td><span class="ticket-key">BOOK-838</span></td>
+        <td>Circulation page book search returns no results and check-in fails for valid ISBNs</td>
+        <td><span class="priority-medium">Medium</span></td>
+        <td>13 days</td>
+        <td><span class="badge badge-gray">bug</span> <span class="badge badge-gray">circulation</span> <span class="badge badge-gray">high-priority</span></td>
+      </tr>
+      <tr>
+        <td><span class="ticket-key">BOOK-877</span></td>
+        <td>Super Admin: Creating non-SUPERINTENDENT_ADMIN user shows "Invalid enum value" error</td>
+        <td><span class="priority-medium">Medium</span></td>
+        <td>3 days</td>
+        <td><span class="badge badge-gray">classroom-libraries</span></td>
+      </tr>
+      <tr>
+        <td><span class="ticket-key">BOOK-878</span></td>
+        <td>SFTP onboarding dialog never displays password — blocks all SFTP connections</td>
+        <td><span class="priority-medium">Medium</span></td>
+        <td>3 days</td>
+        <td><span class="badge badge-gray">classroom-libraries</span></td>
+      </tr>
+      <tr>
+        <td><span class="ticket-key">BOOK-879</span></td>
+        <td>Librarian bulk-upload returns 403 despite valid campus assignment</td>
+        <td><span class="priority-medium">Medium</span></td>
+        <td>3 days</td>
+        <td><span class="badge badge-gray">classroom-libraries</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Recently Completed -->
+<div class="card">
+  <h2><span class="badge badge-green">20 DONE</span> Recently Completed (Last 7 Days)</h2>
+  <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:1rem;">These tickets moved to Done without formal UAT tracking. None have a UAT label, and none are assigned — meaning review happened informally or not at all.</p>
+  <table>
+    <thead>
+      <tr><th>Ticket</th><th>Summary</th><th>Type</th><th>Completed</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="ticket-key">BOOK-854</span></td><td>Remove Auto-Classroom Creation from Sync Process</td><td>Task</td><td>Today</td></tr>
+      <tr><td><span class="ticket-key">BOOK-856</span></td><td>Missing book summaries in order list with fallback handling</td><td>Task</td><td>Today</td></tr>
+      <tr><td><span class="ticket-key">BOOK-871</span></td><td>Validation & QA — Field Coverage Audit</td><td>Story</td><td>Today</td></tr>
+      <tr><td><span class="ticket-key">BOOK-870</span></td><td>UI — Display Extended Metadata on Book Intelligence Page</td><td>Story</td><td>Today</td></tr>
+      <tr><td><span class="ticket-key">BOOK-874</span></td><td>Enforce single-district assignment for Superintendent/Admin users</td><td>Task</td><td>Today</td></tr>
+      <tr><td><span class="ticket-key">BOOK-875</span></td><td>API — Expose Extended Metadata in Book Intelligence Endpoints</td><td>Story</td><td>Today</td></tr>
+      <tr><td><span class="ticket-key">BOOK-869</span></td><td>Ingestion Pipeline — Populate Advisory & Educational Fields</td><td>Story</td><td>Today</td></tr>
+      <tr><td><span class="ticket-key">BOOK-872</span></td><td>Order lists visible globally instead of campus-scoped by role</td><td>Task</td><td>Today</td></tr>
+      <tr><td><span class="ticket-key">BOOK-868</span></td><td>Ingestion Pipeline — Derive School-Level Suitability</td><td>Story</td><td>Today</td></tr>
+      <tr><td><span class="ticket-key">BOOK-867</span></td><td>Ingestion Pipeline — Source & Populate Compliance Fields</td><td>Story</td><td>Today</td></tr>
+      <tr><td><span class="ticket-key">BOOK-866</span></td><td>Ingestion Pipeline — Source & Populate Content Ratings</td><td>Story</td><td>Today</td></tr>
+      <tr><td><span class="ticket-key">BOOK-865</span></td><td>Ingestion Pipeline — Source & Populate Audience Fields</td><td>Story</td><td>Today</td></tr>
+      <tr><td><span class="ticket-key">BOOK-864</span></td><td>Data Model — Advisory & Educational Context Fields</td><td>Story</td><td>Today</td></tr>
+      <tr><td><span class="ticket-key">BOOK-863</span></td><td>Data Model — School-Level Suitability Flags</td><td>Story</td><td>Today</td></tr>
+      <tr><td><span class="ticket-key">BOOK-862</span></td><td>Data Model — Compliance & Challenge Fields</td><td>Story</td><td>Today</td></tr>
+      <tr><td><span class="ticket-key">BOOK-861</span></td><td>Data Model — Content Rating Fields</td><td>Story</td><td>Today</td></tr>
+      <tr><td><span class="ticket-key">BOOK-860</span></td><td>Data Model — Audience & Reading Level Fields</td><td>Story</td><td>Today</td></tr>
+      <tr><td><span class="ticket-key">BOOK-841</span></td><td>Frontend Modal Component for Library Duplication</td><td>Task</td><td>Mar 9</td></tr>
+      <tr><td><span class="ticket-key">BOOK-852</span></td><td>Implement Multi-Campus Data Distribution with Per-Campus Status</td><td>Task</td><td>Mar 8</td></tr>
+      <tr><td><span class="ticket-key">BOOK-851</span></td><td>Extend Student Data Processing for Multi-Campus Files</td><td>Task</td><td>Mar 8</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="section-divider">
+
+<!-- Recommendations -->
+<div class="card">
+  <h2>Recommendations</h2>
+  <ul class="rec-list">
+    <li>
+      <strong>1. Adopt the UAT label today.</strong>
+      <p>Any ticket ready for Patrick's review gets the "UAT" label added. This is a lightweight convention — no Jira workflow changes, no admin involvement. Just a label.</p>
+    </li>
+    <li>
+      <strong>2. Assign the 10 open bugs.</strong>
+      <p>Every bug is currently unassigned. Triage with Raju: which are engineering fixes vs. spec clarifications? Assign owners so they can enter the development-to-UAT pipeline.</p>
+    </li>
+    <li>
+      <strong>3. Retroactively tag any ticket currently awaiting Patrick's review.</strong>
+      <p>If anything from the "Done this week" batch still needs verification, reopen it with a UAT label. Better to catch it now than discover regressions later.</p>
+    </li>
+    <li>
+      <strong>4. Enable UAT alert automation (spec ready).</strong>
+      <p>An /ops-architect spec has been drafted for a scheduled task that monitors UAT-labeled tickets and alerts when review turnaround exceeds 24h. Awaiting Steve's approval to build.</p>
+    </li>
+    <li>
+      <strong>5. Track review turnaround as a team metric.</strong>
+      <p>Once the label convention has 1-2 weeks of data, generate a UAT cycle-time report. Target: &lt;24h for standard tickets, &lt;4h for hotfixes.</p>
+    </li>
+  </ul>
+</div>
+
+<div class="footer">
+  Generated by PM Infrastructure Agent — Day 3, Thread H | Bookmarked OS
+</div>
+
+</div>
+</body>
+</html>
