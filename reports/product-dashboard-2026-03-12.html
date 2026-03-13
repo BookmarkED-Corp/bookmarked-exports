@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookmarked Product Dashboard — CEO View</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0f172a; color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; line-height: 1.5; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 24px 16px; }
+
+  /* Header */
+  .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; gap: 12px; }
+  .header h1 { font-size: 24px; font-weight: 700; color: #f8fafc; }
+  .header .subtitle { font-size: 13px; color: #94a3b8; }
+  .sprint-badge { background: #1e3a5f; color: #60a5fa; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 1px solid #2563eb33; }
+
+  /* Cards */
+  .card { background: #1e293b; border-radius: 12px; padding: 20px 24px; border: 1px solid #334155; }
+  .card-title { font-size: 13px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .card-title .icon { font-size: 16px; }
+
+  /* Section grid */
+  .section { margin-bottom: 28px; }
+  .section-title { font-size: 18px; font-weight: 700; color: #f8fafc; margin-bottom: 16px; padding-left: 4px; border-left: 3px solid #3b82f6; padding-left: 12px; }
+
+  /* Measurables */
+  .measurables-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .measurable { background: #1e293b; border-radius: 12px; padding: 20px; border: 1px solid #334155; position: relative; }
+  .measurable .number { font-size: 11px; font-weight: 700; color: #475569; position: absolute; top: 12px; right: 16px; }
+  .measurable .label { font-size: 13px; color: #94a3b8; margin-bottom: 8px; font-weight: 500; }
+  .measurable .value { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
+  .measurable .target { font-size: 12px; color: #64748b; }
+  .measurable .sparkline-container { margin-top: 12px; height: 32px; }
+
+  /* Traffic lights */
+  .light-red { color: #ef4444; }
+  .light-yellow { color: #eab308; }
+  .light-green { color: #22c55e; }
+  .light-gray { color: #64748b; }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+  .dot-red { background: #ef4444; box-shadow: 0 0 6px #ef444466; }
+  .dot-yellow { background: #eab308; box-shadow: 0 0 6px #eab30866; }
+  .dot-green { background: #22c55e; box-shadow: 0 0 6px #22c55e66; }
+  .dot-gray { background: #64748b; }
+
+  /* Sprint health */
+  .sprint-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 768px) { .sprint-grid { grid-template-columns: 1fr; } }
+  .progress-bar { background: #0f172a; border-radius: 8px; height: 12px; overflow: hidden; margin: 8px 0; }
+  .progress-fill { height: 100%; border-radius: 8px; transition: width 0.5s; }
+  .status-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #334155; }
+  .status-row:last-child { border-bottom: none; }
+  .status-label { font-size: 14px; color: #cbd5e1; }
+  .status-count { font-size: 16px; font-weight: 700; color: #f8fafc; min-width: 32px; text-align: right; }
+  .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; }
+
+  /* Velocity table */
+  .velocity-table { width: 100%; border-collapse: collapse; }
+  .velocity-table th { text-align: left; font-size: 12px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 8px 12px; border-bottom: 1px solid #334155; }
+  .velocity-table td { padding: 10px 12px; font-size: 14px; border-bottom: 1px solid #1e293b; }
+  .velocity-table tr:hover { background: #1e293b44; }
+
+  /* Bug table */
+  .bug-table { width: 100%; border-collapse: collapse; }
+  .bug-table th { text-align: left; font-size: 12px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 8px 12px; border-bottom: 1px solid #334155; }
+  .bug-table td { padding: 10px 12px; font-size: 13px; border-bottom: 1px solid #1e293b22; color: #cbd5e1; }
+  .bug-table tr:hover { background: #1e293b44; }
+  .priority-high { color: #f97316; font-weight: 600; }
+  .priority-medium { color: #eab308; }
+
+  /* Quality */
+  .quality-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .quality-metric { background: #0f172a; border-radius: 8px; padding: 14px 16px; text-align: center; }
+  .quality-metric .q-label { font-size: 12px; color: #94a3b8; margin-bottom: 4px; }
+  .quality-metric .q-value { font-size: 24px; font-weight: 800; }
+  .quality-metric .q-change { font-size: 11px; margin-top: 2px; }
+  .trend-up { color: #22c55e; }
+  .trend-down { color: #ef4444; }
+  .trend-flat { color: #64748b; }
+
+  /* Risk cards */
+  .risk-list { display: flex; flex-direction: column; gap: 12px; }
+  .risk-item { background: #0f172a; border-radius: 8px; padding: 16px; border-left: 4px solid; }
+  .risk-high { border-color: #ef4444; }
+  .risk-medium { border-color: #eab308; }
+  .risk-low { border-color: #3b82f6; }
+  .risk-title { font-size: 14px; font-weight: 600; color: #f8fafc; margin-bottom: 4px; }
+  .risk-desc { font-size: 13px; color: #94a3b8; }
+  .risk-action { font-size: 12px; color: #60a5fa; margin-top: 6px; font-weight: 500; }
+
+  /* Sparklines */
+  .sparkline-svg { width: 100%; height: 32px; }
+  .sparkline-dot { fill: #3b82f6; }
+  .sparkline-dot-empty { fill: #334155; stroke: #475569; stroke-width: 1; }
+  .sparkline-line { stroke: #3b82f6; stroke-width: 1.5; fill: none; }
+
+  /* Two-column layout */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* Footer */
+  .footer { text-align: center; padding: 24px 0 8px; font-size: 12px; color: #475569; border-top: 1px solid #1e293b; margin-top: 32px; }
+
+  /* Completion badge */
+  .completion-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; }
+  .badge-green { background: #22c55e22; color: #22c55e; border: 1px solid #22c55e33; }
+  .badge-yellow { background: #eab30822; color: #eab308; border: 1px solid #eab30833; }
+  .badge-red { background: #ef444422; color: #ef4444; border: 1px solid #ef444433; }
+  .badge-blue { background: #3b82f622; color: #60a5fa; border: 1px solid #3b82f633; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <h1>Bookmarked Product Dashboard</h1>
+    <div class="subtitle">CEO View &mdash; Weekly Review with Sarah</div>
+  </div>
+  <div style="text-align: right;">
+    <span class="sprint-badge">Sprint 62 &bull; Active</span>
+    <div class="subtitle" style="margin-top: 4px;">Mar 12 &ndash; Mar 26, 2026</div>
+  </div>
+</div>
+
+<!-- SECTION 1: MEASURABLES -->
+<div class="section">
+  <div class="section-title">5 Measurables</div>
+  <div class="measurables-grid">
+
+    <!-- #1 Ticket First-Pass Rate -->
+    <div class="measurable">
+      <div class="number">#1</div>
+      <div class="label">Ticket First-Pass Rate</div>
+      <div class="value light-red">30%</div>
+      <div class="target"><span class="dot dot-red"></span>Target: TBD &mdash; 6/20 recent tickets have AC + points</div>
+      <div class="sparkline-container">
+        <svg class="sparkline-svg" viewBox="0 0 260 32">
+          <circle cx="10" cy="22" r="4" class="sparkline-dot"/>
+          <circle cx="30" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="50" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="70" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="90" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="110" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="130" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="150" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="170" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="190" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="210" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="230" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="250" cy="16" r="3" class="sparkline-dot-empty"/>
+          <text x="10" y="8" font-size="8" fill="#94a3b8" text-anchor="middle">W1</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- #2 Sprint Readiness -->
+    <div class="measurable">
+      <div class="number">#2</div>
+      <div class="label">Sprint Readiness</div>
+      <div class="value light-red">50%</div>
+      <div class="target"><span class="dot dot-red"></span>Target: 100% &mdash; Sprint tickets lack points &amp; assignees</div>
+      <div class="sparkline-container">
+        <svg class="sparkline-svg" viewBox="0 0 260 32">
+          <circle cx="10" cy="16" r="4" class="sparkline-dot"/>
+          <circle cx="30" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="50" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="70" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="90" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="110" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="130" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="150" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="170" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="190" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="210" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="230" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="250" cy="16" r="3" class="sparkline-dot-empty"/>
+          <text x="10" y="8" font-size="8" fill="#94a3b8" text-anchor="middle">W1</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- #3 Customer Contact -->
+    <div class="measurable">
+      <div class="number">#3</div>
+      <div class="label">Customer Contact</div>
+      <div class="value light-gray">TBD</div>
+      <div class="target"><span class="dot dot-gray"></span>Not yet instrumented &mdash; needs tracking method</div>
+      <div class="sparkline-container">
+        <svg class="sparkline-svg" viewBox="0 0 260 32">
+          <circle cx="10" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="30" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="50" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="70" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="90" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="110" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="130" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="150" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="170" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="190" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="210" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="230" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="250" cy="16" r="3" class="sparkline-dot-empty"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- #4 UAT Turnaround -->
+    <div class="measurable">
+      <div class="number">#4</div>
+      <div class="label">UAT Turnaround</div>
+      <div class="value light-gray">N/A</div>
+      <div class="target"><span class="dot dot-gray"></span>Label-based tracking starting Sprint 63</div>
+      <div class="sparkline-container">
+        <svg class="sparkline-svg" viewBox="0 0 260 32">
+          <circle cx="10" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="30" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="50" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="70" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="90" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="110" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="130" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="150" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="170" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="190" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="210" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="230" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="250" cy="16" r="3" class="sparkline-dot-empty"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- #5 Discovery Validated -->
+    <div class="measurable">
+      <div class="number">#5</div>
+      <div class="label">Discovery Validated</div>
+      <div class="value light-red">0</div>
+      <div class="target"><span class="dot dot-red"></span>Target: 1+/week &mdash; No validated discoveries this week</div>
+      <div class="sparkline-container">
+        <svg class="sparkline-svg" viewBox="0 0 260 32">
+          <circle cx="10" cy="28" r="4" class="sparkline-dot"/>
+          <circle cx="30" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="50" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="70" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="90" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="110" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="130" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="150" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="170" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="190" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="210" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="230" cy="16" r="3" class="sparkline-dot-empty"/>
+          <circle cx="250" cy="16" r="3" class="sparkline-dot-empty"/>
+          <text x="10" y="8" font-size="8" fill="#94a3b8" text-anchor="middle">W1</text>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 2: SPRINT HEALTH -->
+<div class="section">
+  <div class="section-title">Sprint Health</div>
+  <div class="sprint-grid">
+    <div class="card">
+      <div class="card-title"><span class="icon">&#9881;</span> Sprint 62 Progress</div>
+      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px;">
+        <span style="font-size: 36px; font-weight: 800; color: #22c55e;">100%</span>
+        <span class="completion-badge badge-green">4/4 Done</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 100%; background: linear-gradient(90deg, #22c55e, #16a34a);"></div>
+      </div>
+      <div style="font-size: 12px; color: #64748b; margin-top: 4px;">14 story points committed &bull; 14 SP completed</div>
+      <div style="margin-top: 16px;">
+        <div class="status-row">
+          <div class="status-label"><span class="status-dot" style="background: #22c55e;"></span>Done</div>
+          <div class="status-count">4</div>
+        </div>
+        <div class="status-row">
+          <div class="status-label"><span class="status-dot" style="background: #3b82f6;"></span>In Progress</div>
+          <div class="status-count">0</div>
+        </div>
+        <div class="status-row">
+          <div class="status-label"><span class="status-dot" style="background: #94a3b8;"></span>To Do</div>
+          <div class="status-count">0</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">&#128203;</span> Sprint 62 Tickets</div>
+      <table class="bug-table">
+        <thead><tr><th>Key</th><th>Summary</th><th>SP</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr>
+            <td style="color: #60a5fa; font-weight: 600;">BOOK-870</td>
+            <td>UI &mdash; Display Extended Metadata on Book Intelligence Page</td>
+            <td style="text-align: center;">5</td>
+            <td><span class="completion-badge badge-green" style="font-size: 11px;">Done</span></td>
+          </tr>
+          <tr>
+            <td style="color: #60a5fa; font-weight: 600;">BOOK-871</td>
+            <td>Validation &amp; QA &mdash; Field Coverage Audit</td>
+            <td style="text-align: center;">3</td>
+            <td><span class="completion-badge badge-green" style="font-size: 11px;">Done</span></td>
+          </tr>
+          <tr>
+            <td style="color: #60a5fa; font-weight: 600;">BOOK-856</td>
+            <td>Missing book summaries in order list</td>
+            <td style="text-align: center;">3</td>
+            <td><span class="completion-badge badge-green" style="font-size: 11px;">Done</span></td>
+          </tr>
+          <tr>
+            <td style="color: #60a5fa; font-weight: 600;">BOOK-854</td>
+            <td>Remove Auto-Classroom Creation from Sync</td>
+            <td style="text-align: center;">3</td>
+            <td><span class="completion-badge badge-green" style="font-size: 11px;">Done</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: DELIVERY PREDICTABILITY -->
+<div class="section">
+  <div class="section-title">Delivery Predictability</div>
+  <div class="card">
+    <div class="card-title"><span class="icon">&#128200;</span> Recent Sprint Completion (Sprints 58&ndash;62)</div>
+    <table class="velocity-table">
+      <thead>
+        <tr>
+          <th>Sprint</th>
+          <th>Dates</th>
+          <th>Tickets</th>
+          <th>Done</th>
+          <th>Completion</th>
+          <th>Story Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight: 600; color: #f8fafc;">Sprint 62</td>
+          <td>Mar 12&ndash;26</td>
+          <td>4</td>
+          <td>4</td>
+          <td><span class="completion-badge badge-green" style="font-size: 12px;">100%</span></td>
+          <td>14 SP</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 600; color: #f8fafc;">Sprint 61</td>
+          <td>Mar 5&ndash;19</td>
+          <td>8</td>
+          <td>8</td>
+          <td><span class="completion-badge badge-green" style="font-size: 12px;">100%</span></td>
+          <td>0 SP*</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 600; color: #f8fafc;">Sprint 60</td>
+          <td>Mar 4&ndash;18</td>
+          <td>5</td>
+          <td>5</td>
+          <td><span class="completion-badge badge-green" style="font-size: 12px;">100%</span></td>
+          <td>0 SP*</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 600; color: #f8fafc;">Sprint 59</td>
+          <td>Mar 4&ndash;18</td>
+          <td>5</td>
+          <td>5</td>
+          <td><span class="completion-badge badge-green" style="font-size: 12px;">100%</span></td>
+          <td>0 SP*</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 600; color: #f8fafc;">Sprint 58</td>
+          <td>Mar 3&ndash;17</td>
+          <td>5</td>
+          <td>5</td>
+          <td><span class="completion-badge badge-green" style="font-size: 12px;">100%</span></td>
+          <td>0 SP*</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top: 12px; padding: 12px 16px; background: #0f172a; border-radius: 8px; border-left: 3px solid #eab308;">
+      <div style="font-size: 13px; color: #eab308; font-weight: 600;">&#9888; Velocity data incomplete</div>
+      <div style="font-size: 12px; color: #94a3b8; margin-top: 4px;">
+        *Story points are 0 on Sprints 58&ndash;61 tickets. Only Sprint 62 has pointed tickets (14 SP across 4 tickets).
+        Meaningful velocity tracking starts Sprint 63 with consistent pointing.
+        Current average: ~5.4 tickets/sprint completed (100% completion rate across all 5 sprints).
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: QUALITY TREND -->
+<div class="section">
+  <div class="section-title">Quality Trend</div>
+  <div class="card">
+    <div class="card-title"><span class="icon">&#9989;</span> Ticket Quality Audit &mdash; 20 Most Recent Tickets</div>
+    <div class="quality-grid">
+      <div class="quality-metric">
+        <div class="q-label">Has Acceptance Criteria</div>
+        <div class="q-value light-yellow">73%</div>
+        <div class="q-change trend-up">&#9650; from 30% Day 1 / 13% audit</div>
+      </div>
+      <div class="quality-metric">
+        <div class="q-label">Has Story Points</div>
+        <div class="q-value light-red">20%</div>
+        <div class="q-change trend-flat">4 of 20 tickets pointed</div>
+      </div>
+      <div class="quality-metric">
+        <div class="q-label">Has Assignee</div>
+        <div class="q-value light-red">0%</div>
+        <div class="q-change trend-down">All 20 tickets unassigned</div>
+      </div>
+      <div class="quality-metric">
+        <div class="q-label">Has Components</div>
+        <div class="q-value light-red">0%</div>
+        <div class="q-change trend-flat">No components defined</div>
+      </div>
+      <div class="quality-metric">
+        <div class="q-label">Has Labels</div>
+        <div class="q-value light-yellow">35%</div>
+        <div class="q-change trend-flat">7 of 20 have labels</div>
+      </div>
+    </div>
+
+    <!-- Quality trend visual -->
+    <div style="margin-top: 16px; padding: 16px; background: #0f172a; border-radius: 8px;">
+      <div style="font-size: 13px; font-weight: 600; color: #94a3b8; margin-bottom: 12px;">AC Quality Improvement Timeline</div>
+      <div style="display: flex; align-items: center; gap: 0; height: 40px;">
+        <div style="flex: 1; text-align: center;">
+          <div style="font-size: 20px; font-weight: 800; color: #ef4444;">13%</div>
+          <div style="font-size: 10px; color: #64748b;">Initial Audit</div>
+        </div>
+        <div style="color: #334155; font-size: 20px;">&#8594;</div>
+        <div style="flex: 1; text-align: center;">
+          <div style="font-size: 20px; font-weight: 800; color: #ef4444;">30%</div>
+          <div style="font-size: 10px; color: #64748b;">Day 1</div>
+        </div>
+        <div style="color: #334155; font-size: 20px;">&#8594;</div>
+        <div style="flex: 1; text-align: center;">
+          <div style="font-size: 20px; font-weight: 800; color: #eab308;">73%</div>
+          <div style="font-size: 10px; color: #64748b;">Day 3 (Now)</div>
+        </div>
+        <div style="color: #334155; font-size: 20px;">&#8594;</div>
+        <div style="flex: 1; text-align: center;">
+          <div style="font-size: 20px; font-weight: 800; color: #22c55e55;">95%</div>
+          <div style="font-size: 10px; color: #64748b;">Target</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: BUG SUMMARY -->
+<div class="section">
+  <div class="section-title">Open Bug Summary</div>
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title"><span class="icon">&#128027;</span> Bug Overview</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div class="quality-metric">
+          <div class="q-label">Total Open Bugs</div>
+          <div class="q-value light-red">10</div>
+        </div>
+        <div class="quality-metric">
+          <div class="q-label">Oldest Bug Age</div>
+          <div class="q-value light-yellow">51d</div>
+          <div class="q-change trend-flat">BOOK-688 &bull; Jan 21</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <div class="quality-metric">
+          <div class="q-label">High Priority</div>
+          <div class="q-value light-red">1</div>
+        </div>
+        <div class="quality-metric">
+          <div class="q-label">Assigned</div>
+          <div class="q-value light-red">0 / 10</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">&#128270;</span> Bugs by Severity &amp; Age</div>
+      <table class="bug-table">
+        <thead><tr><th>Key</th><th>Summary</th><th>Priority</th><th>Age</th></tr></thead>
+        <tbody>
+          <tr>
+            <td style="color: #60a5fa;">BOOK-829</td>
+            <td>Superintendent: cannot create classroom</td>
+            <td><span class="priority-high">High</span></td>
+            <td>16d</td>
+          </tr>
+          <tr>
+            <td style="color: #60a5fa;">BOOK-688</td>
+            <td>OnShelf Review: quantity multiplier bug</td>
+            <td><span class="priority-medium">Medium</span></td>
+            <td>51d</td>
+          </tr>
+          <tr>
+            <td style="color: #60a5fa;">BOOK-761</td>
+            <td>Librarian: 500 error assigning users</td>
+            <td><span class="priority-medium">Medium</span></td>
+            <td>30d</td>
+          </tr>
+          <tr>
+            <td style="color: #60a5fa;">BOOK-838</td>
+            <td>Circulation search/check-in fails</td>
+            <td><span class="priority-medium">Medium</span></td>
+            <td>14d</td>
+          </tr>
+          <tr>
+            <td style="color: #60a5fa;">BOOK-837</td>
+            <td>CSV Upload: books import without metadata</td>
+            <td><span class="priority-medium">Medium</span></td>
+            <td>15d</td>
+          </tr>
+          <tr>
+            <td style="color: #60a5fa;">BOOK-878</td>
+            <td>SFTP onboarding: password never shown</td>
+            <td><span class="priority-medium">Medium</span></td>
+            <td>3d</td>
+          </tr>
+          <tr>
+            <td style="color: #60a5fa;">BOOK-879</td>
+            <td>Librarian bulk-upload 403 error</td>
+            <td><span class="priority-medium">Medium</span></td>
+            <td>3d</td>
+          </tr>
+          <tr>
+            <td style="color: #60a5fa;">BOOK-877</td>
+            <td>Super Admin: invalid enum on user create</td>
+            <td><span class="priority-medium">Medium</span></td>
+            <td>3d</td>
+          </tr>
+          <tr>
+            <td style="color: #60a5fa;">BOOK-767</td>
+            <td>Librarian: API errors on Students page</td>
+            <td><span class="priority-medium">Medium</span></td>
+            <td>30d</td>
+          </tr>
+          <tr>
+            <td style="color: #60a5fa;">BOOK-776</td>
+            <td>Teacher: no lock icons on restricted books</td>
+            <td><span class="priority-medium">Medium</span></td>
+            <td>30d</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: RISKS & ACTIONS -->
+<div class="section">
+  <div class="section-title">Risks &amp; Actions</div>
+  <div class="risk-list">
+    <div class="risk-item risk-high">
+      <div class="risk-title">10 Open Bugs, Zero Assigned</div>
+      <div class="risk-desc">All 10 open bugs are unassigned and sitting in To Do. The oldest (BOOK-688) is 51 days old. BOOK-829 (High priority &mdash; superintendent cannot create classroom) is customer-impacting and 16 days old with no owner.</div>
+      <div class="risk-action">Action: Assign bug owners in Sprint 62 standup. Prioritize BOOK-829 and BOOK-838 for immediate triage.</div>
+    </div>
+    <div class="risk-item risk-high">
+      <div class="risk-title">Story Points Missing on 80% of Tickets</div>
+      <div class="risk-desc">Only 4 of 20 recent tickets have story points. Sprints 58&ndash;61 ran with zero pointed tickets. Velocity cannot be measured without consistent pointing &mdash; the team is flying blind on capacity planning.</div>
+      <div class="risk-action">Action: Enforce pointing gate in Sprint 63 planning. No ticket enters sprint without points and assignee.</div>
+    </div>
+    <div class="risk-item risk-medium">
+      <div class="risk-title">No Assignees Anywhere</div>
+      <div class="risk-desc">0% of the 20 most recent tickets have an assignee. This makes it impossible to track accountability, workload distribution, or individual throughput. Work is getting done (100% sprint completion) but ownership is invisible.</div>
+      <div class="risk-action">Action: Sarah to assign all Sprint 62 tickets retroactively. Make assignment mandatory for Sprint 63+ via Jira workflow.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: SPARKLINES SUMMARY -->
+<div class="section">
+  <div class="section-title">13-Week Tracking</div>
+  <div class="card">
+    <div class="card-title"><span class="icon">&#128200;</span> Measurable Trends &mdash; Week 1 of 13</div>
+    <div style="display: grid; grid-template-columns: 160px 1fr 80px; gap: 8px; align-items: center;">
+
+      <div style="font-size: 13px; color: #94a3b8; font-weight: 500;">First-Pass Rate</div>
+      <div>
+        <svg viewBox="0 0 260 24" style="width: 100%; height: 24px;">
+          <line x1="10" y1="12" x2="250" y2="12" stroke="#1e293b" stroke-width="2"/>
+          <circle cx="10" cy="18" r="5" fill="#ef4444"/>
+          <circle cx="30" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="50" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="70" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="90" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="110" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="130" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="150" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="170" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="190" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="210" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="230" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="250" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+        </svg>
+      </div>
+      <div style="font-size: 14px; font-weight: 700; color: #ef4444; text-align: right;">30%</div>
+
+      <div style="font-size: 13px; color: #94a3b8; font-weight: 500;">Sprint Readiness</div>
+      <div>
+        <svg viewBox="0 0 260 24" style="width: 100%; height: 24px;">
+          <line x1="10" y1="12" x2="250" y2="12" stroke="#1e293b" stroke-width="2"/>
+          <circle cx="10" cy="14" r="5" fill="#ef4444"/>
+          <circle cx="30" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="50" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="70" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="90" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="110" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="130" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="150" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="170" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="190" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="210" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="230" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="250" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+        </svg>
+      </div>
+      <div style="font-size: 14px; font-weight: 700; color: #ef4444; text-align: right;">50%</div>
+
+      <div style="font-size: 13px; color: #94a3b8; font-weight: 500;">Customer Contact</div>
+      <div>
+        <svg viewBox="0 0 260 24" style="width: 100%; height: 24px;">
+          <line x1="10" y1="12" x2="250" y2="12" stroke="#1e293b" stroke-width="2"/>
+          <circle cx="10" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="30" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="50" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="70" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="90" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="110" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="130" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="150" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="170" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="190" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="210" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="230" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="250" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+        </svg>
+      </div>
+      <div style="font-size: 14px; font-weight: 700; color: #64748b; text-align: right;">TBD</div>
+
+      <div style="font-size: 13px; color: #94a3b8; font-weight: 500;">UAT Turnaround</div>
+      <div>
+        <svg viewBox="0 0 260 24" style="width: 100%; height: 24px;">
+          <line x1="10" y1="12" x2="250" y2="12" stroke="#1e293b" stroke-width="2"/>
+          <circle cx="10" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="30" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="50" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="70" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="90" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="110" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="130" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="150" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="170" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="190" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="210" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="230" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="250" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+        </svg>
+      </div>
+      <div style="font-size: 14px; font-weight: 700; color: #64748b; text-align: right;">N/A</div>
+
+      <div style="font-size: 13px; color: #94a3b8; font-weight: 500;">Discovery Validated</div>
+      <div>
+        <svg viewBox="0 0 260 24" style="width: 100%; height: 24px;">
+          <line x1="10" y1="12" x2="250" y2="12" stroke="#1e293b" stroke-width="2"/>
+          <circle cx="10" cy="22" r="5" fill="#ef4444"/>
+          <circle cx="30" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="50" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="70" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="90" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="110" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="130" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="150" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="170" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="190" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="210" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="230" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <circle cx="250" cy="12" r="3" fill="#334155" stroke="#475569" stroke-width="1"/>
+        </svg>
+      </div>
+      <div style="font-size: 14px; font-weight: 700; color: #ef4444; text-align: right;">0</div>
+
+    </div>
+    <div style="margin-top: 12px; font-size: 11px; color: #475569; text-align: center;">
+      Week 1 baseline recorded March 12, 2026. Remaining 12 weeks populate automatically on weekly dashboard refresh.
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  Data source: Jira BOOK project | Generated March 12, 2026 by Claude Opus 4.6<br>
+  Sprint 62 started today &bull; Next review: March 19, 2026
+</div>
+
+</div>
+</body>
+</html>
