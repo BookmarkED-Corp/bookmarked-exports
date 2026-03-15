@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookmarked — Brand Reference Document (Light Theme)</title>
+  <link rel="stylesheet" href="../bookmarked-brand.css">
+  <style>
+    /* Document-specific layout using brand CSS tokens */
+    body {
+      background: var(--bm-bg-cool);
+      padding: var(--bm-space-xl) 0;
+    }
+
+    .document {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--bm-white);
+      border-radius: var(--bm-radius-lg);
+      box-shadow: var(--bm-shadow-lg);
+      overflow: hidden;
+    }
+
+    /* Document header band */
+    .document__header {
+      background: var(--bm-gradient-hero);
+      padding: var(--bm-space-2xl) var(--bm-space-xl);
+      color: var(--bm-white);
+    }
+
+    .document__header-eyebrow {
+      font-size: 11px;
+      font-weight: var(--bm-weight-bold);
+      letter-spacing: var(--bm-tracking-wider);
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: var(--bm-space-sm);
+    }
+
+    .document__header h1 {
+      font-size: var(--bm-text-3xl);
+      font-weight: var(--bm-weight-extrabold);
+      line-height: var(--bm-leading-tight);
+      letter-spacing: var(--bm-tracking-tight);
+    }
+
+    .document__header p {
+      font-size: var(--bm-text-base);
+      color: rgba(255,255,255,0.85);
+      margin-top: var(--bm-space-sm);
+    }
+
+    .document__header-meta {
+      margin-top: var(--bm-space-lg);
+      font-size: var(--bm-text-sm);
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* Document body */
+    .document__body {
+      padding: var(--bm-space-xl);
+    }
+
+    .document__body h2 {
+      font-size: var(--bm-text-xl);
+      font-weight: var(--bm-weight-bold);
+      color: var(--bm-deep-green);
+      margin-top: var(--bm-space-xl);
+      margin-bottom: var(--bm-space-md);
+      padding-bottom: var(--bm-space-sm);
+      border-bottom: 2px solid var(--bm-bg-light);
+    }
+
+    .document__body h3 {
+      font-size: var(--bm-text-base);
+      font-weight: var(--bm-weight-bold);
+      color: var(--bm-eigengrau);
+      margin-top: var(--bm-space-lg);
+      margin-bottom: var(--bm-space-sm);
+    }
+
+    .document__body p {
+      font-size: var(--bm-text-sm);
+      color: var(--bm-secondary-text);
+      line-height: var(--bm-leading-relaxed);
+      margin-bottom: var(--bm-space-md);
+    }
+
+    .document__body ul {
+      padding-left: var(--bm-space-lg);
+      margin-bottom: var(--bm-space-md);
+    }
+
+    .document__body li {
+      font-size: var(--bm-text-sm);
+      color: var(--bm-secondary-text);
+      line-height: var(--bm-leading-relaxed);
+      margin-bottom: var(--bm-space-sm);
+    }
+
+    /* Callout box */
+    .callout {
+      border-left: 4px solid var(--bm-teal-accent);
+      background: var(--bm-bg-light);
+      padding: var(--bm-space-lg);
+      border-radius: 0 var(--bm-radius-md) var(--bm-radius-md) 0;
+      margin: var(--bm-space-lg) 0;
+    }
+
+    .callout p {
+      margin: 0;
+      color: var(--bm-eigengrau);
+      font-style: italic;
+    }
+
+    .callout--warning {
+      border-left-color: var(--bm-pumpkin);
+      background: #FFF8F5;
+    }
+
+    /* Stats inline */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--bm-space-md);
+      margin: var(--bm-space-lg) 0;
+      text-align: center;
+    }
+
+    .stats-row__item {
+      background: var(--bm-bg-light);
+      border-radius: var(--bm-radius-md);
+      padding: var(--bm-space-lg);
+    }
+
+    .stats-row__number {
+      font-size: 32px;
+      font-weight: var(--bm-weight-extrabold);
+      color: var(--bm-deep-green);
+      letter-spacing: -0.03em;
+    }
+
+    .stats-row__label {
+      font-size: var(--bm-text-xs);
+      color: var(--bm-muted-gray);
+      margin-top: var(--bm-space-xs);
+      font-weight: var(--bm-weight-semibold);
+    }
+
+    /* Table */
+    .doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--bm-space-lg) 0;
+      font-size: var(--bm-text-sm);
+    }
+
+    .doc-table th {
+      background: var(--bm-deep-green);
+      color: var(--bm-white);
+      padding: 10px 16px;
+      text-align: left;
+      font-weight: var(--bm-weight-semibold);
+      font-size: var(--bm-text-xs);
+      text-transform: uppercase;
+      letter-spacing: var(--bm-tracking-wide);
+    }
+
+    .doc-table td {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--bm-border-light);
+      color: var(--bm-secondary-text);
+    }
+
+    .doc-table tr:nth-child(even) td {
+      background: var(--bm-bg-light);
+    }
+
+    /* Document footer */
+    .document__footer {
+      background: var(--bm-eigengrau);
+      padding: var(--bm-space-lg) var(--bm-space-xl);
+      text-align: center;
+    }
+
+    .document__footer p {
+      font-size: var(--bm-text-xs);
+      color: var(--bm-muted-gray);
+      margin: 0;
+    }
+
+    .document__footer a {
+      color: var(--bm-teal-accent);
+    }
+
+    .document__footer-tagline {
+      font-size: 11px;
+      font-weight: var(--bm-weight-semibold);
+      letter-spacing: var(--bm-tracking-wider);
+      text-transform: uppercase;
+      color: var(--bm-teal-accent);
+      margin-top: var(--bm-space-sm);
+    }
+  </style>
+</head>
+<body>
+  <div class="document">
+    <!-- Header Band -->
+    <header class="document__header">
+      <div class="document__header-eyebrow">Compliance Report</div>
+      <h1>District Collection<br>Intelligence Summary</h1>
+      <p>Prepared for Temple ISD &mdash; Q1 2026 Review</p>
+      <div class="document__header-meta">Bookmarked, Inc. &bull; March 15, 2026 &bull; Confidential</div>
+    </header>
+
+    <!-- Body Content -->
+    <div class="document__body">
+      <h2>Executive Summary</h2>
+      <p>
+        Temple ISD has successfully onboarded 14 campus libraries onto the Bookmarked platform, achieving 94% compliance coverage across all campuses. Book Intelligence has reviewed 2,341 titles this quarter, flagging 18 titles for LSLAC review before any parent inquiries were received.
+      </p>
+
+      <div class="callout">
+        <p>"Bookmarked restores librarians to their true role &mdash; curating collections and guiding students &mdash; instead of drowning them in compliance paperwork." &mdash; Dr. Bobby Ott, Superintendent</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stats-row__item">
+          <div class="stats-row__number">14</div>
+          <div class="stats-row__label">Campuses Active</div>
+        </div>
+        <div class="stats-row__item">
+          <div class="stats-row__number">2,341</div>
+          <div class="stats-row__label">Books Reviewed</div>
+        </div>
+        <div class="stats-row__item">
+          <div class="stats-row__number">94%</div>
+          <div class="stats-row__label">Compliance Coverage</div>
+        </div>
+      </div>
+
+      <h2>Compliance Status by Campus</h2>
+      <p>
+        All campuses are on track for full compliance documentation by the end of Q2. Two campuses require attention on classroom library cataloging.
+      </p>
+
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th>Campus</th>
+            <th>Library Books</th>
+            <th>Classroom Books</th>
+            <th>Compliance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Temple High School</td>
+            <td>12,400</td>
+            <td>820</td>
+            <td style="color: var(--bm-teal-accent); font-weight: 600;">98%</td>
+          </tr>
+          <tr>
+            <td>Travis MS</td>
+            <td>6,200</td>
+            <td>410</td>
+            <td style="color: var(--bm-teal-accent); font-weight: 600;">96%</td>
+          </tr>
+          <tr>
+            <td>Kennedy ES</td>
+            <td>4,100</td>
+            <td>650</td>
+            <td style="color: var(--bm-teal-accent); font-weight: 600;">92%</td>
+          </tr>
+          <tr>
+            <td>Bonham ES</td>
+            <td>3,800</td>
+            <td>580</td>
+            <td style="color: var(--bm-pumpkin); font-weight: 600;">78%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout--warning">
+        <p>Bonham ES has 580 classroom library books that have not yet been cataloged through the Classroom Library Module. Recommend scheduling a cataloging day with staff before April board meeting.</p>
+      </div>
+
+      <h2>Book Intelligence Highlights</h2>
+      <h3>Proactive Flags</h3>
+      <p>
+        Book Intelligence identified 18 titles across the district that have been flagged in other Texas districts. These were surfaced proactively before any parent inquiries, giving the LSLAC committee time to review documentation and prepare defensible positions.
+      </p>
+
+      <h3>Collection Health</h3>
+      <ul>
+        <li>Average collection age: 8.2 years (recommended: under 10 years)</li>
+        <li>Dead inventory (no checkouts in 2+ years): 31% of titles</li>
+        <li>Titles with complete Book Intelligence profiles: 89%</li>
+        <li>Parent engagement via OnShelf Engage: 142 families active</li>
+      </ul>
+
+      <h2>Recommendations</h2>
+      <ul>
+        <li><strong>Complete Bonham ES classroom cataloging</strong> before the April board meeting to achieve 100% campus coverage.</li>
+        <li><strong>Review 18 flagged titles</strong> through the LSLAC workflow. All documentation is pre-populated in OnShelf Review.</li>
+        <li><strong>Weeding campaign</strong> for titles with zero checkouts in 3+ years. Book Intelligence can prioritize recommendations by campus.</li>
+      </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="document__footer">
+      <p>Bookmarked, Inc. &bull; Dallas, TX &bull; <a href="https://bookmarked.com">bookmarked.com</a></p>
+      <div class="document__footer-tagline">The Book Intelligence Company</div>
+    </footer>
+  </div>
+</body>
+</html>
