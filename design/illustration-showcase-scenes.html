@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookmarked Illustration Showcase — Scenes, Shields &amp; Composites</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --eigengrau: #101828;
+  --deep-green: #107569;
+  --teal-accent: #12A38C;
+  --teal-dark: #0D5A52;
+  --pumpkin: #FF692E;
+  --white: #FFFFFF;
+  --bg-cool: #F8FAFC;
+  --bg-warm: #F8F5F0;
+  --muted: #9CA3AF;
+  --border: #E5E7EB;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Urbanist', sans-serif; background: var(--white); color: var(--eigengrau); }
+
+.hero {
+  background: linear-gradient(135deg, #0D5A52 0%, #107569 40%, #12A38C 100%);
+  padding: 48px 32px;
+  color: white;
+  text-align: center;
+}
+.hero h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+.hero p { font-size: 16px; opacity: 0.85; max-width: 600px; margin: 0 auto; }
+
+.section { padding: 48px 32px; max-width: 1200px; margin: 0 auto; }
+.section h2 { font-size: 28px; font-weight: 700; color: var(--deep-green); margin-bottom: 8px; }
+.section .subtitle { font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+.section-alt { background: var(--bg-cool); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+.grid-wide {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.card svg { margin: 0 auto 16px; display: block; }
+.card h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.card p { font-size: 12px; color: var(--muted); }
+
+.card-wide {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card-wide:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.card-wide svg { margin: 0 auto 16px; display: block; }
+.card-wide h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.card-wide p { font-size: 13px; color: var(--muted); }
+
+.footer {
+  background: var(--deep-green);
+  color: white;
+  text-align: center;
+  padding: 24px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Bookmarked Illustration Library</h1>
+  <p>Part 3: Shields, Compliance Icons &amp; Composite Scenes</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 1: SHIELDS (Compliance / SB 13)
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="section">
+  <h2>1. Compliance Shields</h2>
+  <p class="subtitle">Six shield variations for SB 13 compliance messaging — pick your favorite</p>
+  <div class="grid">
+
+    <!-- Shield A: Classic heraldic -->
+    <div class="card">
+      <svg width="160" height="200" viewBox="0 0 160 200">
+        <defs>
+          <linearGradient id="shA" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#12A38C"/>
+            <stop offset="100%" stop-color="#0D5A52"/>
+          </linearGradient>
+        </defs>
+        <!-- Shield shape -->
+        <path d="M80 16 L140 40 L140 110 Q140 160, 80 186 Q20 160, 20 110 L20 40Z" fill="url(#shA)"/>
+        <path d="M80 16 L140 40 L140 110 Q140 160, 80 186 Q20 160, 20 110 L20 40Z" fill="none" stroke="#0D5A52" stroke-width="2"/>
+        <!-- Inner border -->
+        <path d="M80 28 L130 48 L130 108 Q130 150, 80 172 Q30 150, 30 108 L30 48Z" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+        <!-- Checkmark -->
+        <path d="M58 100 L74 118 L106 78" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Book icon at top -->
+        <rect x="68" y="46" width="24" height="18" rx="2" fill="rgba(255,255,255,0.3)"/>
+        <line x1="80" y1="46" x2="80" y2="64" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+      </svg>
+      <h3>A: Classic Shield + Check</h3>
+      <p>Heraldic shield with checkmark and book icon — strong compliance signal</p>
+    </div>
+
+    <!-- Shield B: Rounded modern -->
+    <div class="card">
+      <svg width="160" height="200" viewBox="0 0 160 200">
+        <defs>
+          <linearGradient id="shB" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#107569"/>
+            <stop offset="100%" stop-color="#12A38C"/>
+          </linearGradient>
+        </defs>
+        <!-- Rounded shield -->
+        <path d="M80 20 C115 20, 135 35, 135 55 L135 110 C135 155, 80 182, 80 182 C80 182, 25 155, 25 110 L25 55 C25 35, 45 20, 80 20Z" fill="url(#shB)"/>
+        <path d="M80 20 C115 20, 135 35, 135 55 L135 110 C135 155, 80 182, 80 182 C80 182, 25 155, 25 110 L25 55 C25 35, 45 20, 80 20Z" fill="none" stroke="#0D5A52" stroke-width="2"/>
+        <!-- Lock icon -->
+        <rect x="64" y="82" width="32" height="28" rx="4" fill="rgba(255,255,255,0.9)"/>
+        <path d="M70 82 L70 72 C70 60, 90 60, 90 72 L90 82" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="3.5"/>
+        <!-- Keyhole -->
+        <circle cx="80" cy="94" r="5" fill="#107569"/>
+        <rect x="78" y="96" width="4" height="8" rx="1" fill="#107569"/>
+        <!-- Stars -->
+        <circle cx="50" cy="50" r="3" fill="rgba(255,255,255,0.4)"/>
+        <circle cx="80" cy="40" r="3" fill="rgba(255,255,255,0.4)"/>
+        <circle cx="110" cy="50" r="3" fill="rgba(255,255,255,0.4)"/>
+      </svg>
+      <h3>B: Shield + Lock</h3>
+      <p>Modern rounded shield with lock — data security and compliance</p>
+    </div>
+
+    <!-- Shield C: Badge style -->
+    <div class="card">
+      <svg width="160" height="200" viewBox="0 0 160 200">
+        <!-- Outer badge ring -->
+        <circle cx="80" cy="95" r="68" fill="none" stroke="#107569" stroke-width="4"/>
+        <circle cx="80" cy="95" r="58" fill="#107569"/>
+        <circle cx="80" cy="95" r="54" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+        <!-- Shield inside circle -->
+        <path d="M80 48 L112 62 L112 98 Q112 126, 80 140 Q48 126, 48 98 L48 62Z" fill="#0D5A52"/>
+        <!-- Checkmark -->
+        <path d="M64 94 L76 108 L100 80" fill="none" stroke="#FF692E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Text banner area -->
+        <rect x="38" y="150" width="84" height="14" rx="7" fill="#107569"/>
+        <rect x="48" y="155" width="64" height="3" rx="1.5" fill="rgba(255,255,255,0.4)"/>
+      </svg>
+      <h3>C: Compliance Badge</h3>
+      <p>Circular badge with inner shield — "certified compliant" feel</p>
+    </div>
+
+    <!-- Shield D: Book + shield combo -->
+    <div class="card">
+      <svg width="160" height="200" viewBox="0 0 160 200">
+        <!-- Open book base -->
+        <path d="M80 120 Q55 115, 25 122 L25 170 Q55 165, 80 168Z" fill="#FAFAF8" stroke="#E5E7EB" stroke-width="1"/>
+        <path d="M80 120 Q105 115, 135 122 L135 170 Q105 165, 80 168Z" fill="#FFF" stroke="#E5E7EB" stroke-width="1"/>
+        <line x1="80" y1="118" x2="80" y2="170" stroke="#107569" stroke-width="2"/>
+        <!-- Text lines -->
+        <rect x="34" y="132" width="36" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="34" y="138" width="32" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="34" y="144" width="38" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="88" y="132" width="38" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="88" y="138" width="34" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="88" y="144" width="36" height="1.5" rx="0.75" fill="#D1D5DB"/>
+
+        <!-- Shield floating above book -->
+        <path d="M80 14 L118 30 L118 74 Q118 104, 80 116 Q42 104, 42 74 L42 30Z" fill="#12A38C"/>
+        <path d="M80 14 L118 30 L118 74 Q118 104, 80 116 Q42 104, 42 74 L42 30Z" fill="none" stroke="#0D5A52" stroke-width="2"/>
+        <!-- Check -->
+        <path d="M62 64 L76 80 L102 50" fill="none" stroke="#FFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3>D: Shield Over Open Book</h3>
+      <p>Compliance shield protecting the book — "your collection is protected"</p>
+    </div>
+
+    <!-- Shield E: Minimalist outline -->
+    <div class="card">
+      <svg width="160" height="200" viewBox="0 0 160 200">
+        <!-- Thin outline shield -->
+        <path d="M80 20 L132 42 L132 100 Q132 148, 80 176 Q28 148, 28 100 L28 42Z" fill="none" stroke="#12A38C" stroke-width="3"/>
+        <!-- Inner shield fill, subtle -->
+        <path d="M80 30 L124 48 L124 98 Q124 140, 80 164 Q36 140, 36 98 L36 48Z" fill="#12A38C" opacity="0.08"/>
+        <!-- Centered checkmark -->
+        <path d="M60 96 L74 112 L104 76" fill="none" stroke="#12A38C" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Small book at base -->
+        <rect x="68" y="134" width="24" height="16" rx="2" fill="#12A38C" opacity="0.3"/>
+        <line x1="80" y1="134" x2="80" y2="150" stroke="#12A38C" stroke-width="1" opacity="0.4"/>
+      </svg>
+      <h3>E: Minimal Outline Shield</h3>
+      <p>Light, clean — works well at small sizes and on cards</p>
+    </div>
+
+    <!-- Shield F: Shield with star -->
+    <div class="card">
+      <svg width="160" height="200" viewBox="0 0 160 200">
+        <defs>
+          <linearGradient id="shF" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#FF692E"/>
+            <stop offset="100%" stop-color="#e55a22"/>
+          </linearGradient>
+        </defs>
+        <path d="M80 18 L134 40 L134 104 Q134 150, 80 178 Q26 150, 26 104 L26 40Z" fill="#107569"/>
+        <path d="M80 18 L134 40 L134 104 Q134 150, 80 178 Q26 150, 26 104 L26 40Z" fill="none" stroke="#0D5A52" stroke-width="2"/>
+        <!-- Inner border -->
+        <path d="M80 30 L124 48 L124 100 Q124 140, 80 164 Q36 140, 36 100 L36 48Z" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+        <!-- Star -->
+        <polygon points="80,48 87,70 110,72 92,88 98,110 80,98 62,110 68,88 50,72 73,70" fill="url(#shF)"/>
+        <!-- Book silhouette at bottom -->
+        <rect x="64" y="124" width="32" height="20" rx="2" fill="rgba(255,255,255,0.2)"/>
+        <line x1="80" y1="124" x2="80" y2="144" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+      </svg>
+      <h3>F: Shield + Star Rating</h3>
+      <p>Achievement/certification feel with pumpkin star — "gold standard" compliance</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 2: COMPOSITE READING SCENES
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="section section-alt">
+  <h2>2. Composite Scenes</h2>
+  <p class="subtitle">Full scenes combining books, people, and environments — for cover slides and hero sections</p>
+  <div class="grid-wide">
+
+    <!-- Scene A: Library reading nook -->
+    <div class="card-wide">
+      <svg width="440" height="260" viewBox="0 0 440 260">
+        <!-- Warm background -->
+        <rect x="0" y="0" width="440" height="260" rx="8" fill="#F8F5F0"/>
+
+        <!-- Window (left) -->
+        <rect x="20" y="20" width="80" height="100" rx="4" fill="#F0FAF8" stroke="#E5E7EB" stroke-width="1.5"/>
+        <line x1="60" y1="20" x2="60" y2="120" stroke="#E5E7EB" stroke-width="1"/>
+        <line x1="20" y1="70" x2="100" y2="70" stroke="#E5E7EB" stroke-width="1"/>
+        <!-- Window light rays -->
+        <path d="M100 40 L160 80 L160 120 L100 80Z" fill="#12A38C" opacity="0.03"/>
+
+        <!-- Bookshelf (right side) -->
+        <rect x="330" y="15" width="100" height="200" rx="3" fill="none" stroke="#D1D5DB" stroke-width="1.5"/>
+        <rect x="330" y="60" width="100" height="3" rx="1" fill="#E5E7EB"/>
+        <rect x="330" y="110" width="100" height="3" rx="1" fill="#E5E7EB"/>
+        <rect x="330" y="160" width="100" height="3" rx="1" fill="#E5E7EB"/>
+        <!-- Books row 1 -->
+        <rect x="334" y="20" width="12" height="38" rx="1" fill="#107569"/>
+        <rect x="348" y="24" width="10" height="34" rx="1" fill="#FF692E"/>
+        <rect x="360" y="18" width="14" height="40" rx="1" fill="#12A38C"/>
+        <rect x="376" y="26" width="10" height="32" rx="1" fill="#0D5A52"/>
+        <rect x="388" y="22" width="12" height="36" rx="1" fill="#101828"/>
+        <rect x="402" y="20" width="10" height="38" rx="1" fill="#107569"/>
+        <rect x="414" y="28" width="12" height="30" rx="1" fill="#FF692E"/>
+        <!-- Books row 2 -->
+        <rect x="334" y="66" width="14" height="42" rx="1" fill="#12A38C" opacity="0.8"/>
+        <rect x="350" y="70" width="10" height="38" rx="1" fill="#0D5A52" opacity="0.8"/>
+        <rect x="362" y="64" width="12" height="44" rx="1" fill="#FF692E" opacity="0.8"/>
+        <rect x="376" y="68" width="14" height="40" rx="1" fill="#107569" opacity="0.8"/>
+        <rect x="392" y="66" width="10" height="42" rx="1" fill="#101828" opacity="0.7"/>
+        <rect x="404" y="72" width="12" height="36" rx="1" fill="#12A38C" opacity="0.8"/>
+        <!-- Books row 3 -->
+        <rect x="334" y="116" width="10" height="42" rx="1" fill="#FF692E" opacity="0.7"/>
+        <rect x="346" y="120" width="14" height="38" rx="1" fill="#107569" opacity="0.7"/>
+        <rect x="362" y="114" width="12" height="44" rx="1" fill="#0D5A52" opacity="0.7"/>
+        <rect x="376" y="118" width="10" height="40" rx="1" fill="#12A38C" opacity="0.7"/>
+
+        <!-- Cozy armchair -->
+        <path d="M140 160 C130 160, 120 170, 120 180 L120 220 L260 220 L260 180 C260 170, 250 160, 240 160Z" fill="#E5E7EB"/>
+        <rect x="112" y="170" width="16" height="52" rx="8" fill="#D1D5DB"/>
+        <rect x="252" y="170" width="16" height="52" rx="8" fill="#D1D5DB"/>
+        <!-- Seat cushion -->
+        <ellipse cx="190" cy="188" rx="56" ry="12" fill="#D1D5DB"/>
+
+        <!-- CHILD reading in chair -->
+        <!-- Legs dangling -->
+        <rect x="168" y="206" width="10" height="16" rx="4" fill="#1D2939"/>
+        <rect x="198" y="206" width="10" height="16" rx="4" fill="#1D2939"/>
+        <!-- Body -->
+        <rect x="162" y="156" width="52" height="44" rx="10" fill="#12A38C"/>
+        <!-- Arms holding book -->
+        <rect x="150" y="164" width="12" height="26" rx="6" fill="#12A38C"/>
+        <rect x="212" y="164" width="12" height="26" rx="6" fill="#12A38C"/>
+        <circle cx="156" cy="188" r="4" fill="#F5D0B0"/>
+        <circle cx="218" cy="188" r="4" fill="#F5D0B0"/>
+        <!-- Open book -->
+        <rect x="148" y="174" width="78" height="36" rx="3" fill="#0D5A52"/>
+        <rect x="152" y="178" width="34" height="28" rx="2" fill="#FAFAF8"/>
+        <rect x="190" y="178" width="32" height="28" rx="2" fill="#FFF"/>
+        <line x1="188" y1="174" x2="188" y2="210" stroke="#093d38" stroke-width="1.5"/>
+        <!-- Page content -->
+        <rect x="156" y="184" width="26" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="156" y="189" width="22" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="156" y="194" width="28" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="194" y="184" width="24" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="194" y="189" width="20" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <!-- Head -->
+        <circle cx="188" cy="136" r="22" fill="#D4A574"/>
+        <path d="M166 128 C168 110, 188 102, 210 110 C210 118, 210 128, 210 128 C204 116, 172 116, 166 128Z" fill="#2C1810"/>
+        <circle cx="182" cy="136" r="2" fill="#101828"/>
+        <circle cx="194" cy="136" r="2" fill="#101828"/>
+        <path d="M184 143 Q188 147, 192 143" fill="none" stroke="#101828" stroke-width="1.2" stroke-linecap="round"/>
+
+        <!-- Stack of books on floor next to chair -->
+        <rect x="270" y="218" width="38" height="10" rx="2" fill="#107569"/>
+        <rect x="272" y="206" width="34" height="10" rx="2" fill="#FF692E"/>
+        <rect x="274" y="196" width="30" height="8" rx="2" fill="#12A38C"/>
+
+        <!-- Lamp on side table -->
+        <rect x="286" y="160" width="22" height="4" rx="2" fill="#D1D5DB"/>
+        <rect x="286" y="164" width="4" height="30" rx="1" fill="#D1D5DB"/>
+        <rect x="304" y="164" width="4" height="30" rx="1" fill="#D1D5DB"/>
+        <rect x="120" y="130" width="6" height="2" rx="1" fill="#D1D5DB"/>
+
+        <!-- Table lamp above -->
+        <rect x="292" y="142" width="4" height="20" rx="2" fill="#9CA3AF"/>
+        <path d="M280 144 L294 130 L308 144Z" fill="#9CA3AF"/>
+        <!-- Warm glow -->
+        <ellipse cx="294" cy="152" rx="18" ry="10" fill="#FF692E" opacity="0.06"/>
+
+        <!-- Rug -->
+        <ellipse cx="190" cy="235" rx="90" ry="12" fill="#12A38C" opacity="0.06"/>
+
+        <!-- Floor -->
+        <line x1="10" y1="246" x2="430" y2="246" stroke="#E5E7EB" stroke-width="1"/>
+      </svg>
+      <h3>Library Reading Nook</h3>
+      <p>Child curled up in armchair reading — bookshelf, window light, warm atmosphere</p>
+    </div>
+
+    <!-- Scene B: Busy library -->
+    <div class="card-wide">
+      <svg width="440" height="260" viewBox="0 0 440 260">
+        <!-- Room -->
+        <rect x="0" y="0" width="440" height="260" rx="8" fill="#F8FAFC"/>
+
+        <!-- Back wall bookshelves -->
+        <rect x="10" y="10" width="130" height="120" rx="3" fill="none" stroke="#D1D5DB" stroke-width="1"/>
+        <rect x="10" y="42" width="130" height="3" rx="1" fill="#E5E7EB"/>
+        <rect x="10" y="78" width="130" height="3" rx="1" fill="#E5E7EB"/>
+        <!-- Books (simplified) -->
+        <rect x="14" y="14" width="8" height="26" rx="1" fill="#107569" opacity="0.6"/>
+        <rect x="24" y="16" width="6" height="24" rx="1" fill="#FF692E" opacity="0.6"/>
+        <rect x="32" y="12" width="10" height="28" rx="1" fill="#12A38C" opacity="0.6"/>
+        <rect x="44" y="18" width="8" height="22" rx="1" fill="#0D5A52" opacity="0.6"/>
+        <rect x="54" y="14" width="6" height="26" rx="1" fill="#101828" opacity="0.5"/>
+        <rect x="62" y="16" width="10" height="24" rx="1" fill="#107569" opacity="0.6"/>
+        <rect x="74" y="12" width="8" height="28" rx="1" fill="#FF692E" opacity="0.6"/>
+        <rect x="84" y="18" width="6" height="22" rx="1" fill="#12A38C" opacity="0.6"/>
+        <rect x="92" y="14" width="10" height="26" rx="1" fill="#0D5A52" opacity="0.6"/>
+        <rect x="104" y="16" width="8" height="24" rx="1" fill="#101828" opacity="0.5"/>
+        <rect x="114" y="12" width="10" height="28" rx="1" fill="#12A38C" opacity="0.6"/>
+        <rect x="126" y="18" width="10" height="22" rx="1" fill="#107569" opacity="0.6"/>
+        <!-- Row 2 -->
+        <rect x="14" y="48" width="10" height="28" rx="1" fill="#FF692E" opacity="0.5"/>
+        <rect x="26" y="50" width="8" height="26" rx="1" fill="#12A38C" opacity="0.5"/>
+        <rect x="36" y="46" width="10" height="30" rx="1" fill="#0D5A52" opacity="0.5"/>
+        <rect x="48" y="52" width="6" height="24" rx="1" fill="#107569" opacity="0.5"/>
+        <rect x="56" y="48" width="8" height="28" rx="1" fill="#FF692E" opacity="0.5"/>
+        <rect x="66" y="50" width="10" height="26" rx="1" fill="#101828" opacity="0.4"/>
+
+        <!-- Second shelf unit -->
+        <rect x="300" y="10" width="130" height="120" rx="3" fill="none" stroke="#D1D5DB" stroke-width="1"/>
+        <rect x="300" y="42" width="130" height="3" rx="1" fill="#E5E7EB"/>
+        <rect x="300" y="78" width="130" height="3" rx="1" fill="#E5E7EB"/>
+        <rect x="304" y="14" width="10" height="26" rx="1" fill="#0D5A52" opacity="0.6"/>
+        <rect x="316" y="18" width="8" height="22" rx="1" fill="#12A38C" opacity="0.6"/>
+        <rect x="326" y="12" width="10" height="28" rx="1" fill="#FF692E" opacity="0.6"/>
+        <rect x="338" y="16" width="6" height="24" rx="1" fill="#107569" opacity="0.6"/>
+        <rect x="346" y="14" width="10" height="26" rx="1" fill="#101828" opacity="0.5"/>
+        <rect x="358" y="18" width="8" height="22" rx="1" fill="#12A38C" opacity="0.6"/>
+        <rect x="368" y="12" width="10" height="28" rx="1" fill="#0D5A52" opacity="0.6"/>
+        <rect x="380" y="16" width="8" height="24" rx="1" fill="#FF692E" opacity="0.6"/>
+        <rect x="390" y="14" width="12" height="26" rx="1" fill="#107569" opacity="0.6"/>
+        <rect x="404" y="18" width="8" height="22" rx="1" fill="#12A38C" opacity="0.6"/>
+        <rect x="414" y="12" width="10" height="28" rx="1" fill="#101828" opacity="0.5"/>
+
+        <!-- Center table -->
+        <rect x="150" y="152" width="140" height="8" rx="3" fill="#E5E7EB"/>
+        <rect x="158" y="160" width="4" height="28" rx="1" fill="#D1D5DB"/>
+        <rect x="278" y="160" width="4" height="28" rx="1" fill="#D1D5DB"/>
+
+        <!-- STUDENT 1 at table (left) -->
+        <rect x="156" y="120" width="36" height="34" rx="8" fill="#FF692E"/>
+        <circle cx="174" cy="102" r="16" fill="#8D5524"/>
+        <path d="M158 96 C160 84, 174 78, 190 84 C190 90, 190 96, 190 96 C186 88, 162 88, 158 96Z" fill="#1A1A2E"/>
+        <ellipse cx="170" cy="102" rx="1.5" ry="1" fill="#101828"/>
+        <ellipse cx="178" cy="102" rx="1.5" ry="1" fill="#101828"/>
+        <!-- Open book -->
+        <rect x="152" y="140" width="38" height="12" rx="2" fill="#107569" opacity="0.6"/>
+
+        <!-- STUDENT 2 at table (right) -->
+        <rect x="250" y="118" width="36" height="36" rx="8" fill="#12A38C"/>
+        <circle cx="268" cy="100" r="16" fill="#F5D0B0"/>
+        <path d="M252 94 C254 82, 268 76, 284 82 C284 88, 284 94, 284 94 C280 86, 256 86, 252 94Z" fill="#6B4226"/>
+        <ellipse cx="264" cy="100" rx="1.5" ry="1" fill="#101828"/>
+        <ellipse cx="272" cy="100" rx="1.5" ry="1" fill="#101828"/>
+        <rect x="246" y="140" width="40" height="12" rx="2" fill="#FF692E" opacity="0.5"/>
+
+        <!-- LIBRARIAN walking (middle background) -->
+        <rect x="206" y="64" width="28" height="40" rx="8" fill="#0D5A52"/>
+        <circle cx="220" cy="48" r="14" fill="#D4A574"/>
+        <path d="M206 42 C208 32, 220 28, 234 32 C234 38, 234 42, 234 42 C230 36, 210 36, 206 42Z" fill="#2C1810"/>
+        <circle cx="216" cy="48" r="1.5" fill="#101828"/>
+        <circle cx="224" cy="48" r="1.5" fill="#101828"/>
+        <!-- Carrying book stack -->
+        <rect x="232" y="68" width="14" height="20" rx="2" fill="#FF692E" opacity="0.7"/>
+        <rect x="230" y="72" width="14" height="12" rx="2" fill="#12A38C" opacity="0.7"/>
+
+        <!-- "LIBRARY" sign -->
+        <rect x="170" y="10" width="100" height="18" rx="4" fill="#107569"/>
+        <rect x="186" y="16" width="68" height="4" rx="2" fill="rgba(255,255,255,0.4)"/>
+
+        <!-- Globe on shelf (decoration) -->
+        <circle cx="84" cy="95" r="12" fill="#12A38C" opacity="0.15"/>
+        <circle cx="84" cy="95" r="12" fill="none" stroke="#12A38C" stroke-width="1" opacity="0.3"/>
+        <ellipse cx="84" cy="95" rx="12" ry="4" fill="none" stroke="#12A38C" stroke-width="0.8" opacity="0.2"/>
+
+        <!-- Floor -->
+        <line x1="5" y1="244" x2="435" y2="244" stroke="#E5E7EB" stroke-width="1.5"/>
+        <!-- Rug under table -->
+        <ellipse cx="220" cy="195" rx="80" ry="10" fill="#12A38C" opacity="0.05"/>
+      </svg>
+      <h3>Busy Library — Full Scene</h3>
+      <p>Students reading at table, librarian walking, bookshelves lining walls — an active library</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SECTION 3: READING MOMENTS
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="section">
+  <h2>3. Reading Moment Vignettes</h2>
+  <p class="subtitle">Small, focused illustrations that work well as slide accents or card icons</p>
+  <div class="grid">
+
+    <!-- Hands holding open book -->
+    <div class="card">
+      <svg width="180" height="140" viewBox="0 0 180 140">
+        <!-- Hands -->
+        <path d="M30 90 C30 80, 35 70, 45 68 L45 100 C35 100, 30 95, 30 90Z" fill="#D4A574"/>
+        <path d="M150 90 C150 80, 145 70, 135 68 L135 100 C145 100, 150 95, 150 90Z" fill="#D4A574"/>
+        <!-- Thumbs -->
+        <ellipse cx="48" cy="78" rx="5" ry="8" fill="#D4A574"/>
+        <ellipse cx="132" cy="78" rx="5" ry="8" fill="#D4A574"/>
+        <!-- Book pages -->
+        <path d="M90 30 Q60 28, 40 34 L40 100 Q60 96, 90 98Z" fill="#FAFAF8" stroke="#E5E7EB" stroke-width="1"/>
+        <path d="M90 30 Q120 28, 140 34 L140 100 Q120 96, 90 98Z" fill="#FFF" stroke="#E5E7EB" stroke-width="1"/>
+        <line x1="90" y1="28" x2="90" y2="100" stroke="#107569" stroke-width="2"/>
+        <!-- Text lines -->
+        <rect x="50" y="44" width="32" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="50" y="50" width="28" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="50" y="56" width="34" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="50" y="62" width="26" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="50" y="68" width="30" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="98" y="44" width="34" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="98" y="50" width="30" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="98" y="56" width="36" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="98" y="62" width="28" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <rect x="98" y="68" width="32" height="1.5" rx="0.75" fill="#D1D5DB"/>
+        <!-- Bookmark ribbon -->
+        <path d="M115 28 L115 16 L119 22 L123 16 L123 28" fill="#FF692E"/>
+        <!-- Cover edges beneath -->
+        <path d="M38 34 L38 102 L40 104" fill="#0D5A52"/>
+        <path d="M142 34 L142 102 L140 104" fill="#0D5A52"/>
+      </svg>
+      <h3>Hands Holding Book</h3>
+      <p>Close-up reading moment — works as card icon or accent</p>
+    </div>
+
+    <!-- Stack with bookmark -->
+    <div class="card">
+      <svg width="140" height="140" viewBox="0 0 140 140">
+        <!-- Bottom book -->
+        <rect x="20" y="84" width="100" height="18" rx="3" fill="#107569"/>
+        <rect x="20" y="84" width="100" height="5" rx="2" fill="#0D5A52"/>
+        <!-- Middle book -->
+        <rect x="24" y="64" width="92" height="18" rx="3" fill="#FF692E"/>
+        <rect x="24" y="64" width="92" height="5" rx="2" fill="#e55a22"/>
+        <!-- Top book -->
+        <rect x="18" y="44" width="96" height="18" rx="3" fill="#12A38C"/>
+        <rect x="18" y="44" width="96" height="5" rx="2" fill="#0D5A52"/>
+        <!-- Bookmark sticking out right -->
+        <rect x="112" y="70" width="16" height="6" rx="1" fill="#FF692E"/>
+        <!-- Bookmark sticking out top book left -->
+        <rect x="10" y="48" width="14" height="5" rx="1" fill="#12A38C"/>
+        <!-- Spine text -->
+        <rect x="56" y="91" width="28" height="2" rx="1" fill="rgba(255,255,255,0.3)"/>
+        <rect x="60" y="71" width="20" height="2" rx="1" fill="rgba(255,255,255,0.3)"/>
+        <rect x="50" y="51" width="32" height="2" rx="1" fill="rgba(255,255,255,0.3)"/>
+        <!-- Shadow -->
+        <ellipse cx="70" cy="108" rx="52" ry="4" fill="rgba(0,0,0,0.05)"/>
+        <!-- Teal bookmark ribbon on top -->
+        <path d="M82 44 L82 24 L88 32 L94 24 L94 44" fill="#0D5A52"/>
+      </svg>
+      <h3>Stack with Bookmarks</h3>
+      <p>Neat stack with multiple bookmarks — "well-read" signal</p>
+    </div>
+
+    <!-- Reading lamp + book -->
+    <div class="card">
+      <svg width="160" height="140" viewBox="0 0 160 140">
+        <!-- Desk surface -->
+        <rect x="10" y="100" width="140" height="4" rx="2" fill="#E5E7EB"/>
+        <!-- Open book -->
+        <path d="M50 76 Q70 70, 82 73 L82 98 Q70 95, 50 100Z" fill="#FAFAF8" stroke="#E5E7EB" stroke-width="0.8"/>
+        <path d="M82 73 Q94 70, 115 76 L115 100 Q94 95, 82 98Z" fill="#FFF" stroke="#E5E7EB" stroke-width="0.8"/>
+        <line x1="82" y1="72" x2="82" y2="99" stroke="#107569" stroke-width="1.5"/>
+        <!-- Tiny text -->
+        <rect x="55" y="80" width="22" height="1" rx="0.5" fill="#D1D5DB"/>
+        <rect x="55" y="84" width="18" height="1" rx="0.5" fill="#D1D5DB"/>
+        <rect x="55" y="88" width="24" height="1" rx="0.5" fill="#D1D5DB"/>
+        <rect x="87" y="80" width="24" height="1" rx="0.5" fill="#D1D5DB"/>
+        <rect x="87" y="84" width="20" height="1" rx="0.5" fill="#D1D5DB"/>
+        <!-- Coffee mug -->
+        <rect x="120" y="82" width="16" height="16" rx="3" fill="#F8F5F0" stroke="#E5E7EB" stroke-width="1"/>
+        <path d="M136 86 C142 86, 142 94, 136 94" fill="none" stroke="#E5E7EB" stroke-width="1.5"/>
+        <!-- Steam -->
+        <path d="M126 78 C124 72, 130 70, 128 64" fill="none" stroke="#D1D5DB" stroke-width="1" stroke-linecap="round"/>
+        <!-- Lamp -->
+        <rect x="24" y="92" width="16" height="8" rx="3" fill="#101828"/>
+        <rect x="30" y="48" width="4" height="46" rx="2" fill="#101828"/>
+        <path d="M18 50 L32 38 L46 50Z" fill="#101828"/>
+        <!-- Light glow -->
+        <ellipse cx="32" cy="60" rx="16" ry="10" fill="#FF692E" opacity="0.06"/>
+      </svg>
+      <h3>Late Night Reading</h3>
+      <p>Desk lamp, open book, coffee — quiet study moment</p>
+    </div>
+
+    <!-- Apple + books (teacher's desk) -->
+    <div class="card">
+      <svg width="160" height="140" viewBox="0 0 160 140">
+        <!-- Desk -->
+        <rect x="10" y="96" width="140" height="6" rx="2" fill="#E5E7EB"/>
+        <!-- Book stack -->
+        <rect x="50" y="62" width="68" height="14" rx="2" fill="#107569"/>
+        <rect x="52" y="46" width="64" height="14" rx="2" fill="#12A38C"/>
+        <rect x="54" y="30" width="60" height="14" rx="2" fill="#FF692E"/>
+        <rect x="56" y="16" width="56" height="12" rx="2" fill="#0D5A52"/>
+        <!-- Spine text hints -->
+        <rect x="74" y="68" width="24" height="2" rx="1" fill="rgba(255,255,255,0.3)"/>
+        <rect x="72" y="52" width="28" height="2" rx="1" fill="rgba(255,255,255,0.3)"/>
+        <rect x="74" y="35" width="20" height="2" rx="1" fill="rgba(255,255,255,0.35)"/>
+        <!-- Apple -->
+        <circle cx="30" cy="80" r="14" fill="#FF692E"/>
+        <path d="M28 66 C30 62, 34 60, 36 62" stroke="#107569" stroke-width="1.5" fill="none"/>
+        <ellipse cx="34" cy="62" rx="4" ry="3" fill="#12A38C" opacity="0.6"/>
+        <!-- Apple highlight -->
+        <circle cx="25" cy="75" r="4" fill="rgba(255,255,255,0.2)"/>
+        <!-- Pencil -->
+        <line x1="125" y1="90" x2="140" y2="68" stroke="#FF692E" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="140" cy="68" r="2" fill="#FFB5A0"/>
+        <!-- Shadow -->
+        <ellipse cx="80" cy="100" rx="55" ry="3" fill="rgba(0,0,0,0.04)"/>
+      </svg>
+      <h3>Teacher's Desk</h3>
+      <p>Classic education icon — book stack, apple, pencil</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  Bookmarked Illustration Library — Part 3 of 3 — Shields, Scenes &amp; Vignettes
+</div>
+
+</body>
+</html>
