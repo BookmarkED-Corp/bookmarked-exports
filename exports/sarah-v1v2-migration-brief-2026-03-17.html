@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V1 to V2 Migration — Sarah's Brief</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bm-eigengrau: #101828;
+  --bm-deep-green: #107569;
+  --bm-teal-accent: #12A38C;
+  --bm-white: #FFFFFF;
+  --bm-pumpkin: #FF692E;
+  --bm-teal-dark: #0D5A52;
+  --bm-secondary-text: #475467;
+  --bm-muted-gray: #9CA3AF;
+  --bm-border-light: #E5E7EB;
+  --bm-bg-cool: #F8FAFC;
+  --bm-bg-light: #F9FAFB;
+  --bm-font-family: 'Urbanist', Arial, Helvetica, sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--bm-font-family);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--bm-eigengrau);
+  background: var(--bm-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--bm-teal-dark) 0%, var(--bm-deep-green) 40%, var(--bm-teal-accent) 100%);
+  padding: 64px 0 48px;
+  color: var(--bm-white);
+}
+
+.container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+.hero h1 {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.85);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.hero-meta {
+  margin-top: 20px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  display: flex;
+  gap: 24px;
+}
+
+section { padding: 48px 0; }
+section + section { padding-top: 0; }
+
+.section-alt { background: var(--bm-bg-cool); padding: 48px 0; }
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--bm-deep-green);
+  margin-bottom: 8px;
+  margin-top: 24px;
+}
+
+p { margin-bottom: 12px; color: var(--bm-secondary-text); }
+p strong { color: var(--bm-eigengrau); }
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bm-teal-accent);
+  margin-bottom: 8px;
+}
+
+.card {
+  background: var(--bm-bg-light);
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid var(--bm-border-light);
+  margin-bottom: 16px;
+}
+
+.card--accent {
+  border-left: 4px solid var(--bm-teal-accent);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.card--warning {
+  border-left: 4px solid var(--bm-pumpkin);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.card h3 { margin-top: 0; }
+.card p:last-child { margin-bottom: 0; }
+
+.outcome-box {
+  background: var(--bm-eigengrau);
+  border-radius: 12px;
+  padding: 32px;
+  color: var(--bm-white);
+  margin: 24px 0;
+}
+
+.outcome-box h3 { color: var(--bm-teal-accent); margin-top: 0; }
+.outcome-box p { color: var(--bm-muted-gray); }
+.outcome-box ul { list-style: none; padding: 0; margin: 16px 0 0; }
+.outcome-box li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  color: var(--bm-white);
+  font-size: 15px;
+}
+.outcome-box li:last-child { border-bottom: none; }
+.outcome-box li .check { color: var(--bm-teal-accent); margin-right: 8px; }
+
+ol { padding-left: 20px; margin: 12px 0; }
+ol li { margin-bottom: 12px; color: var(--bm-secondary-text); padding-left: 4px; }
+ol li strong { color: var(--bm-eigengrau); }
+
+ul.plain { list-style: none; padding: 0; margin: 12px 0; }
+ul.plain li {
+  padding: 6px 0;
+  color: var(--bm-secondary-text);
+  font-size: 15px;
+}
+ul.plain li::before {
+  content: "→ ";
+  color: var(--bm-teal-accent);
+  font-weight: 700;
+}
+
+.agent-workflow {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 0 16px;
+  margin: 24px 0;
+}
+
+.step-number {
+  width: 36px;
+  height: 36px;
+  background: var(--bm-deep-green);
+  color: var(--bm-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.step-content {
+  padding-bottom: 24px;
+  border-left: 2px solid var(--bm-border-light);
+  padding-left: 20px;
+  margin-left: -21px;
+}
+
+.step-content:last-child { border-left: 2px solid transparent; }
+
+.step-content h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--bm-eigengrau);
+  margin-bottom: 4px;
+}
+
+.step-content p { font-size: 15px; margin-bottom: 0; }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.skill-tag {
+  background: var(--bm-bg-light);
+  border: 1px solid var(--bm-border-light);
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+.skill-tag code {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--bm-deep-green);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.skill-tag span {
+  font-size: 13px;
+  color: var(--bm-muted-gray);
+}
+
+.callout {
+  background: rgba(18, 163, 140, 0.08);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 20px 0;
+  font-size: 15px;
+  color: var(--bm-secondary-text);
+}
+
+.callout strong { color: var(--bm-deep-green); }
+
+.footer {
+  background: var(--bm-deep-green);
+  color: var(--bm-white);
+  padding: 32px 0;
+  text-align: center;
+  margin-top: 48px;
+}
+
+.footer p {
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+}
+
+.footer strong { color: var(--bm-white); }
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 28px; }
+  h2 { font-size: 24px; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .hero-meta { flex-direction: column; gap: 4px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="container">
+    <h1>V1 to V2 Migration Plan</h1>
+    <p>Your assignment, the outcome we need, and how to use the agents to get there.</p>
+    <div class="hero-meta">
+      <span>Sarah El Massry</span>
+      <span>March 17, 2026</span>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">THE ASSIGNMENT</div>
+    <h2>Build the V1 to V2 Migration Architecture</h2>
+    <p>We need a fully scoped migration plan that lives in Confluence. Not a rough outline — a plan that someone else could pick up and understand. A plan that can be QA'd, stress-tested, and improved by running it through expert agents.</p>
+    <p>This is the single most important thing on your plate right now. Everything else waits until this is done.</p>
+
+    <div class="outcome-box">
+      <h3>What "Done" Looks Like</h3>
+      <p>When this is complete, the following should all be true:</p>
+      <ul>
+        <li><span class="check">&#10003;</span> A single Confluence page (Product Hub > V1 to V2 Migration) contains the complete plan</li>
+        <li><span class="check">&#10003;</span> All existing notes, ideas, and context are merged into that page — nothing left scattered</li>
+        <li><span class="check">&#10003;</span> Data requirements are mapped (what transfers, what doesn't, what transforms)</li>
+        <li><span class="check">&#10003;</span> Migration steps are sequenced (what happens first, second, third — for each district)</li>
+        <li><span class="check">&#10003;</span> 140+ districts are set up for individual tracking (status, readiness, blockers)</li>
+        <li><span class="check">&#10003;</span> Open questions are explicitly called out — not hidden, not assumed away</li>
+        <li><span class="check">&#10003;</span> The plan can survive a QA review by someone running it through Claude to find gaps</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-alt">
+  <div class="container">
+    <div class="eyebrow">HOW TO APPROACH THIS</div>
+    <h2>Use the Agents. That's the Whole Point.</h2>
+    <p>The CPO, scrum master, and product intelligence agents have frameworks and expertise baked in. Your job isn't to write this plan from scratch — it's to <strong>direct the agents to build it</strong>, then QA and refine their output until it's right.</p>
+    <p>Think of it like managing a team of specialists. You bring the context and product knowledge. They bring the structure and methodology. Together you produce something better than either could alone.</p>
+
+    <div class="agent-workflow">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h4>Gather everything first</h4>
+        <p>Before you open a Claude thread, collect all the inputs: the V1 Data Transfer Discovery page (Patrick's API crawl — 70 endpoints, 14 risks), any notes you and Patrick have about migration, Slack conversations, Jira tickets related to V1/V2. Have it all ready.</p>
+      </div>
+
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h4>Load the right skill expert</h4>
+        <p>Open Claude Code. Before asking it to do anything, bring in the domain expert. Type <code>/cpo</code> to load the CPO agent. Tell it: "I need to build a V1 to V2 migration architecture. Here's what I have. What's the right framework for this?" Let the agent propose the approach.</p>
+      </div>
+
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h4>Feed it your context</h4>
+        <p>Point the agent to the V1 Data Transfer Discovery page in Confluence (page 88834054). Share Patrick's findings. Share your own knowledge about which districts are complex, which are straightforward, what the common gotchas are. The agent needs your product knowledge to produce something real.</p>
+      </div>
+
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <h4>QA the output — really QA it</h4>
+        <p>Don't accept the first draft. Spend 30-45 minutes reading through it carefully. Ask yourself: if someone handed me this plan and I'd never seen it before, would I know exactly what to do? Where are the gaps? What assumptions did it make? Push back. Ask follow-up questions. Refine.</p>
+      </div>
+
+      <div class="step-number">5</div>
+      <div class="step-content">
+        <h4>Write it to Confluence</h4>
+        <p>The plan goes into the V1 to V2 Migration page in the Product Hub. Not in a Google Doc, not in Slack, not in your head. Confluence is where the team and the agents can find it, reference it, and build on it.</p>
+      </div>
+
+      <div class="step-number">6</div>
+      <div class="step-content" style="border-left: 2px solid transparent;">
+        <h4>Request a QA pass</h4>
+        <p>Once you're satisfied with the plan, ask Claude (or ask Steve to have Claude) run a quality check against it. Look for missing steps, unaddressed risks, districts that might be edge cases. A good plan gets better when someone tries to break it.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">RESOURCES AVAILABLE TO YOU</div>
+    <h2>What's Already Built</h2>
+    <p>You're not starting from zero. There's significant infrastructure in place.</p>
+
+    <div class="card card--accent">
+      <h3>V1 Data Transfer Discovery</h3>
+      <p>Patrick crawled the entire V1 platform — 3 roles (Admin, Teacher, Parent), 70 API endpoints, 14 migration risks ranked by severity, 5 known bugs, and a 16-item verification checklist. This is your foundation. <strong>Confluence: Product Hub > V1 Data Transfer Discovery</strong></p>
+    </div>
+
+    <div class="card card--accent">
+      <h3>V1 to V2 Migration Page</h3>
+      <p>The Confluence page is already created and structured with sections for: Migration Architecture, District Tracking, Data Requirements, Migration Steps, Open Questions, and Decision Log. The 7 high-severity data risks are pre-populated. <strong>Confluence: Product Hub > V1 to V2 Migration</strong></p>
+    </div>
+
+    <div class="card card--accent">
+      <h3>Agent Skills</h3>
+      <p>These are available to you in Claude Code right now:</p>
+      <div class="skills-grid">
+        <div class="skill-tag">
+          <code>/cpo</code>
+          <span>Product strategy and migration frameworks</span>
+        </div>
+        <div class="skill-tag">
+          <code>/jira</code>
+          <span>Create and structure migration tickets</span>
+        </div>
+        <div class="skill-tag">
+          <code>/jira-standards</code>
+          <span>Validate ticket quality</span>
+        </div>
+        <div class="skill-tag">
+          <code>/analyst</code>
+          <span>Data analysis and visualization</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Need an agent that doesn't exist yet?</strong> If you're working through the migration plan and realize you need a specialized skill — a database migration expert, a district onboarding specialist, anything — tell Claude what you need. We can build it. Identifying what's missing is part of the value you bring.
+    </div>
+  </div>
+</section>
+
+<div class="section-alt">
+  <div class="container">
+    <div class="eyebrow">AGENT QUALITY</div>
+    <h2>Purpose-Built Agents vs. Generic Claude</h2>
+    <p>This is important: <strong>generic Claude will do the work, but it won't do quality work.</strong> The same way you wouldn't ask a generalist contractor to design your electrical system — you'd bring in an electrician — you should bring in the right expert agent for each piece of this migration.</p>
+    <p>Here's the team of agents that report to the CPO. Each one is purpose-built with specific frameworks, standards, and domain knowledge:</p>
+
+    <div class="skills-grid" style="grid-template-columns: repeat(2, 1fr); margin: 20px 0;">
+      <div class="skill-tag">
+        <code>/cpo</code>
+        <span>Strategic product decisions, migration frameworks, four-risk analysis, discovery vs. delivery</span>
+      </div>
+      <div class="skill-tag">
+        <code>/jira</code>
+        <span>Creates properly structured Jira work from requirements — tickets, epics, stories</span>
+      </div>
+      <div class="skill-tag">
+        <code>/jira-standards</code>
+        <span>Quality gate — validates tickets have AC, points, assignees, correct structure</span>
+      </div>
+      <div class="skill-tag">
+        <code>/analyst</code>
+        <span>Data analysis, computation, visualization — turns raw data into insight</span>
+      </div>
+      <div class="skill-tag">
+        <code>Scrum Master</code>
+        <span>Sprint ceremonies, backlog refinement, sprint planning, retrospectives</span>
+      </div>
+      <div class="skill-tag">
+        <code>Product Intelligence</code>
+        <span>Usage data, customer signals, data support scores for feature decisions</span>
+      </div>
+      <div class="skill-tag">
+        <code>Confluence Operations</code>
+        <span>Page structure, content organization, knowledge architecture</span>
+      </div>
+      <div class="skill-tag">
+        <code>Product Scorecard</code>
+        <span>KPI tracking, 13-week trends, measurable definitions</span>
+      </div>
+    </div>
+
+    <div class="card card--warning">
+      <h3>When to Ask for a New Agent</h3>
+      <p>If you're working on the migration plan and you hit a point where none of the existing agents have the right expertise — maybe you need a <strong>data migration specialist</strong> that understands schema mapping, or a <strong>district onboarding expert</strong> that knows the enrollment workflow inside out — <strong>don't settle for generic Claude doing a mediocre job.</strong></p>
+      <p>Flag it. Tell Steve: "I need an agent that knows X because the existing agents don't cover this well enough." We'll build it. A purpose-built agent with the right knowledge will produce dramatically better output than a general-purpose model guessing its way through.</p>
+      <p>Identifying the gaps in our agent ecosystem is one of the most valuable things you can do in this process.</p>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">YOUR PLAN, YOUR OWNERSHIP</div>
+    <h2>A Note on How This Works</h2>
+
+    <p>This brief gives you the outcome and the tools. The approach is yours to own.</p>
+
+    <p>If you sit down with the agents and the plan that emerges looks different from what's outlined here — <strong>that might be better</strong>. You have product context and customer knowledge that isn't captured anywhere. If the agents propose a migration sequence and you know from experience that certain districts are going to be problematic, that's exactly the kind of input that makes a plan real instead of theoretical.</p>
+
+    <p>What matters is:</p>
+
+    <ol>
+      <li><strong>The plan is complete and well-thought-out.</strong> Someone else should be able to read it and understand the full picture — the what, the why, the sequence, the risks, and the open questions.</li>
+      <li><strong>It lives in Confluence.</strong> Not in a conversation, not in your notes. In the shared place where the team and the agents can reference it.</li>
+      <li><strong>You used the agents to build it.</strong> Not because we're mandating a workflow, but because the agents have frameworks and pattern-matching that will make the output stronger. Your job is to direct them well and QA their work rigorously.</li>
+      <li><strong>If your plan differs from expectations, you can explain why.</strong> That's a sign of good thinking, not a problem. Share it with Steve for review and walk through your reasoning.</li>
+    </ol>
+
+    <div class="card card--warning">
+      <h3>The One Thing to Avoid</h3>
+      <p>Don't default to doing this manually — writing it stream-of-consciousness, scattering it across tools, moving on before it's fully scoped. Take the time. Sit with it. An hour of deep, focused work with the agents will produce a plan that saves weeks of confusion downstream. The V1 Data Transfer Discovery page is proof — that level of rigor is the bar.</p>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">CONTEXT</div>
+    <h2>What Steve Is Working On in Parallel</h2>
+    <p>So you know where your work fits:</p>
+    <ul class="plain">
+      <li><strong>Steve</strong> is defining what V2 2.0 IS — the top-down definition of features, personas, and scope. He's running the existing V2 PDF through agents for refinement.</li>
+      <li><strong>Patrick</strong> is identifying implementation gaps for new school districts — what's missing, what needs clarity, what questions need answers.</li>
+      <li><strong>Your piece</strong> is the bridge — how do we get 140+ districts from V1 to V2? Your plan connects Steve's "what" to Patrick's "how."</li>
+    </ul>
+
+    <p style="margin-top: 20px;">The V2 Definition of Done page is also in Confluence (Product Hub > V2 Definition of Done). Once Steve populates the definitions, your migration plan should map against those criteria — every feature in V2 that's "done" is a feature the migration needs to account for.</p>
+  </div>
+</section>
+
+<div class="footer">
+  <div class="container">
+    <p><strong>Bookmarked</strong> — V1 to V2 Migration Brief</p>
+    <p>Questions? Open a Claude Code thread and ask. The agents are there to help.</p>
+  </div>
+</div>
+
+</body>
+</html>
