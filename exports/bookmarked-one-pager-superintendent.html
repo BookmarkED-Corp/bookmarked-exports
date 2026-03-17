@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookmarked One-Pager — For Superintendents</title>
+<link rel="stylesheet" href="../design/bookmarked-brand.css">
+<style>
+/* Print-ready 8.5x11 one-pager */
+@page { size: letter; margin: 0; }
+body { background: #F3F3F3; display: flex; justify-content: center; padding: 32px 0; }
+.page {
+  width: 8.5in; min-height: 11in; background: white;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+
+/* Hero band */
+.op-hero {
+  background: linear-gradient(135deg, #0D5A52 0%, #107569 40%, #12A38C 100%);
+  padding: 40px 48px 36px; color: white;
+  display: flex; align-items: center; gap: 32px;
+}
+.op-hero-text { flex: 1; }
+.op-hero .op-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.6); margin-bottom: 8px;
+}
+.op-hero h1 { font-size: 28px; font-weight: 800; line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 8px; }
+.op-hero p { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.5; max-width: 400px; }
+
+/* Body */
+.op-body { padding: 28px 48px; flex: 1; display: flex; flex-direction: column; gap: 24px; }
+
+/* Section header */
+.op-section-header {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: #12A38C; margin-bottom: 6px;
+}
+
+/* Stat row */
+.op-stats { display: grid; grid-template-columns: 1fr 40px 1fr; gap: 0; align-items: center; }
+.op-stat-card {
+  background: #F8FAFC; border-radius: 10px; padding: 20px 16px; text-align: center;
+  border: 1px solid #E5E7EB;
+}
+.op-stat-number { font-size: 32px; font-weight: 800; line-height: 1; }
+.op-stat-number.pumpkin { color: #FF692E; }
+.op-stat-number.teal { color: #12A38C; }
+.op-stat-label { font-size: 11px; font-weight: 600; color: #475467; margin-top: 4px; }
+.op-stat-arrow { text-align: center; font-size: 24px; color: #9CA3AF; }
+
+/* Problem / solution split */
+.op-split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.op-split-card {
+  padding: 16px 18px; border-radius: 10px;
+  border: 1px solid #E5E7EB; background: white;
+}
+.op-split-card.problem { border-left: 3px solid #FF692E; }
+.op-split-card.solution { border-left: 3px solid #12A38C; }
+.op-split-card h3 { font-size: 14px; font-weight: 800; color: #101828; margin-bottom: 6px; }
+.op-split-card ul { margin: 0; padding-left: 16px; }
+.op-split-card li { font-size: 12px; color: #475467; line-height: 1.5; margin-bottom: 3px; }
+
+/* Features grid */
+.op-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.op-feature {
+  background: #F8F5F0; border-radius: 10px; padding: 16px 14px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.op-feature::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: #12A38C; }
+.op-feature h4 { font-size: 12px; font-weight: 800; color: #101828; margin-top: 10px; margin-bottom: 4px; }
+.op-feature p { font-size: 11px; color: #475467; line-height: 1.4; }
+
+/* Testimonial */
+.op-testimonial {
+  background: #F8F5F0; border-radius: 10px; padding: 16px 20px;
+  border-left: 3px solid #12A38C;
+}
+.op-testimonial blockquote {
+  font-size: 13px; font-style: italic; color: #475467; line-height: 1.5; margin: 0 0 6px;
+}
+.op-testimonial .attr { font-size: 11px; font-weight: 700; color: #101828; }
+
+/* CTA band */
+.op-cta {
+  background: #F8F5F0; padding: 20px 48px;
+  border-top: 3px solid #12A38C;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.op-cta h2 { font-size: 18px; font-weight: 800; color: #101828; }
+.op-cta p { font-size: 12px; color: #475467; }
+.op-cta-button {
+  display: inline-block; padding: 12px 28px; background: #FF692E; color: white;
+  font-family: 'Urbanist', sans-serif; font-size: 13px; font-weight: 700;
+  border-radius: 8px; text-decoration: none; white-space: nowrap;
+}
+
+/* Footer */
+.op-footer {
+  background: #107569; padding: 10px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.op-footer .logo { font-size: 14px; font-weight: 800; color: white; }
+.op-footer .tagline {
+  font-size: 9px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+
+@media print {
+  body { background: white; padding: 0; }
+  .page { box-shadow: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ═══════ HERO ═══════ -->
+  <div class="op-hero">
+    <div class="op-hero-text">
+      <div class="op-eyebrow">For Superintendents</div>
+      <h1>Your Libraries Should Be the<br>Pride of Your District</h1>
+      <p>Bookmarked automates book review documentation so your librarians can focus on building vibrant collections — not managing spreadsheets.</p>
+    </div>
+    <!-- Library illustration -->
+    <svg width="180" height="140" viewBox="0 0 180 140" style="flex-shrink: 0;">
+      <!-- Bookshelf -->
+      <rect x="10" y="10" width="160" height="110" rx="4" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+      <rect x="10" y="42" width="160" height="2" fill="rgba(255,255,255,0.08)"/>
+      <rect x="10" y="78" width="160" height="2" fill="rgba(255,255,255,0.08)"/>
+      <!-- Books row 1 -->
+      <rect x="16" y="14" width="8" height="26" rx="1" fill="rgba(255,255,255,0.25)"/>
+      <rect x="26" y="16" width="6" height="24" rx="1" fill="rgba(255,105,46,0.5)"/>
+      <rect x="34" y="12" width="10" height="28" rx="1" fill="rgba(255,255,255,0.2)"/>
+      <rect x="46" y="18" width="8" height="22" rx="1" fill="rgba(255,255,255,0.15)"/>
+      <rect x="56" y="14" width="6" height="26" rx="1" fill="rgba(255,255,255,0.25)"/>
+      <rect x="64" y="16" width="10" height="24" rx="1" fill="rgba(255,105,46,0.4)"/>
+      <rect x="76" y="12" width="8" height="28" rx="1" fill="rgba(255,255,255,0.2)"/>
+      <rect x="86" y="18" width="6" height="22" rx="1" fill="rgba(255,255,255,0.15)"/>
+      <rect x="94" y="14" width="10" height="26" rx="1" fill="rgba(255,255,255,0.25)"/>
+      <rect x="106" y="16" width="8" height="24" rx="1" fill="rgba(255,105,46,0.35)"/>
+      <rect x="116" y="12" width="10" height="28" rx="1" fill="rgba(255,255,255,0.2)"/>
+      <rect x="128" y="18" width="8" height="22" rx="1" fill="rgba(255,255,255,0.15)"/>
+      <rect x="138" y="14" width="10" height="26" rx="1" fill="rgba(255,105,46,0.3)"/>
+      <rect x="150" y="16" width="12" height="24" rx="1" fill="rgba(255,255,255,0.2)"/>
+      <!-- Books row 2 -->
+      <rect x="16" y="48" width="10" height="28" rx="1" fill="rgba(255,105,46,0.35)"/>
+      <rect x="28" y="50" width="8" height="26" rx="1" fill="rgba(255,255,255,0.15)"/>
+      <rect x="38" y="46" width="10" height="30" rx="1" fill="rgba(255,255,255,0.2)"/>
+      <rect x="50" y="52" width="6" height="24" rx="1" fill="rgba(255,255,255,0.15)"/>
+      <rect x="58" y="48" width="8" height="28" rx="1" fill="rgba(255,105,46,0.3)"/>
+      <rect x="68" y="50" width="10" height="26" rx="1" fill="rgba(255,255,255,0.2)"/>
+      <rect x="80" y="46" width="8" height="30" rx="1" fill="rgba(255,255,255,0.15)"/>
+      <rect x="90" y="52" width="10" height="24" rx="1" fill="rgba(255,105,46,0.4)"/>
+      <!-- Row 3 -->
+      <rect x="16" y="84" width="8" height="30" rx="1" fill="rgba(255,255,255,0.2)"/>
+      <rect x="26" y="86" width="10" height="28" rx="1" fill="rgba(255,105,46,0.3)"/>
+      <rect x="38" y="82" width="8" height="32" rx="1" fill="rgba(255,255,255,0.15)"/>
+      <rect x="48" y="88" width="10" height="26" rx="1" fill="rgba(255,255,255,0.2)"/>
+      <rect x="60" y="84" width="6" height="30" rx="1" fill="rgba(255,105,46,0.35)"/>
+      <!-- Child reading (bottom right) -->
+      <circle cx="140" cy="96" r="10" fill="rgba(255,255,255,0.25)"/>
+      <rect x="128" y="106" width="24" height="16" rx="4" fill="rgba(255,105,46,0.5)"/>
+      <rect x="126" y="114" width="28" height="8" rx="2" fill="rgba(255,255,255,0.2)"/>
+    </svg>
+  </div>
+
+  <div class="op-body">
+
+    <!-- THE OPPORTUNITY -->
+    <div>
+      <div class="op-section-header">The Opportunity</div>
+      <div class="op-stats">
+        <div class="op-stat-card">
+          <div class="op-stat-number pumpkin">6-8 weeks</div>
+          <div class="op-stat-label">Average book review cycle today</div>
+        </div>
+        <div class="op-stat-arrow">&#8594;</div>
+        <div class="op-stat-card">
+          <div class="op-stat-number teal">2 days</div>
+          <div class="op-stat-label">With Bookmarked automation</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROBLEM / SOLUTION -->
+    <div class="op-split">
+      <div class="op-split-card problem">
+        <h3>Without Bookmarked</h3>
+        <ul>
+          <li>6-8 week review cycles per challenged book</li>
+          <li>Manual spreadsheets and paper trails</li>
+          <li>Scrambled board meeting prep</li>
+          <li>Librarian burnout and turnover risk</li>
+          <li>Compliance gaps across campuses</li>
+        </ul>
+      </div>
+      <div class="op-split-card solution">
+        <h3>With Bookmarked</h3>
+        <ul>
+          <li>2-day reviews with automated documentation</li>
+          <li>One-click defensible audit trails</li>
+          <li>Board-ready reports generated instantly</li>
+          <li>Librarians focus on students and collections</li>
+          <li>Consistent policies across every building</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div>
+      <div class="op-section-header">How It Works</div>
+      <div class="op-features">
+        <div class="op-feature">
+          <svg width="36" height="36" viewBox="0 0 48 48">
+            <rect x="10" y="8" width="28" height="36" rx="3" fill="#107569"/>
+            <rect x="10" y="8" width="8" height="36" rx="2" fill="#0D5A52"/>
+            <rect x="22" y="20" width="12" height="2" rx="1" fill="rgba(255,255,255,0.3)"/>
+            <rect x="22" y="26" width="8" height="2" rx="1" fill="rgba(255,255,255,0.3)"/>
+            <path d="M30 8 L30 2 L34 5 L38 2 L38 8" fill="#FF692E"/>
+          </svg>
+          <h4>Book Enters Review</h4>
+          <p>A title is challenged or flagged. Bookmarked captures everything automatically.</p>
+        </div>
+        <div class="op-feature">
+          <svg width="36" height="36" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="18" fill="#107569"/>
+            <circle cx="24" cy="24" r="14" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <path d="M18 24 L22 29 L32 18" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h4>AI-Assisted Review</h4>
+          <p>Automated content analysis, committee coordination, and compliance verification.</p>
+        </div>
+        <div class="op-feature">
+          <svg width="36" height="36" viewBox="0 0 48 48">
+            <rect x="8" y="8" width="32" height="36" rx="3" fill="none" stroke="#E5E7EB" stroke-width="1.5"/>
+            <rect x="8" y="8" width="32" height="4" rx="1" fill="#E5E7EB"/>
+            <rect x="8" y="24" width="32" height="2" fill="#E5E7EB"/>
+            <rect x="12" y="16" width="8" height="6" rx="1" fill="#107569"/>
+            <rect x="22" y="17" width="6" height="5" rx="1" fill="#FF692E"/>
+            <rect x="30" y="16" width="6" height="6" rx="1" fill="#12A38C"/>
+            <rect x="12" y="28" width="8" height="12" rx="1" fill="#107569" opacity="0.7"/>
+            <rect x="22" y="30" width="6" height="10" rx="1" fill="#12A38C" opacity="0.5"/>
+          </svg>
+          <h4>Board-Ready Records</h4>
+          <p>Complete audit trail, defensible documentation, one-click board reports.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TESTIMONIAL -->
+    <div class="op-testimonial">
+      <blockquote>"Bookmarked turned a 6-week compliance nightmare into a 2-day process. Our librarians can focus on what they do best — connecting kids with books."</blockquote>
+      <div class="attr">— Library Director, Temple ISD</div>
+    </div>
+
+    <!-- TRUST -->
+    <div style="display: flex; gap: 32px; justify-content: center; text-align: center;">
+      <div>
+        <div style="font-size: 28px; font-weight: 800; color: #107569;">150+</div>
+        <div style="font-size: 11px; font-weight: 600; color: #475467;">Texas Districts</div>
+      </div>
+      <div>
+        <div style="font-size: 28px; font-weight: 800; color: #12A38C;">500K+</div>
+        <div style="font-size: 11px; font-weight: 600; color: #475467;">Students Served</div>
+      </div>
+      <div>
+        <div style="font-size: 28px; font-weight: 800; color: #FF692E;">85%</div>
+        <div style="font-size: 11px; font-weight: 600; color: #475467;">Less Time on Reviews</div>
+      </div>
+    </div>
+
+  </div><!-- end op-body -->
+
+  <!-- CTA -->
+  <div class="op-cta">
+    <div>
+      <h2>Ready to Give Your Librarians Their Time Back?</h2>
+      <p>Join 150+ Texas districts building vibrant, compliant collections.</p>
+    </div>
+    <a href="#" class="op-cta-button">Book a Walkthrough</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="op-footer">
+    <div class="logo">Bookmarked</div>
+    <div style="text-align: right;">
+      <div style="font-size: 11px; color: white; font-weight: 600;">Paige Turner &middot; paige@bookmarked.com</div>
+      <div class="tagline">The Book Intelligence Company</div>
+    </div>
+  </div>
+
+</div><!-- end page -->
+
+</body>
+</html>
