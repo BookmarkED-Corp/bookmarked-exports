@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding Bookmarked's Book Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bm-eigengrau: #101828;
+  --bm-deep-green: #107569;
+  --bm-teal-accent: #12A38C;
+  --bm-white: #FFFFFF;
+  --bm-pumpkin: #FF692E;
+  --bm-secondary-text: #475467;
+  --bm-muted-gray: #9CA3AF;
+  --bm-border-light: #E5E7EB;
+  --bm-bg-cool: #F8FAFC;
+  --bm-bg-light: #F9FAFB;
+  --bm-font-family: 'Urbanist', Arial, Helvetica, sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--bm-font-family);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--bm-eigengrau);
+  background: var(--bm-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---- Header ---- */
+.header {
+  background: linear-gradient(135deg, #0D5A52 0%, #107569 40%, #12A38C 100%);
+  padding: 48px 0 40px;
+  color: white;
+}
+
+.header .page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header-logo {
+  height: 28px;
+  width: auto;
+  opacity: 0.95;
+}
+
+.header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.header p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.85);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.audience-note {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-top: 8px;
+}
+
+/* ---- Sections ---- */
+.section {
+  padding: 40px 0;
+}
+
+.section--alt {
+  background: var(--bm-bg-cool);
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--bm-eigengrau);
+  margin-bottom: 8px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: 16px;
+  color: var(--bm-secondary-text);
+  margin-bottom: 24px;
+  max-width: 640px;
+}
+
+/* ---- Pillar Cards ---- */
+.pillars {
+  display: grid;
+  gap: 20px;
+}
+
+.pillar {
+  background: var(--bm-bg-light);
+  border-radius: 12px;
+  padding: 24px;
+  border-left: 4px solid var(--bm-teal-accent);
+}
+
+.pillar-number {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--bm-teal-accent);
+  margin-bottom: 6px;
+}
+
+.pillar h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--bm-eigengrau);
+  margin-bottom: 8px;
+}
+
+.pillar p {
+  font-size: 15px;
+  color: var(--bm-secondary-text);
+  line-height: 1.6;
+}
+
+/* ---- Comparison Table ---- */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+.comparison-table th {
+  background: var(--bm-bg-cool);
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 700;
+  color: var(--bm-eigengrau);
+  border-bottom: 2px solid var(--bm-border-light);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.comparison-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--bm-border-light);
+  color: var(--bm-secondary-text);
+  vertical-align: top;
+}
+
+.comparison-table td:first-child {
+  font-weight: 600;
+  color: var(--bm-eigengrau);
+  width: 30%;
+}
+
+.col-bookmarked {
+  background: rgba(18, 163, 140, 0.04);
+}
+
+.check { color: var(--bm-teal-accent); font-weight: 700; }
+.caution { color: var(--bm-pumpkin); font-weight: 700; }
+
+/* ---- Key Message Box ---- */
+.key-message {
+  background: var(--bm-bg-light);
+  border-left: 4px solid var(--bm-deep-green);
+  padding: 20px 24px;
+  border-radius: 0 12px 12px 0;
+  margin: 24px 0;
+}
+
+.key-message p {
+  font-size: 16px;
+  font-style: italic;
+  color: var(--bm-secondary-text);
+  line-height: 1.6;
+}
+
+/* ---- Vision Section ---- */
+.vision-block {
+  background: linear-gradient(135deg, #101828 0%, #1D2939 100%);
+  border-radius: 12px;
+  padding: 32px;
+  color: white;
+  margin-top: 24px;
+}
+
+.vision-block h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.vision-block p {
+  font-size: 15px;
+  color: var(--bm-muted-gray);
+  line-height: 1.6;
+}
+
+/* ---- Footer ---- */
+.footer {
+  background: var(--bm-deep-green);
+  padding: 32px 0;
+  color: white;
+  text-align: center;
+}
+
+.footer-logo {
+  height: 20px;
+  width: auto;
+  margin-bottom: 8px;
+}
+
+.footer p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+
+/* ---- Print ---- */
+@media print {
+  body { font-size: 11pt; }
+  .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 32px 0 24px; }
+  .header h1 { font-size: 24pt; }
+  .section { padding: 24px 0; }
+  .pillar { break-inside: avoid; }
+  .vision-block { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+@media (max-width: 600px) {
+  .header h1 { font-size: 24px; }
+  .section-title { font-size: 20px; }
+  .pillar { padding: 20px; }
+  .comparison-table { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="page-container">
+    <div>
+      <img src="https://raw.githubusercontent.com/stevewandler/bookmarked-exports/main/assets/bookmarked-logo-white.png" alt="Bookmarked" class="header-logo" onerror="this.style.display='none'">
+    </div>
+    <h1>Understanding Book Intelligence</h1>
+    <p>How Bookmarked provides consistent, defensible, and sourced intelligence on your book collection &mdash; and why that matters for your board.</p>
+    <div class="audience-note">Prepared for district decision-makers</div>
+  </div>
+</div>
+
+<!-- What We Do -->
+<div class="section">
+  <div class="page-container">
+    <div class="section-title">What Bookmarked Does</div>
+    <div class="section-subtitle">Bookmarked is a Book Intelligence platform. We provide structured, sourced intelligence about books to help your district make informed collection decisions.</div>
+
+    <div class="key-message">
+      <p>"We provide intelligence, not instructions. Data, not directives. Every piece of information is tied to a specific ISBN, sourced from verifiable data, and available to every reviewer in your district &mdash; the same information, every time."</p>
+    </div>
+
+    <p style="font-size: 15px; color: var(--bm-secondary-text); line-height: 1.6; margin-top: 16px;">For each book in your catalog, Bookmarked aggregates publicly available information &mdash; professional reviews, challenge and flag data from other districts, news coverage, age and grade-level assessments, and content signals &mdash; all tied to the exact ISBN your district is evaluating. Your librarians and review committees see the same comprehensive intelligence, in the same format, for every title.</p>
+  </div>
+</div>
+
+<!-- Five Pillars -->
+<div class="section section--alt">
+  <div class="page-container">
+    <div class="section-title">Why This Approach Matters</div>
+    <div class="section-subtitle">Five reasons Bookmarked's methodology produces better outcomes for your board and your community.</div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-number">01</div>
+        <h3>Consistency &mdash; One System, One Answer</h3>
+        <p>When three librarians use three different AI tools with three different prompts, they get three different results. When five people use a different tool, that's five more variations. Your board needs <strong>one defensible answer</strong>, not a dozen contradicting ones. Bookmarked gives every reviewer the same intelligence, in the same framework, every time.</p>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-number">02</div>
+        <h3>Transparency &mdash; We Show Our Sources</h3>
+        <p>General AI tools synthesize from training data that may be incomplete, outdated, or incorrect &mdash; especially for newer titles. They'll give a confident-sounding answer even when they have no real information. <strong>Bookmarked is transparent about what we know and where it came from.</strong> We aggregate publicly available intelligence &mdash; professional reviews, challenge data, news coverage &mdash; and we cite our sources. We never fabricate information about a book.</p>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-number">03</div>
+        <h3>Defensibility &mdash; An Audit Trail That Holds Up</h3>
+        <p>When a parent challenges a book at a board meeting, "we asked an AI chatbot" is not a defensible answer. Bookmarked creates a <strong>documented, traceable review process</strong> with sourced intelligence, reviewer notes, committee decisions, and board-ready documentation. This is the difference between a research tool and a compliance system.</p>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-number">04</div>
+        <h3>ISBN Fidelity &mdash; The Right Book, Not Just A Book</h3>
+        <p>Your board policy requires ISBN-based lookup for a reason: different editions of the same title can have different content. General AI tools don't distinguish between editions, ISBNs, or versions. <strong>Bookmarked ties every piece of intelligence to the specific ISBN</strong> your district is considering &mdash; the exact edition, the exact book.</p>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-number">05</div>
+        <h3>Institutional Memory &mdash; Intelligence That Stays</h3>
+        <p>AI chatbot conversations disappear or get lost in individual accounts. Bookmarked creates a <strong>shared, persistent record</strong> for your district. Librarian notes, committee decisions, board actions &mdash; all in one place. When staff changes happen, the knowledge stays. When a title comes up again next year, the history is already there.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Comparison -->
+<div class="section">
+  <div class="page-container">
+    <div class="section-title">Side-by-Side Comparison</div>
+    <div class="section-subtitle">How Bookmarked compares to using a general-purpose AI chatbot for book review.</div>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>General AI Chatbot</th>
+          <th class="col-bookmarked">Bookmarked</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Consistent results</td>
+          <td><span class="caution">Different prompt = different answer</span></td>
+          <td class="col-bookmarked"><span class="check">Same intelligence for every reviewer</span></td>
+        </tr>
+        <tr>
+          <td>Source attribution</td>
+          <td><span class="caution">Cannot cite where information came from</span></td>
+          <td class="col-bookmarked"><span class="check">Every data point is sourced and traceable</span></td>
+        </tr>
+        <tr>
+          <td>ISBN-level precision</td>
+          <td><span class="caution">No edition or ISBN awareness</span></td>
+          <td class="col-bookmarked"><span class="check">Intelligence tied to exact ISBN</span></td>
+        </tr>
+        <tr>
+          <td>Audit trail</td>
+          <td><span class="caution">No documentation, no history</span></td>
+          <td class="col-bookmarked"><span class="check">Board-ready documentation as a byproduct</span></td>
+        </tr>
+        <tr>
+          <td>Accuracy on new titles</td>
+          <td><span class="caution">May fabricate information confidently</span></td>
+          <td class="col-bookmarked"><span class="check">Transparent about data availability</span></td>
+        </tr>
+        <tr>
+          <td>Shared across staff</td>
+          <td><span class="caution">Individual accounts, no sharing</span></td>
+          <td class="col-bookmarked"><span class="check">Shared workspace for entire district</span></td>
+        </tr>
+        <tr>
+          <td>Reviewer notes &amp; decisions</td>
+          <td><span class="caution">Not supported</span></td>
+          <td class="col-bookmarked"><span class="check">Librarian notes, committee actions stored</span></td>
+        </tr>
+        <tr>
+          <td>Scales to full catalog</td>
+          <td><span class="caution">One book at a time, manually</span></td>
+          <td class="col-bookmarked"><span class="check">Processes thousands of titles systematically</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Where We're Headed -->
+<div class="section section--alt">
+  <div class="page-container">
+    <div class="section-title">Where We're Headed</div>
+
+    <div class="vision-block">
+      <h3>Verified, Source-Level Intelligence</h3>
+      <p>Bookmarked is building partnerships with publishers to create a secure environment where publishers provide book content directly. Our AI reads the actual book, identifies compliance-relevant content, and generates verified intelligence &mdash; while protecting the publisher's copyright and the author's work. This creates ground-truth intelligence that no general-purpose AI tool can provide, because publishers will never give their content to a chatbot. Districts get the most accurate, most complete book intelligence available anywhere.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom Line -->
+<div class="section">
+  <div class="page-container">
+    <div class="section-title">The Bottom Line</div>
+    <div class="key-message">
+      <p>"A general AI chatbot will give you <em>an</em> answer about any book. The question is whether that answer is <em>the right</em> answer, whether it's the <em>same</em> answer everyone else gets, and whether it will hold up when a parent stands up at a board meeting and asks: <strong>'How did you review this book?'</strong>"</p>
+    </div>
+    <p style="font-size: 15px; color: var(--bm-secondary-text); line-height: 1.6; margin-top: 16px;">Bookmarked gives your district a consistent, defensible, and transparent system for book intelligence &mdash; so your librarians can focus on connecting students with great books, and your board can have confidence that compliance is handled.</p>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="page-container">
+    <p style="font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.7);">The Book Intelligence Company</p>
+    <p style="margin-top: 8px;"><a href="https://bookmarked.com">bookmarked.com</a></p>
+  </div>
+</div>
+
+</body>
+</html>
