@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookmarked — Brand Showcase: Blog, Social, One-Pager</title>
+<link rel="stylesheet" href="bookmarked-brand.css">
+<style>
+/* Showcase wrapper */
+body { background: #F3F3F3; }
+.showcase-header { text-align: center; padding: 48px 24px 16px; max-width: 800px; margin: 0 auto; }
+.showcase-header h1 { font-size: 28px; font-weight: 800; color: var(--bm-eigengrau); margin-bottom: 8px; }
+.showcase-header p { font-size: 15px; color: var(--bm-muted-gray); }
+.showcase-label { display: inline-block; padding: 3px 10px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: rgba(18,163,140,0.1); color: var(--bm-teal-accent); margin-bottom: 8px; }
+
+.section-divider {
+  text-align: center; padding: 48px 24px 24px; max-width: 800px; margin: 0 auto;
+}
+.section-divider h2 { font-size: 22px; font-weight: 800; color: var(--bm-eigengrau); margin-bottom: 4px; }
+.section-divider p { font-size: 13px; color: var(--bm-muted-gray); }
+.format-label { display: inline-block; padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: rgba(255,105,46,0.1); color: var(--bm-pumpkin); margin-bottom: 8px; }
+
+/* Browser chrome wrapper */
+.browser-chrome {
+  max-width: 1100px; margin: 16px auto 48px; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.12); border: 1px solid var(--bm-border-light);
+}
+.browser-bar { background: #F3F3F3; padding: 10px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--bm-border-light); }
+.browser-dot { width: 12px; height: 12px; border-radius: 50%; }
+.browser-dot.red { background: #FF5F57; }
+.browser-dot.yellow { background: #FFBD2E; }
+.browser-dot.green { background: #28C840; }
+.browser-url { flex: 1; margin-left: 12px; background: white; border-radius: 6px; padding: 6px 14px; font-size: 12px; color: var(--bm-muted-gray); border: 1px solid var(--bm-border-light); }
+.browser-body { background: white; }
+
+/* ═══════════════════════════════════════════════════════
+   SOCIAL MEDIA STYLES
+   ═══════════════════════════════════════════════════════ */
+.social-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  max-width: 1000px; margin: 0 auto 48px; padding: 0 24px;
+}
+.social-card {
+  border-radius: 12px; overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1); border: 1px solid var(--bm-border-light);
+  background: white;
+}
+.social-card__platform {
+  padding: 10px 16px; background: #F9FAFB; border-bottom: 1px solid var(--bm-border-light);
+  font-size: 12px; font-weight: 700; color: var(--bm-secondary-text); text-transform: uppercase; letter-spacing: 1px;
+  display: flex; align-items: center; gap: 6px;
+}
+.social-card__platform .dims { font-weight: 400; color: var(--bm-muted-gray); margin-left: auto; }
+
+/* ═══════════════════════════════════════════════════════
+   ONE-PAGER STYLES
+   ═══════════════════════════════════════════════════════ */
+.onepager-wrapper {
+  max-width: 680px; margin: 0 auto 48px; padding: 0 24px;
+}
+.onepager {
+  background: white; border-radius: 4px;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.04);
+  overflow: hidden;
+  /* 8.5 x 11 aspect ratio */
+  aspect-ratio: 8.5 / 11;
+}
+
+/* ═══════════════════════════════════════════════════════
+   BLOG POST STYLES
+   ═══════════════════════════════════════════════════════ */
+.blog-article { max-width: 680px; margin: 0 auto; padding: 48px 40px 64px; }
+.blog-article h1 { font-size: 32px; font-weight: 800; line-height: 1.2; color: var(--bm-eigengrau); margin-bottom: 16px; }
+.blog-article .meta { font-size: 13px; color: var(--bm-muted-gray); margin-bottom: 32px; display: flex; align-items: center; gap: 12px; }
+.blog-article .meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--bm-muted-gray); }
+.blog-article p { font-size: 16px; line-height: 1.8; color: var(--bm-secondary-text); margin-bottom: 20px; }
+.blog-article h2 { font-size: 22px; font-weight: 800; color: var(--bm-eigengrau); margin: 36px 0 12px; }
+.blog-article .pullquote {
+  margin: 32px 0; padding: 20px 24px; border-left: 4px solid var(--bm-teal-accent);
+  background: var(--bm-bg-cool); border-radius: 0 8px 8px 0;
+}
+.blog-article .pullquote p { font-size: 18px; font-style: italic; color: var(--bm-eigengrau); margin-bottom: 0; line-height: 1.6; }
+.blog-article .inline-stat {
+  display: inline-flex; align-items: baseline; gap: 6px;
+  background: var(--bm-bg-warm); padding: 2px 10px; border-radius: 6px;
+  font-weight: 700; color: var(--bm-deep-green);
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     SHOWCASE HEADER
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div class="showcase-header">
+  <span class="showcase-label">Brand Showcase — Cascaded Formats</span>
+  <h1>Blog Post &middot; Social Media &middot; One-Pager</h1>
+  <p>Same superintendent persona, same empowerment messaging, same design system — three more formats.</p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FORMAT 1: BLOG POST
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div class="section-divider">
+  <span class="format-label">Format 1</span>
+  <h2>Blog Post</h2>
+  <p>Branded blog layout with featured image, pull quotes, and warm CTA.</p>
+</div>
+
+<div class="browser-chrome">
+  <div class="browser-bar">
+    <div class="browser-dot red"></div>
+    <div class="browser-dot yellow"></div>
+    <div class="browser-dot green"></div>
+    <div class="browser-url">bookmarked.com/blog/give-librarians-time-back</div>
+  </div>
+  <div class="browser-body">
+
+    <!-- Blog nav -->
+    <div style="padding: 16px 40px; border-bottom: 1px solid var(--bm-border-light); display: flex; align-items: center; justify-content: space-between;">
+      <div style="font-size: 18px; font-weight: 800; color: var(--bm-eigengrau); letter-spacing: -0.5px;">Bookmarked</div>
+      <div style="display: flex; gap: 24px; font-size: 14px; color: var(--bm-secondary-text); font-weight: 500;">
+        <span>Platform</span><span>For Districts</span><span style="color: var(--bm-teal-accent); font-weight: 700;">Blog</span><span>Contact</span>
+      </div>
+    </div>
+
+    <!-- Featured image area -->
+    <div style="background: linear-gradient(135deg, #0D5A52 0%, #107569 40%, #12A38C 100%); padding: 64px 40px; position: relative; overflow: hidden;">
+      <!-- Decorative bookshelf shapes -->
+      <svg width="200" height="140" viewBox="0 0 200 140" style="position: absolute; right: 40px; bottom: 20px; opacity: 0.15;">
+        <rect x="0" y="0" width="200" height="140" rx="8" fill="none"/>
+        <rect x="10" y="10" width="180" height="4" rx="2" fill="white"/>
+        <rect x="10" y="50" width="180" height="4" rx="2" fill="white"/>
+        <rect x="10" y="90" width="180" height="4" rx="2" fill="white"/>
+        <rect x="14" y="18" width="10" height="30" rx="1" fill="white"/>
+        <rect x="28" y="22" width="8" height="26" rx="1" fill="white"/>
+        <rect x="40" y="16" width="12" height="32" rx="1" fill="white"/>
+        <rect x="56" y="20" width="8" height="28" rx="1" fill="white"/>
+        <rect x="68" y="18" width="10" height="30" rx="1" fill="white"/>
+        <rect x="82" y="24" width="8" height="24" rx="1" fill="white"/>
+        <rect x="14" y="58" width="12" height="30" rx="1" fill="white"/>
+        <rect x="30" y="62" width="8" height="26" rx="1" fill="white"/>
+        <rect x="42" y="56" width="10" height="32" rx="1" fill="white"/>
+        <rect x="56" y="60" width="12" height="28" rx="1" fill="white"/>
+        <rect x="72" y="58" width="8" height="30" rx="1" fill="white"/>
+      </svg>
+      <div style="position: relative; z-index: 1;">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 12px;">LIBRARY LEADERSHIP</div>
+        <h1 style="font-size: 32px; font-weight: 800; color: white; line-height: 1.2; max-width: 500px; margin: 0;">How to Give Your Librarians Their Time Back</h1>
+        <div style="margin-top: 16px; font-size: 13px; color: rgba(255,255,255,0.5);">March 17, 2026 &middot; 5 min read</div>
+      </div>
+    </div>
+
+    <!-- Article body -->
+    <div class="blog-article">
+      <div class="meta">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36'%3E%3Ccircle cx='18' cy='18' r='18' fill='%2312A38C'/%3E%3Ctext x='18' y='23' text-anchor='middle' font-family='Urbanist,sans-serif' font-size='14' font-weight='700' fill='white'%3EPT%3C/text%3E%3C/svg%3E" style="border-radius: 50%; width: 36px; height: 36px;">
+        <div>
+          <div style="font-weight: 600; color: var(--bm-eigengrau); font-size: 14px;">Paige Turner</div>
+          <div style="font-size: 12px;">March 17, 2026</div>
+        </div>
+      </div>
+
+      <p>Here's a scenario most superintendents know too well: A parent challenges a book at one of your campuses. What should be a straightforward review turns into weeks of committee meetings, email chains, and manual documentation — all while your librarian's real work sits waiting.</p>
+
+      <p>Across Texas, librarians spend <span class="inline-stat">6–8 weeks</span> per challenged title just managing the review process. That's not a compliance problem — it's a time problem. And it's keeping your best people from doing what they were hired to do: building collections that help every student find their next great book.</p>
+
+      <h2>The Real Cost Isn't Compliance — It's Opportunity</h2>
+
+      <p>When a librarian spends three hours pulling documentation for a board report, that's three hours they didn't spend on a reading program. When they spend a week coordinating a review committee via email, that's a week of collection development that didn't happen.</p>
+
+      <p>The districts we work with don't frame this as a compliance issue. They frame it as a capacity issue. The question isn't "Are we compliant?" — it's "Are we giving our library teams the tools to do their jobs well?"</p>
+
+      <div class="pullquote">
+        <p>"Our librarians went from spending half their week on documentation to focusing almost entirely on students. That's the shift that matters."</p>
+        <div style="font-size: 13px; font-weight: 600; color: var(--bm-secondary-text); margin-top: 8px;">— Library Director, Temple ISD</div>
+      </div>
+
+      <h2>What Changes When the Process Is Automated</h2>
+
+      <p>When book reviews take <span class="inline-stat">2 days</span> instead of 6–8 weeks, the entire dynamic shifts. Librarians get their schedules back. Administrators get board-ready reports without asking for them. And the library program — the thing parents and communities actually care about — gets the attention it deserves.</p>
+
+      <p>That's what <span class="inline-stat">150+ Texas districts</span> have already figured out. Not that they needed a compliance tool — but that they needed to stop losing their best people's time to a process that should be automatic.</p>
+
+      <h2>Start With One Question</h2>
+
+      <p>Ask your library team how many hours they spend each month on book review documentation. The answer usually surprises people. And it's the clearest signal that there's a better way.</p>
+
+      <!-- Blog CTA — warm cream, matching website -->
+      <div style="background: var(--bm-bg-warm); border-radius: 12px; padding: 32px; text-align: center; margin-top: 40px; border-top: 3px solid var(--bm-teal-accent);">
+        <svg width="64" height="48" viewBox="0 0 180 140" style="margin-bottom: 8px;">
+          <path d="M30 90 C30 80, 35 70, 45 68 L45 100 C35 100, 30 95, 30 90Z" fill="#D4A574"/>
+          <path d="M150 90 C150 80, 145 70, 135 68 L135 100 C145 100, 150 95, 150 90Z" fill="#D4A574"/>
+          <path d="M90 30 Q60 28, 40 34 L40 100 Q60 96, 90 98Z" fill="#FAFAF8" stroke="#E5E7EB" stroke-width="1"/>
+          <path d="M90 30 Q120 28, 140 34 L140 100 Q120 96, 90 98Z" fill="#FFF" stroke="#E5E7EB" stroke-width="1"/>
+          <line x1="90" y1="28" x2="90" y2="100" stroke="#107569" stroke-width="2"/>
+        </svg>
+        <h3 style="font-size: 20px; font-weight: 800; color: var(--bm-eigengrau); margin-bottom: 6px;">Ready to give your librarians their time back?</h3>
+        <p style="font-size: 14px; color: var(--bm-secondary-text); margin-bottom: 16px;">See how Bookmarked works in a 20-minute walkthrough.</p>
+        <a href="#" class="bm-cta-button" style="background: var(--bm-pumpkin); border-color: var(--bm-pumpkin);">Book a Walkthrough</a>
+      </div>
+
+      <!-- Author box -->
+      <div style="display: flex; align-items: center; gap: 16px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--bm-border-light);">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Ccircle cx='24' cy='24' r='24' fill='%2312A38C'/%3E%3Ctext x='24' y='30' text-anchor='middle' font-family='Urbanist,sans-serif' font-size='18' font-weight='700' fill='white'%3EPT%3C/text%3E%3C/svg%3E" style="border-radius: 50%; width: 48px; height: 48px;">
+        <div>
+          <div style="font-weight: 700; color: var(--bm-eigengrau); font-size: 15px;">Paige Turner</div>
+          <div style="font-size: 13px; color: var(--bm-muted-gray);">Content Lead at Bookmarked &middot; paige@bookmarked.com</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thin footer -->
+    <div style="background: var(--bm-deep-green); padding: 16px 0; text-align: center;">
+      <div style="font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.7);">The Book Intelligence Company</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FORMAT 2: SOCIAL MEDIA POSTS
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div class="section-divider">
+  <span class="format-label">Format 2</span>
+  <h2>Social Media Posts</h2>
+  <p>Four platforms, correct aspect ratios, superintendent-facing messaging.</p>
+</div>
+
+<div class="social-grid">
+
+  <!-- LINKEDIN — 1200x627 -->
+  <div class="social-card">
+    <div class="social-card__platform">
+      <svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" rx="3" fill="#0A66C2"/><path d="M4.5 6.5V12M4.5 4.2a.8.8 0 11-1.6 0 .8.8 0 011.6 0zM7 6.5v5.5m0-3.8c0-1.7 3.5-1.7 3.5 0V12" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg>
+      LinkedIn
+      <span class="dims">1200 &times; 627</span>
+    </div>
+    <div style="aspect-ratio: 1200/627; background: linear-gradient(135deg, #0D5A52 0%, #107569 40%, #12A38C 100%); position: relative; overflow: hidden; display: flex; align-items: center; padding: 32px;">
+      <!-- Bookshelf accent -->
+      <svg width="120" height="90" viewBox="0 0 120 90" style="position: absolute; right: 24px; bottom: 16px; opacity: 0.12;">
+        <rect x="0" y="0" width="120" height="3" rx="1" fill="white"/>
+        <rect x="0" y="30" width="120" height="3" rx="1" fill="white"/>
+        <rect x="0" y="60" width="120" height="3" rx="1" fill="white"/>
+        <rect x="4" y="6" width="8" height="22" rx="1" fill="white"/>
+        <rect x="16" y="10" width="6" height="18" rx="1" fill="white"/>
+        <rect x="26" y="4" width="10" height="24" rx="1" fill="white"/>
+        <rect x="40" y="8" width="8" height="20" rx="1" fill="white"/>
+        <rect x="4" y="36" width="10" height="22" rx="1" fill="white"/>
+        <rect x="18" y="40" width="6" height="18" rx="1" fill="white"/>
+        <rect x="28" y="34" width="8" height="24" rx="1" fill="white"/>
+      </svg>
+      <div style="position: relative; z-index: 1;">
+        <div style="font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px;">BOOKMARKED</div>
+        <div style="font-size: 20px; font-weight: 800; color: white; line-height: 1.3; max-width: 320px;">Libraries should be the most vibrant rooms in your schools.</div>
+        <div style="margin-top: 12px; font-size: 11px; color: rgba(204,251,239,0.8);">Your librarians spend weeks on book reviews. We give them that time back.</div>
+        <div style="margin-top: 16px; display: inline-block; padding: 6px 16px; background: #FF692E; border-radius: 6px; font-size: 11px; font-weight: 700; color: white;">Learn More</div>
+      </div>
+    </div>
+    <div style="padding: 12px 16px; font-size: 12px; color: var(--bm-secondary-text); line-height: 1.5;">
+      <strong>Bookmarked</strong> &middot; Your librarians were hired to connect kids with books — not manage spreadsheets. We help 150+ Texas districts give their library teams their time back. #EdTech #LibraryLeadership
+    </div>
+  </div>
+
+  <!-- INSTAGRAM — 1080x1080 -->
+  <div class="social-card">
+    <div class="social-card__platform">
+      <svg width="16" height="16" viewBox="0 0 16 16"><rect width="16" height="16" rx="4" fill="url(#ig)"/><defs><linearGradient id="ig" x1="0" y1="16" x2="16" y2="0"><stop offset="0%" stop-color="#FFDC80"/><stop offset="25%" stop-color="#F77737"/><stop offset="50%" stop-color="#C13584"/><stop offset="75%" stop-color="#833AB4"/><stop offset="100%" stop-color="#5851DB"/></linearGradient></defs><circle cx="8" cy="8" r="3.5" stroke="white" stroke-width="1.2" fill="none"/><circle cx="11.5" cy="4.5" r="0.8" fill="white"/></svg>
+      Instagram
+      <span class="dims">1080 &times; 1080</span>
+    </div>
+    <div style="aspect-ratio: 1/1; background: linear-gradient(160deg, #0D5A52 0%, #107569 50%, #12A38C 100%); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 32px;">
+      <!-- Small bookshelf illustration -->
+      <svg width="100" height="80" viewBox="0 0 160 120" style="margin-bottom: 16px; opacity: 0.85;">
+        <!-- Shelf -->
+        <rect x="20" y="90" width="120" height="6" rx="2" fill="rgba(255,255,255,0.3)"/>
+        <rect x="20" y="50" width="120" height="6" rx="2" fill="rgba(255,255,255,0.3)"/>
+        <!-- Books row 1 -->
+        <rect x="28" y="58" width="10" height="30" rx="1" fill="rgba(255,255,255,0.5)"/>
+        <rect x="42" y="62" width="8" height="26" rx="1" fill="#FF692E" opacity="0.7"/>
+        <rect x="54" y="56" width="12" height="32" rx="1" fill="rgba(255,255,255,0.4)"/>
+        <rect x="70" y="60" width="8" height="28" rx="1" fill="rgba(255,255,255,0.3)"/>
+        <rect x="82" y="58" width="10" height="30" rx="1" fill="#FF692E" opacity="0.5"/>
+        <rect x="96" y="62" width="8" height="26" rx="1" fill="rgba(255,255,255,0.4)"/>
+        <rect x="108" y="56" width="12" height="32" rx="1" fill="rgba(255,255,255,0.35)"/>
+      </svg>
+      <div style="font-size: 22px; font-weight: 800; color: white; line-height: 1.3; max-width: 280px; margin-bottom: 12px;">Your librarians curate collections. We handle the paperwork.</div>
+      <div style="font-size: 12px; color: rgba(204,251,239,0.7); max-width: 260px;">150+ Texas districts already giving their library teams their time back.</div>
+      <div style="margin-top: 20px; display: inline-block; padding: 8px 20px; background: #FF692E; border-radius: 8px; font-size: 12px; font-weight: 700; color: white;">bookmarked.com</div>
+    </div>
+  </div>
+
+  <!-- X (TWITTER) — 1600x900 -->
+  <div class="social-card">
+    <div class="social-card__platform">
+      <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#000"/><path d="M9.2 7.1L12.5 3H11.5L8.8 6.5 6.5 3H3.5L7 8.6 3.5 13H4.5L7.4 9.2 9.8 13H12.8L9.2 7.1z" fill="white" transform="scale(0.85) translate(1.2, 1.2)"/></svg>
+      X (Twitter)
+      <span class="dims">1600 &times; 900</span>
+    </div>
+    <div style="aspect-ratio: 1600/900; background: linear-gradient(135deg, #0D5A52 0%, #12A38C 100%); position: relative; overflow: hidden; display: flex; align-items: center; padding: 28px 32px;">
+      <div style="position: relative; z-index: 1;">
+        <div style="font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px;">BOOKMARKED</div>
+        <div style="font-size: 18px; font-weight: 800; color: white; line-height: 1.3; max-width: 300px;">6–8 weeks per book review?<br><span style="color: #CCFBEF;">Your librarians have better things to do.</span></div>
+        <div style="margin-top: 12px; font-size: 10px; color: rgba(255,255,255,0.5);">bookmarked.com</div>
+      </div>
+      <!-- Clock + books illustration -->
+      <svg width="140" height="100" viewBox="0 0 180 130" style="position: absolute; right: 28px; opacity: 0.2;">
+        <circle cx="90" cy="65" r="50" fill="none" stroke="white" stroke-width="3"/>
+        <line x1="90" y1="65" x2="90" y2="30" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        <line x1="90" y1="65" x2="120" y2="55" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="90" cy="65" r="4" fill="white"/>
+      </svg>
+    </div>
+    <div style="padding: 12px 16px; font-size: 12px; color: var(--bm-secondary-text); line-height: 1.5;">
+      Your librarians were hired to match books with readers — not manage spreadsheets. 150+ Texas districts already figured this out. bookmarked.com #LibraryLeadership
+    </div>
+  </div>
+
+  <!-- FACEBOOK — 1200x630 -->
+  <div class="social-card">
+    <div class="social-card__platform">
+      <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#1877F2"/><path d="M10.5 8.5H9V13H7V8.5H5.5V7H7V5.5C7 4.1 7.7 3 9.3 3H10.5V4.5H9.7C9.2 4.5 9 4.7 9 5.2V7H10.5L10.5 8.5z" fill="white"/></svg>
+      Facebook
+      <span class="dims">1200 &times; 630</span>
+    </div>
+    <div style="aspect-ratio: 1200/630; background: linear-gradient(135deg, #0D5A52 0%, #107569 40%, #12A38C 100%); position: relative; overflow: hidden; display: flex; align-items: center; padding: 28px 32px;">
+      <!-- District network illustration -->
+      <svg width="130" height="100" viewBox="0 0 180 140" style="position: absolute; right: 24px; bottom: 12px; opacity: 0.12;">
+        <circle cx="90" cy="70" r="20" fill="white"/>
+        <rect x="76" y="28" width="28" height="20" rx="3" fill="white"/>
+        <path d="M76 28 L90 18 L104 28" fill="white"/>
+        <rect x="130" y="58" width="28" height="20" rx="3" fill="white"/>
+        <rect x="22" y="58" width="28" height="20" rx="3" fill="white"/>
+        <rect x="120" y="100" width="28" height="20" rx="3" fill="white"/>
+        <rect x="32" y="100" width="28" height="20" rx="3" fill="white"/>
+        <line x1="90" y1="50" x2="90" y2="48" stroke="white" stroke-width="2"/>
+        <line x1="110" y1="70" x2="130" y2="68" stroke="white" stroke-width="2"/>
+        <line x1="70" y1="70" x2="50" y2="68" stroke="white" stroke-width="2"/>
+        <line x1="100" y1="88" x2="130" y2="105" stroke="white" stroke-width="2"/>
+        <line x1="80" y1="88" x2="50" y2="105" stroke="white" stroke-width="2"/>
+      </svg>
+      <div style="position: relative; z-index: 1;">
+        <div style="font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px;">BOOKMARKED</div>
+        <div style="font-size: 18px; font-weight: 800; color: white; line-height: 1.3; max-width: 320px;">150+ Texas districts trust Bookmarked to run their library programs.</div>
+        <div style="margin-top: 10px; font-size: 11px; color: rgba(204,251,239,0.8); max-width: 300px;">One platform for every building. Vibrant collections. Happy librarians. Confident boards.</div>
+        <div style="margin-top: 14px; display: inline-block; padding: 6px 16px; background: #FF692E; border-radius: 6px; font-size: 11px; font-weight: 700; color: white;">See How It Works</div>
+      </div>
+    </div>
+    <div style="padding: 12px 16px; font-size: 12px; color: var(--bm-secondary-text); line-height: 1.5;">
+      <strong>Bookmarked</strong> &middot; 150+ districts. 500K+ students. One platform that lets librarians focus on what matters — connecting kids with great books. 📚
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FORMAT 3: ONE-PAGER / BROCHURE
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div class="section-divider">
+  <span class="format-label">Format 3</span>
+  <h2>One-Pager / Brochure</h2>
+  <p>Print-ready 8.5&times;11 format with all key proof points.</p>
+</div>
+
+<div class="onepager-wrapper">
+  <div class="onepager" style="display: flex; flex-direction: column;">
+
+    <!-- Header band — teal gradient -->
+    <div style="background: linear-gradient(135deg, #0D5A52 0%, #107569 40%, #12A38C 100%); padding: 28px 32px; flex-shrink: 0; position: relative; overflow: hidden;">
+      <svg width="100" height="80" viewBox="0 0 160 120" style="position: absolute; right: 24px; top: 12px; opacity: 0.12;">
+        <rect x="20" y="90" width="120" height="5" rx="2" fill="white"/>
+        <rect x="20" y="50" width="120" height="5" rx="2" fill="white"/>
+        <rect x="28" y="58" width="10" height="30" rx="1" fill="white"/>
+        <rect x="42" y="62" width="8" height="26" rx="1" fill="white"/>
+        <rect x="54" y="56" width="12" height="32" rx="1" fill="white"/>
+        <rect x="70" y="60" width="8" height="28" rx="1" fill="white"/>
+        <rect x="82" y="58" width="10" height="30" rx="1" fill="white"/>
+      </svg>
+      <div style="position: relative; z-index: 1;">
+        <div style="font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.6);">BOOKMARKED</div>
+        <div style="font-size: 24px; font-weight: 800; color: white; line-height: 1.2; margin-top: 4px;">Book Intelligence for<br>Your District</div>
+        <div style="font-size: 12px; color: rgba(204,251,239,0.7); margin-top: 6px;">Give your librarians their time back.</div>
+      </div>
+    </div>
+
+    <!-- Stats row -->
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--bm-border-light); flex-shrink: 0;">
+      <div style="background: white; padding: 14px; text-align: center;">
+        <div style="font-size: 22px; font-weight: 800; color: var(--bm-deep-green);">150+</div>
+        <div style="font-size: 10px; font-weight: 600; color: var(--bm-muted-gray); text-transform: uppercase; letter-spacing: 0.5px;">Texas Districts</div>
+      </div>
+      <div style="background: white; padding: 14px; text-align: center;">
+        <div style="font-size: 22px; font-weight: 800; color: var(--bm-teal-accent);">500K+</div>
+        <div style="font-size: 10px; font-weight: 600; color: var(--bm-muted-gray); text-transform: uppercase; letter-spacing: 0.5px;">Students Served</div>
+      </div>
+      <div style="background: white; padding: 14px; text-align: center;">
+        <div style="font-size: 22px; font-weight: 800; color: var(--bm-pumpkin);">85%</div>
+        <div style="font-size: 10px; font-weight: 600; color: var(--bm-muted-gray); text-transform: uppercase; letter-spacing: 0.5px;">Less Time on Reviews</div>
+      </div>
+    </div>
+
+    <!-- Main content area -->
+    <div style="flex: 1; padding: 24px 32px; display: flex; flex-direction: column; gap: 20px;">
+
+      <!-- Opportunity section -->
+      <div>
+        <div style="font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--bm-pumpkin); margin-bottom: 4px;">THE OPPORTUNITY</div>
+        <div style="font-size: 14px; font-weight: 800; color: var(--bm-eigengrau); margin-bottom: 6px;">Your librarians should be curating collections — not managing spreadsheets.</div>
+        <div style="font-size: 11px; color: var(--bm-secondary-text); line-height: 1.6;">Book reviews, committee coordination, board reports — your team spends weeks on work that should take days. That's time they could spend connecting students with their next great book.</div>
+      </div>
+
+      <!-- Two feature cards -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div style="background: var(--bm-bg-cool); border-radius: 8px; padding: 14px; border-left: 3px solid var(--bm-teal-accent);">
+          <div style="font-size: 12px; font-weight: 800; color: var(--bm-eigengrau); margin-bottom: 4px;">Collection Intelligence</div>
+          <div style="font-size: 10px; color: var(--bm-secondary-text); line-height: 1.5;">AI-powered research on every title — content, reading level, and community fit. Your librarians make better decisions, faster.</div>
+        </div>
+        <div style="background: var(--bm-bg-cool); border-radius: 8px; padding: 14px; border-left: 3px solid var(--bm-deep-green);">
+          <div style="font-size: 12px; font-weight: 800; color: var(--bm-eigengrau); margin-bottom: 4px;">Board-Ready Reporting</div>
+          <div style="font-size: 10px; color: var(--bm-secondary-text); line-height: 1.5;">Every review decision documented automatically. Walk into board meetings with complete records — not scrambled spreadsheets.</div>
+        </div>
+      </div>
+
+      <!-- How it works -->
+      <div>
+        <div style="font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--bm-deep-green); margin-bottom: 6px;">HOW IT WORKS</div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="flex: 1; text-align: center; padding: 10px 6px; background: var(--bm-bg-warm); border-radius: 8px;">
+            <svg width="24" height="24" viewBox="0 0 48 48" style="margin-bottom: 4px;">
+              <rect x="14" y="10" width="20" height="28" rx="2" fill="#107569"/>
+              <rect x="14" y="10" width="5" height="28" rx="1" fill="#0D5A52"/>
+              <rect x="22" y="20" width="8" height="1.5" rx="0.5" fill="rgba(255,255,255,0.3)"/>
+            </svg>
+            <div style="font-size: 9px; font-weight: 700; color: var(--bm-eigengrau);">Book enters</div>
+          </div>
+          <div style="color: var(--bm-teal-accent); font-size: 14px;">&rarr;</div>
+          <div style="flex: 1; text-align: center; padding: 10px 6px; background: var(--bm-bg-warm); border-radius: 8px;">
+            <svg width="24" height="24" viewBox="0 0 48 48" style="margin-bottom: 4px;">
+              <path d="M24 8 L38 16 L38 32 Q38 42, 24 46 Q10 42, 10 32 L10 16Z" fill="#12A38C" opacity="0.2"/>
+              <path d="M20 26 L24 30 L32 20" fill="none" stroke="#12A38C" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <div style="font-size: 9px; font-weight: 700; color: var(--bm-eigengrau);">AI review</div>
+          </div>
+          <div style="color: var(--bm-teal-accent); font-size: 14px;">&rarr;</div>
+          <div style="flex: 1; text-align: center; padding: 10px 6px; background: var(--bm-bg-warm); border-radius: 8px;">
+            <svg width="24" height="24" viewBox="0 0 48 48" style="margin-bottom: 4px;">
+              <circle cx="24" cy="24" r="14" fill="#107569"/>
+              <path d="M18 24 L22 28 L30 18" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <div style="font-size: 9px; font-weight: 700; color: var(--bm-eigengrau);">Verified</div>
+          </div>
+          <div style="color: var(--bm-teal-accent); font-size: 14px;">&rarr;</div>
+          <div style="flex: 1; text-align: center; padding: 10px 6px; background: var(--bm-bg-warm); border-radius: 8px;">
+            <svg width="24" height="24" viewBox="0 0 48 48" style="margin-bottom: 4px;">
+              <rect x="10" y="12" width="28" height="24" rx="2" fill="none" stroke="#107569" stroke-width="2"/>
+              <rect x="14" y="18" width="8" height="14" rx="1" fill="#107569"/>
+              <rect x="24" y="22" width="6" height="10" rx="1" fill="#FF692E" opacity="0.7"/>
+              <rect x="32" y="16" width="3" height="16" rx="1" fill="#12A38C"/>
+            </svg>
+            <div style="font-size: 9px; font-weight: 700; color: var(--bm-eigengrau);">Cataloged</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial -->
+      <div style="background: var(--bm-bg-warm); border-radius: 8px; padding: 14px 16px; border-left: 3px solid var(--bm-teal-accent);">
+        <div style="font-size: 11px; font-style: italic; color: var(--bm-secondary-text); line-height: 1.5;">"Our librarians went from spending half their week on documentation to focusing almost entirely on students. That's the shift that matters."</div>
+        <div style="font-size: 10px; font-weight: 600; color: var(--bm-eigengrau); margin-top: 4px;">— Library Director, Temple ISD</div>
+      </div>
+    </div>
+
+    <!-- CTA footer — warm cream -->
+    <div style="background: var(--bm-bg-warm); padding: 16px 32px; border-top: 2px solid var(--bm-teal-accent); text-align: center; flex-shrink: 0;">
+      <div style="font-size: 14px; font-weight: 800; color: var(--bm-eigengrau); margin-bottom: 4px;">Ready to give your librarians their time back?</div>
+      <div style="font-size: 11px; color: var(--bm-secondary-text); margin-bottom: 8px;">See Bookmarked in action — 20-minute walkthrough.</div>
+      <div style="display: inline-block; padding: 6px 20px; background: #FF692E; border-radius: 6px; font-size: 11px; font-weight: 700; color: white;">Book a Walkthrough</div>
+      <div style="margin-top: 8px; font-size: 10px; color: var(--bm-muted-gray);">Paige Turner &middot; paige@bookmarked.com &middot; (555) 123-4567</div>
+    </div>
+
+    <!-- Thin footer -->
+    <div style="background: var(--bm-deep-green); padding: 8px 0; text-align: center; flex-shrink: 0;">
+      <div style="font-size: 9px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.7);">The Book Intelligence Company</div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Footer note -->
+<div style="text-align: center; padding: 32px 0 64px; font-size: 13px; color: var(--bm-muted-gray);">
+  All formats use the same design system, superintendent messaging, and warm cream CTA treatment.
+</div>
+
+</body>
+</html>
