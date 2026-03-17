@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PM Weekly Framework — Sarah El Massry</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap');
+:root {
+  --bm-eigengrau: #101828;
+  --bm-deep-green: #107569;
+  --bm-teal-accent: #12A38C;
+  --bm-white: #FFFFFF;
+  --bm-pumpkin: #FF692E;
+  --bm-secondary-text: #475467;
+  --bm-muted-gray: #9CA3AF;
+  --bm-border-light: #E5E7EB;
+  --bm-bg-cool: #F8FAFC;
+  --bm-bg-light: #F9FAFB;
+  --bm-font-family: 'Urbanist', Arial, sans-serif;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: var(--bm-font-family); font-size: 16px; color: var(--bm-eigengrau); background: var(--bm-white); -webkit-font-smoothing: antialiased; line-height: 1.5; }
+.hero { background: linear-gradient(135deg, #0D5A52 0%, #107569 40%, #12A38C 100%); padding: 64px 0 48px; color: white; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+.hero h1 { font-size: 36px; font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
+.hero p { font-size: 16px; color: rgba(255,255,255,0.85); margin-top: 12px; max-width: 600px; }
+.meta { display: flex; gap: 24px; margin-top: 20px; font-size: 13px; color: rgba(255,255,255,0.7); }
+.meta span { display: flex; align-items: center; gap: 6px; }
+section { padding: 48px 0; }
+section.alt { background: var(--bm-bg-cool); }
+h2 { font-size: 24px; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.02em; }
+h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; color: var(--bm-deep-green); }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bm-teal-accent); margin-bottom: 8px; }
+.card { background: var(--bm-bg-light); border-radius: 12px; padding: 24px; border: 1px solid var(--bm-border-light); margin-bottom: 16px; }
+.card-accent { border-left: 4px solid var(--bm-teal-accent); border-top-left-radius: 0; border-bottom-left-radius: 0; }
+.card-warning { border-left: 4px solid var(--bm-pumpkin); border-top-left-radius: 0; border-bottom-left-radius: 0; }
+.card h3 { margin-bottom: 8px; }
+.card p { font-size: 15px; color: var(--bm-secondary-text); line-height: 1.6; }
+.principle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 12px; }
+th { padding: 10px 16px; text-align: left; font-weight: 600; color: var(--bm-secondary-text); border-bottom: 1px solid var(--bm-border-light); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+td { padding: 10px 16px; border-bottom: 1px solid var(--bm-border-light); }
+.badge { display: inline-block; padding: 3px 10px; font-size: 11px; font-weight: 700; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-green { background: rgba(18,163,140,0.15); color: var(--bm-teal-accent); }
+.badge-orange { background: rgba(255,105,46,0.15); color: var(--bm-pumpkin); }
+.badge-gray { background: rgba(156,163,175,0.15); color: var(--bm-muted-gray); }
+.big-number { font-size: 48px; font-weight: 800; color: var(--bm-deep-green); line-height: 1.1; }
+.stat-label { font-size: 14px; font-weight: 600; color: var(--bm-eigengrau); margin-top: 4px; }
+.stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; text-align: center; margin: 24px 0; }
+.callout { background: linear-gradient(135deg, #101828, #1D2939); color: white; border-radius: 12px; padding: 32px; margin: 24px 0; }
+.callout h3 { color: var(--bm-teal-accent); }
+.callout p { color: var(--bm-muted-gray); font-size: 15px; line-height: 1.6; }
+.callout ol { color: rgba(255,255,255,0.9); font-size: 15px; line-height: 1.8; padding-left: 20px; margin-top: 12px; }
+.footer { background: var(--bm-deep-green); color: white; padding: 32px 0; text-align: center; font-size: 13px; }
+.footer p { color: rgba(255,255,255,0.7); }
+ul.checklist { list-style: none; padding: 0; }
+ul.checklist li { padding: 8px 0; border-bottom: 1px solid var(--bm-border-light); font-size: 15px; display: flex; align-items: flex-start; gap: 8px; }
+ul.checklist li::before { content: ""; display: inline-block; width: 18px; height: 18px; border: 2px solid var(--bm-border-light); border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+@media (max-width: 768px) {
+  .principle-grid, .stats-row { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="container">
+    <div class="eyebrow" style="color: rgba(255,255,255,0.6);">Product Management Framework</div>
+    <h1>PM Weekly Framework</h1>
+    <p>Your guide to weekly deliverables, measurables, and how to work with AI agents effectively.</p>
+    <div class="meta">
+      <span>Sarah El Massry</span>
+      <span>Effective: March 17, 2026</span>
+      <span>Version 1.0</span>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">The Core Principle</div>
+    <h2>You Manage the Agents. The Agents Do the Work.</h2>
+    <p style="font-size: 17px; color: var(--bm-secondary-text); max-width: 700px; margin-bottom: 24px;">
+      The CPO, scrum master, and product intelligence agents are the domain experts. Your job is to become an expert at <strong>directing them</strong> — asking the right questions, getting high-quality output, and ensuring the work meets the bar.
+    </p>
+
+    <div class="callout">
+      <h3>How to Work with Agents</h3>
+      <ol>
+        <li><strong>Bring in the right skill expert FIRST.</strong> Before asking an agent to do work, load the relevant specialist (CPO for strategy, database expert for architecture, etc.).</li>
+        <li><strong>Ask for a plan — don't dictate one.</strong> Tell the agent what you need, not how to do it. Let it propose the approach. You'll get a better, less biased answer.</li>
+        <li><strong>QA for 30-45 minutes.</strong> Don't accept the first draft. Read it carefully. Ask follow-up questions. Refine through dialogue.</li>
+        <li><strong>Update permanent knowledge.</strong> When you find something the agent got wrong, correct its knowledge so it doesn't repeat the mistake.</li>
+        <li><strong>Validate against reality.</strong> You bring the customer conversations, the product intuition, the "that doesn't match what I'm seeing." The agent brings structure and expertise.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    <div class="eyebrow">This Week</div>
+    <h2>Week of March 17 — Deliverables</h2>
+
+    <div class="card card-accent">
+      <div class="eyebrow" style="color: var(--bm-pumpkin);">Primary Focus — Today + Tomorrow</div>
+      <h3>V1 to V2 Migration Architecture</h3>
+      <p>Build the transition architecture in Confluence. Data requirements, migration steps, district-by-district tracking for 140+ districts. Merge existing notes into the structured database.</p>
+      <p style="margin-top: 12px;"><strong>Confluence page:</strong> Product Hub > V1 to V2 Migration</p>
+      <p><strong>Reference:</strong> V1 Data Transfer Discovery page (70 endpoints mapped, 14 risks identified)</p>
+      <p style="margin-top: 8px;"><span class="badge badge-orange">Due: End of Day Tuesday</span></p>
+    </div>
+
+    <div style="margin-top: 24px;">
+      <h3>After Migration Architecture is Done (Wed-Fri)</h3>
+    </div>
+
+    <div class="principle-grid">
+      <div class="card">
+        <h3>V2 Definition of Done</h3>
+        <p>Clear, unambiguous, objective documentation. Define "book intelligence," "classroom libraries," all personas. No room for interpretation.</p>
+        <p style="margin-top: 8px;"><span class="badge badge-gray">Wed-Thu</span></p>
+      </div>
+      <div class="card">
+        <h3>Customer Contact</h3>
+        <p>Talk to one district this week. Document what you learned about their V1 to V2 needs. Standing order: weekly customer contact, no exceptions.</p>
+        <p style="margin-top: 8px;"><span class="badge badge-gray">By Friday</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">What We Measure</div>
+    <h2>Weekly Scorecard</h2>
+    <p style="color: var(--bm-secondary-text); margin-bottom: 24px;">These 6 measurables are tracked every week. Week 1 is baseline only — we're measuring to learn, not to judge.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Measurable</th>
+          <th>Week 1 Target</th>
+          <th>How Measured</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><strong>Ticket first-pass rate</strong></td>
+          <td>Baseline</td>
+          <td><code>/jira-standards</code> on tickets touched</td>
+          <td><span class="badge badge-green">Leading</span></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>Sprint readiness at start</strong></td>
+          <td>Baseline</td>
+          <td>JQL query at sprint start</td>
+          <td><span class="badge badge-green">Leading</span></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>Customer contact</strong></td>
+          <td>1x (Y/N)</td>
+          <td>Self-report</td>
+          <td><span class="badge badge-green">Leading</span></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>UAT turnaround</strong></td>
+          <td>Baseline</td>
+          <td>Jira timestamps</td>
+          <td><span class="badge badge-gray">Lagging</span></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>Discovery items validated</strong></td>
+          <td>1+</td>
+          <td>Confluence pages created</td>
+          <td><span class="badge badge-green">Leading</span></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><strong>Agent usage quality</strong></td>
+          <td>Qualitative</td>
+          <td>Did agents produce the deliverables?</td>
+          <td><span class="badge badge-green">Leading</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    <div class="eyebrow">Rhythm</div>
+    <h2>Weekly Cadence</h2>
+
+    <div class="principle-grid">
+      <div class="card card-accent">
+        <h3>Monday — Kickoff</h3>
+        <p>Steve sets deliverables for the week. Review scorecard from prior week. Align on priorities and agent usage expectations.</p>
+        <p style="margin-top: 8px; font-size: 13px; color: var(--bm-muted-gray);">30 minutes</p>
+      </div>
+      <div class="card card-accent">
+        <h3>Daily — Async Standup</h3>
+        <p>Post in Slack: what you did, what you're doing, blockers, which agents you used. Keep it brief.</p>
+        <p style="margin-top: 8px; font-size: 13px; color: var(--bm-muted-gray);">5 minutes</p>
+      </div>
+      <div class="card card-accent">
+        <h3>Friday — Review</h3>
+        <p>Review deliverables vs. plan. Pull scorecard data. Agent usage retrospective. Set next week's plan.</p>
+        <p style="margin-top: 8px; font-size: 13px; color: var(--bm-muted-gray);">30 minutes</p>
+      </div>
+      <div class="card" style="background: transparent; border: 2px dashed var(--bm-border-light);">
+        <h3 style="color: var(--bm-muted-gray);">Ad Hoc</h3>
+        <p>Escalate blockers immediately. Don't wait for Friday. Use Slack or schedule 15 min with Steve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Hard Lines</div>
+    <h2>V2 Scope Rules</h2>
+    <div class="card card-warning">
+      <h3>No New Features</h3>
+      <p>V2 scope is frozen. Complete what exists at high quality. Fix bugs, workflows, gotchas. No additions until current state is solid and the V1 to V2 migration is planned.</p>
+    </div>
+
+    <h3 style="margin-top: 24px;">V1 Work Decision Filter</h3>
+    <p style="color: var(--bm-secondary-text); margin-bottom: 16px;">For any remaining V1 work, ask two questions:</p>
+    <ul class="checklist">
+      <li>Is this work useful for the V1 to V2 transition? If no, deprioritize.</li>
+      <li>Can agents do it efficiently? If yes, proceed. If no, evaluate ROI.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    <div class="eyebrow">Resources</div>
+    <h2>Where Things Live</h2>
+    <table>
+      <thead>
+        <tr><th>Resource</th><th>Location</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>V1 to V2 Migration</strong></td><td>Confluence > Product Hub</td><td>Living migration architecture doc</td></tr>
+        <tr><td><strong>V1 Data Transfer Discovery</strong></td><td>Confluence > Product Hub</td><td>API inventory, risks, verification checklist</td></tr>
+        <tr><td><strong>Product Scorecard</strong></td><td>Confluence > Product Hub</td><td>13-week measurables tracker</td></tr>
+        <tr><td><strong>Sarah's Operating Page</strong></td><td>Confluence > Product Hub</td><td>Your accountability page</td></tr>
+        <tr><td><strong>Weekly 1:1 Structure</strong></td><td>Confluence > Product Hub</td><td>Meeting format and agenda</td></tr>
+        <tr><td><strong>Jira Standards</strong></td><td><code>/jira-standards</code> skill</td><td>Ticket quality validation</td></tr>
+        <tr><td><strong>CPO Agent</strong></td><td><code>/cpo</code> skill</td><td>Product strategy and prioritization</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="footer">
+  <div class="container">
+    <p><strong>Bookmarked</strong> &mdash; PM Weekly Framework v1.0</p>
+    <p style="margin-top: 8px;">This document is your weekly reference. Deliverables and priorities update each Monday.</p>
+  </div>
+</div>
+
+</body>
+</html>
