@@ -795,6 +795,11 @@ img {
   opacity: 0.8;
 }
 
+.bm-footer__logo {
+  height: 24px;
+  width: auto;
+}
+
 .bm-footer__tagline {
   font-size: 11px;
   font-weight: var(--bm-weight-semibold);
