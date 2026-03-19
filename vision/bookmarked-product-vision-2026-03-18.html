@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookmarked Product Vision — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bm-eigengrau:#101828;--bm-deep-green:#107569;--bm-teal-accent:#12A38C;--bm-white:#FFFFFF;--bm-pumpkin:#FF692E;
+  --bm-teal-dark:#0D5A52;--bm-secondary-text:#475467;--bm-muted-gray:#9CA3AF;--bm-border-light:#E5E7EB;
+  --bm-bg-cool:#F8FAFC;--bm-bg-light:#F9FAFB;--bm-bg-warm:#F8F5F0;--bm-bg-green-tint:#F8FAF8;
+  --bm-font-family:'Urbanist',Arial,Helvetica,sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--bm-font-family);font-size:16px;line-height:1.6;color:var(--bm-eigengrau);background:#fff;-webkit-font-smoothing:antialiased}
+.hero{background:linear-gradient(135deg,#0D5A52 0%,#107569 40%,#12A38C 100%);padding:80px 0 60px;color:#fff}
+.hero h1{font-size:42px;font-weight:800;line-height:1.15;letter-spacing:-0.02em;max-width:750px}
+.hero p{font-size:16px;color:rgba(255,255,255,0.85);max-width:620px;margin-top:16px;line-height:1.6}
+.hero .meta{font-size:13px;color:rgba(255,255,255,0.6);margin-top:24px;letter-spacing:0.5px}
+.container{max-width:960px;margin:0 auto;padding:0 24px}
+.section{padding:56px 0}
+.section--alt{background:var(--bm-bg-cool)}
+.section--warm{background:var(--bm-bg-warm)}
+.section--green{background:var(--bm-bg-green-tint)}
+h2{font-size:28px;font-weight:700;line-height:1.25;letter-spacing:-0.02em;color:var(--bm-eigengrau);margin-bottom:20px}
+h3{font-size:20px;font-weight:700;color:var(--bm-eigengrau);margin-bottom:12px;margin-top:32px}
+h3:first-child{margin-top:0}
+h4{font-size:16px;font-weight:700;color:var(--bm-eigengrau);margin-bottom:8px;margin-top:20px}
+p{margin-bottom:16px;color:var(--bm-secondary-text)}
+p:last-child{margin-bottom:0}
+strong{color:var(--bm-eigengrau);font-weight:700}
+ul,ol{margin-bottom:16px;padding-left:24px;color:var(--bm-secondary-text)}
+li{margin-bottom:8px;font-size:15px;line-height:1.5}
+li strong{color:var(--bm-eigengrau)}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bm-teal-accent);margin-bottom:8px}
+
+/* TOC */
+.toc{background:#fff;border:1px solid var(--bm-border-light);border-radius:12px;padding:28px 32px;margin-top:24px}
+.toc h3{margin-top:0;font-size:16px;margin-bottom:16px}
+.toc ol{margin:0;padding-left:20px;counter-reset:toc}
+.toc li{margin-bottom:6px;font-size:14px;color:var(--bm-teal-accent);font-weight:600}
+.toc li a{color:var(--bm-teal-accent);text-decoration:none}
+.toc li a:hover{text-decoration:underline}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;font-size:14px;margin:20px 0}
+th{background:var(--bm-bg-cool);padding:12px 14px;text-align:left;font-weight:700;color:var(--bm-eigengrau);border-bottom:2px solid var(--bm-border-light);font-size:12px;letter-spacing:0.5px;text-transform:uppercase}
+td{padding:12px 14px;border-bottom:1px solid var(--bm-border-light);color:var(--bm-secondary-text);vertical-align:top}
+tr:last-child td{border-bottom:none}
+
+/* Cards */
+.card{background:#fff;border-radius:12px;padding:28px;border:1px solid var(--bm-border-light);margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.03)}
+.card--accent{border-top:3px solid var(--bm-teal-accent)}
+.card--warning{border-top:3px solid var(--bm-pumpkin)}
+.card--green{border-left:4px solid var(--bm-teal-accent)}
+.card h3{margin-top:0}
+.card p{font-size:15px}
+
+/* Module cards */
+.module-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.module-num{width:32px;height:32px;background:var(--bm-deep-green);color:#fff;border-radius:8px;text-align:center;line-height:32px;font-size:14px;font-weight:700;flex-shrink:0}
+.module-name{font-size:20px;font-weight:700;color:var(--bm-eigengrau)}
+.module-status{display:inline-block;padding:3px 10px;font-size:11px;font-weight:700;border-radius:100px;letter-spacing:0.5px;text-transform:uppercase}
+.module-status--live{background:rgba(18,163,140,0.15);color:var(--bm-teal-accent)}
+.module-status--building{background:rgba(255,105,46,0.15);color:var(--bm-pumpkin)}
+.module-status--future{background:rgba(156,163,175,0.15);color:var(--bm-muted-gray)}
+
+/* Personas */
+.persona-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:20px 0}
+.persona{background:var(--bm-bg-light);border-radius:8px;padding:16px;font-size:14px}
+.persona .role{font-weight:700;color:var(--bm-eigengrau);font-size:13px;margin-bottom:6px}
+.persona p{font-size:13px;margin:0;color:var(--bm-secondary-text)}
+
+/* Journey */
+.journey-step{display:flex;gap:16px;margin-bottom:16px;align-items:flex-start}
+.journey-num{width:28px;height:28px;background:var(--bm-teal-accent);color:#fff;border-radius:50%;text-align:center;line-height:28px;font-size:13px;font-weight:700;flex-shrink:0;margin-top:2px}
+.journey-text{flex:1;font-size:15px;color:var(--bm-secondary-text);line-height:1.5}
+.journey-text strong{color:var(--bm-eigengrau)}
+
+/* Principles */
+.principle{display:flex;gap:16px;margin-bottom:16px;align-items:flex-start}
+.principle-num{font-size:28px;font-weight:800;color:var(--bm-teal-accent);line-height:1;flex-shrink:0;width:36px}
+.principle-content h4{margin-top:0;font-size:16px}
+.principle-content p{font-size:14px;margin:0}
+
+/* Arc */
+.arc-step{display:flex;align-items:stretch}
+.arc-label{width:140px;flex-shrink:0;padding:16px;font-size:12px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.arc-label--1{background:#0D5A52}
+.arc-label--2{background:#107569}
+.arc-label--3{background:#12A38C}
+.arc-label--4{background:var(--bm-teal-accent)}
+.arc-label--5{background:var(--bm-pumpkin)}
+.arc-content{flex:1;padding:16px 20px;border:1px solid var(--bm-border-light);border-left:none;background:#fff;font-size:14px;color:var(--bm-secondary-text);line-height:1.5}
+.arc-content strong{color:var(--bm-eigengrau)}
+.arc-content .quote{font-style:italic;color:var(--bm-muted-gray);margin-bottom:8px}
+.arc-flow{margin-top:24px;border-radius:12px;overflow:hidden}
+.arc-step:first-child .arc-label{border-radius:12px 0 0 0}
+.arc-step:last-child .arc-label{border-radius:0 0 0 12px}
+.arc-step:first-child .arc-content{border-radius:0 12px 0 0}
+.arc-step:last-child .arc-content{border-radius:0 0 12px 0}
+
+/* Layer cards */
+.layer-card{border-radius:12px;padding:32px;margin-bottom:24px;border:1px solid var(--bm-border-light)}
+.layer-card--1{background:#fff;border-top:4px solid var(--bm-teal-accent)}
+.layer-card--2{background:#fff;border-top:4px solid var(--bm-deep-green)}
+.layer-card--3{background:#fff;border-top:4px solid var(--bm-pumpkin)}
+.layer-badge{display:inline-block;padding:4px 12px;font-size:11px;font-weight:700;border-radius:100px;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:12px}
+.layer-badge--live{background:rgba(18,163,140,0.15);color:var(--bm-teal-accent)}
+.layer-badge--building{background:rgba(16,117,105,0.15);color:var(--bm-deep-green)}
+.layer-badge--future{background:rgba(255,105,46,0.15);color:var(--bm-pumpkin)}
+
+/* Callouts */
+.callout{background:var(--bm-bg-warm);border-radius:10px;padding:24px 28px;border-left:4px solid var(--bm-pumpkin);margin:24px 0}
+.callout p{font-size:15px;margin:0;color:var(--bm-secondary-text)}
+.callout strong{color:var(--bm-eigengrau)}
+.note{background:var(--bm-bg-green-tint);border-radius:10px;padding:24px 28px;border-left:4px solid var(--bm-teal-accent);margin:24px 0}
+.note p{font-size:15px;margin:0;color:var(--bm-secondary-text)}
+
+/* Time savings highlight */
+.time-block{background:var(--bm-eigengrau);border-radius:12px;padding:32px;color:#fff;margin:24px 0}
+.time-block .stat{font-size:36px;font-weight:800;color:var(--bm-teal-accent);line-height:1.1}
+.time-block .label{font-size:14px;color:var(--bm-muted-gray);margin-top:4px}
+.time-block p{color:rgba(255,255,255,0.82);font-size:15px;margin-top:16px}
+.time-stats{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:16px}
+
+.footer{background:var(--bm-deep-green);color:#fff;padding:32px 0}
+.footer p{color:rgba(255,255,255,0.7);font-size:13px;margin:0}
+.footer .logo-text{font-size:18px;font-weight:700;color:#fff;margin-bottom:4px}
+
+@media(max-width:768px){
+  .hero h1{font-size:30px}
+  h2{font-size:24px}
+  .persona-grid{grid-template-columns:1fr}
+  .arc-step{flex-direction:column}
+  .arc-label{width:100%}
+  .arc-content{border-left:1px solid var(--bm-border-light)}
+  .time-stats{grid-template-columns:1fr}
+}
+@media print{
+  .hero,.footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-size:10pt}
+  .section{padding:32px 0}
+  .card,.layer-card{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="container">
+    <h1>Bookmarked Product Vision</h1>
+    <p>The canonical product truth for the Bookmarked Operating System. Capability-level detail for every agent, skill, and team member — from CPO to CMO to engineering to customer success.</p>
+    <div class="meta">March 18, 2026 &nbsp;·&nbsp; Steve Wandler, Founder &nbsp;·&nbsp; Status: Active</div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="section">
+  <div class="container">
+    <div class="toc">
+      <h3>Contents</h3>
+      <ol>
+        <li><a href="#identity">Product Identity</a></li>
+        <li><a href="#engine">Book Intelligence: The Engine</a></li>
+        <li><a href="#layers">Intelligence Layer Architecture</a></li>
+        <li><a href="#time">The Time Equation</a></li>
+        <li><a href="#modules">Product Capability Map</a></li>
+        <li><a href="#journeys">User Journeys</a></li>
+        <li><a href="#principles">Product Principles</a></li>
+        <li><a href="#arc">The Compliance-to-Discovery Arc</a></li>
+        <li><a href="#taxonomy">Product Taxonomy</a></li>
+        <li><a href="#roadmap">What Exists vs. What's Next vs. What's Future</a></li>
+        <li><a href="#appendix">Appendix: Intelligence Card Anatomy</a></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- 1. PRODUCT IDENTITY -->
+<div class="section section--alt" id="identity">
+  <div class="container">
+    <div class="eyebrow">Section 1</div>
+    <h2>Product Identity</h2>
+
+    <table>
+      <tr><th>Level</th><th>Name</th><th>What It Is</th></tr>
+      <tr><td><strong>Company</strong></td><td>Bookmarked</td><td>The Book Intelligence Company. Parent brand.</td></tr>
+      <tr><td><strong>Product</strong></td><td>OnShelf</td><td>The platform districts log into. The software.</td></tr>
+      <tr><td><strong>Engine</strong></td><td>Book Intelligence</td><td>The intelligence layer that streams across the entire product. Not a module — it's the foundation underneath everything.</td></tr>
+      <tr><td><strong>Modules</strong></td><td>OnShelf Review, Classroom Libraries, OnShelf Engage, Dashboard, Reports, Student Management, Circulation</td><td>Specific workflows within the OnShelf product.</td></tr>
+      <tr><td><strong>Future</strong></td><td>Content Scanner, Reader Intelligence Layer</td><td>Next-generation intelligence capabilities.</td></tr>
+    </table>
+
+    <h3>What OnShelf Is</h3>
+    <p>OnShelf is the unified platform where school districts manage their entire book ecosystem — every library, every classroom, every book order, every compliance requirement, every stakeholder — in one place, powered by Book Intelligence.</p>
+    <p>Districts currently manage this across disconnected tools: Excel spreadsheets for book orders, Google Forms for parent feedback, legacy library systems (Follett Destiny, Alexandria) for circulation, PEN America ban lists for compliance checks, email chains for committee reviews, and manual processes stitched together with hope. <strong>None of these tools talk to each other.</strong> The data exists, but it's segregated — so decisions get made without the full picture, and the work takes exponentially longer than it should.</p>
+
+    <h3>What OnShelf Is Not</h3>
+    <ul>
+      <li><strong>Not a library catalog system</strong> — we don't replace the ILS. We sit on top of it, adding the intelligence and workflow layer that catalogs were never designed to provide.</li>
+      <li><strong>Not a content filter or censor</strong> — we provide intelligence for informed human decisions. We never restrict, approve, or remove a book. The human always decides.</li>
+      <li><strong>Not a book distributor</strong> — we don't sell or distribute books. We help districts make better, faster, data-informed decisions about what to order and what belongs on their shelves.</li>
+      <li><strong>Not a reading app</strong> — students don't read books inside OnShelf. We manage the ecosystem around reading — the collections, the intelligence, the compliance, and the discovery.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 2. BOOK INTELLIGENCE ENGINE -->
+<div class="section" id="engine">
+  <div class="container">
+    <div class="eyebrow">Section 2</div>
+    <h2>Book Intelligence: The Engine</h2>
+    <p><strong>Book Intelligence is Bookmarked's proactive scanning and data aggregation system</strong> that continuously searches the internet for publicly available information about books — gathering intelligence that would otherwise require a librarian to research every book individually, one at a time, with no guarantee of accuracy.</p>
+    <p>It is NOT a module or a tab. It is the engine underneath every surface in OnShelf. When a librarian views their collection, Book Intelligence powers the content assessments and flags. When a teacher submits a book for ordering, Book Intelligence surfaces what the district needs to know. When a parent views a book, Book Intelligence provides the transparency.</p>
+
+    <h3>How It Works Today</h3>
+    <p>Book Intelligence scans the internet continuously, looking for information about books across hundreds of sources — news outlets, advocacy organizations, school district websites, board meeting records, professional review publications, and open metadata databases. When it finds relevant information, it <strong>flags</strong> the book and presents that information to the district.</p>
+    <p><strong>Critical distinction:</strong> When Book Intelligence shows that a book has been "banned" or "challenged," it is reporting what <strong>others</strong> have marked — not making that determination itself. There is no single source of truth anywhere in the world for whether a book is definitively banned or challenged. PEN America tracks challenges but not resolutions. A book removed for review and returned to the shelf still appears "banned" on their list. Book Intelligence aggregates more context than any single source, but the district always makes the final determination based on the evidence presented.</p>
+
+    <h3>What Book Intelligence Provides (Per Book)</h3>
+
+    <div class="card card--accent">
+      <h4>Identity & Metadata</h4>
+      <p>Title, author, publisher, ISBN (edition-specific), cover image, page count, publication year, synopsis from authoritative sources (ISBNDB, Open Library), subject classifications (dual-sourced), genre tags, theme tags, people/characters, setting/time/place.</p>
+    </div>
+
+    <div class="card card--accent">
+      <h4>Content Assessment</h4>
+      <p>Content ratings (Violence, Sexual Content, Language — None/Mild/Moderate/Explicit), mature themes identification (e.g., Totalitarianism, Surveillance, Psychological Manipulation), audience & reading level (age range, grade level, reading level), grade level suitability (Elementary/Middle/High School — Suitable/Not Suitable), educational value assessment, content warnings, parental guidance recommendations.</p>
+    </div>
+
+    <div class="card card--accent">
+      <h4>Flags — The Proactive Alert System</h4>
+      <p>The heart of Book Intelligence today. Flags are organized by source type: <strong>Library/Advocacy Organizations</strong> (ALA, PEN America, state-level organizations), <strong>News/Media Outlets</strong> (articles, reporting, opinion pieces), and <strong>School/District Websites</strong> (board minutes, policy documents, district actions). Each flag includes date, category, description, source URL, state, and district when available.</p>
+      <p>Flags surface automatically and continuously. A librarian doesn't have to go looking — if something is being said about a book in their collection, Bookmarked finds it and brings it to them. This replaces hours of manual research per book with proactive, sourced, traceable intelligence.</p>
+    </div>
+
+    <div class="card card--accent">
+      <h4>Collaborative Network Notes</h4>
+      <p>Librarians and administrators can add notes to any book — context, observations, review outcomes, committee decisions. These notes are <strong>shared across the entire Bookmarked network</strong>, creating collaborative intelligence that no other system provides. A librarian in one district benefits from the research and decisions of librarians in other districts. This is human-powered network intelligence, live today.</p>
+    </div>
+
+    <h3>Why This Matters More Than ChatGPT</h3>
+    <p>Districts increasingly ask ChatGPT about books. This is dangerous and unreliable:</p>
+
+    <table>
+      <tr><th>Dimension</th><th>ChatGPT</th><th>Book Intelligence</th></tr>
+      <tr><td><strong>Accuracy</strong></td><td>May hallucinate content that isn't in the book. Districts can't verify if it actually read the source material.</td><td>Every data point sourced and traceable. We show our sources so districts can verify.</td></tr>
+      <tr><td><strong>Consistency</strong></td><td>Different answer every time you ask</td><td>One system, one answer, for the entire district</td></tr>
+      <tr><td><strong>ISBN Fidelity</strong></td><td>Generic "a book called X" — may confuse editions</td><td>Tied to the exact ISBN/edition</td></tr>
+      <tr><td><strong>Defensibility</strong></td><td>A screenshot of a chat is not evidence</td><td>Documented, auditable system of record</td></tr>
+      <tr><td><strong>Collaboration</strong></td><td>Individual tool, no shared state</td><td>One platform for the entire district, with network-wide shared notes</td></tr>
+      <tr><td><strong>Monitoring</strong></td><td>Point-in-time query — only knows what you ask</td><td>Proactive scanning — new flags surface automatically without anyone asking</td></tr>
+      <tr><td><strong>Memory</strong></td><td>Gone when the chat closes</td><td>Persists across staff changes, year over year</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 3. INTELLIGENCE LAYERS -->
+<div class="section section--alt" id="layers">
+  <div class="container">
+    <div class="eyebrow">Section 3</div>
+    <h2>The Intelligence Layer Architecture</h2>
+    <p>Book Intelligence operates across three layers, each building on the last. The layers represent increasing depth of understanding — from what people are saying about a book, to what the network reveals about it, to what's actually inside it.</p>
+
+    <div class="layer-card layer-card--1">
+      <div class="layer-badge layer-badge--live">Live Today</div>
+      <h3 style="margin-top:8px">Layer 1 — External Signals</h3>
+      <p>Publicly available intelligence gathered from across the internet: challenge/ban reports (PEN America, state-level trackers, district websites), news coverage, board meeting minutes, professional reviews (Kirkus, SLJ, Booklist), advocacy organizations (ALA), legislative tracking, and open metadata databases (ISBNDB, Open Library).</p>
+      <p><strong>What districts see:</strong> The Book Intelligence card on every book — content assessments, flags organized by source, audience guidance, educational value, advisory context. All sourced, all traceable, all continuously updated.</p>
+      <div class="callout" style="margin-top:16px;margin-bottom:0">
+        <p><strong>The PEN America problem:</strong> PEN America tracks challenges but not resolutions. A book returned to the shelf still shows "banned." Districts refuse to order anything on the list. Result: de facto censorship from incomplete data. Bookmarked captures more context than any single source — and as the network grows, it will track outcomes, creating the case law that doesn't exist anywhere today.</p>
+      </div>
+    </div>
+
+    <div class="layer-card layer-card--2">
+      <div class="layer-badge layer-badge--building">Building</div>
+      <h3 style="margin-top:8px">Layer 2 — Network Intelligence</h3>
+      <p>Intelligence generated by the Bookmarked network itself — decisions, patterns, and outcomes across all districts using the platform. Some elements are live today (collaborative notes sharing), others are being built.</p>
+      <ul>
+        <li><strong>Collaborative notes</strong> (live): Librarians share context about books across the entire network</li>
+        <li><strong>Challenge velocity:</strong> Which titles are being reviewed across districts right now?</li>
+        <li><strong>Placement patterns:</strong> Where are books being shelved? How do similar districts handle the same title?</li>
+        <li><strong>Decision benchmarking:</strong> What did districts like yours decide about this book?</li>
+        <li><strong>Review outcomes:</strong> Approved, restricted, relocated, removed — outcome data that creates the "case law" for book decisions</li>
+        <li><strong>Ordering patterns:</strong> What are similar districts ordering? What's working for their student populations?</li>
+      </ul>
+      <p><strong>Privacy architecture:</strong> Individual district data stays private. The network sees aggregated patterns and anonymized benchmarks. Districts get collective intelligence without exposing their specific decisions.</p>
+      <div class="note" style="margin-bottom:0">
+        <p><strong>Why this is defensible:</strong> The network effect creates a moat that deepens with every district added. A new entrant would need to rebuild this dataset from scratch — years of decisions across hundreds of districts.</p>
+      </div>
+    </div>
+
+    <div class="layer-card layer-card--3">
+      <div class="layer-badge layer-badge--future">Future</div>
+      <h3 style="margin-top:8px">Layer 3 — Content Scanner (Publisher Content)</h3>
+      <p>Source-verified intelligence from reading actual book content. The Content Scanner — AI-powered analysis of what's actually inside the book — requires publisher copyright access.</p>
+      <ul>
+        <li><strong>Definitive content assessment</strong> — not "this book was reported as challenged" but "here is exactly what content appears and where"</li>
+        <li><strong>Regulatory compliance verification</strong> against specific state and district-level requirements</li>
+        <li><strong>Personalized book previews</strong> for every reader — without revealing copyrighted text</li>
+        <li><strong>Student-book matching</strong> based on actual content, reading interests, and regulatory context</li>
+        <li><strong>Collection gap analysis</strong> based on content diversity, not just metadata</li>
+        <li><strong>Protection both directions</strong> — definitive evidence for whether a book should or shouldn't be in a specific setting</li>
+      </ul>
+      <p><strong>Why publishers will participate:</strong> The traditional book distribution model is under pressure — consolidation, high margins (40-55%), and limited data flowing back to publishers. Publishers need new, intelligent channels to institutional buyers. Bookmarked offers three things no one else can: a compliance channel (regulatory confidence), demand intelligence (collection gap data across thousands of libraries), and personalized previews (one message per reader instead of one message per million).</p>
+    </div>
+  </div>
+</div>
+
+<!-- 4. THE TIME EQUATION -->
+<div class="section" id="time">
+  <div class="container">
+    <div class="eyebrow">Section 4</div>
+    <h2>The Time Equation</h2>
+    <p>Bookmarked is not a compliance platform. <strong>Compliance is built into the platform.</strong> The real value is the time we give back.</p>
+    <p>Most districts believe they're already in compliance — and technically, many can check that box. The problem is their compliance isn't backed by data-informed decisions. They have lists of books they're required to maintain, but no data to help them make informed decisions about those books. The result: an extraordinary amount of time spent on manual research, committee coordination, feedback management, and documentation — time that should be spent on discovery, curation, and connecting students with books they'll love.</p>
+
+    <div class="time-block">
+      <div class="time-stats">
+        <div>
+          <div class="stat">40 hrs/mo</div>
+          <div class="label">Time large districts spend managing book orders, reviews, and board preparation</div>
+        </div>
+        <div>
+          <div class="stat">~$375/day</div>
+          <div class="label">Average cost of a librarian's time</div>
+        </div>
+      </div>
+      <p>That's a librarian spending an entire work week every month just managing the ordering and approval process — on spreadsheets, with no system of record, across disconnected tools. Even districts spending half that time are losing days every month to work that should take hours.</p>
+      <p>OnShelf doesn't add work. <strong>Every feature is designed to reduce the time to make good decisions.</strong> Book Intelligence replaces hours of manual research per book. OnShelf Review replaces spreadsheet chaos with a single workflow. Classroom Libraries replace invisible risk with instant visibility. The goal: a librarian does in 45 minutes what used to take days.</p>
+    </div>
+
+    <p>This is how we save districts money — not by adding headcount to the problem, but by making existing staff effective at the right things. The time given back to compliance can be redirected to what librarians actually want to do: connect students with books.</p>
+  </div>
+</div>
+
+<!-- 5. PRODUCT CAPABILITY MAP -->
+<div class="section section--alt" id="modules">
+  <div class="container">
+    <div class="eyebrow">Section 5</div>
+    <h2>Product Capability Map</h2>
+
+    <!-- Module 1: Dashboard -->
+    <div class="card" style="margin-top:24px">
+      <div class="module-header">
+        <div class="module-num">1</div>
+        <div class="module-name">Collection Dashboard</div>
+        <span class="module-status module-status--live">Live</span>
+      </div>
+      <p>The unified command center for a district's entire book ecosystem. At a glance: total libraries across the district, school library and classroom book counts, flagged book breakdown with severity, access status distribution (Approved, Pending, Limited, Don't Show), classroom library drill-downs, order alerts, top readers with activity status, and weekly overview metrics (orders created, books approved, books rejected).</p>
+      <div class="persona-grid">
+        <div class="persona"><div class="role">Librarian</div><p>"What needs my attention today?" New flags, overdue orders, student activity, classroom alerts.</p></div>
+        <div class="persona"><div class="role">Administrator</div><p>"Are we in good shape?" Flagged book trends, pending reviews, classroom blind spots.</p></div>
+        <div class="persona"><div class="role">Superintendent</div><p>"What's our compliance posture?" High-level numbers for the board, risk exposure, review velocity.</p></div>
+      </div>
+      <div class="note"><p><strong>What "great" looks like:</strong> A librarian opens the dashboard Monday morning and immediately knows: 3 new flags overnight, 2 order lists awaiting review, a classroom library with all books flagged. She knows exactly where to spend her time — no digging, no spreadsheets, no guessing.</p></div>
+    </div>
+
+    <!-- Module 2: Library -->
+    <div class="card">
+      <div class="module-header">
+        <div class="module-num">2</div>
+        <div class="module-name">Library Management</div>
+        <span class="module-status module-status--live">Live</span>
+      </div>
+      <p>Browse and manage the school's book collection with full Book Intelligence on every title. Visual book grid with covers, search by title/author/ISBN/barcode/tags, individual book detail with the complete intelligence card, status management (Approved/Limited/Don't Show/Pending), Guardian Activities tracking, Status History, Circulation History, and Notes and Documents.</p>
+      <p><strong>Network-wide collaboration:</strong> Notes added to any book are shared across the entire Bookmarked network. A librarian in one district researches a flagged title, documents her findings, and every other district with that book benefits from her work. This is collaborative intelligence that no existing library system provides — traditional ILS platforms keep every district siloed.</p>
+      <div class="persona-grid">
+        <div class="persona"><div class="role">Librarian</div><p>Primary daily workspace. Review flagged books, update statuses, research using intelligence cards, add notes that help the whole network.</p></div>
+        <div class="persona"><div class="role">Teacher</div><p>View books in their classroom library (same UI, scoped to their classroom).</p></div>
+        <div class="persona"><div class="role">Administrator</div><p>Spot-check specific books, review flagged or challenged titles, verify grade-level placement.</p></div>
+      </div>
+      <div class="note"><p><strong>This IS where Book Intelligence lives most visibly.</strong> Every book detail page is an intelligence card. The intelligence isn't a separate research step — it's embedded in the library experience, at the point of decision.</p></div>
+    </div>
+
+    <!-- Module 3: OnShelf Review -->
+    <div class="card">
+      <div class="module-header">
+        <div class="module-num">3</div>
+        <div class="module-name">OnShelf Review (Orders)</div>
+        <span class="module-status module-status--live">Live</span>
+      </div>
+      <p>The complete book order and review workflow — replacing the patchwork of Excel spreadsheets, email chains, Google Forms, and manual processes that districts have been forced to cobble together. Before OnShelf, ordering 800 books meant managing spreadsheets across dozens of teachers, researching every title individually, tracking committee feedback in email threads nobody could find, collecting parent input through Google Forms with no way to attach it to specific books, and presenting the board with a printout that provided no evidence or audit trail.</p>
+      <p><strong>OnShelf Review brings it all under one roof:</strong></p>
+      <ul>
+        <li><strong>Three-stage pipeline:</strong> "Books to Order" → "Books to Review for Order" → "Book Orders" — clear stages with clear ownership</li>
+        <li><strong>Intelligence inline:</strong> Every book in an order list shows its Book Intelligence — summary, age range, ban count, challenge count, theme tags. Ban and challenge details expandable per book (which district, which school, why, source link, date)</li>
+        <li><strong>Notes per book:</strong> Reviewers add context, concerns, and recommendations directly on the book in the order list</li>
+        <li><strong>Committee workflow:</strong> Route to SLAC or library committee for review when the district requires it</li>
+        <li><strong>Parent review:</strong> Push a curated list to a public URL for the required parent comment period. Parent feedback is tracked and attached to the specific book — not lost in a Google Form</li>
+        <li><strong>Board approval:</strong> Route finalized orders to the board with full documentation and evidence at every stage</li>
+        <li><strong>Complete audit trail:</strong> Every action documented. Every decision defensible. If a book is questioned next year, the district can show exactly who reviewed it, what evidence was considered, and how the decision was made</li>
+      </ul>
+      <div class="persona-grid">
+        <div class="persona"><div class="role">Teacher</div><p>Submit book order requests with the confidence that intelligence will be applied automatically.</p></div>
+        <div class="persona"><div class="role">Librarian</div><p>Curate orders, review against Book Intelligence, collaborate with administrators, prepare for committee review.</p></div>
+        <div class="persona"><div class="role">Committee / Parents / Board</div><p>Review with evidence, provide tracked feedback, approve with documentation.</p></div>
+      </div>
+      <div class="note"><p><strong>What "great" looks like:</strong> A teacher submits 15 books. The librarian reviews them with intelligence inline — 12 clean, 2 with challenge history worth noting, 1 with content concerns. She adds notes, collaborates with her administrator, and submits for committee review. The entire process — which used to take days of research and coordination — takes 30 minutes of informed decision-making.</p></div>
+    </div>
+
+    <!-- Module 4: Classroom Libraries -->
+    <div class="card">
+      <div class="module-header">
+        <div class="module-num">4</div>
+        <div class="module-name">Classroom Libraries</div>
+        <span class="module-status module-status--live">Live</span>
+      </div>
+      <p>Before OnShelf, classroom libraries were a black hole. Superintendents didn't know what books were in hundreds of classrooms across their district. Teachers had the freedom to put whatever they wanted on their shelves. Now, in many states, that freedom has been replaced by approval requirements — and the superintendent is personally accountable for content they've never seen, in rooms they've never inventoried.</p>
+      <p><strong>OnShelf makes the invisible visible:</strong></p>
+      <ul>
+        <li><strong>Unified visibility:</strong> Administrators see every classroom library under every school — all the books, all the flags, all in one place</li>
+        <li><strong>Grade-level controls:</strong> Books are designated for specific grade levels. If a teacher in an elementary school tries to add a book designated for middle school, the system requires librarian or administrator approval before it's allowed</li>
+        <li><strong>Cross-referencing:</strong> See if a book already exists in the school library before ordering a duplicate for a classroom — or identify a flagged book that's in a classroom but not in the main library's review queue</li>
+        <li><strong>Teacher experience:</strong> Each teacher manages their own classroom library using the same interface as the main library — familiar, simple, with the same Book Intelligence applied to every title</li>
+        <li><strong>District-wide policy:</strong> Administrators can establish consistent policies and workflows across all classrooms, removing ambiguity about what's allowed and what requires review</li>
+        <li><strong>Book Intelligence applied everywhere:</strong> The same flags, content ratings, and intelligence that protect the school library also protect every classroom</li>
+      </ul>
+      <div class="note"><p><strong>What "great" looks like:</strong> A superintendent opens the dashboard and sees that across 266 classroom libraries, 201 books are flagged. She drills into one elementary classroom and finds a book designated for high school. She flags it for the librarian, who routes it for review — all documented, all defensible. Before OnShelf, she wouldn't have known the book existed until a parent complained.</p></div>
+    </div>
+
+    <!-- Module 5: OnShelf Engage -->
+    <div class="card">
+      <div class="module-header">
+        <div class="module-num">5</div>
+        <div class="module-name">OnShelf Engage (Parent/Guardian Access)</div>
+        <span class="module-status module-status--live">Live</span>
+      </div>
+      <p>Across the country, legislation is shifting toward a "parents first" model — giving families more visibility and more voice in what books are available to their children. OnShelf Engage makes parents <strong>informed participants</strong> in their child's reading life — not surprised objectors showing up at board meetings.</p>
+      <ul>
+        <li><strong>Visibility:</strong> See what books are available in their child's school library AND classroom libraries — not just the main collection, but every shelf their child has access to</li>
+        <li><strong>Checkouts:</strong> See what books their child has checked out, with activity tracking</li>
+        <li><strong>Intelligence:</strong> Understand what's in a book without having to read it — themes, content context, age appropriateness, educational value</li>
+        <li><strong>Restrictions:</strong> Restrict specific titles for their child without removing the book from the library for everyone else. The restriction is documented and the librarian is notified</li>
+        <li><strong>Order review:</strong> During the parent comment period, review proposed book orders with summaries, intelligence, and the ability to provide feedback that's tracked and attached to the specific book</li>
+      </ul>
+      <div class="note"><p><strong>What this replaces:</strong> Showing up at a board meeting angry because they didn't know what was in the library. Google Forms with no follow-up. Feeling unheard. OnShelf Engage turns a regulatory requirement into an opportunity for families to be connected to their child's reading life.</p></div>
+    </div>
+
+    <!-- Module 6: Reports -->
+    <div class="card">
+      <div class="module-header">
+        <div class="module-num">6</div>
+        <div class="module-name">Reports</div>
+        <span class="module-status module-status--live">Live</span>
+      </div>
+      <p>Comprehensive reporting engine organized into five categories:</p>
+      <ul>
+        <li><strong>Circulation Reports:</strong> Book circulation tracking, collection growth trends, flagged books reporting</li>
+        <li><strong>Collection Reports:</strong> Complete inventory, never-checked-out books, genre distribution, collection age analysis, new acquisitions, books with parent/guardian restrictions</li>
+        <li><strong>Student Activity:</strong> Top readers, students with no checkouts, restriction summary</li>
+        <li><strong>Guardian Reports:</strong> Parent account status, books with restrictions, activity log, most restricted students, restriction trends by grade, most frequently restricted books</li>
+        <li><strong>Administrative:</strong> Library usage summary, year-over-year comparison, status change audit, user activity log</li>
+      </ul>
+      <p>Reports can be generated on demand and exported. Board-ready compliance summaries show exactly what's been reviewed, what decisions were made, and the evidence behind each one.</p>
+    </div>
+
+    <!-- Module 7: Student Management -->
+    <div class="card">
+      <div class="module-header">
+        <div class="module-num">7</div>
+        <div class="module-name">Student Management</div>
+        <span class="module-status module-status--live">Live</span>
+      </div>
+      <p>Backend student data management — not a student-facing interface. Students do not log in or interact with OnShelf directly. This module controls access and visibility:</p>
+      <ul>
+        <li><strong>Access control:</strong> Ensures librarians see students in their school, teachers see students in their classrooms. No one sees students they shouldn't have access to.</li>
+        <li><strong>Student profiles:</strong> View individual student data — what books they've checked out, what restrictions their parents have set, checkout history</li>
+        <li><strong>Restriction visibility:</strong> When a parent restricts a book through OnShelf Engage, the restriction is visible here so librarians and teachers can respect it during checkout</li>
+      </ul>
+    </div>
+
+    <!-- Module 8: Circulation -->
+    <div class="card">
+      <div class="module-header">
+        <div class="module-num">8</div>
+        <div class="module-name">Circulation Management</div>
+        <span class="module-status module-status--live">Live</span>
+      </div>
+      <p>Book checkout, check-in, approvals, and circulation history. The interface for librarians to manage the physical flow of books — request checkout (by student and book), process returns, manage approval queues, and view circulation history. This is the operational layer that generates the usage data visible in the dashboard and reports.</p>
+    </div>
+
+    <!-- Proven Process Framework -->
+    <div class="note" style="margin-top:32px">
+      <p><strong>The Proven Process — Discover > Protect > Defend > Optimize > Connect</strong></p>
+      <p style="margin-top:8px">These five actions represent how districts experience the Bookmarked platform — though not necessarily in linear order. A district might enter through <strong>Protect</strong> (compliance), gain <strong>Defend</strong> (audit trail and documentation), discover they need to <strong>Discover</strong> (see what's actually in their libraries), then move toward <strong>Optimize</strong> (better ordering, better collections) and eventually <strong>Connect</strong> (matching students to books). The product supports all five — the district chooses where to start based on their most urgent need.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 6. USER JOURNEYS -->
+<div class="section" id="journeys">
+  <div class="container">
+    <div class="eyebrow">Section 6</div>
+    <h2>User Journeys</h2>
+
+    <div class="card card--green" style="margin-top:24px">
+      <h3 style="margin-top:0">The Librarian — Monday Morning</h3>
+      <p style="color:var(--bm-muted-gray);font-size:14px;margin-bottom:20px">Primary user. Manages one school library + classroom libraries. Stretched thin — may also teach or serve multiple schools.</p>
+      <div class="journey-step"><div class="journey-num">1</div><div class="journey-text">Opens dashboard. <strong>3 new flags overnight</strong>, 2 order lists from teachers awaiting review, 1 committee meeting to prepare for this week.</div></div>
+      <div class="journey-step"><div class="journey-num">2</div><div class="journey-text">Reviews flagged books first. A book in a 5th-grade classroom was mentioned in a school district board meeting in another state. She checks the intelligence card — content assessment says <strong>suitable for middle/high school, not elementary.</strong> Routes to admin for review.</div></div>
+      <div class="journey-step"><div class="journey-num">3</div><div class="journey-text">Opens teacher order lists. 12 books submitted by two teachers. Reviews against Book Intelligence — <strong>10 clean, 1 with challenge history worth noting (adds a note with her analysis), 1 with content concerns (rejects with evidence).</strong></div></div>
+      <div class="journey-step"><div class="journey-num">4</div><div class="journey-text">Adds 3 books to her own order list — a title she's been meaning to add, one suggested by a reading specialist, one she discovered through a network note from another librarian. Saves for later.</div></div>
+      <div class="journey-step"><div class="journey-num">5</div><div class="journey-text">Prepares for Wednesday's parent committee meeting. Adds notes to 4 books on the order list she's presenting — context on why she recommends each, evidence from Book Intelligence, and her professional assessment. <strong>Shares the list with her administrator for review before the meeting.</strong></div></div>
+      <div class="journey-step"><div class="journey-num">6</div><div class="journey-text">Checks OnShelf Engage — <strong>two parents have restricted books this week.</strong> She has classes coming to the library this afternoon. Reviews those students' restriction lists so she can guide them appropriately.</div></div>
+      <p style="margin-top:16px"><strong>Total time: 45 minutes of informed, documented decision-making.</strong> Previously: days of manual research, spreadsheet management, and email coordination — or decisions made without data at all.</p>
+    </div>
+
+    <div class="card card--green">
+      <h3 style="margin-top:0">The Superintendent — Board Meeting Prep</h3>
+      <p style="color:var(--bm-muted-gray);font-size:14px;margin-bottom:20px">Responsible for district-wide compliance and book oversight. Reports to the board. Personally accountable for content across the district. <em>Note: In practice, many superintendents delegate this to an assistant superintendent or director of library services — the workflow serves both.</em></p>
+      <div class="journey-step"><div class="journey-num">1</div><div class="journey-text">Opens dashboard. District-wide view: <strong>267 libraries, 55 school library books, 234 classroom books, 254 flagged.</strong></div></div>
+      <div class="journey-step"><div class="journey-num">2</div><div class="journey-text">Reviews book order lists being prepared for board approval. <strong>3 lists ready for board, 2 still in committee review.</strong> Checks status with the librarian team on the pending lists.</div></div>
+      <div class="journey-step"><div class="journey-num">3</div><div class="journey-text">Reviews access status: 52 pending review — too many. <strong>Flags for the librarian team to prioritize.</strong></div></div>
+      <div class="journey-step"><div class="journey-num">4</div><div class="journey-text">Generates compliance report: all books reviewed this month, flagged statuses, decisions with evidence. <strong>48 books reviewed — 45 approved, 3 relocated to more appropriate grade levels.</strong> Parent feedback addressed and documented.</div></div>
+      <div class="journey-step"><div class="journey-num">5</div><div class="journey-text">Goes to the board with <strong>documentation, not anecdotes.</strong> "We are managing 267 libraries. We reviewed 48 books this month. Here is the documentation for each decision. We are in compliance."</div></div>
+    </div>
+
+    <div class="card card--green">
+      <h3 style="margin-top:0">The Parent — Staying Connected</h3>
+      <p style="color:var(--bm-muted-gray);font-size:14px;margin-bottom:20px">Wants to know what their child has access to. Wants to be heard, not dismissed. Wants to be part of their child's reading life.</p>
+      <div class="journey-step"><div class="journey-num">1</div><div class="journey-text">Receives notification: <strong>new books proposed</strong> for their child's school library.</div></div>
+      <div class="journey-step"><div class="journey-num">2</div><div class="journey-text">Clicks the link. Sees 15 proposed books with covers, summaries, age ranges, and theme tags. Can also see books in her child's <strong>classroom library</strong> — not just the main school library.</div></div>
+      <div class="journey-step"><div class="journey-num">3</div><div class="journey-text">Notices a book tagged with themes she wants to discuss with her child first. <strong>Restricts that title for her child</strong> — the book stays available for other students, but her child can't check it out without her approval.</div></div>
+      <div class="journey-step"><div class="journey-num">4</div><div class="journey-text">Submits feedback on two proposed books during the 30-day review window. <strong>Her feedback is tracked and attached to the specific books.</strong> The librarian sees it, responds, and the exchange is documented.</div></div>
+      <div class="journey-step"><div class="journey-num">5</div><div class="journey-text">Checks what her child has been reading this month. Reviews the book's intelligence summary — themes, educational value, content context — and uses it to <strong>start a conversation at dinner</strong> about the book, staying connected to her child's reading life without having to read every book herself.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 7. PRODUCT PRINCIPLES -->
+<div class="section section--alt" id="principles">
+  <div class="container">
+    <div class="eyebrow">Section 7</div>
+    <h2>Product Principles</h2>
+    <p>These guide what we build, what we don't build, and how we make trade-offs.</p>
+
+    <div style="margin-top:28px">
+      <div class="principle"><div class="principle-num">1</div><div class="principle-content"><h4>Give Time Back, Don't Add Work</h4><p>Every feature must reduce the time to make good decisions. If a feature adds work, it fails. Librarians are spending 40 hours a month on ordering processes alone. Our job is to give that time back — not add another tool to learn.</p></div></div>
+      <div class="principle"><div class="principle-num">2</div><div class="principle-content"><h4>Intelligence at the Point of Decision</h4><p>Book Intelligence appears where decisions happen — not as a separate research step. Inline in the order review. Inline in the library view. Never make someone leave their workflow to access intelligence.</p></div></div>
+      <div class="principle"><div class="principle-num">3</div><div class="principle-content"><h4>Data-Backed Decisions Replace Bias</h4><p>Librarians choosing 10,000 from 40+ million is a data problem. Publishers recommending their own books is commercial bias. PEN America marking "banned" without tracking resolutions is incomplete data. We don't provide bias. We provide data. Every decision on our platform can be informed by evidence, not opinion.</p></div></div>
+      <div class="principle"><div class="principle-num">4</div><div class="principle-content"><h4>Informed Choice, Not Gatekeeping</h4><p>We provide intelligence that enables informed human decisions. We never restrict, approve, or remove a book. We equip people with data and let them decide. Bookmarked is not a censor.</p></div></div>
+      <div class="principle"><div class="principle-num">5</div><div class="principle-content"><h4>Agnostic Platform</h4><p>No commercial bias (we don't sell books). No personal bias (we don't curate by opinion). No political bias (both "restrict" and "protect" legislation creates demand). Intelligence is sourced, traceable, and objective.</p></div></div>
+      <div class="principle"><div class="principle-num">6</div><div class="principle-content"><h4>Protect Both Directions</h4><p>Protect against books that shouldn't be there (regulatory compliance). Also protect books that SHOULD be there — identifying removals driven by opinion or bias rather than legitimate grounds. Evidence, not opinion, in both directions.</p></div></div>
+      <div class="principle"><div class="principle-num">7</div><div class="principle-content"><h4>Defensibility by Design</h4><p>Every action creates an audit trail. Every decision is documented. This isn't a feature — it's the architectural principle. When a book is questioned next year, the district can show exactly what happened.</p></div></div>
+      <div class="principle"><div class="principle-num">8</div><div class="principle-content"><h4>Unified, Not Fragmented</h4><p>All data in one place. School library, classroom libraries, orders, intelligence, compliance, parent feedback, board approvals — all connected. The value is the connections between data, not just the data itself.</p></div></div>
+      <div class="principle"><div class="principle-num">9</div><div class="principle-content"><h4>Build the Network, Not Just the Tool</h4><p>Every district contributes to intelligence that makes the system smarter for everyone. Collaborative notes today. Aggregated patterns tomorrow. Design features that create network data alongside features that consume it.</p></div></div>
+      <div class="principle"><div class="principle-num">10</div><div class="principle-content"><h4>Copyright is Sacred</h4><p>We never compromise, expose, or diminish the publisher's IP. We build intelligence about and around books. When we have publisher access, we create derivative intelligence, not derivative content.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 8. COMPLIANCE-TO-DISCOVERY ARC -->
+<div class="section" id="arc">
+  <div class="container">
+    <div class="eyebrow">Section 8</div>
+    <h2>The Compliance-to-Discovery Arc</h2>
+    <p>Compliance opened the door. Discovery is what's on the other side. Each stage builds on the last — and gives time back at every step.</p>
+
+    <div class="arc-flow">
+      <div class="arc-step">
+        <div class="arc-label arc-label--1">Stage 1<br>Compliance</div>
+        <div class="arc-content">
+          <div class="quote">"We need to comply — and we don't have the tools."</div>
+          <p><strong>Where most districts enter.</strong> Upload your collection, see your flags, manage orders through the required workflow, document everything. <strong>Value:</strong> You're in compliance with documentation to prove it. And you just saved your librarian 20+ hours this month.</p>
+        </div>
+      </div>
+      <div class="arc-step">
+        <div class="arc-label arc-label--2">Stage 2<br>Visibility</div>
+        <div class="arc-content">
+          <div class="quote">"We had no idea what was in our classroom libraries."</div>
+          <p><strong>Emerging.</strong> Classroom library visibility, grade-level controls, cross-referencing, collection health metrics, dead inventory identification. <strong>Value:</strong> For the first time, the superintendent sees the entire district's book ecosystem — and can set consistent policies across it.</p>
+        </div>
+      </div>
+      <div class="arc-step">
+        <div class="arc-label arc-label--3">Stage 3<br>Optimization</div>
+        <div class="arc-content">
+          <div class="quote">"Based on our students and gaps — what should we order next?"</div>
+          <p><strong>Next.</strong> Collection gap analysis, student-informed recommendations, budget optimization, peer benchmarking, flag synthesis (TLDR across all intelligence). <strong>Value:</strong> Districts build better libraries with the budget they have — and spend their time curating, not researching.</p>
+        </div>
+      </div>
+      <div class="arc-step">
+        <div class="arc-label arc-label--4">Stage 4<br>Network</div>
+        <div class="arc-content">
+          <div class="quote">"What are districts like us doing? What's working?"</div>
+          <p><strong>Building.</strong> Network benchmarks, predictive challenge alerts, peer decisions, the "case law" repository for book decisions. <strong>Value:</strong> Collective intelligence. Decisions informed by the wisdom of the entire network.</p>
+        </div>
+      </div>
+      <div class="arc-step">
+        <div class="arc-label arc-label--5">Stage 5<br>Discovery</div>
+        <div class="arc-content">
+          <div class="quote">"Every student matched to books they'll love."</div>
+          <p><strong>Future.</strong> Student-book matching, personalized reading paths, Content Scanner intelligence, collection curation based on actual students. <strong>Value:</strong> Libraries thrive. Literacy improves. Compliance is automatic. The time we gave back is now spent on what matters — connecting every reader with their next great book.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 9. TAXONOMY -->
+<div class="section section--alt" id="taxonomy">
+  <div class="container">
+    <div class="eyebrow">Section 9</div>
+    <h2>Product Taxonomy</h2>
+    <p>Current naming mapped to reality. Naming is a living decision — the product evolves, and the language should evolve with it.</p>
+
+    <table>
+      <tr><th>Name</th><th>What It Is</th><th>User-Facing Location</th><th>Status</th></tr>
+      <tr><td><strong>OnShelf</strong></td><td>The product platform</td><td>Login, top nav branding</td><td>Established</td></tr>
+      <tr><td><strong>Book Intelligence</strong></td><td>Cross-cutting intelligence engine</td><td>Book detail pages, order lists, flags</td><td>Established</td></tr>
+      <tr><td><strong>OnShelf Review</strong></td><td>Book order + review workflow</td><td>Orders tab</td><td>Consider: "Orders" in nav vs. "OnShelf Review" as product name</td></tr>
+      <tr><td><strong>Classroom Libraries</strong></td><td>Classroom collection management</td><td>Classrooms tab</td><td>Established — clear and intuitive</td></tr>
+      <tr><td><strong>OnShelf Engage</strong></td><td>Parent/guardian access and engagement</td><td>Parent portal, guardian features</td><td>Emerging — needs identity buildout</td></tr>
+      <tr><td><strong>Reports</strong></td><td>Reporting and analytics engine</td><td>Reports tab</td><td>Established</td></tr>
+      <tr><td><strong>Content Scanner</strong></td><td>AI reads actual book content (Layer 3)</td><td>Not yet in product</td><td>Future capability</td></tr>
+      <tr><td><strong>Reader Intelligence</strong></td><td>Student-facing discovery layer</td><td>Not yet in product</td><td>Future — needs user-friendly name at launch</td></tr>
+      <tr><td><strong>Superintendent/Admin View</strong></td><td>District-wide oversight dashboard</td><td>Super admin login</td><td>Potential rename — most superintendents delegate to assistant superintendent or director of library services</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 10. ROADMAP -->
+<div class="section" id="roadmap">
+  <div class="container">
+    <div class="eyebrow">Section 10</div>
+    <h2>What Exists vs. What's Next vs. What's Future</h2>
+
+    <h3>Live (V2.0 — Today)</h3>
+    <table>
+      <tr><th>Capability</th><th>Status</th></tr>
+      <tr><td>Book collection upload and management (ISBN-based)</td><td><span class="module-status module-status--live">Live</span></td></tr>
+      <tr><td>Book Intelligence cards — proactive internet scanning, flags, content assessment, ratings</td><td><span class="module-status module-status--live">Live</span></td></tr>
+      <tr><td>Collection dashboard with district-wide metrics and alerts</td><td><span class="module-status module-status--live">Live</span></td></tr>
+      <tr><td>OnShelf Review — full book order workflow (teacher → librarian → committee → parent → board)</td><td><span class="module-status module-status--live">Live</span></td></tr>
+      <tr><td>Classroom library management with grade-level controls</td><td><span class="module-status module-status--live">Live</span></td></tr>
+      <tr><td>OnShelf Engage — parent visibility, book restrictions, order review with feedback</td><td><span class="module-status module-status--live">Live</span></td></tr>
+      <tr><td>Collaborative notes sharing across the network</td><td><span class="module-status module-status--live">Live</span></td></tr>
+      <tr><td>Flag categorization by source (Library/Advocacy, News/Media, School/District)</td><td><span class="module-status module-status--live">Live</span></td></tr>
+      <tr><td>Comprehensive reporting — Circulation, Collection, Student Activity, Guardian, Administrative</td><td><span class="module-status module-status--live">Live</span></td></tr>
+      <tr><td>Student management — access control, restriction visibility, checkout history</td><td><span class="module-status module-status--live">Live</span></td></tr>
+      <tr><td>Circulation management — checkout, check-in, approvals, history</td><td><span class="module-status module-status--live">Live</span></td></tr>
+      <tr><td>Multi-language support</td><td><span class="module-status module-status--live">Live</span></td></tr>
+      <tr><td>Audit trail on every action</td><td><span class="module-status module-status--live">Live</span></td></tr>
+    </table>
+
+    <h3>Near-Term (V2.x)</h3>
+    <table>
+      <tr><th>Capability</th><th>Description</th></tr>
+      <tr><td><strong>Flag synthesis / intelligence TLDR</strong></td><td>When a book has 17 flags, give the librarian a summary of what they're all saying — without opening each one individually. Reduce research time per book from minutes to seconds.</td></tr>
+      <tr><td><strong>Enhanced Book Intelligence</strong></td><td>Deeper, more nuanced intelligence on each book. Better data sourcing, more comprehensive content assessment, improved accuracy across all intelligence dimensions.</td></tr>
+      <tr><td><strong>Book review workflow improvements</strong></td><td>Streamline the OnShelf Review process — faster committee routing, better collaboration tools, improved parent feedback management.</td></tr>
+      <tr><td><strong>Network Intelligence surfaces</strong></td><td>Surface peer benchmarks, challenge velocity, and ordering patterns from the network into the product experience.</td></tr>
+      <tr><td><strong>Parent critical thinking guides</strong></td><td>Structured discussion guides for parents — helping them engage with their child about a book using themes, questions, and context from Book Intelligence, without reading the book themselves.</td></tr>
+    </table>
+
+    <h3>Future Capabilities</h3>
+    <table>
+      <tr><th>Capability</th><th>Dependencies</th></tr>
+      <tr><td><strong>Content Scanner</strong> — AI reads actual books against regulatory requirements</td><td>Publisher partnerships, copyright access agreements</td></tr>
+      <tr><td><strong>Student-book matching</strong> — personalized recommendations within regulatory context</td><td>Content Scanner + student data integration</td></tr>
+      <tr><td><strong>Collection curation recommendations</strong> — "based on your students, here's what to order"</td><td>Network intelligence + student demographics + collection analysis</td></tr>
+      <tr><td><strong>Publisher / book distributor marketplace</strong> — data-driven distribution channel</td><td>District scale + publisher participation</td></tr>
+      <tr><td><strong>Reader Intelligence Layer</strong> — student-facing discovery experience</td><td>Full stack: Scanner + Network + student profiles</td></tr>
+      <tr><td><strong>Multi-state regulatory engine</strong> — automated compliance across jurisdictions</td><td>Legislative tracking + state-specific rule encoding</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 11. APPENDIX -->
+<div class="section section--alt" id="appendix">
+  <div class="container">
+    <div class="eyebrow">Section 11</div>
+    <h2>Appendix: Intelligence Card Anatomy</h2>
+    <p>What users see on every book detail page (based on live product — 1984 by George Orwell):</p>
+
+    <div class="card" style="margin-top:24px">
+      <h4 style="margin-top:0">Header</h4>
+      <p>Book cover, title, author, location tag (e.g., "School Library"), ISBN, publisher, year, pages. Action buttons: Set Status, Refresh Metadata, Delete Book. Flag count badge (e.g., "36 Flags").</p>
+    </div>
+    <div class="card">
+      <h4 style="margin-top:0">Left Navigation</h4>
+      <p>Book Intelligence (main view) · Guardian Activities · Status History · Circulation History · Notes and Documents</p>
+    </div>
+    <div class="card">
+      <h4 style="margin-top:0">Intelligence Sections</h4>
+      <ol>
+        <li><strong>Synopsis</strong> — From ISBNDB, including notable recognitions (e.g., "PBS's The Great American Read")</li>
+        <li><strong>Subjects</strong> — Dual-sourced from ISBNDB and Open Library for comprehensive coverage</li>
+        <li><strong>People/Characters</strong> — Named characters and referenced people in the work</li>
+        <li><strong>Times/Setting/Place</strong> — When available</li>
+        <li><strong>Flags</strong> — Tabbed by source type (Library/Advocacy Organizations, News/Media Outlets, School/District Websites). Each flag: date, category, description, source link, state, district. Represents what others have reported — not Bookmarked's determination.</li>
+        <li><strong>Audience & Reading Level</strong> — Age range, grade level, reading level</li>
+        <li><strong>Content Ratings</strong> — Violence, Sexual Content, Language (None/Mild/Moderate/Explicit) + mature themes tags</li>
+        <li><strong>Compliance & Challenge Risk</strong> — Reported ban status, challenge risk level, potential concerns</li>
+        <li><strong>Grade Level Suitability</strong> — Elementary/Middle/High School (Suitable/Not Suitable)</li>
+        <li><strong>Advisory & Educational Context</strong> — Parental guidance recommendation, content warnings, themes, educational value narrative</li>
+        <li><strong>AI Content Summary</strong> — AI-generated overview of content and themes based on publicly available information</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4 style="margin-top:0">Intelligence in Order Lists (Compact Inline View)</h4>
+      <p>Cover, title, author, publisher, ISBN, age range badge, ban count + challenge count (clickable to expand details), summary, theme tags, notes (per-book with save capability), copies selector. Ban Details popup: district, school, reason, content tags, date, source link. Challenge Details popup: same format.</p>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <div class="logo-text">Bookmarked</div>
+    <p>The Book Intelligence Company &nbsp;·&nbsp; March 2026</p>
+  </div>
+</div>
+
+</body>
+</html>

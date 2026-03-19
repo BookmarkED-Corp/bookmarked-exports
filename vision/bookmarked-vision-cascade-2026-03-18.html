@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookmarked Vision Cascade — March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bm-eigengrau:#101828;--bm-deep-green:#107569;--bm-teal-accent:#12A38C;--bm-white:#FFFFFF;--bm-pumpkin:#FF692E;
+  --bm-teal-dark:#0D5A52;--bm-teal-mid:#107569;--bm-teal-light:#12A38C;
+  --bm-secondary-text:#475467;--bm-muted-gray:#9CA3AF;--bm-border-light:#E5E7EB;
+  --bm-bg-cool:#F8FAFC;--bm-bg-light:#F9FAFB;--bm-bg-warm:#F8F5F0;--bm-bg-green-tint:#F8FAF8;
+  --bm-font-family:'Urbanist',Arial,Helvetica,sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--bm-font-family);font-size:16px;line-height:1.6;color:var(--bm-eigengrau);background:#fff;-webkit-font-smoothing:antialiased}
+.hero{background:linear-gradient(135deg,#0D5A52 0%,#107569 40%,#12A38C 100%);padding:80px 0 60px;color:#fff}
+.hero h1{font-size:44px;font-weight:800;line-height:1.12;letter-spacing:-0.02em;max-width:750px}
+.hero p{font-size:16px;color:rgba(255,255,255,0.85);max-width:620px;margin-top:16px;line-height:1.6}
+.hero .meta{font-size:13px;color:rgba(255,255,255,0.6);margin-top:24px;letter-spacing:0.5px}
+.container{max-width:900px;margin:0 auto;padding:0 24px}
+.section{padding:56px 0}
+.section--alt{background:var(--bm-bg-cool)}
+.section--warm{background:var(--bm-bg-warm)}
+.section--green{background:var(--bm-bg-green-tint)}
+h2{font-size:28px;font-weight:700;line-height:1.25;letter-spacing:-0.02em;color:var(--bm-eigengrau);margin-bottom:20px}
+h3{font-size:20px;font-weight:700;color:var(--bm-eigengrau);margin-bottom:12px;margin-top:32px}
+h3:first-child{margin-top:0}
+p{margin-bottom:16px;color:var(--bm-secondary-text)}
+p:last-child{margin-bottom:0}
+strong{color:var(--bm-eigengrau);font-weight:700}
+ul{margin-bottom:16px;padding-left:24px;color:var(--bm-secondary-text)}
+li{margin-bottom:8px;font-size:15px;line-height:1.5}
+li strong{color:var(--bm-eigengrau)}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bm-teal-accent);margin-bottom:8px}
+
+/* Belief block */
+.belief-block{background:var(--bm-eigengrau);color:#fff;border-radius:16px;padding:48px 44px;margin-bottom:32px}
+.belief-block .lead{font-size:28px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:20px}
+.belief-block p{color:rgba(255,255,255,0.82);font-size:16px;line-height:1.7;margin-bottom:16px}
+.belief-block p:last-child{margin-bottom:0}
+.belief-block .closer{font-size:20px;font-weight:700;color:var(--bm-teal-accent);margin-top:24px;margin-bottom:0}
+
+/* Problem cards */
+.problem-card{background:#fff;border-radius:12px;padding:32px;border:1px solid var(--bm-border-light);margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+.problem-card .num{display:inline-block;width:36px;height:36px;background:var(--bm-teal-accent);color:#fff;border-radius:50%;text-align:center;line-height:36px;font-size:16px;font-weight:700;margin-bottom:12px}
+.problem-card h3{margin-top:0;font-size:18px}
+.problem-card p{font-size:15px}
+
+/* Constraint grid */
+.constraint-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.constraint{background:#fff;border-radius:8px;padding:20px;border-left:3px solid var(--bm-teal-accent)}
+.constraint h4{font-size:14px;font-weight:700;color:var(--bm-eigengrau);margin-bottom:6px}
+.constraint p{font-size:14px;margin:0;color:var(--bm-secondary-text)}
+
+/* Publisher value prop */
+.pub-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:20px}
+.pub-card{background:#fff;border-radius:10px;padding:22px;border-top:3px solid var(--bm-teal-accent)}
+.pub-card h4{font-size:15px;font-weight:700;color:var(--bm-eigengrau);margin-bottom:8px}
+.pub-card p{font-size:14px;color:var(--bm-secondary-text);margin:0}
+
+/* Beachhead grid — 3x2 */
+.beachhead-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:20px}
+.beachhead-card{background:#fff;border-radius:10px;padding:24px;border:1px solid var(--bm-border-light)}
+.beachhead-card .icon{font-size:24px;margin-bottom:10px}
+.beachhead-card h4{font-size:15px;font-weight:700;color:var(--bm-eigengrau);margin-bottom:8px}
+.beachhead-card p{font-size:14px;color:var(--bm-secondary-text);margin:0}
+
+/* Callout */
+.callout{background:var(--bm-bg-warm);border-radius:10px;padding:28px 32px;border-left:4px solid var(--bm-pumpkin);margin:24px 0}
+.callout p{color:var(--bm-secondary-text);font-size:15px;margin:0}
+.callout strong{color:var(--bm-eigengrau)}
+
+.note{background:var(--bm-bg-green-tint);border-radius:10px;padding:24px 28px;border-left:4px solid var(--bm-teal-accent);margin:24px 0}
+.note p{font-size:15px;margin:0;color:var(--bm-secondary-text)}
+
+/* Cascade flow */
+.cascade-flow{display:flex;flex-direction:column;gap:0;margin-top:24px}
+.cascade-step{display:flex;align-items:stretch;min-height:80px}
+.cascade-step .label{width:180px;flex-shrink:0;background:var(--bm-deep-green);color:#fff;padding:16px 20px;font-size:13px;font-weight:700;letter-spacing:0.5px;display:flex;align-items:center}
+.cascade-step:first-child .label{border-radius:12px 0 0 0}
+.cascade-step:last-child .label{border-radius:0 0 0 12px}
+.cascade-step .content{flex:1;background:#fff;border:1px solid var(--bm-border-light);border-left:none;padding:16px 20px;font-size:14px;color:var(--bm-secondary-text);line-height:1.5}
+.cascade-step:first-child .content{border-radius:0 12px 0 0}
+.cascade-step:last-child .content{border-radius:0 0 12px 0}
+.cascade-step .content strong{color:var(--bm-eigengrau)}
+.cascade-connector{padding:6px 0 6px 90px;font-size:13px;color:var(--bm-muted-gray);font-style:italic;display:flex;align-items:center;gap:8px}
+.cascade-connector .arrow{color:var(--bm-teal-accent);font-size:18px;font-style:normal}
+
+/* Competitive */
+.compete-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+.compete-card{background:#fff;border-radius:10px;padding:24px;border:1px solid var(--bm-border-light)}
+.compete-card h4{font-size:15px;font-weight:700;color:var(--bm-eigengrau);margin-bottom:8px}
+.compete-card p{font-size:14px;color:var(--bm-secondary-text);margin:0}
+.compete-card .verdict{font-size:13px;font-weight:600;color:var(--bm-pumpkin);margin-top:10px}
+.compete-vs{background:var(--bm-deep-green);border-radius:10px;padding:24px;color:#fff;grid-column:1/-1}
+.compete-vs h4{color:#fff;font-size:16px;margin-bottom:8px}
+.compete-vs p{color:rgba(255,255,255,0.82);font-size:14px;margin:0}
+
+/* Closing */
+.closing-block{background:linear-gradient(135deg,#0D5A52 0%,#107569 40%,#12A38C 100%);border-radius:16px;padding:48px 44px;color:#fff;margin-top:32px}
+.closing-block .lead{font-size:24px;font-weight:700;color:#fff;line-height:1.35;margin-bottom:16px}
+.closing-block p{color:rgba(255,255,255,0.85);font-size:16px;line-height:1.7;margin-bottom:16px}
+.closing-block p:last-child{margin-bottom:0}
+
+/* Document note */
+.doc-note{background:var(--bm-bg-light);border-radius:8px;padding:20px 24px;margin-top:24px;font-size:13px;color:var(--bm-muted-gray);border:1px solid var(--bm-border-light)}
+.doc-note strong{color:var(--bm-secondary-text);font-size:13px}
+
+/* Footer */
+.footer{background:var(--bm-deep-green);color:#fff;padding:32px 0;margin-top:0}
+.footer p{color:rgba(255,255,255,0.7);font-size:13px;margin:0}
+.footer .logo-text{font-size:18px;font-weight:700;color:#fff;margin-bottom:4px}
+
+@media(max-width:768px){
+  .hero h1{font-size:30px}
+  h2{font-size:24px}
+  .constraint-grid,.compete-grid{grid-template-columns:1fr}
+  .beachhead-grid,.pub-grid{grid-template-columns:1fr}
+  .cascade-step{flex-direction:column}
+  .cascade-step .label{width:100%;border-radius:0}
+  .cascade-step .content{border-left:1px solid var(--bm-border-light)}
+  .cascade-connector{padding-left:0}
+  .belief-block{padding:32px 24px}
+  .closing-block{padding:32px 24px}
+  .compete-vs{grid-column:auto}
+}
+@media print{
+  .hero,.footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .belief-block,.closing-block{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-size:11pt}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="container">
+    <h1>Bookmarked Vision Cascade</h1>
+    <p>The canonical vision document for the Bookmarked Operating System. What we're building, why it matters, and how it cascades from the ultimate vision to today's product.</p>
+    <div class="meta">March 18, 2026 &nbsp;·&nbsp; Steve Wandler, Founder &nbsp;·&nbsp; Status: Active</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     FOUNDATIONAL BELIEF — Improvement #1: Visceral, not tagline
+     ============================================================ -->
+<div class="section">
+  <div class="container">
+    <div class="belief-block">
+      <div class="lead">Compliance opened the door. Discovery is what's on the other side.</div>
+      <p>We believe that protecting a book's content and connecting it to the right reader are not opposing goals — they're the same goal, approached with intelligence.</p>
+      <p>We believe that the people who steward books — librarians, teachers, parents — shouldn't have to choose between compliance and discovery. They should have tools that make both possible, at the same time, without compromise.</p>
+      <p>For the first time in history, we have the technology to understand what's inside a book, understand who's reading it, and match the two — with intelligence, with respect for copyright, and within the rules that govern access.</p>
+      <p>What's missing isn't the technology. It's the platform — the intelligence layer purpose-built for the people who steward human knowledge.</p>
+      <p class="closer">We're building the intelligence layer between every book and every reader.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     THE THREE-SIDED PROBLEM
+     ============================================================ -->
+<div class="section section--alt">
+  <div class="container">
+    <div class="eyebrow">The Problem</div>
+    <h2>The Three-Sided Problem Nobody Else Can Solve</h2>
+    <p>Bookmarked solves a problem that no one else can solve because they only see one side of it.</p>
+
+    <div class="problem-card">
+      <div class="num">1</div>
+      <h3>Protect the Book</h3>
+      <p>The content is the author's and publisher's intellectual property. Copyright is sacred. We never compromise, expose, or diminish it.</p>
+      <p>But books also need protection from <strong>wrongful censorship</strong> — removal driven by opinion, bias, or incomplete data rather than legitimate regulatory grounds. Today, PEN America tracks bans and challenges but not resolutions. A book removed for review and returned to the shelf still appears "banned." Districts see the list and refuse to order anything on it — not because the book is inappropriate, but because they don't want the scrutiny.</p>
+      <p><strong>The result: de facto censorship driven by incomplete data.</strong> There is no case law, no single source of truth for what actually happened to a challenged book. Did the district review it and keep it? Move it to a more appropriate grade level? Remove it permanently? Nobody knows. Bookmarked becomes that source of truth — tracking not just challenges, but outcomes.</p>
+    </div>
+
+    <div class="problem-card">
+      <div class="num">2</div>
+      <h3>Protect the Reader</h3>
+      <p>Readers deserve to know what they're getting into before they read — the way moviegoers know a film's rating before buying a ticket. But books have no equivalent system, and creating one risks being seen as censorship.</p>
+      <p>The solution isn't a gatekeeper deciding what's "appropriate." It's <strong>personalized, contextual transparency</strong>: helping every reader make an informed choice without a human or algorithm deciding for them. We don't want to be the TikTok algorithm for books — pushing content based on engagement. We want to help readers find what they'll love, within the frameworks that apply to them.</p>
+      <p>For students in public schools, this takes on legal dimensions. Certain content is not legally permitted in certain school settings — and the rules vary by state, by grade level, and by context. A 5th grader and a 12th grader in the same district may have different legal access to the same book. The platform must understand both the content and the context.</p>
+    </div>
+
+    <div class="problem-card">
+      <div class="num">3</div>
+      <h3>Match Within Regulatory Frameworks</h3>
+      <p>This is what makes the problem hard and why others haven't solved it. The regulatory landscape is complex and expanding: <strong>26 states have book compliance legislation today, projected to reach 35-40 by 2029.</strong> Each state has different requirements. Some create personal accountability for educators. All create operational burden on districts that are already stretched thin.</p>
+      <p>Bookmarked must navigate all of this — protecting copyright, enabling informed choice, respecting freedom of speech, preventing both <strong>illegal censorship and illegal access</strong> — while being seen as an agnostic platform, not a gatekeeper. We don't restrict books. We don't approve books. We provide intelligence that enables informed human decisions, within the regulatory frameworks that apply.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     THE VISION
+     ============================================================ -->
+<div class="section">
+  <div class="container">
+    <div class="eyebrow">The Vision</div>
+    <h2>What We're Building</h2>
+    <p><strong>Bookmarked is the intelligence layer that protects books, protects readers, and connects them</strong> — within the regulatory, copyright, and ethical frameworks that make this problem uniquely complex.</p>
+    <p>We are the <strong>agnostic platform</strong>. Publishers recommend their own books (bias toward their catalog). Distributors recommend what they distribute (bias toward their inventory). Librarians curate based on their training and personal reading (structural bias — 10,000 books chosen from 40+ million, based on what data?). Bookmarked recommends based on the <strong>actual students, the actual collection, and the actual regulatory requirements</strong>. No commercial bias. No personal bias. Data-backed decisions.</p>
+    <p>We don't replace librarians, teachers, or curators. We give them the <strong>data infrastructure they never had</strong> — so their professional judgment is informed by actual student composition, actual collection gaps, actual regulatory requirements, and actual usage patterns. The AI does the work humans literally cannot do. The humans do the work that only humans should do.</p>
+
+    <h3>The Spotify Analogy — With Regulatory Complexity</h3>
+    <p>Spotify didn't kill the music industry. It made discovery infinite while protecting the creator's IP through streaming royalties. The artist still owns the music. The listener gets a personalized path to it.</p>
+    <p>Bookmarked wants to do for books what Spotify did for music: <strong>make discovery personalized and infinite while the author and publisher still own the content</strong>. But Spotify doesn't have to worry about age-appropriate content laws varying by state, or about being accused of pushing harmful content, or about the personal accountability that comes with recommending the wrong book to the wrong reader. Bookmarked has to solve discovery inside a regulatory landscape that's complex, expanding, and high-stakes — and that's why this problem is worth solving.</p>
+
+    <div class="constraint-grid">
+      <div class="constraint">
+        <h4>Regulatory Complexity</h4>
+        <p>A student in a Texas elementary school has different legal access than a high school senior in Oregon. The matching engine must operate within jurisdiction-specific rules.</p>
+      </div>
+      <div class="constraint">
+        <h4>Content Sensitivity</h4>
+        <p>Books don't have rating systems, and creating one risks being seen as censorship. The platform must enable informed choice without gatekeeping.</p>
+      </div>
+      <div class="constraint">
+        <h4>Copyright Boundaries</h4>
+        <p>Until publishers grant access, we can't read the book. We build intelligence from public signals first, then earn publisher trust for deeper access.</p>
+      </div>
+      <div class="constraint">
+        <h4>Trust From All Sides</h4>
+        <p>Parents must trust we're not pushing content. Librarians must trust we're not replacing them. Publishers must trust we're not pirating. Districts must trust we're legally defensible.</p>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         PARENT CONNECTION — OnShelf Engage
+         ============================================================ -->
+    <h3>The Parent Connection</h3>
+    <p>Parents have always wanted to know what their kids are reading. Now, increasingly, they have the right to. Across the country, legislation is shifting toward a <strong>"parents first"</strong> model — giving families more visibility and more voice in what books are available to their children. That's a good thing. The question is: what tools exist to make that real?</p>
+    <p><strong>OnShelf Engage</strong> makes parents informed participants in their child's reading life — not surprised objectors showing up at board meetings:</p>
+    <ul>
+      <li><strong>Visibility</strong> — see what books are in your child's library and what they've checked out</li>
+      <li><strong>Intelligence</strong> — understand what's in a book without having to read it: themes, age appropriateness, content context, educational value</li>
+      <li><strong>Agency</strong> — restrict specific titles for their child, without removing the book from the library for everyone else</li>
+      <li><strong>Connection</strong> <em>(coming soon)</em> — critical thinking guides so parents can engage with their kids about what they're reading, ask meaningful questions, and encourage more reading — without having to read every book themselves</li>
+      <li><strong>Voice</strong> — weigh in on proposed book orders with feedback that's tracked and attached to the specific book</li>
+    </ul>
+    <p>This isn't about control. It's about connection. A parent who can see what their child is reading — and have a conversation about it — is a parent who's engaged in their child's education. <strong>OnShelf Engage turns the growing expectation of parent involvement into an opportunity for families to read together, think together, and grow together.</strong></p>
+
+    <!-- ============================================================
+         PUBLISHER OPPORTUNITY — Three-part value prop
+         ============================================================ -->
+    <h3>The Publisher Opportunity</h3>
+    <p>The traditional book distribution model is consolidating, with distributors taking 40-55% margins and offering publishers limited data on what's actually happening on library shelves. Publishers need new, intelligent channels to institutional buyers — and Bookmarked is building the first data-driven distribution channel in publishing.</p>
+
+    <div class="pub-grid">
+      <div class="pub-card">
+        <h4>Compliance Channel</h4>
+        <p>Publishers grant Bookmarked access to read their books. The AI assesses regulatory compliance — giving districts definitive answers instead of guesswork. Publishers become part of the solution, not the problem.</p>
+      </div>
+      <div class="pub-card">
+        <h4>Demand Intelligence</h4>
+        <p>Bookmarked sees every book in every library, every collection gap, every student demographic. "3,200 elementary libraries have zero books on climate science for grades 3-5" — that's a signal no publisher has ever had. We become the intelligence that drives informed ordering.</p>
+      </div>
+      <div class="pub-card">
+        <h4>Personalized Previews</h4>
+        <p>Publishers print one message on the back of a book for a million readers. Bookmarked creates a unique, informed preview for every reader — "here's why YOU would love this book" — without compromising the copyrighted text.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     THE CASCADE — Improvement #4: Progression logic
+     ============================================================ -->
+<div class="section section--alt">
+  <div class="container">
+    <div class="eyebrow">The Cascade</div>
+    <h2>Vision → Scale → Growth → Traction → Today</h2>
+
+    <div class="cascade-flow">
+      <div class="cascade-step">
+        <div class="label">ULTIMATE VISION</div>
+        <div class="content"><strong>The knowledge keeper's platform</strong> — empowering every person and institution that stewards human knowledge to protect it, understand it, and connect it to the people who need it. Books first. All written content eventually. All knowledge content ultimately.</div>
+      </div>
+      <div class="cascade-connector"><span class="arrow">▼</span> Books are the proving ground — the hardest content to match because of regulatory and copyright complexity</div>
+      <div class="cascade-step">
+        <div class="label">AT SCALE</div>
+        <div class="content"><strong>The intelligence layer between every book and every reader, writer, and publisher.</strong> Every book published is understood by our intelligence. Every reader has a path to discovery. Every writer and publisher has a direct line to their audience. Multi-format, multi-language, global.</div>
+      </div>
+      <div class="cascade-connector"><span class="arrow">▼</span> To get there, we must first own K-12 — the largest institutional book buyer and the most regulated</div>
+      <div class="cascade-step">
+        <div class="label">GROWTH</div>
+        <div class="content"><strong>Book Intelligence is the industry standard for K-12 book decisions.</strong> Multi-state presence. Content Scanner live with publisher partnerships. Publisher marketplace operational. The network intelligence moat is deep enough that no new entrant can replicate the data.</div>
+      </div>
+      <div class="cascade-connector"><span class="arrow">▼</span> Critical mass requires proving the model in the most active regulatory markets first</div>
+      <div class="cascade-step">
+        <div class="label">TRACTION</div>
+        <div class="content"><strong>Product-market fit proven. Expanding beyond initial markets.</strong> V2.0 complete and adopted. Content Scanner architecture in development. First publisher partnerships. Multi-state expansion underway. The compliance-to-discovery arc is visible in customer behavior.</div>
+      </div>
+      <div class="cascade-connector"><span class="arrow">▼</span> Today's product earns the right to expand by solving immediate, urgent pain</div>
+      <div class="cascade-step">
+        <div class="label">TODAY (V2)</div>
+        <div class="content"><strong>Book Intelligence v1</strong> (internet-scraped intelligence), <strong>OnShelf Review</strong> (compliant book order workflow), <strong>Classroom Libraries</strong> (unified visibility), <strong>OnShelf Engage</strong> (parent access, restrictions + order review), <strong>Collection Dashboard</strong> (compliance posture at a glance).</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     WHY SCHOOL DISTRICTS — Improvement #3: +2 cards, empathy
+     ============================================================ -->
+<div class="section">
+  <div class="container">
+    <div class="eyebrow">Beachhead Strategy</div>
+    <h2>Why School Districts First</h2>
+    <p>School districts are not the ceiling. They are the beachhead — and the people inside them are drowning. Underfunded, understaffed, over-regulated, and using tools built for a world that no longer exists. They didn't sign up to be personally accountable for every book in every classroom. But here they are.</p>
+
+    <div class="beachhead-grid">
+      <div class="beachhead-card">
+        <div class="icon">⚖️</div>
+        <h4>Regulatory Forcing Function</h4>
+        <p>26 states and growing have book compliance legislation creating immediate, urgent need. Districts must comply — and the requirements keep expanding. They don't have the tools to manage what's being asked of them.</p>
+      </div>
+      <div class="beachhead-card">
+        <div class="icon">📋</div>
+        <h4>Book Order Chaos</h4>
+        <p>Imagine ordering 800 books on a spreadsheet. Who gives feedback? Where does it go? Who tracks it? Who authorizes it? What evidence accompanies each decision? Many states now require parent review, committee review, and board approval for every book ordered. Districts are doing this with Excel and Google Forms.</p>
+      </div>
+      <div class="beachhead-card">
+        <div class="icon">🏫</div>
+        <h4>Classroom Library Crisis</h4>
+        <p>Superintendents are now accountable for books in hundreds of classrooms they've never inventoried. Teachers in many states can no longer put books in their classrooms without approval. No tool exists to give districts visibility into what's actually on classroom shelves. OnShelf is the first.</p>
+      </div>
+      <div class="beachhead-card">
+        <div class="icon">📊</div>
+        <h4>Data Acquisition Strategy</h4>
+        <p>Every district that joins contributes to the network intelligence layer — challenge outcomes, placement patterns, ordering decisions. This dataset doesn't exist anywhere else. It compounds with every district added.</p>
+      </div>
+      <div class="beachhead-card">
+        <div class="icon">📚</div>
+        <h4>Publisher Proof Point</h4>
+        <p>When hundreds of districts use Bookmarked for purchasing decisions, publishers have a compelling reason to participate: a direct, intelligent, data-driven channel to institutional buyers.</p>
+      </div>
+      <div class="beachhead-card">
+        <div class="icon">🤖</div>
+        <h4>Impossible Without AI</h4>
+        <p>A librarian cannot read 10,000 books, know 500 students, track regulatory changes across states, and curate a living collection. This was already impossible. The new regulatory requirements just made the stakes higher and the margin for error smaller.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p><strong>The structural insight:</strong> Everyone else builds individual tools for individual problems — a challenge tracker here, a catalog tool there. The data stays segregated. Districts use Excel spreadsheets, Google Forms, and manual processes stitched together with hope. Bookmarked is the <strong>unified platform</strong> — all the data, all the books, all the regulatory requirements, all the stakeholders — in one place where intelligence can actually work.</p>
+    </div>
+
+    <p><strong>The economic argument:</strong> Districts historically solved problems by adding people. Budgets are shrinking. They need to give time back, not add headcount. Bookmarked makes existing staff effective at the right things — letting AI do the work humans literally cannot do, so humans can do the work only humans should do.</p>
+  </div>
+</div>
+
+<!-- ============================================================
+     ANTI-CENSORSHIP — Improvement #6
+     ============================================================ -->
+<div class="section section--green">
+  <div class="container">
+    <div class="eyebrow">The Other Direction</div>
+    <h2>Protecting Books That Should Be There</h2>
+    <p>Most people hear "book compliance" and think about keeping inappropriate content away from kids. That's half the story. The other half — and arguably the more important half — is <strong>protecting books from wrongful removal</strong>.</p>
+    <p>Censorship doesn't always look like a government ban. It looks like:</p>
+    <ul>
+      <li><strong>A librarian who never orders a book</strong> because it's on a ban list — even though the ban was reversed in the original district</li>
+      <li><strong>A district that removes a book</strong> because one parent complained and nobody wants the fight — even though the book is legally appropriate for that grade level</li>
+      <li><strong>A publisher whose book dies quietly</strong> because it appears on a list nobody fact-checks</li>
+      <li><strong>A child who never discovers a book</strong> that would have changed their life, because the adults around them made decisions without data</li>
+    </ul>
+    <p>Bookmarked cuts both directions. We help districts keep inappropriate content out AND keep appropriate content in. Our intelligence isn't just about risk — it's about <strong>evidence</strong>. When a book is challenged, we track the outcome. When a book is removed, we can show whether that decision was based on law, policy, or opinion. Over time, Bookmarked builds the "case law" for book decisions that doesn't exist anywhere today.</p>
+    <p><strong>This is what makes us agnostic.</strong> We don't take a political position on any book. We provide the intelligence — sourced, traceable, defensible — and let humans make informed decisions. That protects everyone: the book, the reader, the educator, and the institution.</p>
+  </div>
+</div>
+
+<!-- ============================================================
+     COMPETITIVE CONTEXT — Improvement #7
+     ============================================================ -->
+<div class="section section--alt">
+  <div class="container">
+    <div class="eyebrow">Competitive Context</div>
+    <h2>Why Nobody Else Can Do This</h2>
+    <p>The market has point solutions. Nobody has the system.</p>
+
+    <div class="compete-grid">
+      <div class="compete-card">
+        <h4>Challenge Trackers</h4>
+        <p>Track bans and challenges (PEN America, EveryLibrary). Don't know what's actually in school libraries. Don't track outcomes. Don't help with ordering or collection management.</p>
+        <div class="verdict">Sees one side: what's being removed</div>
+      </div>
+      <div class="compete-card">
+        <h4>Library Management Systems</h4>
+        <p>Built for catalog and circulation in a pre-compliance world. Some offer basic compliance features and classroom library support, but they weren't designed to connect book intelligence, ordering workflows, parent engagement, and regulatory documentation into a unified data layer. The data stays siloed within each tool.</p>
+        <div class="verdict">Sees one side: what's on the shelf</div>
+      </div>
+      <div class="compete-card">
+        <h4>Compliance Consultants</h4>
+        <p>Manual policy review. One-time engagements. No technology, no scale, no ongoing monitoring. Can't read 10,000 books.</p>
+        <div class="verdict">Sees one side: the legal requirements</div>
+      </div>
+      <div class="compete-card">
+        <h4>Publisher Platforms</h4>
+        <p>Promote their own catalog. Commercial bias by definition. No regulatory intelligence. No collection-level view. No student matching.</p>
+        <div class="verdict">Sees one side: their own books</div>
+      </div>
+      <div class="compete-vs">
+        <h4>Bookmarked sees all three sides simultaneously.</h4>
+        <p>The book's content. The reader's context. The regulatory framework. All the data in one place — school library, classroom libraries, orders, intelligence, compliance, parent feedback, board approvals. That unified view is the moat, and it deepens with every district that joins the network.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     CLOSING — Improvement #5: Vision forward, not plumbing
+     ============================================================ -->
+<div class="section">
+  <div class="container">
+    <div class="closing-block">
+      <div class="lead">The right book in the right hands can change a life. The wrong system can prevent that from ever happening.</div>
+      <p>We are building the infrastructure that connects books to the people who need them — starting with school districts because they need it most and the urgency is greatest, but with eyes on every library, every reader, every publisher, and every piece of written knowledge that deserves to be found.</p>
+      <p>This is not a compliance tool that aspires to be more. This is the knowledge keeper's platform, built from day one with the understanding that <strong>protecting books, protecting readers, and connecting them within the rules</strong> is a problem worth dedicating a company to solving.</p>
+      <p>Books are just the beginning.</p>
+    </div>
+
+    <div class="doc-note">
+      <strong>Document Hierarchy:</strong> This vision document sits between the Intent Manifest (Tier 0) and the Foundation Document (Tier 1) in the Bookmarked Operating Architecture. It feeds into the Product Vision Document (capability-level detail), Foundation Document (Confluence V/TO), Brand & Messaging Standards, and all C-Suite and Execution skills. Every agent in the Bookmarked OS references this for strategic context.
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <div class="logo-text">Bookmarked</div>
+    <p>The Book Intelligence Company &nbsp;·&nbsp; March 2026</p>
+  </div>
+</div>
+
+</body>
+</html>
