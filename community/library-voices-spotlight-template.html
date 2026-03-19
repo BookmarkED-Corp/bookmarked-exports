@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library Voices — Social Spotlight Templates</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bm-eigengrau: #101828;
+  --bm-deep-green: #107569;
+  --bm-teal-accent: #12A38C;
+  --bm-white: #FFFFFF;
+  --bm-pumpkin: #FF692E;
+  --bm-secondary-text: #475467;
+  --bm-muted-gray: #9CA3AF;
+  --bm-border-light: #E5E7EB;
+  --bm-bg-cool: #F8FAFC;
+  --bm-bg-warm: #F8F5F0;
+  --bm-bg-light: #F9FAFB;
+  --bm-font-family: 'Urbanist', Arial, Helvetica, sans-serif;
+  --bm-gradient-hero: linear-gradient(135deg, #0D5A52 0%, #107569 40%, #12A38C 100%);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--bm-font-family); font-size:16px; color:var(--bm-eigengrau); background:#E5E7EB; -webkit-font-smoothing:antialiased; line-height:1.5; }
+.container { max-width:1100px; margin:0 auto; padding:0 24px; }
+
+.header { background:var(--bm-gradient-hero); padding:48px 0 36px; color:#fff; }
+.header h1 { font-size:32px; font-weight:800; }
+.header p { font-size:16px; color:rgba(255,255,255,0.8); margin-top:8px; }
+
+.section { padding:48px 0; }
+.section h2 { font-size:24px; font-weight:700; margin-bottom:8px; }
+.section .subtitle { font-size:15px; color:var(--bm-secondary-text); margin-bottom:32px; }
+
+/* Spotlight card - Instagram style (1080x1080 scaled) */
+.template-row { display:flex; gap:40px; flex-wrap:wrap; justify-content:center; margin-bottom:48px; }
+
+.spotlight-frame { width:420px; background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.12); }
+.spotlight-frame .label { font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--bm-muted-gray); padding:16px 24px 8px; }
+
+/* Design A: Teal gradient top */
+.design-a .top-bar { background:var(--bm-gradient-hero); padding:32px 28px 24px; color:#fff; }
+.design-a .top-bar .series-tag { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:4px; }
+.design-a .top-bar h3 { font-size:20px; font-weight:800; line-height:1.3; }
+.design-a .photo-area { height:200px; background:var(--bm-bg-cool); display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--bm-border-light); }
+.design-a .photo-area .placeholder-photo { width:120px; height:120px; border-radius:50%; background:var(--bm-border-light); display:flex; align-items:center; justify-content:center; font-size:36px; color:var(--bm-muted-gray); }
+.design-a .quote-section { padding:24px 28px; }
+.design-a .quote-section blockquote { font-size:16px; font-style:italic; color:var(--bm-secondary-text); line-height:1.6; border-left:3px solid var(--bm-teal-accent); padding-left:16px; }
+.design-a .attribution { padding:0 28px 24px; }
+.design-a .attribution .name { font-size:15px; font-weight:700; color:var(--bm-eigengrau); }
+.design-a .attribution .title { font-size:13px; color:var(--bm-muted-gray); }
+.design-a .brand-bar { background:var(--bm-deep-green); padding:10px 28px; display:flex; justify-content:space-between; align-items:center; }
+.design-a .brand-bar .logo-text { font-size:14px; font-weight:800; color:#fff; letter-spacing:0.5px; }
+.design-a .brand-bar .hashtag { font-size:11px; color:rgba(255,255,255,0.6); font-weight:600; }
+
+/* Design B: Clean white with accent border */
+.design-b .accent-top { height:6px; background:linear-gradient(90deg, var(--bm-deep-green), var(--bm-teal-accent)); }
+.design-b .content { padding:32px 28px; }
+.design-b .series-badge { display:inline-block; background:rgba(18,163,140,0.12); color:var(--bm-deep-green); font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:5px 12px; border-radius:100px; margin-bottom:16px; }
+.design-b .photo-row { display:flex; align-items:center; gap:16px; margin-bottom:20px; }
+.design-b .photo-circle { width:80px; height:80px; border-radius:50%; background:var(--bm-bg-cool); border:3px solid var(--bm-teal-accent); display:flex; align-items:center; justify-content:center; font-size:28px; color:var(--bm-muted-gray); flex-shrink:0; }
+.design-b .person-info .name { font-size:18px; font-weight:700; }
+.design-b .person-info .title { font-size:13px; color:var(--bm-muted-gray); }
+.design-b blockquote { font-size:17px; font-style:italic; color:var(--bm-secondary-text); line-height:1.6; margin:0; }
+.design-b .big-quote { font-size:48px; color:var(--bm-teal-accent); font-family:Georgia,serif; line-height:1; margin-bottom:4px; }
+.design-b .brand-footer { background:var(--bm-bg-cool); padding:14px 28px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--bm-border-light); }
+.design-b .brand-footer .logo-text { font-size:14px; font-weight:800; color:var(--bm-deep-green); }
+.design-b .brand-footer .tagline { font-size:10px; color:var(--bm-muted-gray); font-weight:600; letter-spacing:1px; text-transform:uppercase; }
+
+/* Design C: Quote card (no photo) */
+.design-c .gradient-bg { background:var(--bm-gradient-hero); padding:36px 28px; color:#fff; }
+.design-c .series-tag { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:16px; }
+.design-c .big-quote { font-size:56px; font-family:Georgia,serif; line-height:1; color:rgba(255,255,255,0.3); }
+.design-c blockquote { font-size:20px; font-weight:500; line-height:1.5; color:#fff; margin:8px 0 24px; }
+.design-c .divider { width:40px; height:3px; background:rgba(255,255,255,0.3); margin-bottom:16px; }
+.design-c .name { font-size:15px; font-weight:700; }
+.design-c .title { font-size:13px; color:rgba(255,255,255,0.6); }
+.design-c .brand-bar { background:rgba(0,0,0,0.2); padding:12px 28px; display:flex; justify-content:space-between; align-items:center; }
+.design-c .brand-bar .logo-text { font-size:14px; font-weight:800; color:#fff; }
+.design-c .brand-bar .hashtag { font-size:11px; color:rgba(255,255,255,0.5); font-weight:600; }
+
+/* Caption preview */
+.caption-preview { background:#fff; border-radius:12px; padding:24px 28px; margin-top:16px; border:1px solid var(--bm-border-light); }
+.caption-preview h4 { font-size:14px; font-weight:700; color:var(--bm-deep-green); margin-bottom:8px; }
+.caption-preview p { font-size:14px; color:var(--bm-secondary-text); line-height:1.7; }
+.caption-preview .hashtags { color:var(--bm-teal-accent); font-size:13px; margin-top:12px; }
+
+.footer { background:var(--bm-deep-green); color:#fff; padding:32px 0; text-align:center; }
+.footer p { font-size:13px; color:rgba(255,255,255,0.7); }
+
+@media (max-width:768px) { .template-row { flex-direction:column; align-items:center; } .spotlight-frame { width:100%; max-width:420px; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <h1>Library Voices — Social Spotlight Templates</h1>
+    <p>Three graphic designs for Instagram and LinkedIn spotlights. Use as visual direction for the /graphic-designer skill.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    <h2>Spotlight Designs</h2>
+    <p class="subtitle">Three options for different contexts. Design A for full spotlights with photos. Design B for LinkedIn-optimized layouts. Design C for quote-only cards when no photo is available.</p>
+
+    <div class="template-row">
+      <!-- Design A -->
+      <div class="spotlight-frame design-a">
+        <div class="label">Design A — Photo Spotlight (Instagram + LinkedIn)</div>
+        <div class="top-bar">
+          <div class="series-tag">Library Voices</div>
+          <h3>Meet the Librarian</h3>
+        </div>
+        <div class="photo-area">
+          <div class="placeholder-photo">&#128247;</div>
+        </div>
+        <div class="quote-section">
+          <blockquote>"The best part of my job is watching a reluctant reader find the book that changes everything for them."</blockquote>
+        </div>
+        <div class="attribution">
+          <div class="name">Paige Turner</div>
+          <div class="title">Campus Librarian &middot; Demo ISD &middot; 12 years</div>
+        </div>
+        <div class="brand-bar">
+          <div class="logo-text">Bookmarked</div>
+          <div class="hashtag">#LibraryVoices</div>
+        </div>
+      </div>
+
+      <!-- Design B -->
+      <div class="spotlight-frame design-b">
+        <div class="label">Design B — Profile Card (LinkedIn optimized)</div>
+        <div class="accent-top"></div>
+        <div class="content">
+          <div class="series-badge">Library Voices</div>
+          <div class="photo-row">
+            <div class="photo-circle">&#128100;</div>
+            <div class="person-info">
+              <div class="name">Paige Turner</div>
+              <div class="title">Campus Librarian &middot; Demo ISD</div>
+            </div>
+          </div>
+          <div class="big-quote">&ldquo;</div>
+          <blockquote>Libraries aren't just rooms full of books. They're the place where a kid who feels invisible can finally feel seen.</blockquote>
+        </div>
+        <div class="brand-footer">
+          <div class="logo-text">Bookmarked</div>
+          <div class="tagline">The Book Intelligence Company</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="template-row">
+      <!-- Design C -->
+      <div class="spotlight-frame design-c">
+        <div class="label" style="color:var(--bm-muted-gray);">Design C — Quote Card (no photo needed)</div>
+        <div class="gradient-bg">
+          <div class="series-tag">Library Voices</div>
+          <div class="big-quote">&ldquo;</div>
+          <blockquote>In a world where kids are spending less time reading, we have to make libraries the most exciting rooms in the building.</blockquote>
+          <div class="divider"></div>
+          <div class="name">Paige Turner</div>
+          <div class="title">Campus Librarian &middot; Demo ISD</div>
+        </div>
+        <div class="brand-bar">
+          <div class="logo-text">Bookmarked</div>
+          <div class="hashtag">#LibraryVoices</div>
+        </div>
+      </div>
+
+      <!-- Caption template -->
+      <div style="width:420px;">
+        <div class="caption-preview">
+          <h4>Sample Instagram/LinkedIn Caption</h4>
+          <p>Meet <strong>Paige Turner</strong>, Campus Librarian at Demo ISD.</p>
+          <p>With 12 years in school libraries, Paige has seen what happens when kids find the right book. "The best part of my job is watching a reluctant reader find the book that changes everything for them."</p>
+          <p>We asked Paige what excites her about the future of school libraries: "There's so much potential with the tools we have now. I can spend less time on paperwork and more time doing what I got into this profession for — connecting kids with stories that matter."</p>
+          <p>Thank you, Paige, for being a Library Voice.</p>
+          <div class="hashtags">#LibraryVoices #SchoolLibraries #LibrarianLife #FutureOfLibraries #Bookmarked</div>
+        </div>
+
+        <div class="caption-preview" style="margin-top:12px;">
+          <h4>ESC Co-branded Variant</h4>
+          <p>When creating content for ESC partner regions, add co-branding:</p>
+          <ul style="font-size:13px; color:var(--bm-secondary-text); line-height:1.8; padding-left:16px; margin-top:8px;">
+            <li>Add ESC logo alongside Bookmarked in the brand bar</li>
+            <li>Add "Featuring districts in ESC Region [X]" to the series tag</li>
+            <li>Include the ESC hashtag in the caption</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <p><strong>Library Voices</strong> — Spotlight Templates V1 &middot; Bookmarked &middot; March 2026</p>
+    <p style="margin-top:4px;">Use /graphic-designer or /social-post to produce final graphics from these templates</p>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library Voices — Community Content Program V1</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bm-eigengrau: #101828;
+  --bm-deep-green: #107569;
+  --bm-teal-accent: #12A38C;
+  --bm-white: #FFFFFF;
+  --bm-pumpkin: #FF692E;
+  --bm-teal-dark: #0D5A52;
+  --bm-teal-mid: #107569;
+  --bm-teal-light: #12A38C;
+  --bm-secondary-text: #475467;
+  --bm-muted-gray: #9CA3AF;
+  --bm-border-light: #E5E7EB;
+  --bm-bg-white: #FFFFFF;
+  --bm-bg-cool: #F8FAFC;
+  --bm-bg-warm: #F8F5F0;
+  --bm-bg-light: #F9FAFB;
+  --bm-font-family: 'Urbanist', Arial, Helvetica, sans-serif;
+  --bm-gradient-hero: linear-gradient(135deg, #0D5A52 0%, #107569 40%, #12A38C 100%);
+  --bm-gradient-cta: linear-gradient(135deg, #101828 0%, #1D2939 100%);
+  --bm-shadow-md: 0 2px 12px rgba(0,0,0,0.06);
+  --bm-shadow-lg: 0 8px 24px rgba(0,0,0,0.1);
+  --bm-radius-md: 8px;
+  --bm-radius-lg: 12px;
+  --bm-radius-full: 100px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: var(--bm-font-family); font-size:16px; color: var(--bm-eigengrau); background: var(--bm-bg-white); -webkit-font-smoothing:antialiased; line-height:1.5; }
+a { color: var(--bm-teal-accent); text-decoration:none; }
+a:hover { color: var(--bm-deep-green); }
+
+/* Hero */
+.hero { background: var(--bm-gradient-hero); padding:80px 0 60px; color:#fff; }
+.hero h1 { font-size:42px; font-weight:800; line-height:1.15; letter-spacing:-0.02em; max-width:700px; }
+.hero p { font-size:18px; color:rgba(255,255,255,0.85); max-width:600px; margin-top:16px; line-height:1.6; }
+.hero .badge { display:inline-block; background:rgba(255,255,255,0.15); color:#fff; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:6px 16px; border-radius:100px; margin-bottom:20px; }
+
+/* Layout */
+.container { max-width:1100px; margin:0 auto; padding:0 24px; }
+.section { padding:64px 0; }
+.section-alt { background: var(--bm-bg-cool); }
+.section-warm { background: var(--bm-bg-warm); }
+
+/* Typography */
+.eyebrow { font-size:11px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:var(--bm-teal-accent); margin-bottom:8px; }
+h2 { font-size:32px; font-weight:700; line-height:1.25; letter-spacing:-0.02em; margin-bottom:8px; }
+h3 { font-size:22px; font-weight:700; line-height:1.3; margin-bottom:8px; }
+h4 { font-size:18px; font-weight:700; margin-bottom:6px; }
+.subtitle { font-size:18px; color:var(--bm-secondary-text); margin-top:8px; max-width:640px; line-height:1.6; }
+
+/* Cards */
+.card { background:var(--bm-bg-light); border-radius:var(--bm-radius-lg); padding:28px; border:1px solid var(--bm-border-light); box-shadow:var(--bm-shadow-md); }
+.card-accent { border-left:4px solid var(--bm-teal-accent); border-top-left-radius:0; border-bottom-left-radius:0; }
+.card h3 { font-size:18px; }
+.card p { font-size:15px; color:var(--bm-secondary-text); line-height:1.6; }
+.card-grid { display:grid; gap:20px; }
+.card-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.card-grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+/* Table */
+table { width:100%; border-collapse:collapse; font-size:14px; }
+th { background:var(--bm-bg-cool); padding:12px 16px; text-align:left; font-weight:700; color:var(--bm-eigengrau); border-bottom:2px solid var(--bm-border-light); }
+td { padding:12px 16px; border-bottom:1px solid var(--bm-border-light); color:var(--bm-secondary-text); }
+tr:hover td { background:var(--bm-bg-light); }
+
+/* Badges */
+.badge-sm { display:inline-block; padding:3px 10px; font-size:11px; font-weight:700; border-radius:100px; text-transform:uppercase; letter-spacing:0.5px; }
+.badge-teal { background:rgba(18,163,140,0.15); color:var(--bm-teal-accent); }
+.badge-orange { background:rgba(255,105,46,0.15); color:var(--bm-pumpkin); }
+.badge-gray { background:rgba(156,163,175,0.15); color:var(--bm-muted-gray); }
+.badge-green { background:rgba(16,117,105,0.15); color:var(--bm-deep-green); }
+
+/* Timeline */
+.timeline { position:relative; padding-left:32px; }
+.timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--bm-border-light); }
+.timeline-item { position:relative; padding-bottom:28px; }
+.timeline-item::before { content:''; position:absolute; left:-36px; top:6px; width:10px; height:10px; background:var(--bm-teal-accent); border-radius:50%; }
+.timeline-item h4 { font-size:15px; font-weight:700; }
+.timeline-item p { font-size:14px; color:var(--bm-secondary-text); margin-top:4px; }
+
+/* Stats */
+.stats-row { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; text-align:center; padding:32px 0; }
+.stat-number { font-size:40px; font-weight:800; color:var(--bm-deep-green); line-height:1.1; }
+.stat-label { font-size:14px; font-weight:600; color:var(--bm-eigengrau); margin-top:6px; }
+
+/* Quote */
+.quote-block { border-left:4px solid var(--bm-teal-accent); padding:20px 24px; background:var(--bm-bg-light); border-radius:0 12px 12px 0; margin:24px 0; font-style:italic; color:var(--bm-secondary-text); font-size:16px; line-height:1.6; }
+
+/* Flow diagram */
+.flow { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:20px 0; }
+.flow-step { background:var(--bm-bg-light); border:1px solid var(--bm-border-light); border-radius:var(--bm-radius-md); padding:10px 18px; font-size:13px; font-weight:600; color:var(--bm-eigengrau); }
+.flow-step.active { background:var(--bm-deep-green); color:#fff; border-color:var(--bm-deep-green); }
+.flow-arrow { color:var(--bm-muted-gray); font-size:18px; }
+
+/* Footer */
+.footer { background:var(--bm-deep-green); color:#fff; padding:40px 0; }
+.footer p { font-size:13px; color:rgba(255,255,255,0.7); }
+.footer .tagline { font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-top:12px; }
+
+/* Participation menu cards */
+.participation-card { background:#fff; border:1px solid var(--bm-border-light); border-radius:var(--bm-radius-lg); padding:24px; transition:transform 0.2s, box-shadow 0.2s; }
+.participation-card:hover { transform:translateY(-3px); box-shadow:var(--bm-shadow-lg); }
+.participation-card .time { font-size:12px; font-weight:700; color:var(--bm-teal-accent); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+.participation-card h4 { font-size:17px; margin-bottom:6px; }
+.participation-card p { font-size:14px; color:var(--bm-secondary-text); line-height:1.5; }
+.participation-card .what-you-get { font-size:13px; color:var(--bm-deep-green); font-weight:600; margin-top:12px; }
+
+/* Question bank */
+.question-group { margin-bottom:32px; }
+.question-group h4 { color:var(--bm-deep-green); margin-bottom:12px; }
+.question { background:#fff; border:1px solid var(--bm-border-light); border-radius:var(--bm-radius-md); padding:14px 18px; margin-bottom:8px; font-size:15px; color:var(--bm-eigengrau); }
+.question .theme { font-size:11px; font-weight:700; color:var(--bm-muted-gray); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; display:block; }
+
+/* Responsive */
+@media (max-width:768px) {
+  .hero h1 { font-size:30px; }
+  h2 { font-size:26px; }
+  .card-grid-2, .card-grid-3 { grid-template-columns:1fr; }
+  .stats-row { grid-template-columns:repeat(2,1fr); }
+  .flow { flex-direction:column; }
+}
+@media print {
+  .hero { background:#107569 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .footer { background:#107569 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="badge">Community Content Program</div>
+    <h1>Library Voices</h1>
+    <p>A community content program that celebrates librarians, amplifies customer stories, and builds a movement around the future of school libraries.</p>
+    <p style="font-size:13px; color:rgba(255,255,255,0.5); margin-top:24px;">Version 1.0 &middot; March 19, 2026 &middot; Internal Strategy Document</p>
+  </div>
+</div>
+
+<!-- WHY THIS PROGRAM -->
+<div class="section">
+  <div class="container">
+    <div class="eyebrow">The Opportunity</div>
+    <h2>Why Library Voices</h2>
+    <p class="subtitle">Bookmarked has 150 districts, deep customer relationships, and a story the market needs to hear. But those stories are locked inside sales conversations and support calls. Library Voices unlocks them.</p>
+
+    <div class="quote-block" style="margin-top:32px;">
+      "Libraries should be the most vibrant rooms in a school. Librarians should be matching books with readers, not managing spreadsheets. The right book in the right hands can change a life."
+    </div>
+
+    <div class="stats-row" style="margin-top:24px;">
+      <div>
+        <div class="stat-number">150+</div>
+        <div class="stat-label">Districts with stories to tell</div>
+      </div>
+      <div>
+        <div class="stat-number">9</div>
+        <div class="stat-label">ESC partners to amplify</div>
+      </div>
+      <div>
+        <div class="stat-number">3-4</div>
+        <div class="stat-label">Stories per month (target)</div>
+      </div>
+      <div>
+        <div class="stat-number">5</div>
+        <div class="stat-label">Social channels ready</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAM PILLARS -->
+<div class="section section-alt">
+  <div class="container">
+    <div class="eyebrow">Program Design</div>
+    <h2>Four Pillars</h2>
+    <p class="subtitle">Library Voices is built on four pillars — each creates different content types and serves different strategic goals.</p>
+
+    <div class="card-grid card-grid-2" style="margin-top:32px;">
+      <div class="card card-accent">
+        <div class="eyebrow" style="color:var(--bm-deep-green);">Pillar 1</div>
+        <h3>Librarian Spotlights</h3>
+        <p>Celebrate individual librarians and the amazing work they do. Photo + quote + short profile. Published biweekly on Instagram and LinkedIn.</p>
+        <p style="margin-top:12px; font-size:13px; color:var(--bm-deep-green); font-weight:600;">Content: About THEM, not about Bookmarked</p>
+      </div>
+      <div class="card card-accent">
+        <div class="eyebrow" style="color:var(--bm-deep-green);">Pillar 2</div>
+        <h3>Thought Leadership</h3>
+        <p>Written pieces and blog posts on topics librarians care about: the future of libraries, getting books in kids' hands, innovative approaches to collection management, AI and libraries.</p>
+        <p style="margin-top:12px; font-size:13px; color:var(--bm-deep-green); font-weight:600;">Content: Their voice, our platform</p>
+      </div>
+      <div class="card card-accent">
+        <div class="eyebrow" style="color:var(--bm-deep-green);">Pillar 3</div>
+        <h3>ESC Regional Stories</h3>
+        <p>Feature districts within ESC partner regions. Give partners concrete content to share with their member districts — proof that Bookmarked works in their backyard.</p>
+        <p style="margin-top:12px; font-size:13px; color:var(--bm-deep-green); font-weight:600;">Content: Regional credibility for partners</p>
+      </div>
+      <div class="card card-accent">
+        <div class="eyebrow" style="color:var(--bm-deep-green);">Pillar 4</div>
+        <h3>Conversations (Webinars)</h3>
+        <p>Quarterly recorded panels with 2-3 librarians discussing topics that matter. Not product demos — real conversations about the profession and its future. Launch in 2-3 months.</p>
+        <p style="margin-top:12px; font-size:13px; color:var(--bm-deep-green); font-weight:600;">Content: Community building at scale</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT PHILOSOPHY -->
+<div class="section">
+  <div class="container">
+    <div class="eyebrow">Content Philosophy</div>
+    <h2>Library-First, Positive, Future-Focused</h2>
+    <p class="subtitle" style="max-width:800px;">This program is NOT about testimonials for our sales page. It's about giving librarians and district leaders a platform to talk about what matters to them — and letting Bookmarked be the brand that made that platform possible.</p>
+
+    <div class="card-grid card-grid-3" style="margin-top:32px;">
+      <div class="card" style="text-align:center;">
+        <div style="font-size:32px; margin-bottom:8px;">&#128218;</div>
+        <h4>Library Vitality</h4>
+        <p>How do we create vibrant libraries where kids are asking and wanting to check out books? What makes a library the best room in a school?</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:32px; margin-bottom:8px;">&#127793;</div>
+        <h4>Innovation</h4>
+        <p>What are librarians doing to get books in kids' hands in new and creative ways? How are districts rethinking collection management?</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:32px; margin-bottom:8px;">&#128640;</div>
+        <h4>The Future</h4>
+        <p>How do libraries evolve in a world of AI and digital content? What does the next generation of school libraries look like?</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:28px; background:var(--bm-bg-warm);">
+      <h4 style="color:var(--bm-pumpkin);">Hard Boundaries</h4>
+      <ul style="font-size:14px; color:var(--bm-secondary-text); line-height:2; margin-top:8px; padding-left:20px;">
+        <li>Never position Bookmarked as replacing librarians — "We give librarians their time back"</li>
+        <li>Never use fear-based framing — lead with gains, not threats</li>
+        <li>Spotlights are about the PERSON and the PROFESSION, not our product</li>
+        <li>Nothing published without the customer's explicit approval</li>
+        <li>Never cross district data boundaries</li>
+        <li>ESCs are partners in this conversation — they have a voice too</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- PARTICIPATION MENU -->
+<div class="section section-alt">
+  <div class="container">
+    <div class="eyebrow">For Customers</div>
+    <h2>Participation Menu</h2>
+    <p class="subtitle">Customers choose how they want to be involved. We make it as easy as possible — provide structure and suggestions, they make it their own.</p>
+
+    <div class="card-grid card-grid-3" style="margin-top:32px;">
+      <div class="participation-card">
+        <div class="time">5 minutes</div>
+        <h4>Quick Quote</h4>
+        <p>Answer 2-3 prompt questions via email. We lightly edit, send back for approval, and feature you on social media.</p>
+        <div class="what-you-get">You get: Featured on our social channels with credit</div>
+      </div>
+      <div class="participation-card">
+        <div class="time">15 minutes</div>
+        <h4>Photo Spotlight</h4>
+        <p>Send a photo of yourself in your library and answer 3 short questions about what you love about libraries.</p>
+        <div class="what-you-get">You get: "Library Voices" Instagram/LinkedIn feature</div>
+      </div>
+      <div class="participation-card">
+        <div class="time">30-60 minutes</div>
+        <h4>Written Piece</h4>
+        <p>Write a short piece on a topic you care about (we provide prompts), or do a 20-min interview and we ghostwrite.</p>
+        <div class="what-you-get">You get: Published on Bookmarked blog + amplified on social</div>
+      </div>
+      <div class="participation-card">
+        <div class="time">60 minutes</div>
+        <h4>Webinar Panelist</h4>
+        <p>Join a recorded 30-min conversation with peers on a topic that matters to you. Professional, not salesy.</p>
+        <div class="what-you-get">You get: Professional exposure + recording for your portfolio</div>
+      </div>
+      <div class="participation-card">
+        <div class="time">45 minutes</div>
+        <h4>Case Study</h4>
+        <p>Share your Bookmarked experience in a structured interview. We create a co-branded PDF with outcomes data.</p>
+        <div class="what-you-get">You get: Co-branded case study you can share with your admin</div>
+      </div>
+      <div class="participation-card">
+        <div class="time">15 minutes</div>
+        <h4>ESC Regional Feature</h4>
+        <p>Short interview about your region's library challenges and wins. Featured in ESC partner materials for your area.</p>
+        <div class="what-you-get">You get: Featured in your ESC region's marketing</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COLLECTION WORKFLOW -->
+<div class="section">
+  <div class="container">
+    <div class="eyebrow">Operations</div>
+    <h2>Collection Workflow</h2>
+    <p class="subtitle">A repeatable process anyone on the team can run — Jan, Patrick, Teela, or Steve. Same structure, same quality, every time.</p>
+
+    <h3 style="margin-top:32px; margin-bottom:16px;">Who Asks &amp; When</h3>
+    <div class="card-grid card-grid-2">
+      <div class="card">
+        <h4>Who Can Invite</h4>
+        <p><strong>Steve, Patrick, Jan, Teela</strong> — anyone with a customer relationship. The process is designed so the infrastructure handles the work, not the person asking.</p>
+      </div>
+      <div class="card">
+        <h4>When to Ask</h4>
+        <ul style="font-size:14px; color:var(--bm-secondary-text); line-height:2; padding-left:16px;">
+          <li>After successful onboarding (Arrows plan 80%+ complete)</li>
+          <li>After a positive support interaction</li>
+          <li>After a renewal</li>
+          <li>When a librarian shares something great organically</li>
+          <li>When someone hears a great quote in conversation</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-top:32px; margin-bottom:16px;">The Three Paths</h3>
+    <p style="font-size:15px; color:var(--bm-secondary-text); margin-bottom:20px;">Different relationships call for different approaches. Use the path that fits.</p>
+
+    <div class="card-grid card-grid-3">
+      <div class="card" style="border-top:3px solid var(--bm-teal-accent);">
+        <div class="badge-sm badge-teal">Path A</div>
+        <h4 style="margin-top:8px;">Direct Form</h4>
+        <p>For warm relationships. Send a branded email with a link to the intake form. They fill it out, we produce the content.</p>
+        <p style="font-size:13px; color:var(--bm-deep-green); font-weight:600; margin-top:8px;">Best for: Established customers who'd say yes immediately</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--bm-teal-accent);">
+        <div class="badge-sm badge-teal">Path B</div>
+        <h4 style="margin-top:8px;">Menu First</h4>
+        <p>Send the participation overview first. They choose what interests them, then get the specific form for that content type.</p>
+        <p style="font-size:13px; color:var(--bm-deep-green); font-weight:600; margin-top:8px;">Best for: Newer relationships, people who need to see options</p>
+      </div>
+      <div class="card" style="border-top:3px solid var(--bm-teal-accent);">
+        <div class="badge-sm badge-teal">Path C</div>
+        <h4 style="margin-top:8px;">Conversation First</h4>
+        <p>Talk about it on a call. Gauge interest, discuss what would work for them, then send the follow-up form to collect specifics.</p>
+        <p style="font-size:13px; color:var(--bm-deep-green); font-weight:600; margin-top:8px;">Best for: Key accounts, people who prefer a personal touch</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:32px; margin-bottom:16px;">Production Pipeline</h3>
+    <div class="flow">
+      <div class="flow-step active">Invite</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-step">Opt In</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-step">Collect</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-step">Develop</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-step">Customer Approves</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-step">Publish</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-step">Amplify</div>
+    </div>
+
+    <table style="margin-top:24px;">
+      <thead>
+        <tr>
+          <th>Step</th>
+          <th>Who</th>
+          <th>Action</th>
+          <th>Tool</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge-sm badge-teal">1. Invite</span></td>
+          <td>Team member</td>
+          <td>Send invitation email, update HubSpot status to "Invited"</td>
+          <td>Gmail + HubSpot</td>
+        </tr>
+        <tr>
+          <td><span class="badge-sm badge-teal">2. Opt In</span></td>
+          <td>Customer</td>
+          <td>Responds with interest, selects participation type(s)</td>
+          <td>HubSpot Form / Email</td>
+        </tr>
+        <tr>
+          <td><span class="badge-sm badge-teal">3. Collect</span></td>
+          <td>Customer</td>
+          <td>Submits photo, answers questions, or schedules interview</td>
+          <td>HubSpot Form</td>
+        </tr>
+        <tr>
+          <td><span class="badge-sm badge-green">4. Develop</span></td>
+          <td>Bookmarked</td>
+          <td>Design graphic, write/edit copy, produce content piece</td>
+          <td>/social-post, /collateral, /graphic-designer</td>
+        </tr>
+        <tr>
+          <td><span class="badge-sm badge-green">5. Approve</span></td>
+          <td>Customer</td>
+          <td>Reviews draft, approves or requests changes</td>
+          <td>Email</td>
+        </tr>
+        <tr>
+          <td><span class="badge-sm badge-green">6. Publish</span></td>
+          <td>Bookmarked</td>
+          <td>Post to social channels, blog, update Confluence</td>
+          <td>Postiz, HubSpot CMS</td>
+        </tr>
+        <tr>
+          <td><span class="badge-sm badge-green">7. Amplify</span></td>
+          <td>Bookmarked + ESC</td>
+          <td>Share with ESC partner for regional distribution, notify customer it's live</td>
+          <td>Email, ESC channels</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ESC INTEGRATION -->
+<div class="section section-warm">
+  <div class="container">
+    <div class="eyebrow">Regional Strategy</div>
+    <h2>ESC Partner Integration</h2>
+    <p class="subtitle">Every district story is also a regional story. When a district participates, their ESC partner gets content they can use to build credibility in their region.</p>
+
+    <div class="card-grid card-grid-2" style="margin-top:32px;">
+      <div class="card">
+        <h4>What ESC Partners Receive</h4>
+        <ul style="font-size:14px; color:var(--bm-secondary-text); line-height:2; padding-left:16px;">
+          <li>Social-ready graphic + quote card (co-branded)</li>
+          <li>Short write-up for their newsletter</li>
+          <li>Talking point: "Here's what [District] in your region is doing"</li>
+          <li>Optional: Video clip for conferences and PD sessions</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>ESCs as Content Creators Too</h4>
+        <p>ESC partners aren't just amplifiers — they have their own perspective on what libraries of the future look like and how Bookmarked helps districts in this new world. They can participate in Library Voices directly.</p>
+        <ul style="font-size:14px; color:var(--bm-secondary-text); line-height:1.8; padding-left:16px; margin-top:8px;">
+          <li>ESC director spotlight on their vision for libraries</li>
+          <li>Webinar panelist representing the regional perspective</li>
+          <li>Co-authored thought piece on PD and library support</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px; border-left:4px solid var(--bm-pumpkin); border-radius:0 12px 12px 0;">
+      <h4>Regional Coverage Goal</h4>
+      <p>At least one featured district per ESC partner region per quarter. Track coverage in the Confluence hub — identify which regions have stories and which need outreach.</p>
+    </div>
+  </div>
+</div>
+
+<!-- QUESTION BANK -->
+<div class="section">
+  <div class="container">
+    <div class="eyebrow">Content Collection</div>
+    <h2>Question Bank</h2>
+    <p class="subtitle">Prompt questions for each content type. Themed around what our community cares about — not our product.</p>
+
+    <div class="question-group" style="margin-top:32px;">
+      <h4>Quick Quote (Pick 2-3)</h4>
+      <div class="question"><span class="theme">Library Vitality</span>"What do you love most about being a school librarian?"</div>
+      <div class="question"><span class="theme">Innovation</span>"What's one thing you're doing to get more books in kids' hands?"</div>
+      <div class="question"><span class="theme">The Future</span>"What excites you about the future of school libraries?"</div>
+      <div class="question"><span class="theme">Challenge</span>"What's the biggest challenge school libraries face today?"</div>
+      <div class="question"><span class="theme">Impact</span>"What difference has having the right tools made for your library program?"</div>
+    </div>
+
+    <div class="question-group">
+      <h4>Photo Spotlight (3 Questions)</h4>
+      <div class="question"><span class="theme">Personal</span>"What do you love most about being a librarian?"</div>
+      <div class="question"><span class="theme">Insight</span>"What's one thing you wish people understood about school libraries today?"</div>
+      <div class="question"><span class="theme">The Future</span>"What excites you about the future of libraries?"</div>
+    </div>
+
+    <div class="question-group">
+      <h4>Written Piece / Blog Prompts (Pick 1)</h4>
+      <div class="question"><span class="theme">Innovation</span>"How we're rethinking our book collection strategy"</div>
+      <div class="question"><span class="theme">The Future</span>"The future of school libraries in the age of AI"</div>
+      <div class="question"><span class="theme">Advocacy</span>"What I wish my superintendent understood about our library"</div>
+      <div class="question"><span class="theme">Data</span>"Why library data matters more than ever"</div>
+      <div class="question"><span class="theme">Library Vitality</span>"How our library became the most vibrant room in our school"</div>
+      <div class="question"><span class="theme">Community</span>"A day in the life of a school librarian in 2026"</div>
+      <div class="question"><span class="theme">Kids</span>"What are we doing to create vibrant libraries where kids want to check out books?"</div>
+    </div>
+
+    <div class="question-group">
+      <h4>ESC Regional Feature (3 Questions)</h4>
+      <div class="question"><span class="theme">Regional</span>"What are the biggest library challenges districts in your region are facing?"</div>
+      <div class="question"><span class="theme">Innovation</span>"What innovative approaches have you seen districts in your area take?"</div>
+      <div class="question"><span class="theme">The Future</span>"What do libraries of the future look like in your region?"</div>
+    </div>
+
+    <div class="question-group">
+      <h4>Webinar Topic Ideas (Poll Participants)</h4>
+      <div class="question"><span class="theme">Panel</span>"Creating libraries kids actually want to visit"</div>
+      <div class="question"><span class="theme">Panel</span>"How AI is changing school library management"</div>
+      <div class="question"><span class="theme">Panel</span>"The librarian's evolving role: beyond books"</div>
+      <div class="question"><span class="theme">Panel</span>"Collection management in a post-compliance world"</div>
+      <div class="question"><span class="theme">Panel</span>"Building a case for library investment with your board"</div>
+    </div>
+  </div>
+</div>
+
+<!-- WEBINAR PLANNING -->
+<div class="section section-alt">
+  <div class="container">
+    <div class="eyebrow">Phase 2 — Launch in 2-3 Months</div>
+    <h2>Webinar Series: "Library Conversations"</h2>
+    <p class="subtitle">Quarterly recorded panels. Real conversations about libraries, not product demos. Start identifying interested panelists now, plan the first webinar 2-3 months out.</p>
+
+    <div class="card-grid card-grid-2" style="margin-top:32px;">
+      <div class="card">
+        <h4>Format</h4>
+        <ul style="font-size:14px; color:var(--bm-secondary-text); line-height:2; padding-left:16px;">
+          <li>30-minute recorded panel</li>
+          <li>2-3 librarians/district leaders + Steve or Patrick as moderator</li>
+          <li>Topics driven by community interest (poll participants)</li>
+          <li>Recorded via Zoom, posted to YouTube</li>
+          <li>Repurposed into 4-6 social clips</li>
+          <li>No hard sell — pure thought leadership</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Planning Timeline</h4>
+        <div class="timeline" style="margin-top:12px;">
+          <div class="timeline-item">
+            <h4>Now: Identify Interest</h4>
+            <p>When collecting participation preferences, flag "Webinar Panelist" selections in HubSpot</p>
+          </div>
+          <div class="timeline-item">
+            <h4>Month 1-2: Topics &amp; Panelists</h4>
+            <p>Poll interested participants on topics. Confirm 2-3 panelists for first episode.</p>
+          </div>
+          <div class="timeline-item">
+            <h4>Month 2-3: Record &amp; Publish</h4>
+            <p>Record first episode. Edit, clip, publish to YouTube + social. Plan next 3-6 months.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HUBSPOT TRACKING -->
+<div class="section">
+  <div class="container">
+    <div class="eyebrow">CRM Infrastructure</div>
+    <h2>HubSpot Tracking Properties</h2>
+    <p class="subtitle">Seven new contact properties created to track the entire Library Voices lifecycle. All live in HubSpot under Contact Information.</p>
+
+    <table style="margin-top:24px;">
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Type</th>
+          <th>Values</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Community Program Status</strong></td>
+          <td><span class="badge-sm badge-teal">Select</span></td>
+          <td>Not Asked &rarr; Invited &rarr; Opted In &rarr; Active &rarr; Declined</td>
+          <td>Track where each contact is in the program</td>
+        </tr>
+        <tr>
+          <td><strong>Participation Interests</strong></td>
+          <td><span class="badge-sm badge-green">Multi-checkbox</span></td>
+          <td>Quick Quote, Photo Spotlight, Written Piece, Webinar, Case Study, ESC Regional</td>
+          <td>What content types they're interested in</td>
+        </tr>
+        <tr>
+          <td><strong>Media Consent Status</strong></td>
+          <td><span class="badge-sm badge-teal">Select</span></td>
+          <td>Not Requested &rarr; Pending &rarr; Granted &rarr; Declined</td>
+          <td>Legal consent for using their name/photo/quote</td>
+        </tr>
+        <tr>
+          <td><strong>Community Tier</strong></td>
+          <td><span class="badge-sm badge-teal">Select</span></td>
+          <td>Fan &rarr; Advocate &rarr; Champion</td>
+          <td>Engagement level for prioritizing outreach</td>
+        </tr>
+        <tr>
+          <td><strong>Media Consent Date</strong></td>
+          <td><span class="badge-sm badge-gray">Date</span></td>
+          <td>Date picker</td>
+          <td>When consent was granted/declined</td>
+        </tr>
+        <tr>
+          <td><strong>Spotlight Published Date</strong></td>
+          <td><span class="badge-sm badge-gray">Date</span></td>
+          <td>Date picker</td>
+          <td>Last time this person was featured</td>
+        </tr>
+        <tr>
+          <td><strong>Community Notes</strong></td>
+          <td><span class="badge-sm badge-gray">Text Area</span></td>
+          <td>Free text</td>
+          <td>Context about their story and what makes them interesting</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px; color:var(--bm-muted-gray); margin-top:12px;"><span class="badge-sm badge-teal" style="margin-right:4px;">LIVE</span> All properties created and active in HubSpot as of March 19, 2026.</p>
+  </div>
+</div>
+
+<!-- MEASUREMENT -->
+<div class="section section-alt">
+  <div class="container">
+    <div class="eyebrow">Measurement</div>
+    <h2>How We Know It's Working</h2>
+
+    <div class="card-grid card-grid-3" style="margin-top:24px;">
+      <div class="card" style="text-align:center;">
+        <div class="stat-number" style="font-size:28px;">Participation Rate</div>
+        <p style="margin-top:8px;">% of customers invited who opt in. Target: 30%+</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="stat-number" style="font-size:28px;">Pipeline</div>
+        <p style="margin-top:8px;">Stories in queue vs. published per month. Target: 3-4/mo</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="stat-number" style="font-size:28px;">ESC Coverage</div>
+        <p style="margin-top:8px;">Regions with vs. without featured districts. Target: all 9 per quarter</p>
+      </div>
+    </div>
+
+    <div class="card-grid card-grid-3" style="margin-top:16px;">
+      <div class="card" style="text-align:center;">
+        <div class="stat-number" style="font-size:28px;">Engagement</div>
+        <p style="margin-top:8px;">Likes, shares, comments on Library Voices posts vs. other content</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="stat-number" style="font-size:28px;">Referral Signal</div>
+        <p style="margin-top:8px;">Do featured districts refer others? Track source attribution.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="stat-number" style="font-size:28px;">Tier Growth</div>
+        <p style="margin-top:8px;">Fan &rarr; Advocate &rarr; Champion progression over time</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT DISTRIBUTION -->
+<div class="section">
+  <div class="container">
+    <div class="eyebrow">Distribution</div>
+    <h2>Where Content Lives</h2>
+
+    <table style="margin-top:24px;">
+      <thead>
+        <tr>
+          <th>Content Type</th>
+          <th>Primary Channel</th>
+          <th>Secondary</th>
+          <th>Cadence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Librarian Spotlight</td>
+          <td>Instagram + LinkedIn</td>
+          <td>Facebook, X</td>
+          <td>Biweekly</td>
+        </tr>
+        <tr>
+          <td>Written Piece / Blog</td>
+          <td>Bookmarked blog (HubSpot CMS)</td>
+          <td>LinkedIn article, social clips</td>
+          <td>Monthly</td>
+        </tr>
+        <tr>
+          <td>Quick Quote</td>
+          <td>LinkedIn + Instagram stories</td>
+          <td>X, Facebook</td>
+          <td>As collected (2-3/month)</td>
+        </tr>
+        <tr>
+          <td>ESC Regional</td>
+          <td>ESC partner channels</td>
+          <td>Bookmarked social</td>
+          <td>1 per region per quarter (target)</td>
+        </tr>
+        <tr>
+          <td>Webinar</td>
+          <td>YouTube</td>
+          <td>Social clips (4-6 per episode)</td>
+          <td>Quarterly (starting Q3 2026)</td>
+        </tr>
+        <tr>
+          <td>Case Study</td>
+          <td>Website + sales enablement</td>
+          <td>LinkedIn, ESC materials</td>
+          <td>As produced</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="section section-alt">
+  <div class="container">
+    <div class="eyebrow">Systems</div>
+    <h2>Tools &amp; Infrastructure</h2>
+
+    <div class="card-grid card-grid-2" style="margin-top:24px;">
+      <div class="card">
+        <h4>Already Operational</h4>
+        <ul style="font-size:14px; color:var(--bm-secondary-text); line-height:2; padding-left:16px;">
+          <li><strong>HubSpot</strong> — CRM, customer data, community properties (live)</li>
+          <li><strong>Postiz</strong> — 5 social channels (LinkedIn, Instagram, X, Facebook, YouTube)</li>
+          <li><strong>Confluence</strong> — Customer Stories page (67665940), program hub</li>
+          <li><strong>Gmail / gws CLI</strong> — Outreach emails</li>
+          <li><strong>/social-post</strong> — End-to-end social publishing</li>
+          <li><strong>/graphic-designer</strong> — Branded graphic design</li>
+          <li><strong>/collateral</strong> — Case study PDFs, one-pagers</li>
+          <li><strong>Arrows</strong> — Add community touchpoint to onboarding plans</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>To Activate</h4>
+        <ul style="font-size:14px; color:var(--bm-secondary-text); line-height:2; padding-left:16px;">
+          <li><strong>HubSpot Forms</strong> — Intake form for content collection</li>
+          <li><strong>YouTube channel</strong> — Connected to Postiz, activate for webinars</li>
+          <li><strong>Zoom</strong> — Already in use for calls, use for webinar recording</li>
+          <li><strong>Confluence hub page</strong> — Program tracking (building today)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NEXT STEPS -->
+<div class="section">
+  <div class="container">
+    <div class="eyebrow">Getting Started</div>
+    <h2>V1 Launch Checklist</h2>
+
+    <div class="timeline" style="margin-top:24px;">
+      <div class="timeline-item">
+        <h4>HubSpot Properties &mdash; <span class="badge-sm badge-teal">Done</span></h4>
+        <p>7 community tracking properties created and live</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Identify First 5 Districts</h4>
+        <p>Steve, Patrick, Jan, and Teela each nominate 1-2 warm relationships</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Send First Invitations</h4>
+        <p>Use the email templates — warm, personal, from whoever has the relationship</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Collect First Responses</h4>
+        <p>Track in HubSpot, log in Confluence hub</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Produce First Spotlight</h4>
+        <p>Design the graphic, write the caption, get customer approval, publish</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Share with ESC Partner</h4>
+        <p>If the district is in a partner region, send the content to the ESC contact</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Review &amp; Iterate</h4>
+        <p>After 3-4 published pieces, assess: What worked? What didn't? What do customers want more of?</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="container">
+    <p><strong>Library Voices</strong> &mdash; Community Content Program V1</p>
+    <p style="margin-top:4px;">Bookmarked &middot; The Book Intelligence Company</p>
+    <div class="tagline">Internal Strategy Document &middot; March 2026</div>
+  </div>
+</div>
+
+</body>
+</html>

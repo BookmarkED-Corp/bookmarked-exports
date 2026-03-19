@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library Voices — Email Templates</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bm-eigengrau: #101828;
+  --bm-deep-green: #107569;
+  --bm-teal-accent: #12A38C;
+  --bm-white: #FFFFFF;
+  --bm-secondary-text: #475467;
+  --bm-muted-gray: #9CA3AF;
+  --bm-border-light: #E5E7EB;
+  --bm-bg-cool: #F8FAFC;
+  --bm-bg-light: #F9FAFB;
+  --bm-font-family: 'Urbanist', Arial, Helvetica, sans-serif;
+  --bm-gradient-hero: linear-gradient(135deg, #0D5A52 0%, #107569 40%, #12A38C 100%);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: var(--bm-font-family); font-size:16px; color:var(--bm-eigengrau); background:var(--bm-bg-light); -webkit-font-smoothing:antialiased; line-height:1.5; }
+.container { max-width:900px; margin:0 auto; padding:0 24px; }
+
+/* Header */
+.header { background:var(--bm-gradient-hero); padding:48px 0 36px; color:#fff; }
+.header h1 { font-size:32px; font-weight:800; }
+.header p { font-size:16px; color:rgba(255,255,255,0.8); margin-top:8px; }
+
+/* Template cards */
+.template-section { padding:40px 0; }
+.template-card { background:#fff; border-radius:12px; border:1px solid var(--bm-border-light); margin-bottom:32px; overflow:hidden; }
+.template-header { background:var(--bm-bg-cool); padding:20px 28px; border-bottom:1px solid var(--bm-border-light); display:flex; justify-content:space-between; align-items:center; }
+.template-header h2 { font-size:20px; font-weight:700; }
+.template-header .badge { display:inline-block; padding:4px 12px; font-size:11px; font-weight:700; border-radius:100px; text-transform:uppercase; letter-spacing:0.5px; background:rgba(18,163,140,0.15); color:var(--bm-teal-accent); }
+.template-meta { padding:16px 28px; background:var(--bm-bg-light); border-bottom:1px solid var(--bm-border-light); font-size:13px; color:var(--bm-muted-gray); display:flex; gap:24px; }
+.template-meta strong { color:var(--bm-eigengrau); }
+.template-body { padding:28px; }
+.email-preview { background:#fff; border:1px solid var(--bm-border-light); border-radius:8px; padding:28px 32px; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.7; color:#333; }
+.email-preview p { margin-bottom:14px; }
+.email-preview .sig { color:#666; font-size:14px; margin-top:24px; line-height:1.6; }
+.email-preview .sig strong { color:#333; }
+.email-preview .cta-button { display:inline-block; padding:12px 28px; background:var(--bm-deep-green); color:#fff !important; font-size:15px; font-weight:700; border-radius:8px; text-decoration:none; margin:8px 0 16px; }
+.template-notes { padding:16px 28px; background:#FFFBF0; border-top:1px solid #F0E6D0; font-size:13px; color:var(--bm-secondary-text); }
+.template-notes strong { color:var(--bm-eigengrau); }
+
+.placeholder { background:rgba(18,163,140,0.1); color:var(--bm-deep-green); padding:1px 6px; border-radius:4px; font-weight:600; font-size:14px; }
+
+/* Footer */
+.footer { background:var(--bm-deep-green); color:#fff; padding:32px 0; text-align:center; }
+.footer p { font-size:13px; color:rgba(255,255,255,0.7); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <h1>Library Voices — Email Templates</h1>
+    <p>Four ready-to-send templates for the community content program. Personalize the placeholders and send.</p>
+  </div>
+</div>
+
+<div class="template-section">
+  <div class="container">
+
+    <!-- TEMPLATE 1: WARM INVITATION -->
+    <div class="template-card">
+      <div class="template-header">
+        <h2>1. Warm Invitation</h2>
+        <span class="badge">First Touch</span>
+      </div>
+      <div class="template-meta">
+        <div><strong>From:</strong> Whoever has the relationship (Steve, Patrick, Jan, or Teela)</div>
+        <div><strong>When:</strong> After identifying a good candidate</div>
+      </div>
+      <div class="template-body">
+        <div class="email-preview">
+          <p><strong>Subject:</strong> Something we're starting that I think you'd love</p>
+          <p>Hi <span class="placeholder">[First Name]</span>,</p>
+          <p>I wanted to reach out about something we're putting together called <strong>Library Voices</strong> — a program where we spotlight librarians and district leaders who are doing incredible work in their school libraries.</p>
+          <p>The idea is simple: give people like you a platform to talk about what you care about. The future of libraries, getting books in kids' hands, the innovative things you're doing at <span class="placeholder">[District Name]</span> — whatever matters most to you.</p>
+          <p>This isn't a product testimonial. It's about celebrating the profession and the people in it. We'd love for you to be one of our first featured voices.</p>
+          <p>There are a few ways to participate — from a quick 5-minute quote to a longer written piece or even a webinar panel. I can send you the full menu if you're interested.</p>
+          <p>Would you be open to it? No pressure at all — just thought of you because <span class="placeholder">[personal reason — e.g., "of the amazing things you shared about your reading program last month"]</span>.</p>
+          <div class="sig">
+            <strong>Steve Wandler</strong><br>
+            Founder, Bookmarked<br>
+            steve@bookmarked.com<br>
+            (214) 892-1015
+          </div>
+        </div>
+      </div>
+      <div class="template-notes">
+        <strong>Usage notes:</strong> Replace the signature with your own if you're not Steve. The <span class="placeholder">[personal reason]</span> is critical — it should reference something specific about them or their library. Generic invites don't work.
+      </div>
+    </div>
+
+    <!-- TEMPLATE 2: PROGRAM OVERVIEW + FORM -->
+    <div class="template-card">
+      <div class="template-header">
+        <h2>2. Program Overview + Form Link</h2>
+        <span class="badge">After Opt-In</span>
+      </div>
+      <div class="template-meta">
+        <div><strong>From:</strong> Same person who sent the invitation</div>
+        <div><strong>When:</strong> After they express interest</div>
+      </div>
+      <div class="template-body">
+        <div class="email-preview">
+          <p><strong>Subject:</strong> Library Voices — here's how it works</p>
+          <p>Hi <span class="placeholder">[First Name]</span>,</p>
+          <p>So glad you're interested! Here's a quick overview of Library Voices and how you can participate.</p>
+          <p><strong>The idea:</strong> We want to give librarians and district leaders a platform to talk about what matters — the future of school libraries, innovative approaches to getting books in students' hands, and the amazing work happening in libraries across Texas.</p>
+          <p><strong>How you can participate:</strong></p>
+          <ul style="margin:8px 0 16px 20px; line-height:2;">
+            <li><strong>Quick Quote</strong> (5 min) — Answer 2-3 questions via email. We feature you on social media.</li>
+            <li><strong>Photo Spotlight</strong> (15 min) — Send a photo of yourself in your library + answer 3 short questions.</li>
+            <li><strong>Written Piece</strong> (30-60 min) — Write about a topic you care about, or we interview you and write it up.</li>
+            <li><strong>Webinar Panel</strong> (60 min) — Join a recorded conversation with peers on a topic that matters.</li>
+            <li><strong>Case Study</strong> (45 min) — Share your experience for a co-branded PDF you can use with your admin.</li>
+          </ul>
+          <p>Pick whatever feels right for you — or multiple options! Just fill out this short form and we'll take it from there:</p>
+          <p><a href="#" class="cta-button">Join Library Voices</a></p>
+          <p>We'll share a draft of everything before it goes live. Nothing gets published without your approval.</p>
+          <p>Thanks for being part of this, <span class="placeholder">[First Name]</span>.</p>
+          <div class="sig">
+            <strong>Steve Wandler</strong><br>
+            Founder, Bookmarked<br>
+            steve@bookmarked.com<br>
+            (214) 892-1015
+          </div>
+        </div>
+      </div>
+      <div class="template-notes">
+        <strong>Usage notes:</strong> Replace the <a href="#">form link</a> with the actual HubSpot form URL once created. Update HubSpot contact status to "Opted In" when this email is sent.
+      </div>
+    </div>
+
+    <!-- TEMPLATE 3: QUICK QUOTE REQUEST -->
+    <div class="template-card">
+      <div class="template-header">
+        <h2>3. Quick Quote Request</h2>
+        <span class="badge">Direct Ask</span>
+      </div>
+      <div class="template-meta">
+        <div><strong>From:</strong> Whoever has the relationship</div>
+        <div><strong>When:</strong> For fast testimonials or when they chose "Quick Quote"</div>
+      </div>
+      <div class="template-body">
+        <div class="email-preview">
+          <p><strong>Subject:</strong> Quick favor — 3 questions for Library Voices</p>
+          <p>Hi <span class="placeholder">[First Name]</span>,</p>
+          <p>Thanks for being part of Library Voices! For your spotlight, I just need your answers to three short questions. Reply to this email with whatever comes to mind — no need to overthink it.</p>
+          <p style="background:#F8FAFC; padding:16px 20px; border-radius:8px; border-left:3px solid #12A38C;">
+            <strong>1.</strong> What do you love most about being a school librarian?<br><br>
+            <strong>2.</strong> What's one thing you wish people understood about school libraries today?<br><br>
+            <strong>3.</strong> What excites you about the future of libraries?
+          </p>
+          <p>We'll lightly edit for clarity and send you a draft before anything goes live. Your voice, your approval.</p>
+          <p>If you have a favorite photo of yourself in your library, send that along too — we'd love to include it in the spotlight!</p>
+          <div class="sig">
+            <strong>Steve Wandler</strong><br>
+            Founder, Bookmarked<br>
+            steve@bookmarked.com<br>
+            (214) 892-1015
+          </div>
+        </div>
+      </div>
+      <div class="template-notes">
+        <strong>Usage notes:</strong> You can swap the questions from the Question Bank in the program doc. Pick questions that match what you know about this person — if they're passionate about innovation, use the innovation questions. If they love kids and reading, use the vitality questions.
+      </div>
+    </div>
+
+    <!-- TEMPLATE 4: THANK YOU / PUBLISHED -->
+    <div class="template-card">
+      <div class="template-header">
+        <h2>4. Thank You / Published Notification</h2>
+        <span class="badge">After Publish</span>
+      </div>
+      <div class="template-meta">
+        <div><strong>From:</strong> Steve (or whoever sent the original invitation)</div>
+        <div><strong>When:</strong> Immediately after publishing their spotlight</div>
+      </div>
+      <div class="template-body">
+        <div class="email-preview">
+          <p><strong>Subject:</strong> Your Library Voices spotlight is live!</p>
+          <p>Hi <span class="placeholder">[First Name]</span>,</p>
+          <p>Your Library Voices spotlight is live! Here's where you can find it:</p>
+          <p style="background:#F8FAFC; padding:16px 20px; border-radius:8px; border-left:3px solid #12A38C;">
+            <span class="placeholder">[LinkedIn post link]</span><br>
+            <span class="placeholder">[Instagram post link]</span><br>
+            <span class="placeholder">[Blog post link, if applicable]</span>
+          </p>
+          <p>Feel free to share it with your colleagues, your admin, or anyone else you think would enjoy it. We'd love for your network to see it too.</p>
+          <p>Thank you for being part of Library Voices. What you're doing at <span class="placeholder">[District Name]</span> is exactly the kind of story that inspires other librarians and districts across Texas.</p>
+          <p>If you ever want to contribute again — a written piece, a webinar panel, anything — just let me know. You're always welcome.</p>
+          <div class="sig">
+            <strong>Steve Wandler</strong><br>
+            Founder, Bookmarked<br>
+            steve@bookmarked.com<br>
+            (214) 892-1015
+          </div>
+        </div>
+      </div>
+      <div class="template-notes">
+        <strong>Usage notes:</strong> Update HubSpot: set "Spotlight Published Date" and move status to "Active." If this district is in an ESC partner region, also send the content to the ESC contact (separate from this email).
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <p><strong>Library Voices</strong> — Email Templates V1 &middot; Bookmarked &middot; March 2026</p>
+  </div>
+</div>
+
+</body>
+</html>
