@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESC Partnership Communication Map — Bookmarked</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --eigengrau: #101828;
+    --deep-green: #107569;
+    --teal-accent: #12A38C;
+    --pumpkin: #FF692E;
+    --white: #FFFFFF;
+    --cool-bg: #F8FAFC;
+    --warm-bg: #F8F5F0;
+    --light-bg: #F9FAFB;
+    --border-light: #E2E8F0;
+    --text-secondary: #475467;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Urbanist', sans-serif;
+    background: var(--white);
+    color: var(--eigengrau);
+    line-height: 1.5;
+  }
+
+  @media print {
+    body { font-size: 11px; }
+    .page-break-avoid { page-break-inside: avoid; }
+    .no-print { display: none; }
+    .container { max-width: 100%; padding: 0 20px; }
+    @page { margin: 0.5in; size: landscape; }
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* Header */
+  .header {
+    background: var(--white);
+    border-bottom: 3px solid var(--deep-green);
+    padding: 32px 0;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .header-left img {
+    height: 40px;
+  }
+  .header-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--eigengrau);
+    letter-spacing: -0.5px;
+  }
+  .header-subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+  .header-date {
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-align: right;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--deep-green);
+    margin: 40px 0 8px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--deep-green);
+  }
+  .section-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+
+  /* Flow map grid */
+  .flow-map {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin: 32px 0;
+    position: relative;
+  }
+
+  /* Flow row */
+  .flow-row {
+    display: grid;
+    grid-template-columns: 200px 60px 200px 1fr;
+    align-items: stretch;
+    gap: 0;
+    min-height: 160px;
+    position: relative;
+  }
+
+  /* Entity boxes */
+  .entity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    position: relative;
+    z-index: 2;
+    margin: 8px 0;
+  }
+  .entity-bookmarked {
+    background: var(--deep-green);
+    color: var(--white);
+  }
+  .entity-esc {
+    background: var(--teal-accent);
+    color: var(--white);
+  }
+  .entity-district {
+    background: var(--pumpkin);
+    color: var(--white);
+  }
+  .entity-internal {
+    background: var(--eigengrau);
+    color: var(--white);
+  }
+  .entity-feedback {
+    background: linear-gradient(135deg, var(--deep-green), var(--teal-accent));
+    color: var(--white);
+  }
+
+  /* Arrow connector */
+  .arrow-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+  .arrow-line {
+    width: 100%;
+    height: 3px;
+    position: relative;
+  }
+  .arrow-line::after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: -5px;
+    border: 6px solid transparent;
+  }
+  .arrow-right .arrow-line { background: var(--deep-green); }
+  .arrow-right .arrow-line::after { border-left-color: var(--deep-green); }
+  .arrow-left .arrow-line { background: var(--pumpkin); }
+  .arrow-left .arrow-line::before {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -5px;
+    border: 6px solid transparent;
+    border-right-color: var(--pumpkin);
+  }
+  .arrow-bidir .arrow-line { background: var(--teal-accent); }
+  .arrow-bidir .arrow-line::after { border-left-color: var(--teal-accent); }
+  .arrow-bidir .arrow-line::before {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -5px;
+    border: 6px solid transparent;
+    border-right-color: var(--teal-accent);
+  }
+
+  /* Detail card */
+  .detail-card {
+    background: var(--cool-bg);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 8px 0 8px 12px;
+    border-left: 4px solid var(--deep-green);
+  }
+  .detail-card.card-esc { border-left-color: var(--teal-accent); }
+  .detail-card.card-district { border-left-color: var(--pumpkin); }
+  .detail-card.card-internal { border-left-color: var(--eigengrau); }
+  .detail-card.card-feedback { border-left-color: var(--deep-green); }
+
+  .detail-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--eigengrau);
+    margin-bottom: 8px;
+  }
+  .detail-items {
+    list-style: none;
+    padding: 0;
+  }
+  .detail-items li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    padding: 3px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+  .detail-items li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--teal-accent);
+  }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-right: 4px;
+    margin-top: 8px;
+  }
+  .tag-channel {
+    background: #E6F4F2;
+    color: var(--deep-green);
+  }
+  .tag-freq {
+    background: #FFF3ED;
+    color: var(--pumpkin);
+  }
+
+  /* Full visual map section */
+  .visual-map {
+    background: var(--cool-bg);
+    border-radius: 16px;
+    padding: 40px;
+    margin: 32px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .map-nodes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 32px 60px;
+    position: relative;
+  }
+
+  .map-node {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(16,24,40,0.06);
+    position: relative;
+    z-index: 2;
+  }
+  .map-node h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .map-node p {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .map-node.node-bookmarked { border-top: 4px solid var(--deep-green); }
+  .map-node.node-bookmarked h3 { color: var(--deep-green); }
+  .map-node.node-esc { border-top: 4px solid var(--teal-accent); }
+  .map-node.node-esc h3 { color: var(--teal-accent); }
+  .map-node.node-district { border-top: 4px solid var(--pumpkin); }
+  .map-node.node-district h3 { color: var(--pumpkin); }
+
+  /* Connection lines via pseudo-elements */
+  .map-connections {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 24px 0;
+    padding: 16px 20px;
+    background: var(--warm-bg);
+    border-radius: 10px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .legend-swatch {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+  }
+  .legend-line {
+    width: 28px;
+    height: 3px;
+    border-radius: 2px;
+  }
+
+  /* Detailed flow cards */
+  .flow-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 24px 0;
+  }
+  @media (max-width: 800px) {
+    .flow-cards { grid-template-columns: 1fr; }
+  }
+
+  .flow-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .flow-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+  }
+  .flow-card.fc-1::before { background: var(--deep-green); }
+  .flow-card.fc-2::before { background: var(--teal-accent); }
+  .flow-card.fc-3::before { background: var(--pumpkin); }
+  .flow-card.fc-4::before { background: linear-gradient(90deg, var(--pumpkin), var(--deep-green)); }
+  .flow-card.fc-5::before { background: var(--eigengrau); }
+  .flow-card.fc-6::before { background: linear-gradient(90deg, var(--deep-green), var(--teal-accent)); }
+
+  .flow-card .fc-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .fc-1 .fc-number { background: var(--deep-green); }
+  .fc-2 .fc-number { background: var(--teal-accent); }
+  .fc-3 .fc-number { background: var(--pumpkin); }
+  .fc-4 .fc-number { background: var(--deep-green); }
+  .fc-5 .fc-number { background: var(--eigengrau); }
+  .fc-6 .fc-number { background: var(--teal-accent); }
+
+  .flow-card .fc-direction {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+  .flow-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--eigengrau);
+    margin-bottom: 12px;
+  }
+  .flow-card .fc-items {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 12px;
+  }
+  .flow-card .fc-items li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    padding: 4px 0 4px 20px;
+    position: relative;
+  }
+  .flow-card .fc-items li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid;
+  }
+  .fc-1 .fc-items li::before { border-color: var(--deep-green); }
+  .fc-2 .fc-items li::before { border-color: var(--teal-accent); }
+  .fc-3 .fc-items li::before { border-color: var(--pumpkin); }
+  .fc-4 .fc-items li::before { border-color: var(--deep-green); }
+  .fc-5 .fc-items li::before { border-color: var(--eigengrau); }
+  .fc-6 .fc-items li::before { border-color: var(--teal-accent); }
+
+  .fc-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  /* Visual flow diagram */
+  .diagram-wrapper {
+    background: var(--cool-bg);
+    border-radius: 16px;
+    padding: 40px 32px;
+    margin: 32px 0;
+  }
+  .diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+  }
+  .diagram-tier {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+    position: relative;
+  }
+  .diagram-box {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 16px 24px;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(16,24,40,0.06);
+    min-width: 180px;
+    position: relative;
+    z-index: 2;
+  }
+  .diagram-box h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .diagram-box p {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+  .diagram-box.db-bookmarked { border-left: 4px solid var(--deep-green); }
+  .diagram-box.db-bookmarked h4 { color: var(--deep-green); }
+  .diagram-box.db-esc { border-left: 4px solid var(--teal-accent); }
+  .diagram-box.db-esc h4 { color: var(--teal-accent); }
+  .diagram-box.db-district { border-left: 4px solid var(--pumpkin); }
+  .diagram-box.db-district h4 { color: var(--pumpkin); }
+
+  .diagram-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0;
+    position: relative;
+    z-index: 1;
+  }
+  .diagram-arrow .arrow-shaft {
+    width: 3px;
+    height: 32px;
+    background: var(--deep-green);
+  }
+  .diagram-arrow .arrow-head {
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 8px solid var(--deep-green);
+  }
+  .diagram-arrow .arrow-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .diagram-arrow.da-up .arrow-shaft { background: var(--pumpkin); }
+  .diagram-arrow.da-up .arrow-head {
+    border-top: none;
+    border-bottom: 8px solid var(--pumpkin);
+    order: -1;
+  }
+  .diagram-arrow.da-bidir .arrow-shaft {
+    background: linear-gradient(to bottom, var(--deep-green), var(--pumpkin));
+  }
+
+  /* Internal team grid */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+  }
+  @media (max-width: 800px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .team-member {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .team-member .tm-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--eigengrau);
+    margin-bottom: 4px;
+  }
+  .team-member .tm-role {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--eigengrau);
+    color: rgba(255,255,255,0.6);
+    padding: 20px 0;
+    margin-top: 48px;
+    font-size: 12px;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-inner strong { color: var(--white); }
+
+  /* Frequency matrix table */
+  .freq-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 13px;
+  }
+  .freq-table th {
+    background: var(--deep-green);
+    color: var(--white);
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .freq-table th:first-child { border-radius: 8px 0 0 0; }
+  .freq-table th:last-child { border-radius: 0 8px 0 0; }
+  .freq-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+  }
+  .freq-table tr:nth-child(even) td { background: var(--cool-bg); }
+  .freq-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+  .freq-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+  .freq-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 20px;
+  }
+  .freq-daily { background: #DCFCE7; color: #166534; }
+  .freq-weekly { background: #E0F2FE; color: #075985; }
+  .freq-monthly { background: #FFF3ED; color: #C2410C; }
+  .freq-quarterly { background: #F3E8FF; color: #7C3AED; }
+  .freq-ongoing { background: #F0FDF4; color: #15803D; }
+  .freq-as-needed { background: #FEF9C3; color: #A16207; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="header-left">
+        <img src="../design/bookmarked-logo-green-trimmed.png" alt="Bookmarked">
+        <div>
+          <div class="header-title">ESC Partnership Communication Map</div>
+          <div class="header-subtitle">Bookmarked Partner Academy &mdash; Information Flow &amp; Coordination Model</div>
+        </div>
+      </div>
+      <div class="header-date">
+        March 2026<br>
+        <strong style="color: var(--deep-green);">Internal Use</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Legend -->
+  <div class="legend" style="margin-top: 32px;">
+    <div class="legend-item">
+      <div class="legend-swatch" style="background: var(--deep-green);"></div>
+      Bookmarked (HQ)
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background: var(--teal-accent);"></div>
+      ESC Partners
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background: var(--pumpkin);"></div>
+      School Districts
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background: var(--eigengrau);"></div>
+      Internal Team
+    </div>
+    <div class="legend-item" style="margin-left: auto;">
+      <div class="legend-line" style="background: var(--deep-green);"></div>
+      Outbound
+    </div>
+    <div class="legend-item">
+      <div class="legend-line" style="background: var(--pumpkin);"></div>
+      Inbound/Feedback
+    </div>
+    <div class="legend-item">
+      <div class="legend-line" style="background: linear-gradient(90deg, var(--deep-green), var(--pumpkin));"></div>
+      Bidirectional
+    </div>
+  </div>
+
+  <!-- Visual Flow Diagram -->
+  <div class="section-title">Visual Flow Overview</div>
+  <div class="section-desc">How information moves between Bookmarked, ESC partners, and school districts.</div>
+
+  <div class="diagram-wrapper">
+    <div class="diagram">
+
+      <!-- Tier 1: Bookmarked HQ -->
+      <div class="diagram-tier">
+        <div class="diagram-box db-bookmarked" style="min-width: 360px;">
+          <h4>Bookmarked HQ</h4>
+          <p>Strategy, product, training content, support</p>
+        </div>
+      </div>
+
+      <!-- Arrows down -->
+      <div class="diagram-tier" style="gap: 120px;">
+        <div class="diagram-arrow">
+          <div class="arrow-shaft" style="height: 40px;"></div>
+          <div class="arrow-head"></div>
+          <div class="arrow-label">Quarterly</div>
+        </div>
+        <div class="diagram-arrow">
+          <div class="arrow-shaft" style="height: 40px; background: var(--teal-accent);"></div>
+          <div class="arrow-head" style="border-top-color: var(--teal-accent);"></div>
+          <div class="arrow-label">Weekly</div>
+        </div>
+      </div>
+
+      <!-- Tier 2: ESC roles -->
+      <div class="diagram-tier" style="gap: 40px;">
+        <div class="diagram-box db-esc">
+          <h4>ESC Leadership</h4>
+          <p>Lori, Nathan, Amanda-level<br>Business reviews, revenue, strategy</p>
+        </div>
+        <div class="diagram-box db-esc">
+          <h4>ESC Training Staff</h4>
+          <p>Facilitators and coordinators<br>Module delivery, scheduling</p>
+        </div>
+      </div>
+
+      <!-- Arrow down from ESC to Districts -->
+      <div class="diagram-tier">
+        <div class="diagram-arrow">
+          <div class="arrow-shaft" style="height: 40px; background: var(--teal-accent);"></div>
+          <div class="arrow-head" style="border-top-color: var(--teal-accent);"></div>
+          <div class="arrow-label">Ongoing</div>
+        </div>
+      </div>
+
+      <!-- Tier 3: Districts -->
+      <div class="diagram-tier">
+        <div class="diagram-box db-district" style="min-width: 360px;">
+          <h4>School Districts</h4>
+          <p>Product overviews, demos, training, onboarding, renewals</p>
+        </div>
+      </div>
+
+      <!-- Feedback arrow back up -->
+      <div class="diagram-tier" style="margin-top: 8px;">
+        <div class="diagram-arrow da-up">
+          <div class="arrow-shaft" style="height: 40px;"></div>
+          <div class="arrow-head"></div>
+          <div class="arrow-label" style="order: 2;">Feedback Loop</div>
+        </div>
+      </div>
+
+      <!-- Feedback destination -->
+      <div class="diagram-tier">
+        <div class="diagram-box db-bookmarked" style="min-width: 280px; border-left-color: var(--pumpkin);">
+          <h4 style="color: var(--pumpkin);">Feedback &amp; Data</h4>
+          <p>Product feedback, feature requests, adoption metrics, training effectiveness</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Detailed Flow Cards -->
+  <div class="section-title">Detailed Communication Flows</div>
+  <div class="section-desc">Each numbered flow defines the sender, receiver, content, channel, and cadence.</div>
+
+  <div class="flow-cards">
+
+    <!-- Flow 1 -->
+    <div class="flow-card fc-1 page-break-avoid">
+      <div class="fc-number">1</div>
+      <div class="fc-direction">Bookmarked &rarr; ESC Leadership</div>
+      <h3>Strategic Partnership</h3>
+      <ul class="fc-items">
+        <li>Quarterly business reviews</li>
+        <li>Revenue and economics updates</li>
+        <li>New feature announcements</li>
+        <li>Strategic partnership discussions</li>
+      </ul>
+      <div class="fc-meta">
+        <span class="tag tag-channel">Video Call + Email</span>
+        <span class="tag tag-freq">Quarterly</span>
+      </div>
+    </div>
+
+    <!-- Flow 2 -->
+    <div class="flow-card fc-2 page-break-avoid">
+      <div class="fc-number">2</div>
+      <div class="fc-direction">Bookmarked &rarr; ESC Training Staff</div>
+      <h3>Training Enablement</h3>
+      <ul class="fc-items">
+        <li>Training module updates and new content</li>
+        <li>Facilitator guides and materials</li>
+        <li>Scheduling coordination</li>
+      </ul>
+      <div class="fc-meta">
+        <span class="tag tag-channel">Slack (per ESC) or Email</span>
+        <span class="tag tag-freq">Weekly / As Needed</span>
+      </div>
+    </div>
+
+    <!-- Flow 3 -->
+    <div class="flow-card fc-3 page-break-avoid">
+      <div class="fc-number">3</div>
+      <div class="fc-direction">ESC &rarr; Districts (on behalf of Bookmarked)</div>
+      <h3>District Outreach</h3>
+      <ul class="fc-items">
+        <li>Product overviews and demos</li>
+        <li>Training session invitations</li>
+        <li>Onboarding support</li>
+        <li>Renewal outreach support</li>
+      </ul>
+      <div class="fc-meta">
+        <span class="tag tag-channel">ESC's Existing Channels</span>
+        <span class="tag tag-freq">Ongoing</span>
+      </div>
+    </div>
+
+    <!-- Flow 4 -->
+    <div class="flow-card fc-4 page-break-avoid">
+      <div class="fc-number">4</div>
+      <div class="fc-direction">Districts &rarr; Bookmarked (Feedback Loop)</div>
+      <h3>Product Feedback</h3>
+      <ul class="fc-items">
+        <li>Product feedback and satisfaction</li>
+        <li>Feature requests</li>
+        <li>Support escalations</li>
+      </ul>
+      <div class="fc-meta">
+        <span class="tag tag-channel">Through ESC or Direct</span>
+        <span class="tag tag-freq">As Needed</span>
+      </div>
+    </div>
+
+    <!-- Flow 5 -->
+    <div class="flow-card fc-5 page-break-avoid">
+      <div class="fc-number">5</div>
+      <div class="fc-direction">Internal Bookmarked Team</div>
+      <h3>Internal Coordination</h3>
+      <ul class="fc-items">
+        <li><strong>Steve:</strong> Strategy, assets, economics, agreements</li>
+        <li><strong>Jan:</strong> Relationship management, scheduling, pipeline</li>
+        <li><strong>Patrick:</strong> Product demos, training content, CS</li>
+        <li><strong>Teela:</strong> ESC 10 (Angela), operational coordination</li>
+      </ul>
+      <div class="fc-meta">
+        <span class="tag tag-channel">Slack #esc-partnerships</span>
+        <span class="tag tag-freq">Daily</span>
+      </div>
+    </div>
+
+    <!-- Flow 6 -->
+    <div class="flow-card fc-6 page-break-avoid">
+      <div class="fc-number">6</div>
+      <div class="fc-direction">ESC Partners &rarr; Bookmarked (Feedback Loop)</div>
+      <h3>Partner Intelligence</h3>
+      <ul class="fc-items">
+        <li>What's working, what's not</li>
+        <li>District adoption data</li>
+        <li>Training effectiveness metrics</li>
+      </ul>
+      <div class="fc-meta">
+        <span class="tag tag-channel">Monthly Check-in + Dashboard</span>
+        <span class="tag tag-freq">Monthly</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Internal Team Section -->
+  <div class="section-title">Internal Team Roles</div>
+  <div class="section-desc">Who owns what within the ESC Partnership Program.</div>
+
+  <div class="team-grid">
+    <div class="team-member page-break-avoid" style="border-top: 3px solid var(--deep-green);">
+      <div class="tm-name">Steve Wandler</div>
+      <div class="tm-role">Strategy &amp; economics<br>Partnership agreements<br>Asset creation &amp; approval</div>
+    </div>
+    <div class="team-member page-break-avoid" style="border-top: 3px solid var(--teal-accent);">
+      <div class="tm-name">Jan Gilboy</div>
+      <div class="tm-role">ESC relationship management<br>Meeting scheduling<br>Pipeline coordination</div>
+    </div>
+    <div class="team-member page-break-avoid" style="border-top: 3px solid var(--pumpkin);">
+      <div class="tm-name">Patrick Reid</div>
+      <div class="tm-role">Product demos<br>Training content creation<br>Customer success</div>
+    </div>
+    <div class="team-member page-break-avoid" style="border-top: 3px solid var(--eigengrau);">
+      <div class="tm-name">Teela Watson</div>
+      <div class="tm-role">ESC 10 relationship (Angela)<br>Operational coordination</div>
+    </div>
+  </div>
+
+  <!-- Frequency Matrix -->
+  <div class="section-title">Communication Frequency Matrix</div>
+  <div class="section-desc">Quick reference for cadence, channel, and owner of each communication flow.</div>
+
+  <table class="freq-table">
+    <thead>
+      <tr>
+        <th>Flow</th>
+        <th>From &rarr; To</th>
+        <th>Frequency</th>
+        <th>Channel</th>
+        <th>Owner</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Strategic Partnership</strong></td>
+        <td>Bookmarked &rarr; ESC Leadership</td>
+        <td><span class="freq-badge freq-quarterly">Quarterly</span></td>
+        <td>Video call + email</td>
+        <td>Steve / Jan</td>
+      </tr>
+      <tr>
+        <td><strong>2. Training Enablement</strong></td>
+        <td>Bookmarked &rarr; ESC Training Staff</td>
+        <td><span class="freq-badge freq-weekly">Weekly</span></td>
+        <td>Slack channel (per ESC) or email</td>
+        <td>Patrick / Jan</td>
+      </tr>
+      <tr>
+        <td><strong>3. District Outreach</strong></td>
+        <td>ESC &rarr; Districts</td>
+        <td><span class="freq-badge freq-ongoing">Ongoing</span></td>
+        <td>ESC's existing channels</td>
+        <td>ESC Training Staff</td>
+      </tr>
+      <tr>
+        <td><strong>4. Product Feedback</strong></td>
+        <td>Districts &rarr; Bookmarked</td>
+        <td><span class="freq-badge freq-as-needed">As Needed</span></td>
+        <td>Through ESC or direct support</td>
+        <td>Patrick</td>
+      </tr>
+      <tr>
+        <td><strong>5. Internal Coordination</strong></td>
+        <td>Bookmarked Team</td>
+        <td><span class="freq-badge freq-daily">Daily</span></td>
+        <td>Slack #esc-partnerships</td>
+        <td>Jan (coord)</td>
+      </tr>
+      <tr>
+        <td><strong>6. Partner Intelligence</strong></td>
+        <td>ESC Partners &rarr; Bookmarked</td>
+        <td><span class="freq-badge freq-monthly">Monthly</span></td>
+        <td>Check-in call + shared dashboard</td>
+        <td>Jan / Steve</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span><strong>Bookmarked</strong> &mdash; ESC Partnership Communication Map</span>
+      <span>Internal Use &bull; March 2026</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
