@@ -99,14 +99,14 @@ tr:hover td{background:var(--bm-bg-cool);}
 .alert p{font-size:13px;color:var(--bm-secondary-text);}
 
 /* Countdown */
-.countdown{background:white;border-radius:var(--bm-radius-lg);padding:20px;box-shadow:var(--bm-shadow-sm);border:1px solid var(--bm-border-light);margin-bottom:24px;display:flex;align-items:center;gap:24px;}
-.countdown-label{font-size:13px;font-weight:600;color:var(--bm-secondary-text);}
-.countdown-label strong{color:var(--bm-eigengrau);display:block;font-size:15px;}
-.countdown-units{display:flex;gap:12px;}
-.cd-unit{text-align:center;background:var(--bm-bg-light);border-radius:var(--bm-radius-md);padding:10px 14px;min-width:60px;}
-.cd-unit .cd-num{font-size:28px;font-weight:800;color:var(--bm-deep-green);line-height:1;letter-spacing:-0.03em;}
-.cd-unit .cd-lbl{font-size:10px;color:var(--bm-muted-gray);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-top:2px;}
-.cd-unit.urgent .cd-num{color:var(--bm-pumpkin);}
+.countdown{background:var(--bm-gradient-hero);border-radius:var(--bm-radius-lg);padding:24px 28px;box-shadow:var(--bm-shadow-md);border:none;margin-bottom:24px;display:flex;align-items:center;gap:24px;}
+.countdown-label{font-size:14px;font-weight:600;color:rgba(255,255,255,0.8);}
+.countdown-label strong{color:white;display:block;font-size:18px;}
+.countdown-units{display:flex;gap:12px;margin-left:auto;}
+.cd-unit{text-align:center;background:rgba(255,255,255,0.15);border-radius:var(--bm-radius-md);padding:14px 18px;min-width:72px;backdrop-filter:blur(4px);}
+.cd-unit .cd-num{font-size:36px;font-weight:800;color:white;line-height:1;letter-spacing:-0.03em;}
+.cd-unit .cd-lbl{font-size:10px;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-top:4px;}
+.cd-unit.urgent .cd-num{color:#FFD666;}
 
 /* Progress bars */
 .kpi-progress{margin-top:8px;height:4px;border-radius:2px;background:var(--bm-border-light);overflow:hidden;}
@@ -171,6 +171,7 @@ th.sortable.desc::after{content:'\2193';color:var(--bm-deep-green);}
     <div class="sb-section">Operations</div>
     <button class="sb-item active" onclick="show('dash')"><span class="sb-icon">&#x1F4CA;</span>Dashboard</button>
     <button class="sb-item" onclick="show('partners')"><span class="sb-icon">&#x1F91D;</span>Partner Tracker</button>
+    <button class="sb-item" onclick="show('recruitment')"><span class="sb-icon">&#x1F4E8;</span>Recruitment</button>
     <button class="sb-item" onclick="show('engagement')"><span class="sb-icon">&#x1F525;</span>Engagement</button>
     <button class="sb-item" onclick="show('meetings')"><span class="sb-icon">&#x1F4C5;</span>Meeting Log</button>
     <button class="sb-item" onclick="show('feedback')"><span class="sb-icon">&#x1F504;</span>Feedback Pipeline</button>
@@ -263,11 +264,10 @@ th.sortable.desc::after{content:'\2193';color:var(--bm-deep-green);}
         <li><span class="chk chk-pend">&#x25CB;</span> Steve: Draft Content Scanner Vision Overview</li>
         <li><span class="chk chk-pend">&#x25CB;</span> Sarah: Create session capture template</li>
         <li><span class="chk chk-pend">&#x25CB;</span> Set up Slack Connect channel</li>
-        <li><span class="chk chk-done">&#x2713;</span> Wire Google Sheets backend for portal feedback form</li>
+        <li><span class="chk chk-pend">&#x25CB;</span> Wire Google Sheets backend for portal feedback form</li>
         <li><span class="chk chk-done">&#x2713;</span> Council portal v2 built (external-facing)</li>
         <li><span class="chk chk-done">&#x2713;</span> Operations dashboard v2 built (this page)</li>
         <li><span class="chk chk-done">&#x2713;</span> Confluence hub + 4 sub-pages created</li>
-        <li><span class="chk chk-done">&#x2713;</span> Google Sheet backend created + seeded</li>
       </ul>
     </div>
     <div class="card">
@@ -283,7 +283,6 @@ th.sortable.desc::after{content:'\2193';color:var(--bm-deep-green);}
       <h3 style="margin-top:16px;">External</h3>
       <ul class="link-list">
         <li><a href="https://stevewandler.github.io/bookmarked-exports/exports/bookmarked-council-portal.html" target="_blank">&#x1F310; Council Portal (what partners see)</a></li>
-        <li><a href="https://docs.google.com/spreadsheets/d/1eJsznIc9hMxbI7aWBx4vWh1fW5sUPNdjTwIhU9ZqtBk/edit" target="_blank">&#x1F4CA; Google Sheet Backend (feedback + votes)</a></li>
         <li><a href="#">&#x1F4AC; #bookmarked-council Slack</a></li>
       </ul>
       <h3 style="margin-top:16px;">Key Dates</h3>
@@ -327,13 +326,120 @@ th.sortable.desc::after{content:'\2193';color:var(--bm-deep-green);}
     <table>
       <thead><tr><th class="sortable" onclick="sortTable('districtTable',0)">District</th><th>Contact</th><th class="sortable" onclick="sortTable('districtTable',2)">Status</th><th>Engagement</th><th>Next Action</th><th class="sortable" onclick="sortTable('districtTable',5)">Owner</th></tr></thead>
       <tbody>
-        <tr><td>Midlothian ISD</td><td>TBD</td><td><span class="pill pill-gray">Prospect</span></td><td><span class="pill pill-blue">High</span></td><td>Patrick: confirm contact, send invitation</td><td>Patrick</td></tr>
-        <tr><td>Godley ISD</td><td>TBD</td><td><span class="pill pill-gray">Prospect</span></td><td><span class="pill pill-blue">High</span></td><td>Patrick: confirm contact, send invitation</td><td>Patrick</td></tr>
-        <tr><td>Temple ISD</td><td>TBD</td><td><span class="pill pill-gray">Prospect</span></td><td><span class="pill pill-blue">High</span></td><td>Patrick: confirm contact, send invitation</td><td>Patrick</td></tr>
-        <tr><td>Canyon ISD</td><td>TBD</td><td><span class="pill pill-gray">Prospect</span></td><td><span class="pill pill-green">Medium</span></td><td>Evaluate fit</td><td>Patrick</td></tr>
+        <tr><td>Acme ISD</td><td>TBD</td><td><span class="pill pill-gray">Prospect</span></td><td><span class="pill pill-blue">High</span></td><td>Patrick: confirm contact, send invitation</td><td>Patrick</td></tr>
+        <tr><td>Widget Creek ISD</td><td>TBD</td><td><span class="pill pill-gray">Prospect</span></td><td><span class="pill pill-blue">High</span></td><td>Patrick: confirm contact, send invitation</td><td>Patrick</td></tr>
+        <tr><td>Placeholder Valley ISD</td><td>TBD</td><td><span class="pill pill-gray">Prospect</span></td><td><span class="pill pill-blue">High</span></td><td>Patrick: confirm contact, send invitation</td><td>Patrick</td></tr>
+        <tr><td>Sandbox Hills ISD</td><td>TBD</td><td><span class="pill pill-gray">Prospect</span></td><td><span class="pill pill-green">Medium</span></td><td>Evaluate fit</td><td>Patrick</td></tr>
         <tr><td><em>Open Seat</em></td><td>&mdash;</td><td><span class="pill pill-gray">Open</span></td><td>&mdash;</td><td>Identify based on compliance need</td><td>Steve</td></tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+<!-- ===== RECRUITMENT ===== -->
+<div class="page" id="recruitment">
+  <div class="pg-header">
+    <h1>District Recruitment Pipeline</h1>
+    <p>Outreach tracking for council district partners. Target: 3&ndash;5 confirmed districts by April 9.</p>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi accent">
+      <div class="val">3&ndash;5</div><div class="lbl">Target Districts</div>
+    </div>
+    <div class="kpi">
+      <div class="val">0</div><div class="lbl">Outreach Started</div>
+      <div class="kpi-progress"><div class="kpi-progress-fill blue" style="width:0%"></div></div>
+    </div>
+    <div class="kpi">
+      <div class="val">0</div><div class="lbl">Confirmed</div>
+      <div class="kpi-progress"><div class="kpi-progress-fill green" style="width:0%"></div></div>
+    </div>
+    <div class="kpi">
+      <div class="val">0</div><div class="lbl">Declined</div>
+      <div class="kpi-progress"><div class="kpi-progress-fill orange" style="width:0%"></div></div>
+    </div>
+    <div class="kpi warn">
+      <div class="val" id="recruit-countdown-days">--</div><div class="lbl">Days Until First Session</div>
+    </div>
+    <div class="kpi">
+      <div class="val">0/5</div><div class="lbl">Assets Ready</div>
+      <div class="kpi-progress"><div class="kpi-progress-fill green" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <div class="tbl-card" id="recruitmentTable">
+    <div class="tbl-header"><h3>Recruitment Pipeline</h3><span class="tbl-badge">Target: 3&ndash;5 districts</span></div>
+    <table>
+      <thead><tr>
+        <th class="sortable" onclick="sortTable('recruitmentTable',0)">District Name</th>
+        <th>Region / ESC</th>
+        <th>Contact Name</th>
+        <th>Contact Title</th>
+        <th>Contact Email</th>
+        <th class="sortable" onclick="sortTable('recruitmentTable',5)">Outreach Method</th>
+        <th class="sortable" onclick="sortTable('recruitmentTable',6)">Outreach Status</th>
+        <th class="sortable" onclick="sortTable('recruitmentTable',7)">Date First Contact</th>
+        <th>Date Confirmed</th>
+        <th>Notes</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Silverleaf ISD</td><td>Region 11</td><td>Jane Archer</td><td>Dir. of Library Services</td><td>jarcher@silverleaf.fake</td><td><span class="pill pill-green">Warm</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>&mdash;</td><td>Strong existing relationship</td></tr>
+        <tr><td>Copper Ridge ISD</td><td>Region 4</td><td>Marcus Chen</td><td>Asst. Superintendent</td><td>mchen@copperridge.fake</td><td><span class="pill pill-blue">ESC Intro</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>&mdash;</td><td>ESC 4 referral pending</td></tr>
+        <tr><td>Pinecrest ISD</td><td>Region 10</td><td>Laura Bennett</td><td>Library Coordinator</td><td>lbennett@pinecrest.fake</td><td><span class="pill pill-orange">Cold</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>&mdash;</td><td>Met at TLA conference</td></tr>
+        <tr><td>Maplewood ISD</td><td>Region 7</td><td>David Okafor</td><td>Dir. of Curriculum</td><td>dokafor@maplewood.fake</td><td><span class="pill pill-green">Warm</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>&mdash;</td><td>Compliance-focused district</td></tr>
+        <tr><td>Stonegate ISD</td><td>Region 13</td><td>Rachel Simmons</td><td>Superintendent</td><td>rsimmons@stonegate.fake</td><td><span class="pill pill-blue">ESC Intro</span></td><td><span class="pill pill-gray">Not Started</span></td><td>&mdash;</td><td>&mdash;</td><td>Large district, high visibility</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="eyebrow">Outreach Timeline</div>
+      <h3>Key Deadlines</h3>
+      <ul class="check-list">
+        <li><span class="chk" style="background:var(--bm-deep-green);color:white;font-size:9px;">28</span> <strong>Mar 28:</strong> Target list finalized</li>
+        <li><span class="chk" style="background:var(--bm-pumpkin);color:white;font-size:9px;">31</span> <strong>Mar 28&ndash;31:</strong> First outreach sent</li>
+        <li><span class="chk" style="background:var(--bm-pumpkin);color:white;font-size:9px;">F1</span> <strong>Apr 2&ndash;3:</strong> Follow-up #1</li>
+        <li><span class="chk" style="background:var(--bm-teal-accent);color:white;font-size:9px;">&#x2713;</span> <strong>Apr 9:</strong> Confirmed / declined by</li>
+        <li><span class="chk" style="background:#3B82F6;color:white;font-size:9px;">P</span> <strong>Apr 11:</strong> Session prep materials sent</li>
+        <li><span class="chk" style="background:var(--bm-deep-green);color:white;font-size:9px;">S</span> <strong>Apr 14:</strong> Sessions begin</li>
+      </ul>
+      <div style="margin-top:16px;">
+        <div style="display:flex;gap:2px;border-radius:var(--bm-radius-md);overflow:hidden;">
+          <div style="flex:2;padding:10px 6px;text-align:center;font-size:10px;font-weight:600;background:var(--bm-eigengrau);color:white;">Mar 28<br>List Final</div>
+          <div style="flex:2;padding:10px 6px;text-align:center;font-size:10px;font-weight:600;background:#1D2939;color:white;">Mar 28&ndash;31<br>Outreach</div>
+          <div style="flex:1;padding:10px 6px;text-align:center;font-size:10px;font-weight:600;background:var(--bm-deep-green);color:white;">Apr 2&ndash;3<br>Follow-up</div>
+          <div style="flex:3;padding:10px 6px;text-align:center;font-size:10px;font-weight:600;background:var(--bm-teal-accent);color:white;">Apr 9<br>Confirmed</div>
+          <div style="flex:1;padding:10px 6px;text-align:center;font-size:10px;font-weight:600;background:#0D5A52;color:white;">Apr 11<br>Prep Sent</div>
+          <div style="flex:1;padding:10px 6px;text-align:center;font-size:10px;font-weight:600;background:var(--bm-pumpkin);color:white;">Apr 14<br>Sessions</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">Communication Templates</div>
+      <h3>Email Templates</h3>
+      <ul class="link-list">
+        <li><a href="#">&#x1F4E7; Warm Intro (existing relationship) &rarr; View in Confluence &#x2192;</a></li>
+        <li><a href="#">&#x1F91D; ESC Warm Intro (ESC referral) &rarr; View in Confluence &#x2192;</a></li>
+        <li><a href="#">&#x1F4E8; Direct Cold Outreach &rarr; View in Confluence &#x2192;</a></li>
+      </ul>
+      <p style="font-size:11px;color:var(--bm-muted-gray);margin-top:12px;font-style:italic;">Templates will be linked when created in Confluence. Each template includes personalization fields for district name, contact name, and specific use-case relevance.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:24px;">
+    <div class="eyebrow">Recruitment Assets</div>
+    <h3>Assets Needed &mdash; 0 of 5 Ready</h3>
+    <div class="kpi-progress" style="height:8px;border-radius:4px;margin-bottom:16px;"><div class="kpi-progress-fill green" style="width:0%"></div></div>
+    <ul class="check-list">
+      <li><span class="chk chk-pend">&#x25CB;</span> Council one-pager (district version)</li>
+      <li><span class="chk chk-pend">&#x25CB;</span> Content Scanner overview brief</li>
+      <li><span class="chk chk-pend">&#x25CB;</span> FAQ document for district leaders</li>
+      <li><span class="chk chk-pend">&#x25CB;</span> Calendar invite template with session details</li>
+      <li><span class="chk chk-pend">&#x25CB;</span> NDA template (if required before sessions)</li>
+    </ul>
   </div>
 </div>
 
@@ -562,12 +668,6 @@ th.sortable.desc::after{content:'\2193';color:var(--bm-deep-green);}
 </div>
 
 <script>
-// ============================================================
-// BACKEND CONFIGURATION — same Apps Script URL as the portal
-// After deploying, paste the URL here for live data.
-// ============================================================
-const APPS_SCRIPT_URL = ''; // <-- Paste your Apps Script web app URL here
-
 // ===== Navigation =====
 function show(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -657,41 +757,22 @@ function filterPartners() {
   });
 }
 
-// ===== Backend Data Loading =====
-async function loadBackendData() {
-  if (!APPS_SCRIPT_URL) return;
-  try {
-    const res = await fetch(APPS_SCRIPT_URL + '?action=all');
-    const json = await res.json();
-    if (!json.ok) return;
-
-    const { feedback, votes, partners } = json.data;
-
-    // Update KPIs
-    const feedbackCount = feedback.length;
-    const voteCount = votes.length;
-    const kpis = document.querySelectorAll('.kpi .val');
-    // Feedback Items KPI (index 3)
-    if (kpis[3]) kpis[3].textContent = feedbackCount;
-    // Roadmap Votes KPI (index 4)
-    if (kpis[4]) kpis[4].textContent = voteCount;
-
-    // Update progress bars
-    const kpiProgress = document.querySelectorAll('.kpi .kpi-progress-fill');
-    if (kpiProgress[3]) kpiProgress[3].style.width = Math.min(feedbackCount * 10, 100) + '%';
-    if (kpiProgress[4]) kpiProgress[4].style.width = Math.min(voteCount * 5, 100) + '%';
-
-    console.log('Backend data loaded:', feedbackCount, 'feedback items,', voteCount, 'votes');
-  } catch (err) {
-    console.warn('Backend unavailable:', err);
-  }
+// ===== Recruitment Countdown =====
+function updateRecruitCountdown() {
+  const sessionDate = new Date('2026-04-14T09:00:00');
+  const now = new Date();
+  const diff = sessionDate - now;
+  const days = Math.max(0, Math.floor(diff / 86400000));
+  const el = document.getElementById('recruit-countdown-days');
+  if (el) el.textContent = days;
 }
 
 // ===== Init =====
 document.addEventListener('DOMContentLoaded', function() {
   updateCountdown();
+  updateRecruitCountdown();
   setInterval(updateCountdown, 60000);
-  loadBackendData();
+  setInterval(updateRecruitCountdown, 60000);
 });
 </script>
 </body>
