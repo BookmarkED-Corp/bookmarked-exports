@@ -80,7 +80,7 @@
     /* Hero */
     .hero {
       background: var(--hero-gradient);
-      padding: 80px 0 72px; color: #fff; position: relative;
+      padding: 64px 0 56px; color: #fff; position: relative;
     }
     .hero h1 { max-width: 720px; margin-bottom: 20px; }
     .hero p { font-size: 18px; max-width: 600px; margin-bottom: 32px; opacity: 0.92; }
@@ -95,16 +95,30 @@
     /* Trust bar */
     .trust-bar {
       background: var(--bg-cool); border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border); padding: 20px 0;
+      border-bottom: 1px solid var(--border); padding: 28px 0;
+      position: relative; overflow: hidden;
     }
-    .trust-bar-inner { display: flex; justify-content: center; align-items: center; gap: 56px; flex-wrap: wrap; }
+    .trust-bar::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M15 8h20c1 0 2 1 2 2v32c0 1-1 2-2 2H15c-1 0-2-1-2-2V10c0-1 1-2 2-2z' fill='none' stroke='%23107569' stroke-width='1' opacity='0.06'/%3E%3Cpath d='M18 8v36' stroke='%23107569' stroke-width='0.5' opacity='0.05'/%3E%3Cpath d='M25 4l-1 4h12l-1-4' fill='none' stroke='%23FF692E' stroke-width='0.8' opacity='0.06'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='50' viewBox='0 0 80 50'%3E%3Cpath d='M10 40c4-8 12-14 20-14s16 6 20 14' fill='none' stroke='%2312A38C' stroke-width='1' opacity='0.05'/%3E%3Cpath d='M30 26v-8l10-4v8z' fill='none' stroke='%23FF692E' stroke-width='0.8' opacity='0.05'/%3E%3C/svg%3E");
+      background-size: 120px 120px, 160px 100px;
+      background-position: 0 0, 60px 10px;
+      pointer-events: none;
+    }
+    .trust-bar-inner {
+      display: flex; justify-content: center; align-items: center;
+      gap: 56px; flex-wrap: wrap; position: relative; z-index: 1;
+    }
     .trust-stat { text-align: center; }
-    .trust-stat .number { font-size: 28px; font-weight: 800; color: var(--deep-green); }
-    .trust-stat .label { font-size: 13px; font-weight: 500; color: var(--text-muted); }
+    .trust-stat .number { font-size: 32px; font-weight: 800; color: var(--deep-green); }
+    .trust-stat .label { font-size: 14px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.3px; }
 
     /* Librarian section */
-    .librarian-section { background: var(--bg-warm); }
-    .librarian-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 48px; }
+    .librarian-section { background: var(--bg-warm); padding: 56px 0 72px; }
+    .librarian-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin-top: 32px; }
     .librarian-message h2 { font-size: 36px; }
     .librarian-message p { font-size: 17px; color: var(--text-muted); margin-top: 16px; line-height: 1.7; }
     .librarian-cards { display: flex; flex-direction: column; gap: 16px; }
@@ -335,12 +349,32 @@
     <div class="container">
       <div class="trust-bar-inner">
         <div class="trust-stat">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin: 0 auto 4px;" aria-hidden="true">
+            <rect x="4" y="6" width="10" height="20" rx="1.5" stroke="#107569" stroke-width="1.5" opacity="0.4"/>
+            <rect x="16" y="4" width="10" height="22" rx="1.5" stroke="#12A38C" stroke-width="1.5" opacity="0.35"/>
+            <path d="M9 2L8 6h6l-1-4" stroke="#FF692E" stroke-width="1.2" fill="none" opacity="0.5"/>
+          </svg>
           <div class="number">150+</div>
           <div class="label">Texas Districts</div>
         </div>
+        <div style="width: 1px; height: 40px; background: var(--border);" aria-hidden="true"></div>
         <div class="trust-stat">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin: 0 auto 4px;" aria-hidden="true">
+            <circle cx="16" cy="12" r="5" stroke="#107569" stroke-width="1.5" opacity="0.4"/>
+            <path d="M8 26c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#12A38C" stroke-width="1.5" opacity="0.35" fill="none"/>
+            <circle cx="24" cy="10" r="3" stroke="#FF692E" stroke-width="1" opacity="0.35"/>
+            <path d="M20 22c0-2.2 1.8-4 4-4" stroke="#FF692E" stroke-width="1" opacity="0.3" fill="none"/>
+          </svg>
           <div class="number">500K+</div>
           <div class="label">Students Served</div>
+        </div>
+        <div style="width: 1px; height: 40px; background: var(--border);" aria-hidden="true"></div>
+        <div class="trust-stat">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin: 0 auto 4px;" aria-hidden="true">
+            <polygon points="16,2 20,12 30,12 22,18 25,28 16,22 7,28 10,18 2,12 12,12" stroke="#FF692E" stroke-width="1.2" fill="none" opacity="0.35"/>
+          </svg>
+          <div class="number" style="font-size: 20px; font-weight: 700;">Trusted Across Texas</div>
+          <div class="label">Built for Texas. Built in Texas.</div>
         </div>
       </div>
     </div>
