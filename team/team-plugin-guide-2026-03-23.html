@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookmarked Team Plugin — Getting Started</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bm-eigengrau: #101828;
+  --bm-deep-green: #107569;
+  --bm-teal-accent: #12A38C;
+  --bm-white: #FFFFFF;
+  --bm-pumpkin: #FF692E;
+  --bm-bg-cool: #F8FAFC;
+  --bm-bg-warm: #F8F5F0;
+  --bm-secondary-text: #475467;
+  --bm-border-light: #E5E7EB;
+  --bm-muted-gray: #9CA3AF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--bm-eigengrau);
+  background: var(--bm-white);
+  line-height: 1.6;
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--bm-deep-green) 0%, var(--bm-teal-accent) 100%);
+  color: white;
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+section { padding: 48px 0; }
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--bm-eigengrau);
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--bm-deep-green);
+}
+
+p, li { font-size: 16px; color: var(--bm-secondary-text); }
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--bm-border-light);
+  margin: 0;
+}
+
+/* TL;DR box */
+.tldr {
+  background: var(--bm-bg-warm);
+  border-left: 4px solid var(--bm-teal-accent);
+  border-radius: 8px;
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+
+.tldr h3 { color: var(--bm-teal-accent); margin-bottom: 8px; }
+.tldr p { margin-bottom: 8px; }
+
+/* Skill cards */
+.category { margin-bottom: 36px; }
+.category-label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--bm-muted-gray);
+  margin-bottom: 12px;
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.skill-card {
+  background: var(--bm-bg-cool);
+  border-radius: 8px;
+  padding: 16px 20px;
+  border: 1px solid var(--bm-border-light);
+}
+
+.skill-card code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--bm-deep-green);
+}
+
+.skill-card .desc {
+  font-size: 14px;
+  color: var(--bm-secondary-text);
+  margin-top: 4px;
+}
+
+/* Quick-start table */
+.quick-start {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+
+.quick-start td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--bm-border-light);
+  font-size: 15px;
+  vertical-align: top;
+}
+
+.quick-start td:first-child {
+  color: var(--bm-eigengrau);
+  font-weight: 600;
+  width: 45%;
+}
+
+.quick-start td:last-child code {
+  background: var(--bm-bg-cool);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 14px;
+  color: var(--bm-deep-green);
+}
+
+/* Boundary box */
+.boundary-box {
+  background: #FFF7ED;
+  border: 1px solid #FDBA74;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 20px 0;
+}
+
+.boundary-box h3 { color: var(--bm-pumpkin); }
+.boundary-box ul { padding-left: 20px; margin-top: 8px; }
+.boundary-box li { font-size: 15px; margin-bottom: 6px; }
+
+/* Callout */
+.callout {
+  background: var(--bm-bg-cool);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 20px 0;
+  border: 1px solid var(--bm-border-light);
+}
+
+.callout h3 { color: var(--bm-deep-green); }
+
+/* Footer */
+.footer {
+  background: var(--bm-eigengrau);
+  color: white;
+  text-align: center;
+  padding: 24px;
+  font-size: 14px;
+}
+
+.footer a { color: var(--bm-teal-accent); text-decoration: none; }
+
+@media (max-width: 640px) {
+  .skill-grid { grid-template-columns: 1fr; }
+  .hero { padding: 40px 20px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 0 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Your Skills, One Plugin</h1>
+  <p>Everything you need to work with Claude Code at Bookmarked — product, marketing, research, and customer success — in one package.</p>
+</div>
+
+<div class="container">
+
+<div class="tldr">
+  <h3>What changed?</h3>
+  <p>We packaged the 24 skills you use most into a single plugin you can install in any Claude Code project. Your skills now pull brand standards and company context from Confluence instead of local files — so everyone gets the same standards, no matter where they're working.</p>
+  <p><strong>Nothing about how you use skills changed.</strong> Same slash commands, same triggers, same output. Just cleaner plumbing underneath.</p>
+</div>
+
+<section>
+<h2>What You Can Do</h2>
+
+<div class="category">
+<div class="category-label">Product &amp; Engineering</div>
+<div class="skill-grid">
+  <div class="skill-card"><code>/jira</code><div class="desc">Create tickets from ideas — epics, stories, tasks</div></div>
+  <div class="skill-card"><code>/jira-standards</code><div class="desc">Quality-check tickets before engineering sees them</div></div>
+  <div class="skill-card"><code>/cpo</code><div class="desc">Product strategy, roadmap, prioritization</div></div>
+  <div class="skill-card"><code>/hubspot</code><div class="desc">Pipeline data, CRM queries, deal info</div></div>
+  <div class="skill-card"><code>/compliance</code><div class="desc">Texas book law context for conversations</div></div>
+  <div class="skill-card"><code>/ui-designer</code><div class="desc">Wireframes, mockups, Lovable component specs</div></div>
+</div>
+</div>
+
+<div class="category">
+<div class="category-label">Marketing &amp; Content</div>
+<div class="skill-grid">
+  <div class="skill-card"><code>/brand</code><div class="desc">Messaging, positioning, value props</div></div>
+  <div class="skill-card"><code>/cmo</code><div class="desc">Marketing strategy, campaigns, launches</div></div>
+  <div class="skill-card"><code>/social-post</code><div class="desc">Create and publish social posts via Postiz</div></div>
+  <div class="skill-card"><code>/graphic-designer</code><div class="desc">Social graphics, blog images, ad creatives</div></div>
+  <div class="skill-card"><code>/collateral</code><div class="desc">Presentations, decks, one-pagers</div></div>
+  <div class="skill-card"><code>/hubspot-web-designer</code><div class="desc">Website pages, landing pages, HubSpot CMS</div></div>
+  <div class="skill-card"><code>/writer</code><div class="desc">Make any content sound human</div></div>
+  <div class="skill-card"><code>/spotlight</code><div class="desc">Turn customer transcripts into social content</div></div>
+  <div class="skill-card"><code>/marketing-coord</code><div class="desc">Scheduling, events, tactical execution</div></div>
+</div>
+</div>
+
+<div class="category">
+<div class="category-label">Research &amp; Data</div>
+<div class="skill-grid">
+  <div class="skill-card"><code>/library-data</code><div class="desc">National K-12 library research</div></div>
+  <div class="skill-card"><code>/tx-library</code><div class="desc">Texas-specific library deep dives</div></div>
+  <div class="skill-card"><code>/analyst</code><div class="desc">Charts, dashboards, forecasts, numbers</div></div>
+</div>
+</div>
+
+<div class="category">
+<div class="category-label">Customer Operations</div>
+<div class="skill-grid">
+  <div class="skill-card"><code>/customer-success</code><div class="desc">Health monitoring, retention, expansion</div></div>
+  <div class="skill-card"><code>/customer-onboarding</code><div class="desc">Stalled districts, onboarding progress</div></div>
+</div>
+</div>
+
+<div class="category">
+<div class="category-label">Utilities</div>
+<div class="skill-grid">
+  <div class="skill-card"><code>/feedback</code><div class="desc">Submit product, brand, or competitive feedback</div></div>
+  <div class="skill-card"><code>/files</code><div class="desc">Find files you've created</div></div>
+  <div class="skill-card"><code>/onboarding-team</code><div class="desc">New here? Start with this</div></div>
+  <div class="skill-card"><code>/help</code><div class="desc">Quick reference of all skills</div></div>
+</div>
+</div>
+
+</section>
+
+<hr class="divider">
+
+<section>
+<h2>"I want to..." Quick Start</h2>
+<table class="quick-start">
+  <tr><td>Create a Jira ticket from an idea</td><td><code>/jira</code></td></tr>
+  <tr><td>Make a slide deck for a district</td><td><code>/collateral</code></td></tr>
+  <tr><td>Write a LinkedIn post</td><td><code>/social-post</code></td></tr>
+  <tr><td>Check if content sounds like AI wrote it</td><td><code>/writer</code></td></tr>
+  <tr><td>Find that report from last week</td><td><code>/files</code></td></tr>
+  <tr><td>Look up Texas compliance requirements</td><td><code>/compliance</code></td></tr>
+  <tr><td>Get pipeline numbers from HubSpot</td><td><code>/hubspot</code></td></tr>
+  <tr><td>Turn a customer call into social content</td><td><code>/spotlight</code></td></tr>
+  <tr><td>Submit a product feature request</td><td><code>/feedback</code></td></tr>
+  <tr><td>Build a chart or dashboard</td><td><code>/analyst</code></td></tr>
+</table>
+</section>
+
+<hr class="divider">
+
+<section>
+<h2>Things You Should Know</h2>
+
+<div class="boundary-box">
+<h3>Lines You Can't Cross</h3>
+<ul>
+  <li><strong>Never say we replace librarians.</strong> We give them their mission back.</li>
+  <li><strong>Never lead with compliance fear.</strong> Lead with library vitality.</li>
+  <li><strong>Never commit dates without engineering.</strong> Product timelines need Raju.</li>
+  <li><strong>Never mix district data.</strong> District A can't see District B's information.</li>
+  <li><strong>Content Scanner is future only.</strong> It's in design, not in the product. Don't tell districts about it.</li>
+</ul>
+</div>
+
+<div class="callout">
+<h3>The BI Language Rule</h3>
+<p>Book Intelligence describes what is publicly known <strong>about</strong> books — metadata, reviews, awards, ratings, news from public sources. Never say "what's in the book." Bookmarked does not read book contents. The phrase is "about," not "in."</p>
+</div>
+
+<div class="callout">
+<h3>Product Hierarchy</h3>
+<p><strong>Bookmarked</strong> (the company) &rarr; <strong>OnShelf</strong> (the product platform) &rarr; <strong>Book Intelligence</strong> (the AI engine that powers everything) &rarr; <strong>Modules</strong> (BI Reports, OnShelf Review, Classroom Libraries, OnShelf Engage). Book Intelligence is the engine, not a module.</p>
+</div>
+
+<div class="callout">
+<h3>Brand Standards Come from Confluence</h3>
+<p>Every skill loads the Brand Design System and Messaging Standards from Confluence before producing output. This means everyone works from the same playbook — colors, fonts, approved phrases, banned phrases, messaging hierarchy. You don't need to memorize them. The skills handle it.</p>
+</div>
+</section>
+
+<hr class="divider">
+
+<section>
+<h2>How to Change Things</h2>
+<p>The plugin is read-only for the team. If you need a skill updated, a brand standard changed, or a new workflow built, use <code>/feedback</code> to submit the request. Claude will help you write it up, and Steve reviews it. This keeps the system stable while making sure good ideas get through.</p>
+<p style="margin-top: 12px;">If something feels broken — a skill gives you wrong output, a boundary seems outdated, a tool isn't connecting — flag it the same way. The faster issues surface, the faster they get fixed.</p>
+</section>
+
+</div>
+
+<div class="footer">
+  <p>Bookmarked Team Plugin v1.0.0 &mdash; 24 skills, built for the team &mdash; <a href="https://bookmarked-team.atlassian.net/wiki/spaces/BMEOS">CEO OS on Confluence</a></p>
+</div>
+
+</body>
+</html>
