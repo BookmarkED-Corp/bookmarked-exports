@@ -45,7 +45,7 @@ body { font-family: 'Urbanist', sans-serif; color: var(--eigengrau); background:
 
 /* Stats bar */
 .stats-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 24px 0; }
-.stats-bar-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.stats-bar-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .stat-card { text-align: center; }
 .stat-number { font-size: 36px; font-weight: 800; color: var(--deep-green); line-height: 1.1; }
 .stat-number.pipeline { color: var(--teal); }
@@ -169,10 +169,6 @@ body { font-family: 'Urbanist', sans-serif; color: var(--eigengrau); background:
       <div class="stat-label">In Pipeline</div>
     </div>
     <div class="stat-card">
-      <div class="stat-number pipeline">$94,967</div>
-      <div class="stat-label">Pipeline Value</div>
-    </div>
-    <div class="stat-card">
       <div class="stat-number opportunity">4</div>
       <div class="stat-label">Re-engagement Opportunities</div>
     </div>
@@ -197,33 +193,25 @@ body { font-family: 'Urbanist', sans-serif; color: var(--eigengrau); background:
       <thead>
         <tr>
           <th>District</th>
-          <th>Deal Value</th>
-          <th>Closed Date</th>
+          <th>Customer Since</th>
           <th>Status</th>
-          <th>Renewal</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="district-name">Highland Park ISD</td>
-          <td class="amount">$1,576</td>
           <td>April 2024</td>
           <td><span class="stage-badge stage-active">Active — Renewed</span></td>
-          <td>$1,412</td>
         </tr>
         <tr>
           <td class="district-name">Mesquite ISD</td>
-          <td class="amount">Consortium</td>
           <td>July 2025</td>
           <td><span class="stage-badge stage-active">Active</span></td>
-          <td>—</td>
         </tr>
         <tr>
           <td class="district-name">Forney ISD</td>
-          <td class="amount">$6,259</td>
           <td>January 2026</td>
           <td><span class="stage-badge stage-active">Active</span></td>
-          <td>—</td>
         </tr>
       </tbody>
     </table>
@@ -233,13 +221,12 @@ body { font-family: 'Urbanist', sans-serif; color: var(--eigengrau); background:
   <section class="section" style="padding-top:0;">
     <div class="section-header">
       <h2 class="section-title"><span class="dot dot-teal"></span> Active Pipeline</h2>
-      <span class="section-badge badge-teal">$94,967 Total Value</span>
+      <span class="section-badge badge-teal">4 Districts</span>
     </div>
     <table class="data-table">
       <thead>
         <tr>
           <th>District</th>
-          <th>Deal Value</th>
           <th>Stage</th>
           <th>Expected Close</th>
           <th>Priority</th>
@@ -248,28 +235,24 @@ body { font-family: 'Urbanist', sans-serif; color: var(--eigengrau); background:
       <tbody>
         <tr>
           <td class="district-name">Garland ISD</td>
-          <td class="amount">$46,797</td>
           <td>Decision Maker Bought In</td>
           <td>March 31, 2026</td>
           <td><span class="stage-badge stage-high">High</span></td>
         </tr>
         <tr>
           <td class="district-name">Celina ISD</td>
-          <td class="amount">$8,000</td>
           <td>Contract Sent</td>
           <td>April 30, 2026</td>
           <td><span class="stage-badge stage-high">High</span></td>
         </tr>
         <tr>
           <td class="district-name">Wylie ISD</td>
-          <td class="amount">$18,088</td>
           <td>Presentation Scheduled</td>
           <td>April 30, 2026</td>
           <td><span class="stage-badge stage-medium">Medium</span></td>
         </tr>
         <tr>
           <td class="district-name">Carrollton-Farmers Branch ISD</td>
-          <td class="amount">$22,082</td>
           <td>Presentation Scheduled</td>
           <td>May 29, 2026</td>
           <td><span class="stage-badge stage-medium">Medium</span></td>
@@ -289,7 +272,6 @@ body { font-family: 'Urbanist', sans-serif; color: var(--eigengrau); background:
       <thead>
         <tr>
           <th>District</th>
-          <th>Previous Value</th>
           <th>Est. Students</th>
           <th>Last Contact</th>
           <th>Status</th>
@@ -298,28 +280,24 @@ body { font-family: 'Urbanist', sans-serif; color: var(--eigengrau); background:
       <tbody>
         <tr>
           <td class="district-name">Plano ISD</td>
-          <td>$44,994</td>
           <td>~54,000</td>
           <td>May 2025</td>
           <td><span class="stage-badge stage-lost">Previously Lost</span></td>
         </tr>
         <tr>
           <td class="district-name">Frisco ISD</td>
-          <td>$131,234</td>
           <td>~70,000</td>
           <td>September 2024</td>
           <td><span class="stage-badge stage-lost">Previously Lost</span></td>
         </tr>
         <tr>
           <td class="district-name">Sherman ISD</td>
-          <td>$6,982</td>
           <td>~7,000</td>
           <td>June 2025</td>
           <td><span class="stage-badge stage-lost">Previously Lost</span></td>
         </tr>
         <tr>
           <td class="district-name">Terrell ISD</td>
-          <td>$4,538</td>
           <td>~4,500</td>
           <td>June 2025</td>
           <td><span class="stage-badge stage-lost">Previously Lost</span></td>
@@ -345,25 +323,27 @@ body { font-family: 'Urbanist', sans-serif; color: var(--eigengrau); background:
         <div class="card-icon icon-blue">&#x1f4dd;</div>
         <h3>Partnership Deck</h3>
         <p>Co-branded presentation for ESC 10 to share with district leadership and curriculum directors.</p>
-        <a href="#">View Deck &rarr;</a>
+        <a href="https://stevewandler.github.io/bookmarked-exports/exports/esc-partnership-deck-region10-2026-03-19.pptx" target="_blank">Download Deck &rarr;</a>
       </div>
       <div class="resource-card">
         <div class="card-icon icon-orange">&#x1f4c4;</div>
         <h3>One-Pagers</h3>
         <p>Audience-specific one-pagers for librarians, curriculum directors, and superintendents.</p>
-        <a href="#">View One-Pagers &rarr;</a>
+        <a href="https://stevewandler.github.io/bookmarked-exports/exports/esc-onepager-risk-librarians-2026-03-19.html" target="_blank">Risk — Librarians &rarr;</a><br>
+        <a href="https://stevewandler.github.io/bookmarked-exports/exports/esc-onepager-timesavings-directors-2026-03-19.html" target="_blank">Time Savings — Directors &rarr;</a>
       </div>
       <div class="resource-card">
         <div class="card-icon icon-purple">&#x2753;</div>
         <h3>FAQ Documents</h3>
         <p>Answers to common questions from ESC staff, district leaders, and librarians.</p>
-        <a href="#">View FAQs &rarr;</a>
+        <a href="https://stevewandler.github.io/bookmarked-exports/exports/esc-faq-v1-esc-staff-2026-03-18.html" target="_blank">ESC Staff FAQ &rarr;</a><br>
+        <a href="https://stevewandler.github.io/bookmarked-exports/exports/esc-faq-v2-district-leaders-2026-03-18.html" target="_blank">District Leaders FAQ &rarr;</a>
       </div>
       <div class="resource-card">
         <div class="card-icon icon-green">&#x1f4e7;</div>
         <h3>Email Templates</h3>
         <p>Pre-written outreach emails for ESC-to-district communication.</p>
-        <a href="#">Coming Soon</a>
+        <a href="https://stevewandler.github.io/bookmarked-exports/exports/esc-email-v2-esc-to-district-2026-03-18.html" target="_blank">ESC-to-District Email &rarr;</a>
       </div>
       <div class="resource-card">
         <div class="card-icon icon-blue">&#x1f393;</div>
@@ -374,55 +354,21 @@ body { font-family: 'Urbanist', sans-serif; color: var(--eigengrau); background:
     </div>
   </section>
 
-  <!-- Key Contacts -->
-  <section class="section" style="padding-top:0;">
-    <div class="section-header">
-      <h2 class="section-title"><span class="dot dot-green"></span> Region 10 Key Contacts</h2>
-    </div>
-    <div class="contacts-grid">
-      <div class="contact-card">
-        <div class="contact-name">Gordon Taylor</div>
-        <div class="contact-title">Superintendent</div>
-        <a href="mailto:gordon.taylor@region10.org" class="contact-email">gordon.taylor@region10.org</a>
-      </div>
-      <div class="contact-card">
-        <div class="contact-name">Jana Melsheimer</div>
-        <div class="contact-title">Executive Director</div>
-        <a href="mailto:jana.melsheimer@region10.org" class="contact-email">jana.melsheimer@region10.org</a>
-      </div>
-      <div class="contact-card">
-        <div class="contact-name">Travis Longanecker</div>
-        <div class="contact-title">Director</div>
-        <a href="mailto:travis.longanecker@region10.org" class="contact-email">travis.longanecker@region10.org</a>
-      </div>
-      <div class="contact-card">
-        <div class="contact-name">Angela Ellis</div>
-        <div class="contact-title">Library Consultant</div>
-        <a href="mailto:angela.ellis@region10.org" class="contact-email">angela.ellis@region10.org</a>
-      </div>
-      <div class="contact-card">
-        <div class="contact-name">Lori Aden</div>
-        <div class="contact-title">Distance Learning Coordinator</div>
-        <a href="mailto:lori.aden@region10.org" class="contact-email">lori.aden@region10.org</a>
-      </div>
-      <div class="contact-card">
-        <div class="contact-name">Shavannia Dash</div>
-        <div class="contact-title">Asst. Director, Early Childhood</div>
-        <a href="mailto:shavannia.dash@region10.org" class="contact-email">shavannia.dash@region10.org</a>
-      </div>
-    </div>
-  </section>
-
   <!-- Bookmarked Contacts -->
   <section class="section" style="padding-top:0;">
     <div class="section-header">
-      <h2 class="section-title"><span class="dot dot-teal"></span> Bookmarked Team</h2>
+      <h2 class="section-title"><span class="dot dot-teal"></span> Your Bookmarked Team</h2>
     </div>
     <div class="contacts-grid">
       <div class="contact-card">
         <div class="contact-name">Jan Gilboy</div>
         <div class="contact-title">Partnership Lead</div>
         <a href="mailto:jan@bookmarked.com" class="contact-email">jan@bookmarked.com</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-name">Teela Watson</div>
+        <div class="contact-title">Account Manager</div>
+        <a href="mailto:teela@bookmarked.com" class="contact-email">teela@bookmarked.com</a>
       </div>
       <div class="contact-card">
         <div class="contact-name">Steve Wandler</div>
