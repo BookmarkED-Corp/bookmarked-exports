@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Bookmarked Council — Shaping the Future of Book Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bm-eigengrau: #101828;
+  --bm-deep-green: #107569;
+  --bm-teal-accent: #12A38C;
+  --bm-white: #FFFFFF;
+  --bm-pumpkin: #FF692E;
+  --bm-teal-dark: #0D5A52;
+  --bm-secondary-text: #475467;
+  --bm-muted-gray: #9CA3AF;
+  --bm-border-light: #E5E7EB;
+  --bm-bg-white: #FFFFFF;
+  --bm-bg-cool: #F8FAFC;
+  --bm-bg-warm: #F8F5F0;
+  --bm-bg-light: #F9FAFB;
+  --bm-bg-green-tint: #F0FAF8;
+  --bm-font: 'Urbanist', Arial, sans-serif;
+  --bm-shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --bm-shadow-md: 0 2px 12px rgba(0,0,0,0.06);
+  --bm-shadow-lg: 0 8px 24px rgba(0,0,0,0.1);
+  --bm-shadow-glow: 0 8px 32px rgba(18,163,140,0.15);
+  --bm-radius-md: 8px;
+  --bm-radius-lg: 12px;
+  --bm-radius-xl: 16px;
+  --bm-gradient-hero: linear-gradient(135deg, #0D5A52 0%, #107569 40%, #12A38C 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--bm-font);color:var(--bm-eigengrau);background:var(--bm-bg-white);-webkit-font-smoothing:antialiased;line-height:1.5;}
+a{color:var(--bm-teal-accent);text-decoration:none;}
+a:hover{color:var(--bm-deep-green);text-decoration:underline;}
+.container{max-width:1120px;margin:0 auto;padding:0 32px;}
+
+/* ===== STICKY NAV ===== */
+.top-nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--bm-border-light);padding:0;}
+.top-nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0;}
+.nav-brand{display:flex;align-items:center;gap:10px;}
+.nav-brand-mark{width:32px;height:32px;background:var(--bm-gradient-hero);border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:16px;}
+.nav-brand-text{font-size:16px;font-weight:700;color:var(--bm-eigengrau);}
+.nav-brand-text span{color:var(--bm-teal-accent);font-weight:400;font-size:13px;margin-left:4px;}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{font-size:13px;font-weight:600;color:var(--bm-secondary-text);text-decoration:none;text-transform:uppercase;letter-spacing:0.5px;}
+.nav-links a:hover{color:var(--bm-teal-accent);text-decoration:none;}
+
+/* ===== HERO ===== */
+.hero{background:var(--bm-gradient-hero);padding:80px 0 64px;color:white;position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;right:-100px;top:-100px;width:400px;height:400px;background:rgba(255,255,255,0.03);border-radius:50%;pointer-events:none;}
+.hero-badge{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);color:white;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:24px;}
+.hero h1{font-size:48px;font-weight:800;line-height:1.1;letter-spacing:-0.03em;max-width:720px;}
+.hero h1 em{font-style:normal;color:rgba(255,255,255,0.7);}
+.hero-tagline{font-size:20px;color:rgba(255,255,255,0.85);margin-top:16px;max-width:560px;line-height:1.5;font-weight:400;}
+.hero-stats{display:flex;gap:48px;margin-top:40px;}
+.hero-stat{text-align:left;}
+.hero-stat .num{font-size:32px;font-weight:800;line-height:1;}
+.hero-stat .label{font-size:12px;color:rgba(255,255,255,0.6);margin-top:4px;text-transform:uppercase;letter-spacing:1px;font-weight:600;}
+
+/* ===== SECTION BASE ===== */
+.section{padding:72px 0;}
+.section-alt{background:var(--bm-bg-cool);}
+.section-warm{background:var(--bm-bg-warm);}
+.section-green{background:var(--bm-bg-green-tint);}
+.section-header{margin-bottom:40px;}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--bm-teal-accent);margin-bottom:8px;}
+.section-header h2{font-size:32px;font-weight:800;letter-spacing:-0.02em;line-height:1.2;}
+.section-header p{font-size:17px;color:var(--bm-secondary-text);margin-top:8px;max-width:640px;line-height:1.6;}
+
+/* ===== OVERVIEW / TLDR ===== */
+.overview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.overview-card{background:white;border-radius:var(--bm-radius-lg);padding:32px;box-shadow:var(--bm-shadow-sm);border:1px solid var(--bm-border-light);border-top:3px solid var(--bm-teal-accent);position:relative;}
+.overview-card.pub{border-top-color:var(--bm-deep-green);}
+.overview-card.dist{border-top-color:var(--bm-pumpkin);}
+.overview-card.bm{border-top-color:var(--bm-teal-accent);}
+.overview-card .card-icon{font-size:32px;margin-bottom:12px;}
+.overview-card h3{font-size:20px;font-weight:700;margin-bottom:8px;}
+.overview-card p{font-size:15px;color:var(--bm-secondary-text);line-height:1.6;}
+.overview-card ul{list-style:none;margin-top:12px;}
+.overview-card li{font-size:14px;color:var(--bm-secondary-text);padding:5px 0 5px 20px;position:relative;line-height:1.5;}
+.overview-card li::before{content:'✓';position:absolute;left:0;color:var(--bm-teal-accent);font-weight:700;}
+.overview-card.dist li::before{color:var(--bm-pumpkin);}
+
+/* ===== FOUNDER LETTER ===== */
+.founder-letter{max-width:720px;margin:0 auto;}
+.founder-letter blockquote{font-size:18px;font-style:italic;color:var(--bm-secondary-text);line-height:1.7;border-left:3px solid var(--bm-teal-accent);padding-left:24px;margin-bottom:24px;}
+.founder-sig{display:flex;align-items:center;gap:16px;}
+.founder-sig .sig-avatar{width:48px;height:48px;border-radius:50%;background:var(--bm-gradient-hero);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:18px;}
+.founder-sig .sig-info{font-size:14px;font-weight:600;color:var(--bm-eigengrau);}
+.founder-sig .sig-info span{display:block;font-weight:400;color:var(--bm-muted-gray);font-size:13px;}
+
+/* ===== FOUNDING MEMBERS ===== */
+.members-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.member-group{background:white;border-radius:var(--bm-radius-lg);padding:28px;box-shadow:var(--bm-shadow-sm);border:1px solid var(--bm-border-light);}
+.member-group h3{font-size:18px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.member-group h3 .group-icon{font-size:20px;}
+.member-item{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--bm-border-light);}
+.member-item:last-child{border-bottom:none;}
+.member-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:white;flex-shrink:0;}
+.avatar-green{background:var(--bm-deep-green);}
+.avatar-teal{background:var(--bm-teal-accent);}
+.avatar-orange{background:var(--bm-pumpkin);}
+.avatar-purple{background:#6366F1;}
+.avatar-blue{background:#3B82F6;}
+.member-info h4{font-size:14px;font-weight:600;}
+.member-info p{font-size:12px;color:var(--bm-muted-gray);}
+.member-status{margin-left:auto;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;}
+.status-founding{background:rgba(18,163,140,0.12);color:var(--bm-teal-accent);}
+.status-invited{background:rgba(255,105,46,0.12);color:var(--bm-pumpkin);}
+.status-open{background:rgba(156,163,175,0.12);color:var(--bm-muted-gray);}
+
+/* ===== COMMUNICATION ===== */
+.comm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.comm-card{background:white;border-radius:var(--bm-radius-lg);padding:24px;box-shadow:var(--bm-shadow-sm);border:1px solid var(--bm-border-light);text-align:center;}
+.comm-card .comm-icon{font-size:36px;margin-bottom:12px;}
+.comm-card h3{font-size:16px;font-weight:700;margin-bottom:4px;}
+.comm-card .comm-cadence{font-size:12px;font-weight:600;color:var(--bm-teal-accent);margin-bottom:8px;}
+.comm-card p{font-size:14px;color:var(--bm-secondary-text);line-height:1.5;}
+
+/* ===== TIMELINE ===== */
+.timeline-container{position:relative;padding:0;}
+.tl-phase{margin-bottom:48px;}
+.tl-phase-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+.tl-phase-dot{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:20px;font-weight:800;flex-shrink:0;}
+.tl-phase-dot.green{background:var(--bm-gradient-hero);}
+.tl-phase-dot.orange{background:var(--bm-pumpkin);}
+.tl-phase-meta h3{font-size:22px;font-weight:700;}
+.tl-phase-meta .tl-dates{font-size:13px;color:var(--bm-teal-accent);font-weight:600;}
+
+.tl-events{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;padding-left:24px;border-left:2px solid var(--bm-border-light);margin-left:23px;}
+.tl-event{background:white;border-radius:var(--bm-radius-md);padding:18px 20px;box-shadow:var(--bm-shadow-sm);border:1px solid var(--bm-border-light);transition:transform 0.2s,box-shadow 0.2s;}
+.tl-event:hover{transform:translateY(-2px);box-shadow:var(--bm-shadow-md);}
+.tl-event .event-type{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin-bottom:8px;}
+.type-publisher{background:rgba(18,163,140,0.1);color:var(--bm-deep-green);}
+.type-district{background:rgba(255,105,46,0.1);color:#C44A0A;}
+.type-joint{background:rgba(16,24,40,0.07);color:var(--bm-eigengrau);}
+.type-milestone{background:rgba(255,105,46,0.12);color:var(--bm-pumpkin);}
+.type-feedback{background:rgba(18,163,140,0.08);color:var(--bm-teal-accent);}
+.tl-event h4{font-size:15px;font-weight:700;margin-bottom:4px;}
+.tl-event .event-date{font-size:12px;color:var(--bm-teal-accent);font-weight:600;margin-bottom:4px;}
+.tl-event p{font-size:13px;color:var(--bm-secondary-text);line-height:1.5;}
+
+/* ===== BENEFITS ===== */
+.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.benefit-card{background:white;border-radius:var(--bm-radius-lg);padding:28px;box-shadow:var(--bm-shadow-sm);border:1px solid var(--bm-border-light);display:flex;gap:16px;}
+.benefit-icon{width:48px;height:48px;border-radius:var(--bm-radius-md);background:var(--bm-bg-green-tint);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+.benefit-text h3{font-size:16px;font-weight:700;margin-bottom:4px;}
+.benefit-text p{font-size:14px;color:var(--bm-secondary-text);line-height:1.5;}
+
+/* ===== FEEDBACK SECTION ===== */
+.feedback-pipeline{display:flex;gap:2px;border-radius:var(--bm-radius-lg);overflow:hidden;box-shadow:var(--bm-shadow-md);margin:32px 0;}
+.fb-stage{flex:1;padding:24px 14px;text-align:center;}
+.fb-stage .fb-icon{font-size:28px;margin-bottom:8px;}
+.fb-stage .fb-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;}
+.fb-stage .fb-desc{font-size:11px;margin-top:4px;line-height:1.4;}
+.fb-1{background:var(--bm-eigengrau);color:white;}.fb-1 .fb-desc{color:rgba(255,255,255,0.6);}
+.fb-2{background:#1D2939;color:white;}.fb-2 .fb-desc{color:rgba(255,255,255,0.6);}
+.fb-3{background:var(--bm-deep-green);color:white;}.fb-3 .fb-desc{color:rgba(255,255,255,0.7);}
+.fb-4{background:var(--bm-teal-accent);color:white;}.fb-4 .fb-desc{color:rgba(255,255,255,0.7);}
+
+.fb-channels{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px;}
+.fb-ch{background:white;border-radius:var(--bm-radius-md);padding:20px;border:1px solid var(--bm-border-light);box-shadow:var(--bm-shadow-sm);text-align:center;}
+.fb-ch .ch-icon{font-size:28px;margin-bottom:8px;}
+.fb-ch h4{font-size:14px;font-weight:700;}
+.fb-ch .ch-when{font-size:11px;color:var(--bm-teal-accent);font-weight:600;margin-bottom:6px;}
+.fb-ch p{font-size:12px;color:var(--bm-muted-gray);line-height:1.4;}
+
+/* ===== GRADUATION ===== */
+.graduation-card{background:white;border-radius:var(--bm-radius-xl);padding:48px;box-shadow:var(--bm-shadow-lg);border:1px solid var(--bm-border-light);text-align:center;max-width:800px;margin:0 auto;}
+.graduation-card .grad-icon{font-size:48px;margin-bottom:16px;}
+.graduation-card h3{font-size:28px;font-weight:800;letter-spacing:-0.02em;}
+.graduation-card .grad-date{font-size:16px;color:var(--bm-teal-accent);font-weight:600;margin-top:4px;}
+.graduation-card p{font-size:16px;color:var(--bm-secondary-text);margin-top:16px;line-height:1.6;max-width:560px;margin-left:auto;margin-right:auto;}
+.graduation-card .grad-items{display:flex;justify-content:center;gap:32px;margin-top:24px;flex-wrap:wrap;}
+.grad-item{text-align:center;}
+.grad-item .gi-icon{font-size:24px;margin-bottom:4px;}
+.grad-item .gi-text{font-size:13px;font-weight:600;color:var(--bm-secondary-text);}
+
+/* ===== CONFIDENTIALITY ===== */
+.conf-bar{background:var(--bm-bg-cool);border-radius:var(--bm-radius-md);padding:20px 28px;display:flex;align-items:center;gap:16px;margin-top:32px;border:1px solid var(--bm-border-light);}
+.conf-bar .conf-icon{font-size:24px;}
+.conf-bar p{font-size:14px;color:var(--bm-secondary-text);line-height:1.5;}
+.conf-bar strong{color:var(--bm-eigengrau);}
+
+/* ===== CTA FOOTER ===== */
+.cta-section{background:var(--bm-gradient-hero);padding:64px 0;text-align:center;color:white;}
+.cta-section h2{font-size:32px;font-weight:800;letter-spacing:-0.02em;max-width:600px;margin:0 auto 12px;}
+.cta-section p{font-size:16px;color:rgba(255,255,255,0.7);margin-bottom:28px;}
+.cta-btn{display:inline-block;padding:16px 40px;background:white;color:var(--bm-deep-green);font-family:var(--bm-font);font-size:15px;font-weight:700;border-radius:var(--bm-radius-md);text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:var(--bm-shadow-lg);text-decoration:none;color:var(--bm-deep-green);}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--bm-deep-green);color:white;padding:32px 0;text-align:center;}
+.footer .brand{font-size:16px;font-weight:700;margin-bottom:4px;}
+.footer p{font-size:12px;color:rgba(255,255,255,0.5);}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .overview-grid,.members-grid,.benefits-grid{grid-template-columns:1fr;}
+  .comm-grid{grid-template-columns:1fr;}
+  .fb-channels{grid-template-columns:1fr 1fr;}
+  .hero h1{font-size:32px;}
+  .hero-stats{flex-direction:column;gap:16px;}
+  .nav-links{display:none;}
+  .tl-events{grid-template-columns:1fr;}
+  .graduation-card .grad-items{flex-direction:column;gap:16px;}
+}
+@media(max-width:600px){
+  .feedback-pipeline{flex-direction:column;}
+  .fb-channels{grid-template-columns:1fr;}
+  .container{padding:0 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="top-nav">
+  <div class="container">
+    <div class="top-nav-inner">
+      <div class="nav-brand">
+        <div class="nav-brand-mark">B</div>
+        <div class="nav-brand-text">The Bookmarked Council <span>| Shaping the future of book intelligence</span></div>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#members">Members</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#connect">Connect</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">Founding Members · By Invitation Only</div>
+    <h1>The Bookmarked Council</h1>
+    <div class="hero-tagline">A select group of publishers and school districts co-designing the next generation of book intelligence — together.</div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">6</div><div class="label">Co-Design Sessions</div></div>
+      <div class="hero-stat"><div class="num">3–5</div><div class="label">Publishers</div></div>
+      <div class="hero-stat"><div class="num">3–5</div><div class="label">School Districts</div></div>
+      <div class="hero-stat"><div class="num">Apr–Aug</div><div class="label">2026 Program</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- About / TLDR -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">What This Is</div>
+      <h2>Building the future of book intelligence — with you, not for you</h2>
+      <p>The Bookmarked Council is an invitation-only advisory group where publishers and districts shape how schools discover, evaluate, and trust books. We're not asking you to test a product. We're asking you to help design it.</p>
+    </div>
+
+    <div class="overview-grid">
+      <div class="overview-card pub">
+        <div class="card-icon">📚</div>
+        <h3>For Publishers</h3>
+        <p>Your books deserve to be found by the right schools. The Council ensures that the intelligence system represents your catalog completely, accurately, and fairly.</p>
+        <ul>
+          <li>Shape how publisher context appears alongside assessments</li>
+          <li>Design the data submission process that works for you</li>
+          <li>Influence what market intelligence you receive back</li>
+          <li>Ensure your books reach districts that need them</li>
+        </ul>
+      </div>
+      <div class="overview-card dist">
+        <div class="card-icon">🏫</div>
+        <h3>For School Districts</h3>
+        <p>You know what you need better than anyone. The Council puts your real workflows, compliance challenges, and student needs at the center of what gets built.</p>
+        <ul>
+          <li>Define what a complete book intelligence report looks like</li>
+          <li>Shape how compliance mapping works for your state</li>
+          <li>Replace the patchwork of reviews with something better</li>
+          <li>Ensure the product fits your actual workflow</li>
+        </ul>
+      </div>
+      <div class="overview-card bm">
+        <div class="card-icon">🔮</div>
+        <h3>For Book Intelligence</h3>
+        <p>The Council isn't a one-time project — it's the permanent advisory body that shapes every major capability Bookmarked builds. Content intelligence is first. What comes next is up to you.</p>
+        <ul>
+          <li>Grounded in real needs, not assumptions</li>
+          <li>Both sides of the ecosystem in the same room</li>
+          <li>Continuous feedback shapes continuous improvement</li>
+          <li>A growing community of the industry's best minds</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Founder's Letter -->
+<section class="section section-warm">
+  <div class="container">
+    <div class="section-header" style="text-align:center;">
+      <div class="eyebrow">From the Founder</div>
+      <h2>Why This Group Exists</h2>
+    </div>
+    <div class="founder-letter">
+      <blockquote>
+        I started Bookmarked because I believe every student deserves to find the right book — and every librarian deserves the tools to make that happen confidently. We've built intelligence that helps 150+ Texas districts understand what the world says about their books. Now we're building something bigger: intelligence based on what's actually in the book, with publisher permission, so districts never have to guess again.
+        <br><br>
+        But we can't build this alone. Publishers understand their books. Districts understand their students. We need both perspectives in the room — not as focus groups, but as co-designers. That's why The Bookmarked Council exists. You'll have a genuine seat at the table, a direct line to the team building this, and first access to everything we create together.
+      </blockquote>
+      <div class="founder-sig">
+        <div class="sig-avatar">SW</div>
+        <div class="sig-info">Steve Wandler <span>Founder, Bookmarked</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Founding Members -->
+<section class="section" id="members">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Founding Members</div>
+      <h2>The people shaping what comes next</h2>
+      <p>A small, focused group — by design. Every voice matters. Every perspective shapes the product.</p>
+    </div>
+
+    <div class="members-grid">
+      <div class="member-group">
+        <h3><span class="group-icon">📚</span> Publisher Partners</h3>
+        <div class="member-item">
+          <div class="member-avatar avatar-green">S</div>
+          <div class="member-info"><h4>Saddleback Educational Publishing</h4><p>Tim McHugh</p></div>
+          <span class="member-status status-founding">Founding</span>
+        </div>
+        <div class="member-item">
+          <div class="member-avatar avatar-teal">C</div>
+          <div class="member-info"><h4>Cajun Kids / Excalibur Books</h4><p>Jade Landry</p></div>
+          <span class="member-status status-invited">Invited</span>
+        </div>
+        <div class="member-item">
+          <div class="member-avatar avatar-purple">L</div>
+          <div class="member-info"><h4>Lerner Publishing Group</h4><p>Tom Rathbun</p></div>
+          <span class="member-status status-invited">Invited</span>
+        </div>
+        <div class="member-item">
+          <div class="member-avatar avatar-blue">+</div>
+          <div class="member-info"><h4>Additional Publisher Partner</h4><p>Seat available</p></div>
+          <span class="member-status status-open">Open</span>
+        </div>
+      </div>
+
+      <div class="member-group">
+        <h3><span class="group-icon">🏫</span> District Partners</h3>
+        <div class="member-item">
+          <div class="member-avatar avatar-orange">M</div>
+          <div class="member-info"><h4>Midlothian ISD</h4><p>Library Services Director</p></div>
+          <span class="member-status status-invited">Invited</span>
+        </div>
+        <div class="member-item">
+          <div class="member-avatar avatar-orange">G</div>
+          <div class="member-info"><h4>Godley ISD</h4><p>Head Librarian</p></div>
+          <span class="member-status status-invited">Invited</span>
+        </div>
+        <div class="member-item">
+          <div class="member-avatar avatar-orange">T</div>
+          <div class="member-info"><h4>Temple ISD</h4><p>Curriculum Director</p></div>
+          <span class="member-status status-invited">Invited</span>
+        </div>
+        <div class="member-item">
+          <div class="member-avatar avatar-orange">C</div>
+          <div class="member-info"><h4>Canyon ISD</h4><p>Library Coordinator</p></div>
+          <span class="member-status status-invited">Invited</span>
+        </div>
+        <div class="member-item">
+          <div class="member-avatar avatar-blue">+</div>
+          <div class="member-info"><h4>Additional District Partner</h4><p>Seat available</p></div>
+          <span class="member-status status-open">Open</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Communication -->
+<section class="section section-alt" id="connect">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">How We Connect</div>
+      <h2>Communication channels — from day one</h2>
+      <p>You'll always have a way to share ideas, ask questions, and stay connected to the group.</p>
+    </div>
+
+    <div class="comm-grid">
+      <div class="comm-card">
+        <div class="comm-icon">💬</div>
+        <h3>Slack Channel</h3>
+        <div class="comm-cadence">Always On</div>
+        <p>A shared Slack channel for all Council members. Post ideas, ask questions, share reactions anytime. The Bookmarked team is in there with you.</p>
+      </div>
+      <div class="comm-card">
+        <div class="comm-icon">📹</div>
+        <h3>Co-Design Sessions</h3>
+        <div class="comm-cadence">April · 6 Sessions</div>
+        <p>90-minute working sessions where your input directly shapes what gets built. Small groups, real conversation, immediate impact.</p>
+      </div>
+      <div class="comm-card">
+        <div class="comm-icon">📧</div>
+        <h3>Council Updates</h3>
+        <div class="comm-cadence">Monthly</div>
+        <p>What you said, what we built. A monthly update showing exactly how Council input shaped the product. Your voice, your impact.</p>
+      </div>
+    </div>
+
+    <div class="conf-bar">
+      <div class="conf-icon">🔒</div>
+      <p><strong>Confidentiality</strong> — Everything discussed in the Council stays in the Council. All members are covered under mutual confidentiality agreements. You can speak freely about challenges, workflows, and needs without concern.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section class="section" id="timeline">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Program Timeline</div>
+      <h2>April through August 2026</h2>
+      <p>Four phases — co-design, synthesis, build with feedback, and a public launch event. All dates are proposed and will be confirmed with members.</p>
+    </div>
+
+    <div class="timeline-container">
+      <!-- Phase 1 -->
+      <div class="tl-phase">
+        <div class="tl-phase-header">
+          <div class="tl-phase-dot green">1</div>
+          <div class="tl-phase-meta">
+            <h3>Co-Design Sessions</h3>
+            <div class="tl-dates">April 2026 · Weeks 1–4</div>
+          </div>
+        </div>
+        <div class="tl-events">
+          <div class="tl-event">
+            <span class="event-type type-publisher">Publisher</span>
+            <h4>Publisher Co-Design Session 1</h4>
+            <div class="event-date">Week of April 6</div>
+            <p>What intelligence do you need from the system? How should your context appear alongside book assessments?</p>
+          </div>
+          <div class="tl-event">
+            <span class="event-type type-district">District</span>
+            <h4>District Co-Design Session 1</h4>
+            <div class="event-date">Week of April 14</div>
+            <p>What does a complete book intelligence report need to contain? What would replace your current review process?</p>
+          </div>
+          <div class="tl-event">
+            <span class="event-type type-publisher">Publisher</span>
+            <h4>Publisher Co-Design Session 2</h4>
+            <div class="event-date">Week of April 21</div>
+            <p>React to district needs. Refine the publisher portal and data submission workflow together.</p>
+          </div>
+          <div class="tl-event">
+            <span class="event-type type-district">District</span>
+            <h4>District Co-Design Session 2</h4>
+            <div class="event-date">Week of April 28</div>
+            <p>React to publisher realities. Walk through compliance mapping with real examples from your state.</p>
+          </div>
+          <div class="tl-event">
+            <span class="event-type type-joint">Joint Session</span>
+            <h4>Publishers + Districts Together</h4>
+            <div class="event-date">April 29</div>
+            <p>First time both sides are in the room. Shared understanding of what gets built. Prioritization together.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="tl-phase">
+        <div class="tl-phase-header">
+          <div class="tl-phase-dot green">2</div>
+          <div class="tl-phase-meta">
+            <h3>Synthesis</h3>
+            <div class="tl-dates">May 2026 · Weeks 5–8</div>
+          </div>
+        </div>
+        <div class="tl-events">
+          <div class="tl-event">
+            <span class="event-type type-joint">Joint Follow-Up</span>
+            <h4>Virtual Session — Review the Synthesis</h4>
+            <div class="event-date">Week of May 5</div>
+            <p>"This is what you told us. This is what we're building first. Does this match your priorities?"</p>
+          </div>
+          <div class="tl-event">
+            <span class="event-type type-milestone">Milestone</span>
+            <h4>Product Specification Locked</h4>
+            <div class="event-date">Mid-May</div>
+            <p>Essential features, next-phase features, and future ideas — all shaped by Council input. Engineering begins.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="tl-phase">
+        <div class="tl-phase-header">
+          <div class="tl-phase-dot green">3</div>
+          <div class="tl-phase-meta">
+            <h3>Build + Feedback</h3>
+            <div class="tl-dates">June–July 2026 · Weeks 9–17</div>
+          </div>
+        </div>
+        <div class="tl-events">
+          <div class="tl-event">
+            <span class="event-type type-feedback">Feedback</span>
+            <h4>Progress Check-ins</h4>
+            <div class="event-date">Bi-weekly · 30 minutes</div>
+            <p>See the latest prototype. Share reactions. Watch your input become real product.</p>
+          </div>
+          <div class="tl-event">
+            <span class="event-type type-feedback">Feedback</span>
+            <h4>Structured Surveys</h4>
+            <div class="event-date">Monthly</div>
+            <p>Quick, focused questions about the direction. Your ratings and comments directly inform priorities.</p>
+          </div>
+          <div class="tl-event">
+            <span class="event-type type-feedback">Ongoing</span>
+            <h4>Slack Channel + Ad Hoc</h4>
+            <div class="event-date">Always Available</div>
+            <p>Share ideas, flag concerns, or ask questions anytime. Every piece of feedback is captured and reviewed.</p>
+          </div>
+          <div class="tl-event">
+            <span class="event-type type-joint">Monthly Update</span>
+            <h4>"What You Said → What We Built"</h4>
+            <div class="event-date">Monthly</div>
+            <p>A clear update showing exactly how Council feedback shaped the product. Your voice, your impact.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="tl-phase">
+        <div class="tl-phase-header">
+          <div class="tl-phase-dot orange">★</div>
+          <div class="tl-phase-meta">
+            <h3>Public Launch</h3>
+            <div class="tl-dates">August 2026</div>
+          </div>
+        </div>
+        <div class="tl-events">
+          <div class="tl-event">
+            <span class="event-type type-milestone">Launch Event</span>
+            <h4>The Bookmarked Council Public Release</h4>
+            <div class="event-date">Late August 2026</div>
+            <p>A launch event celebrating what the Council built together — hosted at a partner district. Media, recognition, and the debut of a new standard for book intelligence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Member Benefits -->
+<section class="section section-green" id="benefits">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Member Benefits</div>
+      <h2>What you get as a founding member</h2>
+      <p>This isn't a focus group. It's a seat at the table — with real benefits that grow over time.</p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">🚀</div>
+        <div class="benefit-text">
+          <h3>First Access</h3>
+          <p>Founding members get access to every new capability before anyone else. You'll be using the product while others are still hearing about it.</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🎯</div>
+        <div class="benefit-text">
+          <h3>Direct Influence</h3>
+          <p>Your input directly shapes what gets built. Not through a suggestion box — through working sessions with the team building it.</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📊</div>
+        <div class="benefit-text">
+          <h3>Market Intelligence</h3>
+          <p>Publishers receive aggregated insights on how districts discover and use books. Districts receive intelligence that no other system provides.</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🤝</div>
+        <div class="benefit-text">
+          <h3>Cross-Ecosystem Connections</h3>
+          <p>Publishers and districts rarely sit in the same room. The Council creates a unique space where both sides understand each other's needs.</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🏆</div>
+        <div class="benefit-text">
+          <h3>Founding Member Recognition</h3>
+          <p>Recognized as a founding member of The Bookmarked Council — the group that established the standard for book intelligence.</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🔮</div>
+        <div class="benefit-text">
+          <h3>Permanent Advisory Role</h3>
+          <p>The Council doesn't end in August. Founding members have a permanent seat as we continue building. New projects, new capabilities, your continued voice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Feedback Loops (Build Phase) -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">During the Build Phase</div>
+      <h2>How your feedback becomes product</h2>
+      <p>Every piece of feedback — from a Slack message to a survey response to a conversation — is captured, analyzed, and routed to the right team member.</p>
+    </div>
+
+    <div class="feedback-pipeline">
+      <div class="fb-stage fb-1"><div class="fb-icon">💬</div><div class="fb-title">Share</div><div class="fb-desc">Slack, sessions, surveys, conversations</div></div>
+      <div class="fb-stage fb-2"><div class="fb-icon">📋</div><div class="fb-title">Capture</div><div class="fb-desc">Every input is logged and categorized</div></div>
+      <div class="fb-stage fb-3"><div class="fb-icon">🔍</div><div class="fb-title">Analyze</div><div class="fb-desc">Patterns, priorities, and themes identified</div></div>
+      <div class="fb-stage fb-4"><div class="fb-icon">🎯</div><div class="fb-title">Build</div><div class="fb-desc">Features prioritized and shipped</div></div>
+    </div>
+
+    <div class="fb-channels">
+      <div class="fb-ch">
+        <div class="ch-icon">💬</div>
+        <h4>Slack Channel</h4>
+        <div class="ch-when">Always On</div>
+        <p>Share ideas, questions, and reactions anytime. The whole Council is here.</p>
+      </div>
+      <div class="fb-ch">
+        <div class="ch-icon">📹</div>
+        <h4>Check-in Sessions</h4>
+        <div class="ch-when">Every 2 Weeks</div>
+        <p>See the latest build. Share reactions face-to-face.</p>
+      </div>
+      <div class="fb-ch">
+        <div class="ch-icon">📊</div>
+        <h4>Quick Surveys</h4>
+        <div class="ch-when">Monthly</div>
+        <p>5-minute surveys on specific product questions.</p>
+      </div>
+      <div class="fb-ch">
+        <div class="ch-icon">📧</div>
+        <h4>Direct to Team</h4>
+        <div class="ch-when">Anytime</div>
+        <p>Email or message Natasha with anything. It gets logged and routed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Graduation Event -->
+<section class="section">
+  <div class="container">
+    <div class="section-header" style="text-align:center;">
+      <div class="eyebrow">Where We're Headed</div>
+      <h2>The finish line — and the beginning</h2>
+    </div>
+
+    <div class="graduation-card">
+      <div class="grad-icon">🎉</div>
+      <h3>Public Launch Event</h3>
+      <div class="grad-date">Late August 2026 · Location TBD</div>
+      <p>A launch event celebrating what The Bookmarked Council built together. Hosted at a partner district, with media coverage, founding member recognition, and the debut of a new standard for book intelligence.</p>
+      <div class="grad-items">
+        <div class="grad-item"><div class="gi-icon">🏫</div><div class="gi-text">Hosted at a<br>Partner District</div></div>
+        <div class="grad-item"><div class="gi-icon">📰</div><div class="gi-text">Media<br>Coverage</div></div>
+        <div class="grad-item"><div class="gi-icon">🏆</div><div class="gi-text">Founding Member<br>Recognition</div></div>
+        <div class="grad-item"><div class="gi-icon">🚀</div><div class="gi-text">Product<br>Debut</div></div>
+        <div class="grad-item"><div class="gi-icon">🥂</div><div class="gi-text">Reception &<br>Celebration</div></div>
+      </div>
+      <p style="margin-top:24px;font-size:14px;color:var(--bm-muted-gray);font-style:italic;">This is the milestone everyone works toward — and then the Council continues with its next project.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to shape the future of book intelligence?</h2>
+    <p>Founding member seats are limited. If you've been invited, we'd love to hear from you.</p>
+    <a href="mailto:natasha@bookmarked.com" class="cta-btn">Contact Natasha Flanders →</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="container">
+    <div class="brand">Bookmarked</div>
+    <p>The Bookmarked Council · Shaping the Future of Book Intelligence</p>
+    <p style="margin-top:4px;">© 2026 Bookmarked. Confidential — for invited members and prospective members only.</p>
+  </div>
+</div>
+
+</body>
+</html>
