@@ -470,61 +470,6 @@ a:hover { text-decoration: underline; }
   font-weight: 600;
   backdrop-filter: blur(4px);
 }
-.tla-capture {
-  background: rgba(255,255,255,0.1);
-  border-radius: var(--radius-lg);
-  padding: 16px 20px;
-  backdrop-filter: blur(4px);
-}
-.tla-capture-title {
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 12px;
-  opacity: 0.85;
-}
-.tla-capture-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-.tla-capture-form input,
-.tla-capture-form select {
-  padding: 8px 12px;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255,255,255,0.25);
-  background: rgba(255,255,255,0.12);
-  color: var(--bm-white);
-  font-family: inherit;
-  font-size: 13px;
-  outline: none;
-  flex: 1;
-  min-width: 120px;
-}
-.tla-capture-form input::placeholder { color: rgba(255,255,255,0.5); }
-.tla-capture-form select option { color: var(--bm-eigengrau); background: var(--bm-white); }
-.tla-capture-form .tla-notes { flex-basis: 100%; min-width: 100%; }
-.tla-add-btn {
-  padding: 8px 20px;
-  background: var(--bm-white);
-  color: var(--bm-deep-green);
-  border: none;
-  border-radius: var(--radius-md);
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.1s;
-}
-.tla-add-btn:hover { transform: scale(1.02); }
-.tla-contacts-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
-}
 .tla-contact-chip {
   display: flex;
   align-items: center;
@@ -1093,7 +1038,6 @@ details[open] .pub-toggle { transform: rotate(180deg); }
   .backdrop.open { display: block; }
   .main { margin-left: 0; padding: 24px 16px; padding-top: 64px; }
   .kpi-row { grid-template-columns: 1fr 1fr; }
-  .tla-capture-form { flex-direction: column; }
   .collateral-grid { grid-template-columns: 1fr; }
   .publisher-summary { flex-wrap: wrap; }
   .pub-last, .pub-next { display: none; }
@@ -2325,10 +2269,7 @@ function toggleTLA() {
 /* ---- TLA Contact Capture ---- */
 function loadTLAContacts() {
   var contacts = JSON.parse(localStorage.getItem('tla_contacts') || '[]');
-  renderTLAContacts(contacts);
 }
-function renderTLAContacts(contacts) {
-  var container = document.getElementById('tlaContacts');
   container.innerHTML = contacts.map(function(c, i) {
     return '<div class="tla-contact-chip">' +
       '<span>' + escHtml(c.name) + '</span>' +
@@ -2339,28 +2280,13 @@ function renderTLAContacts(contacts) {
     '</div>';
   }).join('');
 }
-function addTLAContact() {
-  var name = document.getElementById('tlaName').value.trim();
-  var org = document.getElementById('tlaOrg').value.trim();
-  var type = document.getElementById('tlaType').value;
-  var interest = document.getElementById('tlaInterest').value;
-  var notes = document.getElementById('tlaNotes').value.trim();
-  if (!name) return;
-  var contacts = JSON.parse(localStorage.getItem('tla_contacts') || '[]');
-  contacts.push({ name: name, org: org, type: type, interest: interest, notes: notes });
+);
   localStorage.setItem('tla_contacts', JSON.stringify(contacts));
-  renderTLAContacts(contacts);
-  document.getElementById('tlaName').value = '';
-  document.getElementById('tlaOrg').value = '';
-  document.getElementById('tlaType').value = '';
-  document.getElementById('tlaInterest').value = '';
-  document.getElementById('tlaNotes').value = '';
 }
 function removeTLAContact(index) {
   var contacts = JSON.parse(localStorage.getItem('tla_contacts') || '[]');
   contacts.splice(index, 1);
   localStorage.setItem('tla_contacts', JSON.stringify(contacts));
-  renderTLAContacts(contacts);
 }
 function escHtml(s) {
   var d = document.createElement('div');
