@@ -997,6 +997,17 @@ details[open] .pub-toggle { transform: rotate(180deg); color: var(--bm-teal-acce
   .card { padding: 16px; }
   .pub-detail-grid { grid-template-columns: 1fr; gap: 16px; }
 }
+
+.collateral-link {
+  display: inline-block;
+  font-size: 11px;
+  color: var(--bm-teal-accent);
+  text-decoration: none;
+  margin-top: 4px;
+  font-weight: 600;
+}
+.collateral-link:hover { text-decoration: underline; color: var(--bm-deep-green); }
+.collateral-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -1883,12 +1894,16 @@ details[open] .pub-toggle { transform: rotate(180deg); color: var(--bm-teal-acce
   <div class="page-header">
     <h1>Collateral Tracker</h1>
     <p>Program materials and deliverables</p>
+    <div style="display:flex;gap:16px;margin-top:8px;">
+      <a href="https://bookmarked-team.atlassian.net/wiki/spaces/PH/pages/96501813" target="_blank" style="font-size:13px;color:var(--bm-teal-accent);text-decoration:none;font-weight:600;">&#x2192; Confluence Collateral Tracker</a>
+      <a href="https://bookmarked-team.atlassian.net/wiki/spaces/PH/pages/96665601" target="_blank" style="font-size:13px;color:var(--bm-teal-accent);text-decoration:none;font-weight:600;">&#x2192; Confluence Council Hub</a>
+    </div>
   </div>
 
   <div class="progress-summary">
-    <div class="progress-text">3 / 14 complete</div>
-    <div class="progress-bar-outer"><div class="progress-bar-inner" style="width:21.4%"></div></div>
-    <div class="progress-text" style="color:var(--bm-muted-gray)">21%</div>
+    <div class="progress-text">6 / 16 complete</div>
+    <div class="progress-bar-outer"><div class="progress-bar-inner" style="width:37.5%"></div></div>
+    <div class="progress-text" style="color:var(--bm-muted-gray)">37%</div>
   </div>
 
   <div class="collateral-grid">
@@ -1898,6 +1913,7 @@ details[open] .pub-toggle { transform: rotate(180deg); color: var(--bm-teal-acce
       <div class="collateral-info">
         <div class="collateral-name">Content Scanner Portal v2</div>
         <div class="collateral-owner">Steve &middot; <span class="pill pill-green" style="font-size:10px">Complete</span></div>
+        <div class="collateral-links"><a class="collateral-link" href="https://stevewandler.github.io/bookmarked-exports/exports/bookmarked-council-portal.html" target="_blank">&#x2192; GitHub Pages</a></div>
       </div>
     </div>
 
@@ -1906,6 +1922,7 @@ details[open] .pub-toggle { transform: rotate(180deg); color: var(--bm-teal-acce
       <div class="collateral-info">
         <div class="collateral-name">Content Scanner one-pager (district)</div>
         <div class="collateral-owner">Steve &middot; <span class="pill pill-green" style="font-size:10px">Complete</span></div>
+        <div class="collateral-links"><a class="collateral-link" href="https://drive.google.com/file/d/1i-XsBNwknzFNNuf6c6Je22_6mI8IhbkM/view" target="_blank">&#x2192; Google Drive</a></div>
       </div>
     </div>
 
@@ -1914,6 +1931,7 @@ details[open] .pub-toggle { transform: rotate(180deg); color: var(--bm-teal-acce
       <div class="collateral-info">
         <div class="collateral-name">Content Scanner overview brief</div>
         <div class="collateral-owner">Steve &middot; <span class="pill pill-green" style="font-size:10px">Complete</span></div>
+        <div class="collateral-links"><a class="collateral-link" href="https://drive.google.com/file/d/14cbd_jgDRqhY1RjTvx1tW1LBRW5dhjEv/view" target="_blank">&#x2192; Google Drive</a></div>
       </div>
     </div>
 
