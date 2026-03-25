@@ -1109,16 +1109,40 @@ function buildSparklineSVG(history) {
 
 function renderHeatMap() {
   const grid = document.getElementById('heatmap-grid');
-  const summaries = DATA.esc_summary || [];
 
-  // Build lookup for all 20 regions
-  const lookup = {};
-  summaries.forEach(s => { lookup[String(s.esc_region)] = s; });
+  // Build ESC counts directly from district data (works even without geo engine)
+  const escData = {};
+  for (let r = 1; r <= 20; r++) {
+    escData[String(r)] = { district_count: 0, searched_count: 0, signaled_count: 0, red_count: 0, yellow_count: 0, green_count: 0 };
+  }
+
+  // Count from signaled districts
+  (DATA.districts || []).forEach(d => {
+    const r = String(d.esc_region || '');
+    if (escData[r]) {
+      escData[r].district_count++;
+      escData[r].searched_count++;
+      escData[r].signaled_count++;
+      if (d.tier === 'red') escData[r].red_count++;
+      else if (d.tier === 'yellow') escData[r].yellow_count++;
+      else if (d.tier === 'green') escData[r].green_count++;
+    }
+  });
+
+  // Count from no-signal districts
+  (DATA.no_signal_districts || []).forEach(d => {
+    const r = String(d.esc_region || '');
+    if (escData[r]) {
+      escData[r].district_count++;
+      escData[r].searched_count++;
+    }
+  });
 
   let html = '';
   for (let r = 1; r <= 20; r++) {
-    const s = lookup[String(r)] || { esc_region: r, district_count: 0, signaled_count: 0, red_count: 0, yellow_count: 0, green_count: 0 };
+    const s = escData[String(r)];
     const total = s.signaled_count || 0;
+    const searched = s.searched_count || 0;
     const reds = s.red_count || 0;
     let intensity = 0;
     if (total > 0) intensity = 1;
@@ -1133,11 +1157,11 @@ function renderHeatMap() {
         </div>
         <div class="esc-stats">
           <div class="esc-stat-row">
-            <span class="esc-stat-label">Districts</span>
-            <span class="esc-stat-value">${s.district_count || 0}</span>
+            <span class="esc-stat-label">Searched</span>
+            <span class="esc-stat-value">${searched}</span>
           </div>
           <div class="esc-stat-row">
-            <span class="esc-stat-label">Signaled</span>
+            <span class="esc-stat-label">With Signal</span>
             <span class="esc-stat-value">${total}</span>
           </div>
         </div>
