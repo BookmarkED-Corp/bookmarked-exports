@@ -426,50 +426,12 @@ a:hover { text-decoration: underline; }
 /* ========================================================================
    TLA CARD
    ======================================================================== */
-.tla-card {
-  background: linear-gradient(135deg, var(--bm-teal-dark), var(--bm-teal-mid), var(--bm-teal-light));
-  color: var(--bm-white);
-  border-radius: var(--radius-xl);
-  padding: 28px 32px;
-  margin-bottom: 24px;
-  position: relative;
-  overflow: hidden;
-}
-.tla-card::after {
-  content: '';
-  position: absolute;
-  top: -40px;
-  right: -40px;
-  width: 160px;
-  height: 160px;
-  background: rgba(255,255,255,0.06);
-  border-radius: 50%;
-  pointer-events: none;
-}
-.tla-card h2 {
-  font-size: 22px;
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-.tla-card .tla-sub {
-  font-size: 14px;
-  opacity: 0.85;
-  margin-bottom: 16px;
-}
-.tla-meetings {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-.tla-meeting-chip {
-  background: rgba(255,255,255,0.15);
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  font-size: 13px;
-  font-weight: 600;
-  backdrop-filter: blur(4px);
-}
+
+
+
+
+
+
 .tla-contact-chip {
   display: flex;
   align-items: center;
@@ -485,23 +447,7 @@ a:hover { text-decoration: underline; }
   font-size: 14px;
 }
 .tla-contact-chip .remove-tla:hover { opacity: 1; }
-.tla-collapse-toggle {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  background: rgba(255,255,255,0.15);
-  border: none;
-  color: white;
-  font-size: 18px;
-  width: 28px;
-  height: 28px;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
+
 
 /* ========================================================================
    PIPELINE BARS
@@ -1136,19 +1082,6 @@ details[open] .pub-toggle { transform: rotate(180deg); }
   <div class="page-header">
     <h1>Program Dashboard</h1>
     <p>Content Scanner Design Partner Program &mdash; real-time command center</p>
-  </div>
-
-  <!-- ZONE 1: TLA THIS WEEKEND -->
-  <div class="tla-card" id="tlaCard">
-    <button class="tla-collapse-toggle" onclick="toggleTLA()" title="Collapse">&#9650;</button>
-    <h2>TLA Conference &mdash; Houston, March 28&ndash;29</h2>
-    <div class="tla-sub">Steve is attending. Priority meetings and capture below.</div>
-    <div class="tla-meetings" id="tlaMeetings">
-      <div class="tla-meeting-chip">Lerner/Rosen &mdash; Tom Rathbun</div>
-      <div class="tla-meeting-chip">Scott Crawford &mdash; MediaSource / Cherry Lake</div>
-      <div class="tla-meeting-chip">Publisher &amp; district contacts who reply</div>
-    </div>
-
   </div>
 
   <!-- ZONE 2: WHAT NEEDS ATTENTION -->
@@ -2250,16 +2183,7 @@ updateCountdown();
 setInterval(updateCountdown, 60000);
 
 /* ---- TLA Collapse Toggle ---- */
-function toggleTLA() {
-  var card = document.getElementById('tlaCard');
-  var capture = document.getElementById('tlaCapture');
-  var meetings = document.getElementById('tlaMeetings');
-  var btn = card.querySelector('.tla-collapse-toggle');
-  if (capture.style.display === 'none') {
-    capture.style.display = 'block';
-    meetings.style.display = 'flex';
-    btn.innerHTML = '&#9650;';
-  } else {
+ else {
     capture.style.display = 'none';
     meetings.style.display = 'none';
     btn.innerHTML = '&#9660;';
