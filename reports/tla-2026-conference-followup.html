@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TLA 2026 Conference Follow-Up</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bm-eigengrau: #101828;
+  --bm-deep-green: #107569;
+  --bm-teal-accent: #12A38C;
+  --bm-white: #FFFFFF;
+  --bm-pumpkin: #FF692E;
+  --bm-teal-dark: #0D5A52;
+  --bm-bg-cool: #F8FAFC;
+  --bm-bg-warm: #F8F5F0;
+  --bm-bg-light: #F9FAFB;
+  --bm-border-light: #E5E7EB;
+  --bm-muted-gray: #9CA3AF;
+  --bm-secondary-text: #475467;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Urbanist', Arial, sans-serif; color: var(--bm-eigengrau); background: var(--bm-bg-light); line-height: 1.6; }
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, var(--bm-teal-dark) 0%, var(--bm-deep-green) 40%, var(--bm-teal-accent) 100%);
+  color: white; padding: 48px 40px 40px; position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px;
+  border-radius: 50%; background: rgba(255,255,255,0.05);
+}
+.hero h1 { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+.hero .subtitle { font-size: 18px; opacity: 0.9; font-weight: 500; }
+.hero .meta { margin-top: 16px; font-size: 14px; opacity: 0.75; display: flex; gap: 24px; flex-wrap: wrap; }
+
+/* Container */
+.container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+
+/* Stats bar */
+.stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 32px; }
+.stat-card {
+  background: white; border-radius: 12px; padding: 20px; text-align: center;
+  border: 1px solid var(--bm-border-light); box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.stat-card .number { font-size: 32px; font-weight: 800; color: var(--bm-deep-green); }
+.stat-card .label { font-size: 13px; color: var(--bm-secondary-text); font-weight: 500; margin-top: 4px; }
+
+/* Section */
+.section { margin-bottom: 36px; }
+.section-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+  padding-bottom: 8px; border-bottom: 2px solid var(--bm-deep-green);
+}
+.section-header h2 { font-size: 22px; font-weight: 700; }
+.tier-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.tier-1 { background: #DCFCE7; color: #166534; }
+.tier-2 { background: #DBEAFE; color: #1E40AF; }
+.tier-3 { background: #FEF3C7; color: #92400E; }
+.tier-4 { background: #FCE7F3; color: #9D174D; }
+.tier-5 { background: #F3E8FF; color: #6B21A8; }
+
+/* Contact cards */
+.contact-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.contact-card {
+  background: white; border-radius: 10px; padding: 20px;
+  border: 1px solid var(--bm-border-light); box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s;
+}
+.contact-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.contact-card .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.contact-card .name { font-size: 17px; font-weight: 700; color: var(--bm-eigengrau); }
+.contact-card .org { font-size: 14px; color: var(--bm-teal-accent); font-weight: 600; }
+.contact-card .what-happened { font-size: 14px; color: var(--bm-secondary-text); margin-bottom: 10px; line-height: 1.5; }
+.contact-card .action-row {
+  display: flex; gap: 12px; align-items: flex-start; flex-wrap: wrap;
+  padding-top: 10px; border-top: 1px solid #f0f0f0;
+}
+.action-label { font-size: 12px; font-weight: 700; color: var(--bm-deep-green); text-transform: uppercase; letter-spacing: 0.5px; min-width: 70px; padding-top: 2px; }
+.action-text { font-size: 14px; color: var(--bm-eigengrau); flex: 1; }
+.owner-badge {
+  display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px;
+  font-weight: 600; background: var(--bm-bg-warm); color: var(--bm-secondary-text);
+}
+.deadline-badge {
+  display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px;
+  font-weight: 600; background: #FEF2F2; color: #991B1B;
+}
+.deadline-soon { background: #FEF2F2; color: #991B1B; }
+.deadline-normal { background: #F0FDF4; color: #166534; }
+
+/* Internal actions */
+.action-block {
+  background: white; border-radius: 10px; padding: 20px; margin-bottom: 12px;
+  border-left: 4px solid var(--bm-pumpkin);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.action-block h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.action-block p { font-size: 14px; color: var(--bm-secondary-text); margin-bottom: 4px; }
+.action-block .detail { font-size: 13px; color: var(--bm-muted-gray); }
+
+/* Intel table */
+.intel-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.intel-table th { background: var(--bm-eigengrau); color: white; padding: 12px 16px; text-align: left; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.intel-table td { padding: 12px 16px; font-size: 14px; border-bottom: 1px solid var(--bm-border-light); vertical-align: top; }
+.intel-table tr:last-child td { border-bottom: none; }
+.intel-table tr:nth-child(even) td { background: var(--bm-bg-cool); }
+
+/* Insights */
+.insight-card {
+  background: var(--bm-bg-warm); border-radius: 10px; padding: 16px 20px;
+  margin-bottom: 10px; border-left: 4px solid var(--bm-pumpkin);
+}
+.insight-card strong { color: var(--bm-eigengrau); }
+.insight-card p { font-size: 14px; color: var(--bm-secondary-text); margin-top: 4px; }
+
+/* Natasha checklist */
+.checklist { list-style: none; }
+.checklist li {
+  padding: 12px 16px; background: white; border-radius: 8px; margin-bottom: 8px;
+  border: 1px solid var(--bm-border-light); font-size: 14px;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.checklist li::before { content: '\2610'; font-size: 18px; color: var(--bm-deep-green); flex-shrink: 0; }
+.checklist .priority-high::after { content: 'URGENT'; font-size: 10px; font-weight: 700; background: #FEF2F2; color: #991B1B; padding: 2px 6px; border-radius: 3px; margin-left: auto; flex-shrink: 0; }
+.checklist .priority-normal::after { content: 'THIS WEEK'; font-size: 10px; font-weight: 700; background: #DBEAFE; color: #1E40AF; padding: 2px 6px; border-radius: 3px; margin-left: auto; flex-shrink: 0; }
+
+/* Phase timeline */
+.phase-timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.phase-card {
+  background: white; border-radius: 10px; padding: 20px; border: 1px solid var(--bm-border-light);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.phase-card .phase-num { font-size: 12px; font-weight: 700; color: var(--bm-teal-accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.phase-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.phase-card .dates { font-size: 13px; color: var(--bm-muted-gray); margin-bottom: 10px; }
+.phase-card ol { font-size: 13px; padding-left: 18px; color: var(--bm-secondary-text); }
+.phase-card ol li { margin-bottom: 4px; }
+
+/* Footer */
+.footer {
+  background: var(--bm-eigengrau); color: rgba(255,255,255,0.5); text-align: center;
+  padding: 20px; font-size: 12px; margin-top: 40px;
+}
+
+/* Print */
+@media print {
+  body { background: white; }
+  .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .contact-card, .action-block, .stat-card, .phase-card { break-inside: avoid; }
+}
+@media (max-width: 768px) {
+  .hero { padding: 32px 20px; }
+  .hero h1 { font-size: 28px; }
+  .container { padding: 20px 16px; }
+  .phase-timeline { grid-template-columns: 1fr; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>TLA 2026 Conference Follow-Up</h1>
+  <div class="subtitle">Texas Library Association Conference &mdash; Houston, TX</div>
+  <div class="meta">
+    <span>March 30&ndash;31, 2026</span>
+    <span>Steve Wandler + Natasha Flanders</span>
+    <span>Report generated: March 31, 2026</span>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stat-card"><div class="number">25+</div><div class="label">Contacts Made</div></div>
+  <div class="stat-card"><div class="number">7</div><div class="label">Conversations Recorded</div></div>
+  <div class="stat-card"><div class="number">5</div><div class="label">Strategic Partners</div></div>
+  <div class="stat-card"><div class="number">10</div><div class="label">Publishers for Pilot</div></div>
+  <div class="stat-card"><div class="number">7</div><div class="label">Distributors</div></div>
+  <div class="stat-card"><div class="number">4</div><div class="label">District Leads</div></div>
+</div>
+
+<!-- TIER 1: Strategic Partners -->
+<div class="section">
+  <div class="section-header">
+    <span class="tier-badge tier-1">Tier 1</span>
+    <h2>Strategic Partners (Steve Leads)</h2>
+  </div>
+  <div class="contact-grid">
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Scott Crawford</div><div class="org">School Library Journal (SLJ)</div></div>
+        <span class="deadline-badge deadline-soon">April 7</span>
+      </div>
+      <div class="what-happened">Phase 1 integration approved &mdash; automate SLJ review ingestion into Bookmarked board approval workflow. SLJ reviews are the primary source districts use for SB13 compliance (2 reviews required per book).</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Build SLJ integration spec; identify SLJ technical contact; schedule working session</span>
+        <span class="owner-badge">Steve</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Bob Gopal</div><div class="org">SLJ / Junior Library Guild (JLG)</div></div>
+        <span class="deadline-badge deadline-soon">April 7</span>
+      </div>
+      <div class="what-happened">Green-lighted pilot case study with shared JLG + Bookmarked districts. <strong>Hard constraint:</strong> Frame everything as JLG subscriber acquisition &mdash; Bob is narrowly focused on subscription growth.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Define 3&ndash;5 shared district customers for pilot; build "JLG library shelf" in Bookmarked (manual Excel/data feed)</span>
+        <span class="owner-badge">Steve</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">SLJ Counterpart (unnamed)</div><div class="org">SLJ &mdash; Fee-Based Reviews</div></div>
+        <span class="deadline-badge deadline-normal">Before June</span>
+      </div>
+      <div class="what-happened">Fee-based reviews launching June/July 2026 at $700&ndash;$1,000/review (tiered). Landing page partnership discussed. Ingram Spark deal gives SLJ a dedicated page (100K+ publishers). <strong>DO NOT pitch AI reviews to editorial &mdash; "his head will explode."</strong></div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Design co-branded landing page linking Bookmarked publisher onboarding to SLJ fee-based review tier. Formalize revenue share agreement before any referrals.</span>
+        <span class="owner-badge">Steve</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Joanne + Ben</div><div class="org">Scholastic</div></div>
+        <span class="deadline-badge deadline-soon">ASAP</span>
+      </div>
+      <div class="what-happened">Metadata-only path validated (Monarch's feed &mdash; no AI ingestion needed). Ben &amp; Joanne are internal champions but Trade division is risk-averse on AI. Jeff Mathis (President, Education Business) is a warm contact from ASU GSV.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Reach out to Jeff Mathis; prepare concrete pilot proposal (scan Book Fair list against Conroe). Stay in touch with Joanne.</span>
+        <span class="owner-badge">Steve</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Mike Lombardi</div><div class="org">Amazon Business</div></div>
+        <span class="deadline-badge deadline-soon">April 7</span>
+      </div>
+      <div class="what-happened">Amazon expanding into libraries with quarterly webinars (500+ registrations, 50%+ attendance). Content-neutral ("Switzerland") positioning. Can introduce Bookmarked to publishers. AWS synergies possible.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Reach out to Mike Lombardi; explore being infrastructure layer before Amazon builds internally; request publisher introductions. Natasha sits in on call.</span>
+        <span class="owner-badge">Steve + Natasha</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TIER 2: Publishers -->
+<div class="section">
+  <div class="section-header">
+    <span class="tier-badge tier-2">Tier 2</span>
+    <h2>Publishers for Content Scanner Pilot (Natasha Leads)</h2>
+  </div>
+  <div class="contact-grid">
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Ashley Wall</div><div class="org">Mama Bear Publishing</div></div>
+        <span class="deadline-badge deadline-soon">Mar 31 / Apr 2</span>
+      </div>
+      <div class="what-happened">Texas publisher, former teacher. Interested in April&ndash;June pilot. Texas-based &mdash; strategic for local content positioning.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Send portal invite + pilot brief; schedule setup call by April 2</span>
+        <span class="owner-badge">Natasha</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Arlene</div><div class="org">Rosen Books Publishing</div></div>
+        <span class="deadline-badge deadline-soon">This week</span>
+      </div>
+      <div class="what-happened">Met at conference; interested in participating.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Send "here's what we're doing, no cost to you" invitation email</span>
+        <span class="owner-badge">Natasha draft &rarr; Steve approve</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Brad</div><div class="org">Lerner Publishing</div></div>
+        <span class="deadline-badge deadline-soon">This week</span>
+      </div>
+      <div class="what-happened">Met at conference; interested in participating.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Same as Rosen &mdash; invitation to pilot</span>
+        <span class="owner-badge">Natasha draft &rarr; Steve approve</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Cajun Kids (Speaker 3 + Chris)</div><div class="org">Cajun Kids Adventures</div></div>
+        <span class="deadline-badge deadline-soon">This week</span>
+      </div>
+      <div class="what-happened">Enthusiastic; 6 books published, book 7 in May; 20 planned. Webinar collaboration agreed. Also coached on AI tools (Claude, Postiz, Notion).</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Schedule a call; plan webinar/Zoom interview for school district marketing</span>
+        <span class="owner-badge">Natasha</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Tildale Publishing</div><div class="org">Tildale Press (Canada / TX author)</div></div>
+        <span class="deadline-badge deadline-soon">This week</span>
+      </div>
+      <div class="what-happened">Texas author, Canadian publisher. "Mushroom fungi gal." Opportunity to scan books through system and get approved.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Offer to scan their titles through Bookmarked system</span>
+        <span class="owner-badge">Natasha</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Bethany</div><div class="org">Capstone</div></div>
+        <span class="deadline-badge deadline-soon">This week</span>
+      </div>
+      <div class="what-happened">Previously contacted; no response pre-conference.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Re-engage post-conference</span>
+        <span class="owner-badge">Steve</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Angus / Red Comet Press</div><div class="org">Red Comet Press (NYC)</div></div>
+        <span class="deadline-badge deadline-soon">This week</span>
+      </div>
+      <div class="what-happened">New publisher in NYC; distributes through Abrams. Contact at Abrams: Lindsay MacArthur.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Contact Lindsay MacArthur at Abrams Books</span>
+        <span class="owner-badge">Natasha</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Evelyn He</div><div class="org">NoCulture (bilingual/Spanish books)</div></div>
+        <span class="deadline-badge deadline-soon">This week</span>
+      </div>
+      <div class="what-happened">Card picked up; bilingual stories rooted in culture. Good fit for diverse content.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Email intro</span>
+        <span class="owner-badge">Natasha</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Publisher Spotlight (unnamed)</div><div class="org">Unknown</div></div>
+        <span class="deadline-badge deadline-normal">April 7</span>
+      </div>
+      <div class="what-happened">Talked at booth; said she'd reach out.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Wait for her to reach out; follow up if no response in 1 week</span>
+        <span class="owner-badge">Natasha</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">John Seymour</div><div class="org">Tilmore Press (Canada)</div></div>
+        <span class="deadline-badge deadline-soon">This week</span>
+      </div>
+      <div class="what-happened">Met at conference.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Follow up</span>
+        <span class="owner-badge">Natasha</span>
+      </div>
+    </div>
+
+  </div>
+  <div style="margin-top: 12px; padding: 12px 16px; background: #F0FDF4; border-radius: 8px; font-size: 14px; color: #166534;">
+    <strong>Already in pipeline:</strong> Saddleback (MOU signed 3/20), Brave Books, Cajun Kids
+  </div>
+</div>
+
+<!-- TIER 3: Distributors -->
+<div class="section">
+  <div class="section-header">
+    <span class="tier-badge tier-3">Tier 3</span>
+    <h2>Distributors (Natasha Leads)</h2>
+  </div>
+  <div class="contact-grid">
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Alicia Trader</div><div class="org">Creative Book Company (Indiana)</div></div>
+        <span class="deadline-badge deadline-soon">This week</span>
+      </div>
+      <div class="what-happened">Sells to schools including Irving ISD.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Give to Jan for district follow-up; offer to scan their book list through system</span>
+        <span class="owner-badge">Natasha &rarr; Jan</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Gary May (?)</div><div class="org">Garrett Book Company (Houston)</div></div>
+        <span class="deadline-badge deadline-soon">This week</span>
+      </div>
+      <div class="what-happened">Distributor; brought Georgetown ISD librarian to the conversation.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Scan their title list &mdash; flag what's clean vs. flagged</span>
+        <span class="owner-badge">Natasha</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">John Ritchie</div><div class="org">Garrett Book Company</div></div>
+        <span class="deadline-badge deadline-soon">This week</span>
+      </div>
+      <div class="what-happened">Rep who knows Georgetown ISD. Can route the librarian lead.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Route Georgetown ISD librarian lead through him</span>
+        <span class="owner-badge">Steve</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Mike P</div><div class="org">Libraria (formerly Children's Plus)</div></div>
+        <span class="deadline-badge deadline-soon">This week</span>
+      </div>
+      <div class="what-happened">Distributor; buys reviews from SLJ, LJ, Horn Book, Kirkus; works with hundreds of vendors. Inconsistent metadata across publishers is a pain point.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Follow up &mdash; "give us your data, we'll upload to our system and surface what we find"</span>
+        <span class="owner-badge">Natasha</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Gumdrop Books</div><div class="org">Gumdrop Books (distributor)</div></div>
+        <span class="deadline-badge deadline-soon">This week</span>
+      </div>
+      <div class="what-happened">Brief conversation; gave list of all their publishers on back of business card.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Follow up with their publisher list &mdash; potential batch onboarding</span>
+        <span class="owner-badge">Natasha</span>
+      </div>
+    </div>
+
+    <div class="contact-card" style="opacity: 0.6;">
+      <div class="card-header">
+        <div><div class="name">Joe Berry</div><div class="org">Insignia</div></div>
+      </div>
+      <div class="what-happened">Met at conference. Steve: "probably throw it in the garbage." Deprioritized.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TIER 4: School Districts -->
+<div class="section">
+  <div class="section-header">
+    <span class="tier-badge tier-4">Tier 4</span>
+    <h2>School Districts (Steve / Jan / Teela)</h2>
+  </div>
+  <div class="contact-grid">
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Mindy Autry</div><div class="org">Midlothian ISD</div></div>
+        <span class="deadline-badge deadline-soon">April 7</span>
+      </div>
+      <div class="what-happened">Warm; ALA legal trainer; TLA volunteer. Manages grants (~80% of her time). Deficit budget. Validated core workflow (CSV upload &rarr; AI flagging &rarr; parent comment portal &rarr; board review). Understands manuscript-level vs. metadata distinction.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Invite to publisher/district focus group; connect with ESC 10 for "Lawful Librarians" training. Lead with time savings &mdash; budget sensitivity is real.</span>
+        <span class="owner-badge">Steve</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Georgetown ISD Librarian</div><div class="org">Williams Elementary, Georgetown ISD</div></div>
+        <span class="deadline-badge deadline-normal">Next cycle</span>
+      </div>
+      <div class="what-happened">First-year librarian. Ordering deadline passed ("my deadline has come and gone"). Nonfiction review gap validated &mdash; "nonfiction books never get reviews." If Bookmarked is accepted as a review source, "that could be a big deal."</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Route through John Ritchie (Garrett Book Company); nurture for next ordering cycle</span>
+        <span class="owner-badge">Jan / Teela</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Speaker 4 (unnamed)</div><div class="org">Unknown district</div></div>
+        <span class="deadline-badge deadline-soon">April 7</span>
+      </div>
+      <div class="what-happened">Using ChatGPT for SB13 screening &mdash; uploading spreadsheets, writing own prompts. Agreed to share criteria spreadsheet + AI prompt. Open to focus group as a non-customer.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Follow up for spreadsheet + prompt; invite to focus group</span>
+        <span class="owner-badge">Steve</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Forney ISD</div><div class="org">Forney ISD</div></div>
+        <span class="deadline-badge deadline-soon">This week</span>
+      </div>
+      <div class="what-happened">Pre-conference plan to bring them onto program.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Confirm status</span>
+        <span class="owner-badge">Steve</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TIER 5: Advocacy / Other -->
+<div class="section">
+  <div class="section-header">
+    <span class="tier-badge tier-5">Tier 5</span>
+    <h2>Advocacy &amp; Other Contacts</h2>
+  </div>
+  <div class="contact-grid">
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Anne &amp; Lainey</div><div class="org">Freedom to Read</div></div>
+        <span class="deadline-badge deadline-soon">April 3 / April 10</span>
+      </div>
+      <div class="what-happened">Skeptical of AI lists; concerned about bias against diverse/inclusive titles, bulk removals, librarian autonomy. Flagged New Braunfels ISD as example of over-correction. Mentioned Rated Books (Brooke Stevens).</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Schedule meeting to capture detailed feedback; explore collaboration guidelines that protect librarian autonomy</span>
+        <span class="owner-badge">Steve</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Katie</div><div class="org">JLG (Product Manager)</div></div>
+        <span class="deadline-badge deadline-normal">This week</span>
+      </div>
+      <div class="what-happened">Brief intro at conference; no business discussed. Warm contact now exists.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Log as warm contact; monitor</span>
+        <span class="owner-badge">Natasha</span>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="card-header">
+        <div><div class="name">Liz (unknown)</div><div class="org">Unknown</div></div>
+        <span class="deadline-badge deadline-soon">This week</span>
+      </div>
+      <div class="what-happened">Reacted positively to SB13/SB1300 pitch. No last name or title captured.</div>
+      <div class="action-row">
+        <span class="action-label">Next</span>
+        <span class="action-text">Identify full name and organization; follow up</span>
+        <span class="owner-badge">Natasha</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top: 12px; padding: 12px 16px; background: #FEF2F2; border-radius: 8px; font-size: 14px; color: #991B1B;">
+    <strong>Deactivate:</strong> Ben (Cherry Lake / PRH) &mdash; sold company to Penguin Random House. Mark INACTIVE in HubSpot.
+  </div>
+</div>
+
+<!-- Internal Actions -->
+<div class="section">
+  <div class="section-header">
+    <h2>Internal Actions Required</h2>
+  </div>
+
+  <div class="action-block">
+    <h3>1. Raju Meeting</h3>
+    <p>Steve, Natasha, and Raju &mdash; 30 minutes to discuss his role in publisher/district focus groups. He needs to hear feedback firsthand to build the right thing.</p>
+    <div class="detail">Owner: Natasha schedules | Target: Wednesday April 2</div>
+  </div>
+
+  <div class="action-block">
+    <h3>2. Content Scanner V1 Timeline</h3>
+    <p>Target: August 1, 2026. Monthly milestones needed. Ask Raju: "In a perfect world, what's realistic?"</p>
+    <div class="detail">Principle: Under-promise. If September 1 is more realistic, say September 1.</div>
+  </div>
+
+  <div class="action-block">
+    <h3>3. Lock In Pilot Districts</h3>
+    <p>Steve locks in which districts participate in Content Scanner pilot this week. Two tiers: active participants vs. observers.</p>
+    <div class="detail">Need clear language for publishers on why these districts, that it's a pilot, and it expands after.</div>
+  </div>
+
+  <div class="action-block">
+    <h3>4. Publisher Communication Package</h3>
+    <p>Standard outreach language: what the pilot is, what's expected, no cost, timeline. Natasha drafts via Claude, Steve approves.</p>
+    <div class="detail">Include: portal link, what they provide (PDFs/content), what they get back.</div>
+  </div>
+
+  <div class="action-block">
+    <h3>5. Responsible Use Guidance</h3>
+    <p>Triggered by Freedom to Read concerns. Draft guidance: Bookmarked data is informational, not prescriptive. Discourage bulk removals. Encourage librarian oversight.</p>
+    <div class="detail">Draft by April 5; publish by April 9. Owner: Product Marketing + Legal, Steve approves.</div>
+  </div>
+
+  <div class="action-block">
+    <h3>6. Data Quality Plan</h3>
+    <p>Reduce reliance on external "challenge lists"; prioritize verified district status and publisher-provided content; add confidence/verification tags.</p>
+    <div class="detail">Plan by April 12; initial implementation by May 1.</div>
+  </div>
+</div>
+
+<!-- Competitive Intel -->
+<div class="section">
+  <div class="section-header">
+    <h2>Competitive Intelligence</h2>
+  </div>
+  <table class="intel-table">
+    <thead>
+      <tr><th>Competitor</th><th>Intelligence</th><th>Implication</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Follett / Destiny</strong></td>
+        <td>~90% of district book orders via Destiny ILS integration. Not innovating. "Collet Engage" add-on uses metadata only.</td>
+        <td>Bookmarked's manuscript-level AI is the more accurate, more defensible alternative.</td>
+      </tr>
+      <tr>
+        <td><strong>Mackin / TitleWave</strong></td>
+        <td>Has collection-holdings overlay &mdash; surfaces what a district already owns.</td>
+        <td style="color: var(--bm-pumpkin); font-weight: 600;">Product gap: build collection intelligence feature. Start with Conroe.</td>
+      </tr>
+      <tr>
+        <td><strong>Olive</strong></td>
+        <td>Also has collection-holdings overlay feature.</td>
+        <td style="color: var(--bm-pumpkin); font-weight: 600;">Same product gap &mdash; validate and close.</td>
+      </tr>
+      <tr>
+        <td><strong>Tidal</strong></td>
+        <td>Declined data sharing partnership. Will try to build similar features internally.</td>
+        <td>Monitor for copycat development. Steve: "their software's a piece of shit."</td>
+      </tr>
+      <tr>
+        <td><strong>Amazon Business</strong></td>
+        <td>Expanding into libraries; 500+ webinar registrations; content-neutral positioning.</td>
+        <td>Be the infrastructure layer before they build it themselves.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Key Strategic Insights -->
+<div class="section">
+  <div class="section-header">
+    <h2>Key Strategic Insights</h2>
+  </div>
+
+  <div class="insight-card">
+    <strong>SLJ AI Constraint is HARD</strong>
+    <p>"Anything that smacks of AI would be a major red flag for our brand." Do NOT pitch AI reviews to SLJ editorial. Hold until Phase 1 is proven and trust is established.</p>
+  </div>
+
+  <div class="insight-card">
+    <strong>40% of Purchased Books Never Circulate</strong>
+    <p>Powerful data point for librarian messaging. Data-driven purchasing is a compelling value prop.</p>
+  </div>
+
+  <div class="insight-card">
+    <strong>Nonfiction Review Gap is Real</strong>
+    <p>"Nonfiction books never get reviews" &mdash; but districts still require 2&ndash;3 reviews per title. If Bookmarked is accepted as a review source, that's a game-changer.</p>
+  </div>
+
+  <div class="insight-card">
+    <strong>Districts Are Already Doing DIY Versions</strong>
+    <p>At least one district contact is manually using ChatGPT + spreadsheets for SB13 screening. Exact product-market fit validation.</p>
+  </div>
+
+  <div class="insight-card">
+    <strong>Revenue Share Not Formalized</strong>
+    <p>Steve offered to share fee-based review revenue with SLJ. No terms formalized. Formal agreement required before any publisher referrals.</p>
+  </div>
+
+  <div class="insight-card">
+    <strong>PEN America Data is "Completely Inaccurate"</strong>
+    <p>Districts are blanket-rejecting entire lists without nuance. Bookmarked's network-effect data can credibly address this by providing verified, granular tracking.</p>
+  </div>
+</div>
+
+<!-- Natasha's Action List -->
+<div class="section">
+  <div class="section-header">
+    <h2>Natasha's Prioritized Action List</h2>
+  </div>
+  <ul class="checklist">
+    <li class="priority-high">Send portal invite + pilot brief to Ashley Wall (Mama Bear Publishing) &mdash; Texas publisher, highest priority</li>
+    <li class="priority-high">Schedule Raju meeting for Wednesday April 2 (Steve + Natasha + Raju, 30 min)</li>
+    <li class="priority-normal">Draft publisher invitation email for Steve's approval (Rosen/Arlene, Lerner/Brad, and batch template)</li>
+    <li class="priority-normal">Schedule call with Cajun Kids Adventures; begin planning webinar collaboration</li>
+    <li class="priority-normal">Contact Lindsay MacArthur at Abrams Books (intro from Angus / Red Comet Press)</li>
+    <li class="priority-normal">Email Evelyn He at NoCulture (bilingual/Spanish books)</li>
+    <li class="priority-normal">Follow up with Tildale Publishing &mdash; offer to scan titles through system</li>
+    <li class="priority-normal">Follow up with John Seymour (Tilmore Press)</li>
+    <li class="priority-normal">Route Alicia Trader (Creative Book Company / Irving ISD) to Jan</li>
+    <li class="priority-normal">Follow up with Garrett Book Company (Gary May) &mdash; scan their title list</li>
+    <li class="priority-normal">Follow up with Libraria (Mike P) &mdash; "give us your data"</li>
+    <li class="priority-normal">Follow up with Gumdrop Books &mdash; get their full publisher list for batch onboarding</li>
+    <li class="priority-normal">Log Katie (JLG Product Manager) as warm contact</li>
+    <li class="priority-normal">Identify Liz (unknown org) &mdash; full name and organization</li>
+    <li class="priority-normal">Mark Ben (Cherry Lake / PRH) as INACTIVE in HubSpot</li>
+  </ul>
+</div>
+
+<!-- Phase Timeline -->
+<div class="section">
+  <div class="section-header">
+    <h2>Execution Timeline</h2>
+  </div>
+  <div class="phase-timeline">
+    <div class="phase-card">
+      <div class="phase-num">Phase 1</div>
+      <h3>Organize &amp; Assign</h3>
+      <div class="dates">March 31 &ndash; April 4</div>
+      <ol>
+        <li>Create TLA 2026 Confluence page</li>
+        <li>Natasha sends publisher invitations</li>
+        <li>Steve locks in pilot districts</li>
+        <li>Schedule Raju meeting (April 2)</li>
+        <li>Route district leads to Jan/Teela</li>
+        <li>Distribute follow-up assignments</li>
+      </ol>
+    </div>
+    <div class="phase-card">
+      <div class="phase-num">Phase 2</div>
+      <h3>Publisher Engagement</h3>
+      <div class="dates">April 7 &ndash; April 18</div>
+      <ol>
+        <li>Host publisher working session</li>
+        <li>Send pre-meeting surveys via portal</li>
+        <li>Begin SLJ integration spec</li>
+        <li>Build JLG library shelf</li>
+        <li>Draft Responsible Use guidance</li>
+      </ol>
+    </div>
+    <div class="phase-card">
+      <div class="phase-num">Phase 3</div>
+      <h3>Focus Groups &amp; Pilot</h3>
+      <div class="dates">April 21 &ndash; May</div>
+      <ol>
+        <li>Run 2 publisher + 2 district focus groups</li>
+        <li>Content Scanner prototype (end of May)</li>
+        <li>JLG pilot case study with 3&ndash;5 districts</li>
+        <li>SLJ co-branded landing page</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  Bookmarked &mdash; TLA 2026 Conference Follow-Up &mdash; Confidential &mdash; Generated March 31, 2026
+</div>
+
+</body>
+</html>
