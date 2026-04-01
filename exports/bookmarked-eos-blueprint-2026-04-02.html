@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookmarked EOS Blueprint</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bm-eigengrau: #101828;
+  --bm-deep-green: #107569;
+  --bm-teal-accent: #12A38C;
+  --bm-white: #FFFFFF;
+  --bm-pumpkin: #FF692E;
+  --bm-bg-cool: #F8FAFC;
+  --bm-bg-warm: #F8F5F0;
+  --bm-bg-light: #F9FAFB;
+  --bm-border-light: #E5E7EB;
+  --bm-muted-gray: #9CA3AF;
+  --bm-secondary-text: #475467;
+  --bm-teal-dark: #0D5A52;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Urbanist', Arial, sans-serif;
+  color: var(--bm-eigengrau);
+  background: var(--bm-white);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Header */
+.hero {
+  background: linear-gradient(135deg, #0D5A52 0%, #107569 40%, #12A38C 100%);
+  color: white;
+  padding: 56px 32px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -50%; right: -30%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hero h1 {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero .tagline {
+  font-size: 20px;
+  font-weight: 500;
+  opacity: 0.9;
+  max-width: 600px;
+  line-height: 1.4;
+  position: relative;
+  z-index: 1;
+}
+
+.hero .meta-bar {
+  margin-top: 20px;
+  font-size: 13px;
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Section nav */
+.section-nav {
+  background: var(--bm-bg-cool);
+  border-bottom: 1px solid var(--bm-border-light);
+  padding: 16px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.section-nav .container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.section-nav a {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bm-deep-green);
+  text-decoration: none;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--bm-border-light);
+  background: white;
+  transition: all 0.15s;
+}
+
+.section-nav a:hover {
+  background: var(--bm-deep-green);
+  color: white;
+  border-color: var(--bm-deep-green);
+}
+
+/* The philosophy callout */
+.philosophy {
+  background: var(--bm-eigengrau);
+  color: white;
+  padding: 32px;
+  border-radius: 16px;
+  margin: 32px 0;
+}
+
+.philosophy h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--bm-teal-accent);
+  margin-bottom: 12px;
+  border: none;
+  padding: 0;
+}
+
+.philosophy p {
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-bottom: 12px;
+}
+
+.philosophy .highlight {
+  color: var(--bm-pumpkin);
+  font-weight: 700;
+}
+
+/* Sections */
+section {
+  margin: 40px 0;
+  scroll-margin-top: 60px;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--bm-deep-green);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--bm-teal-accent);
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--bm-eigengrau);
+  margin: 20px 0 10px;
+}
+
+h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--bm-teal-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 16px 0 8px;
+}
+
+p { margin-bottom: 10px; font-size: 15px; }
+
+/* Component grid */
+.eos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+@media (max-width: 700px) {
+  .eos-grid { grid-template-columns: 1fr; }
+}
+
+.eos-card {
+  background: var(--bm-bg-cool);
+  border: 1px solid var(--bm-border-light);
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+}
+
+.eos-card.full { grid-column: 1 / -1; }
+
+.eos-card .card-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.eos-card .card-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--bm-teal-accent);
+  margin-bottom: 4px;
+}
+
+.eos-card .card-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--bm-eigengrau);
+  margin-bottom: 6px;
+}
+
+.eos-card .card-body {
+  font-size: 14px;
+  color: var(--bm-secondary-text);
+  line-height: 1.5;
+}
+
+.eos-card .card-body strong {
+  color: var(--bm-eigengrau);
+}
+
+/* EOS status badge */
+.status-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+.status-done { background: #D1FAE5; color: #065F46; }
+.status-starting { background: #FEF3C7; color: #92400E; }
+.status-not-started { background: #FEE2E2; color: #991B1B; }
+.status-in-progress { background: #DBEAFE; color: #1E40AF; }
+
+/* Values row */
+.values-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.value-chip {
+  background: var(--bm-deep-green);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Accountability chart */
+.acct-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 14px;
+}
+
+.acct-table thead th {
+  background: var(--bm-deep-green);
+  color: white;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.acct-table thead th:first-child { border-radius: 8px 0 0 0; }
+.acct-table thead th:last-child { border-radius: 0 8px 0 0; }
+
+.acct-table tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--bm-border-light);
+  vertical-align: top;
+}
+
+.acct-table tbody tr:nth-child(even) { background: var(--bm-bg-light); }
+.acct-table .person { font-weight: 700; color: var(--bm-eigengrau); }
+.acct-table .metric { font-weight: 600; color: var(--bm-teal-accent); }
+
+/* Meeting rhythm */
+.rhythm-card {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--bm-border-light);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.rhythm-freq {
+  width: 90px;
+  min-width: 90px;
+  background: var(--bm-deep-green);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 8px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+}
+
+.rhythm-body {
+  padding: 12px 16px;
+  flex: 1;
+}
+
+.rhythm-body .rhythm-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--bm-eigengrau);
+}
+
+.rhythm-body .rhythm-who {
+  font-size: 13px;
+  color: var(--bm-teal-accent);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.rhythm-body .rhythm-desc {
+  font-size: 13px;
+  color: var(--bm-secondary-text);
+}
+
+/* Trade-off hierarchy */
+.tradeoff-tier {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 16px;
+  border-left: 4px solid;
+  margin-bottom: 8px;
+  border-radius: 0 8px 8px 0;
+  background: var(--bm-bg-cool);
+}
+
+.tradeoff-tier.t1 { border-color: var(--bm-pumpkin); }
+.tradeoff-tier.t2 { border-color: var(--bm-teal-accent); }
+.tradeoff-tier.t3 { border-color: var(--bm-muted-gray); }
+
+.tradeoff-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  min-width: 60px;
+  margin-right: 12px;
+  padding-top: 2px;
+}
+
+.tradeoff-tier.t1 .tradeoff-label { color: var(--bm-pumpkin); }
+.tradeoff-tier.t2 .tradeoff-label { color: var(--bm-teal-accent); }
+.tradeoff-tier.t3 .tradeoff-label { color: var(--bm-muted-gray); }
+
+.tradeoff-content {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Rocks */
+.rock-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 16px;
+  background: var(--bm-bg-cool);
+  border: 1px solid var(--bm-border-light);
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.rock-owner {
+  background: var(--bm-deep-green);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin-right: 12px;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.rock-desc {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.rock-desc strong {
+  color: var(--bm-eigengrau);
+}
+
+/* Hard boundaries */
+.boundary-list {
+  list-style: none;
+  margin: 12px 0;
+}
+
+.boundary-list li {
+  padding: 8px 12px 8px 36px;
+  position: relative;
+  font-size: 14px;
+  border-bottom: 1px solid var(--bm-border-light);
+}
+
+.boundary-list li::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #EF4444;
+}
+
+/* IDS format */
+.ids-flow {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+
+.ids-step {
+  flex: 1;
+  min-width: 140px;
+  background: var(--bm-bg-cool);
+  border: 1px solid var(--bm-border-light);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+
+.ids-step .step-num {
+  width: 32px;
+  height: 32px;
+  background: var(--bm-deep-green);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 14px;
+  margin: 0 auto 8px;
+}
+
+.ids-step .step-label {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.ids-step .step-desc {
+  font-size: 12px;
+  color: var(--bm-secondary-text);
+}
+
+/* AI-Native callout */
+.ai-native-box {
+  background: linear-gradient(135deg, var(--bm-eigengrau) 0%, #1D2939 100%);
+  color: white;
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin: 24px 0;
+}
+
+.ai-native-box h3 {
+  color: var(--bm-teal-accent);
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.ai-native-box p {
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.ai-native-box .ai-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+@media (max-width: 700px) {
+  .ai-native-box .ai-grid { grid-template-columns: 1fr; }
+}
+
+.ai-native-box .ai-cat {
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.ai-native-box .ai-cat-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--bm-teal-accent);
+  margin-bottom: 4px;
+}
+
+.ai-native-box .ai-cat-title {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.ai-native-box .ai-cat-desc {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* Implementation timeline */
+.timeline {
+  position: relative;
+  margin: 20px 0 20px 20px;
+  padding-left: 28px;
+  border-left: 3px solid var(--bm-border-light);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 24px;
+}
+
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -34px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bm-deep-green);
+  border: 3px solid var(--bm-bg-cool);
+}
+
+.timeline-item.active::before {
+  background: var(--bm-pumpkin);
+  box-shadow: 0 0 0 4px rgba(255,105,46,0.2);
+}
+
+.timeline-item .tl-date {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--bm-teal-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.timeline-item .tl-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--bm-eigengrau);
+  margin: 2px 0;
+}
+
+.timeline-item .tl-desc {
+  font-size: 13px;
+  color: var(--bm-secondary-text);
+}
+
+/* Footer */
+.page-footer {
+  background: var(--bm-eigengrau);
+  color: rgba(255,255,255,0.5);
+  padding: 32px;
+  text-align: center;
+  font-size: 13px;
+  margin-top: 48px;
+}
+
+.page-footer .footer-brand {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--bm-teal-accent);
+  margin-bottom: 4px;
+}
+
+/* Print */
+@media print {
+  .section-nav { display: none; }
+  .hero { padding: 24px 16px; }
+  .hero h1 { font-size: 30px; }
+  section { margin: 20px 0; break-inside: avoid; }
+  .eos-card, .rhythm-card, .rock-item { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="container">
+    <h1>The Bookmarked<br>Operating System</h1>
+    <div class="tagline">How we run the company. EOS adapted for an AI-native organization building the Book Intelligence category.</div>
+    <div class="meta-bar">Implementation Blueprint &bull; April 2026 &bull; Confidential</div>
+  </div>
+</div>
+
+<div class="section-nav">
+  <div class="container">
+    <a href="#vision">Vision</a>
+    <a href="#values">Values</a>
+    <a href="#accountability">Accountability</a>
+    <a href="#scorecard">Scorecard</a>
+    <a href="#rocks">Rocks</a>
+    <a href="#rhythm">Meeting Rhythm</a>
+    <a href="#ids">IDS</a>
+    <a href="#tradeoffs">Trade-Offs</a>
+    <a href="#ai-native">AI-Native</a>
+    <a href="#rollout">Rollout</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Philosophy -->
+  <div class="philosophy">
+    <h2>Why We're Doing This</h2>
+    <p>Bookmarked has vision, product, and momentum. What we lack is <span class="highlight">consistent operational discipline</span> &mdash; the structure that turns vision into weekly execution, makes expectations clear for everyone, and holds the entire team (including the CEO) accountable to measurable outcomes.</p>
+    <p>EOS (Entrepreneurial Operating System) gives us the framework. We're not adopting it because it's trendy &mdash; we're adopting it because we need <span class="highlight">one system, one language, one rhythm</span> that everyone follows. No exceptions. No excuses. Results over reasons.</p>
+    <p>This is <strong>not a document to read and file</strong>. This is how we operate, starting now.</p>
+  </div>
+
+  <!-- ==================== VISION ==================== -->
+  <section id="vision">
+    <h2>1. Vision / Traction Organizer (V/TO)</h2>
+    <p>The V/TO gets the entire leadership team on the same page with where we're going and how we plan to get there. Every answer below has been worked through and validated.</p>
+
+    <div class="eos-grid">
+      <div class="eos-card full">
+        <div class="card-label">Core Focus</div>
+        <div class="card-title">Help everyone find the next great book.</div>
+        <div class="card-body"><strong>Our Niche:</strong> Book Intelligence &mdash; the category we created and own. Not a feature. Not a tagline. A category definition.</div>
+      </div>
+
+      <div class="eos-card">
+        <div class="card-label">10-Year Target</div>
+        <div class="card-title">The intelligence layer between every book and every reader, writer, and publisher.</div>
+        <div class="card-body">Every book published is understood by our intelligence. Every reader has a path to discovery. The book industry grows.</div>
+      </div>
+
+      <div class="eos-card">
+        <div class="card-label">3-Year Picture (Feb 2029)</div>
+        <div class="card-title">$100&ndash;150M combined revenue</div>
+        <div class="card-body">30+ states &bull; 1,000+ districts &bull; 20&ndash;30 people &bull; Content Scanner live &bull; Publisher marketplace operational &bull; $3&ndash;5M revenue per employee</div>
+      </div>
+
+      <div class="eos-card full">
+        <div class="card-label">1-Year Plan (Feb 2027)</div>
+        <div class="card-title">$7M ARR</div>
+        <div class="card-body">150&ndash;250 paying districts &bull; 2&ndash;3 expansion states &bull; First publisher partnership signed &bull; Break-even achieved &bull; Content Scanner architecture shipped &bull; EOS rhythm established &bull; 12&ndash;15 team members</div>
+      </div>
+
+      <div class="eos-card">
+        <div class="card-label">Three Uniques</div>
+        <div class="card-body">
+          <strong>1.</strong> Proactive intelligence that never sleeps<br>
+          <strong>2.</strong> Legally defensible by design<br>
+          <strong>3.</strong> See the entire district &mdash; and optimize it
+        </div>
+      </div>
+
+      <div class="eos-card">
+        <div class="card-label">Target Market</div>
+        <div class="card-body">
+          K&ndash;12 school districts in compliance states<br>
+          <strong>Sweet spot:</strong> 10,000&ndash;50,000 students<br>
+          <strong>Beachhead:</strong> Texas (150+ districts today)<br>
+          <strong>Buyer:</strong> Superintendents &amp; Directors of Library Services
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CORE VALUES ==================== -->
+  <section id="values">
+    <h2>2. Core Values</h2>
+    <p>These are discovered from our best people, not invented. Every hire, fire, review, and recognition decision runs through these values. The test: Would you fire someone who consistently violated this value, even if they were hitting their numbers?</p>
+
+    <div class="values-row">
+      <span class="value-chip">Own It</span>
+      <span class="value-chip">Build With What You Have</span>
+      <span class="value-chip">Never Stop Learning</span>
+      <span class="value-chip">Care Enough to Be Honest</span>
+      <span class="value-chip">Focus Over Frenzy</span>
+    </div>
+
+    <div class="eos-grid">
+      <div class="eos-card">
+        <div class="card-title">Own It</div>
+        <div class="card-body">Take initiative. Solve problems. Don't wait to be told. See what needs to happen and make it happen &mdash; before anyone asks.</div>
+      </div>
+      <div class="eos-card">
+        <div class="card-title">Build With What You Have</div>
+        <div class="card-body">Resourcefulness over resources. Work within what's available and build from there. Don't wait for perfect conditions. Create structure for others to follow.</div>
+      </div>
+      <div class="eos-card">
+        <div class="card-title">Never Stop Learning</div>
+        <div class="card-body">Always be growing. Elevate yourself and everything around you. Create A-ha moments. Complacency is the enemy.</div>
+      </div>
+      <div class="eos-card">
+        <div class="card-title">Care Enough to Be Honest</div>
+        <div class="card-body">People matter. Truth matters. Deliver both with respect. Hard truths delivered with understanding &mdash; without undermining how others think.</div>
+      </div>
+      <div class="eos-card full">
+        <div class="card-title">Focus Over Frenzy</div>
+        <div class="card-body">When there are a hundred ideas flying, pick the right ones. Execute with discipline. "How about we do this and talk about the other things later?" Alignment with the vision beats activity without direction.</div>
+      </div>
+    </div>
+
+    <h4>How We Use Core Values</h4>
+    <ul style="font-size:14px;margin-left:20px;line-height:1.8;">
+      <li><strong>People Analyzer (+/+/-/-):</strong> Rate every team member on each value quarterly</li>
+      <li><strong>Hiring:</strong> Screen for values fit before evaluating skills</li>
+      <li><strong>Firing:</strong> Three or more minuses on Core Values = wrong person, regardless of performance</li>
+      <li><strong>Quarterly Conversations:</strong> Core Values review is Part 1 of the 5-5-5</li>
+      <li><strong>Recognition:</strong> Thump-Thump moments tied to specific Core Values</li>
+    </ul>
+  </section>
+
+  <!-- ==================== ACCOUNTABILITY ==================== -->
+  <section id="accountability">
+    <h2>3. Accountability Chart</h2>
+    <p>Right people, right seats. Everyone has one primary function, clear KPIs, and one person they're accountable to. No dual accountability. No ambiguity.</p>
+
+    <table class="acct-table">
+      <thead>
+        <tr>
+          <th>Function</th>
+          <th>Accountable</th>
+          <th>Leading KPIs (Weekly)</th>
+          <th>Lagging Outcomes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Visionary / CEO</strong></td>
+          <td class="person">Steve</td>
+          <td>To-dos completed, strategic meetings held</td>
+          <td>Revenue growth, team alignment, EOS consistency</td>
+        </tr>
+        <tr>
+          <td><strong>Engineering</strong></td>
+          <td class="person">Raju</td>
+          <td class="metric">Sprint commitment completion %</td>
+          <td>On-time delivery, system uptime, BI data freshness</td>
+        </tr>
+        <tr>
+          <td><strong>Sales</strong></td>
+          <td class="person">Jan</td>
+          <td class="metric">Qualified meetings held, deals advanced</td>
+          <td>New ARR, pipeline value, conversion rate, deal velocity</td>
+        </tr>
+        <tr>
+          <td><strong>Customer Success</strong></td>
+          <td class="person">Patrick</td>
+          <td class="metric">Customer touchpoints, districts onboarded</td>
+          <td>Net revenue retention, satisfaction, renewal rate</td>
+        </tr>
+        <tr>
+          <td><strong>Marketing</strong></td>
+          <td class="person" style="color:var(--bm-pumpkin);">Jan (interim)</td>
+          <td>ESC co-marketing activities, inbound leads</td>
+          <td>Qualified leads, cost per lead</td>
+        </tr>
+        <tr>
+          <td><strong>Product</strong></td>
+          <td class="person" style="color:var(--bm-muted-gray);">TBD (Sarah transitioning)</td>
+          <td>PRDs delivered, feedback items triaged</td>
+          <td>Feature adoption, requirements quality</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:13px;color:var(--bm-secondary-text);margin-top:8px;"><strong>Known gap:</strong> Jan holds dual function (Sales + Marketing). Marketing seat needs to be filled. Sarah is transitioning from Product to Operations &mdash; product function accountability to be reassigned.</p>
+  </section>
+
+  <!-- ==================== SCORECARD ==================== -->
+  <section id="scorecard">
+    <h2>4. Scorecard</h2>
+    <p>Weekly numbers that tell us if we're on track &mdash; without a management opinion. Green or red. On track or off track. No stories.</p>
+
+    <h3>Minimum Viable Scorecard (Starting Week 1)</h3>
+    <p style="font-size:14px;color:var(--bm-secondary-text);">Start with one metric per person. Build the habit of weekly measurement. Expand after 4 consistent weeks.</p>
+
+    <table class="acct-table">
+      <thead>
+        <tr><th>Owner</th><th>Metric</th><th>Weekly Target</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="person">Steve</td>
+          <td>To-dos completed from prior week</td>
+          <td class="metric">90%</td>
+          <td>L10 to-do list</td>
+        </tr>
+        <tr>
+          <td class="person">Raju</td>
+          <td>Sprint commitment completion %</td>
+          <td class="metric">80%</td>
+          <td>Jira sprint report</td>
+        </tr>
+        <tr>
+          <td class="person">Jan</td>
+          <td>Qualified meetings held</td>
+          <td class="metric">3</td>
+          <td>HubSpot</td>
+        </tr>
+        <tr>
+          <td class="person">Patrick</td>
+          <td>Customer touchpoints</td>
+          <td class="metric">5</td>
+          <td>HubSpot activity</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Full Scorecard (Target: Week 5+)</h3>
+    <p style="font-size:14px;color:var(--bm-secondary-text);">Expand to include revenue, pipeline, retention, and engineering metrics as the habit locks in.</p>
+
+    <table class="acct-table">
+      <thead>
+        <tr><th>Category</th><th>Metric</th><th>Target</th><th>Owner</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Revenue</strong></td><td>Net New ARR</td><td>Track to $7M</td><td>Steve</td></tr>
+        <tr><td><strong>Pipeline</strong></td><td>Pipeline coverage</td><td>1.5&ndash;2x target</td><td>Jan</td></tr>
+        <tr><td><strong>Pipeline</strong></td><td>New pipeline created</td><td>TBD</td><td>Jan</td></tr>
+        <tr><td><strong>Retention</strong></td><td>Net revenue retention</td><td>&gt;100%</td><td>Patrick</td></tr>
+        <tr><td><strong>Engineering</strong></td><td>Sprint completion rate</td><td>85%+</td><td>Raju</td></tr>
+        <tr><td><strong>Engineering</strong></td><td>System uptime</td><td>99.5%</td><td>Raju</td></tr>
+        <tr><td><strong>Customer</strong></td><td>Time to value (days)</td><td>TBD</td><td>Patrick</td></tr>
+        <tr><td><strong>Financial</strong></td><td>Monthly net burn</td><td>Track to break-even</td><td>Steve</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== ROCKS ==================== -->
+  <section id="rocks">
+    <h2>5. Rocks (Q2 2026)</h2>
+    <p>3&ndash;7 company priorities for the quarter. SMART: Specific, Measurable, Attainable, Realistic, Timely. If it's not done at the end of 90 days, it's off track &mdash; period.</p>
+
+    <div class="rock-item">
+      <span class="rock-owner">Steve</span>
+      <div class="rock-desc"><strong>EOS Operational Rhythm</strong> &mdash; Run 4 consecutive weekly L10 meetings with Scorecard data. Complete full-team L10 rollout by April 14. <span class="status-badge status-starting">Starting</span></div>
+    </div>
+
+    <div class="rock-item">
+      <span class="rock-owner">Raju</span>
+      <div class="rock-desc"><strong>Content Scanner Architecture</strong> &mdash; Deliver architecture sprint document reviewed and approved. AWS partnership requirements scoped. <span class="status-badge status-in-progress">In Progress</span></div>
+    </div>
+
+    <div class="rock-item">
+      <span class="rock-owner">Jan</span>
+      <div class="rock-desc"><strong>Pipeline Target</strong> &mdash; Close $[X] in new pipeline. Build the repeatable pipeline machine. <span class="status-badge status-in-progress">In Progress</span></div>
+    </div>
+
+    <div class="rock-item">
+      <span class="rock-owner">Jan + Steve</span>
+      <div class="rock-desc"><strong>Expansion State</strong> &mdash; Launch first expansion state beyond Texas. Operational by end of quarter. <span class="status-badge status-not-started">Not Started</span></div>
+    </div>
+
+    <div class="rock-item">
+      <span class="rock-owner">Patrick</span>
+      <div class="rock-desc"><strong>Renewal Playbook</strong> &mdash; Build and deploy systematic renewal playbook. Proactive renewal process established. <span class="status-badge status-not-started">Not Started</span></div>
+    </div>
+
+    <div class="rock-item">
+      <span class="rock-owner">Steve</span>
+      <div class="rock-desc"><strong>Marketing Seat</strong> &mdash; Marketing function staffed (hire or fractional). Jan relieved of marketing dual-function. <span class="status-badge status-not-started">Not Started</span></div>
+    </div>
+
+    <div class="rock-item">
+      <span class="rock-owner">Steve</span>
+      <div class="rock-desc"><strong>Publisher Pipeline</strong> &mdash; 3+ active publisher conversations. At least 1 MOU or signed partnership beyond Saddleback. <span class="status-badge status-in-progress">In Progress</span></div>
+    </div>
+  </section>
+
+  <!-- ==================== MEETING RHYTHM ==================== -->
+  <section id="rhythm">
+    <h2>6. Meeting Pulse</h2>
+    <p>Same day. Same time. Non-negotiable. The meeting pulse is how EOS becomes real instead of a deck that sits in a folder.</p>
+
+    <div class="rhythm-card">
+      <div class="rhythm-freq">Daily</div>
+      <div class="rhythm-body">
+        <div class="rhythm-name">Daily Huddle</div>
+        <div class="rhythm-who">Full Team &bull; 10&ndash;15 min &bull; Standing</div>
+        <div class="rhythm-desc">What's my #1 priority today? What's stuck? Anything the team needs to know? No problem-solving &mdash; flag it, take it offline.</div>
+      </div>
+    </div>
+
+    <div class="rhythm-card" style="border: 2px solid var(--bm-teal-accent);">
+      <div class="rhythm-freq" style="background: var(--bm-teal-accent);">Weekly</div>
+      <div class="rhythm-body">
+        <div class="rhythm-name">Level 10 Meeting (L10)</div>
+        <div class="rhythm-who">Leadership &bull; 60 min &bull; Same day/time every week</div>
+        <div class="rhythm-desc">
+          <strong>Check-in</strong> (3 min) &rarr; <strong>Scorecard</strong> (5 min) &rarr; <strong>Rocks</strong> (5 min) &rarr; <strong>To-Dos</strong> (5 min) &rarr; <strong>IDS</strong> (35 min) &rarr; <strong>Wrap + Rate 1&ndash;10</strong> (2 min).
+          Ends on time even if Issues List isn't empty. Below-8 rating becomes an issue for next week.
+        </div>
+      </div>
+    </div>
+
+    <div class="rhythm-card">
+      <div class="rhythm-freq">Weekly</div>
+      <div class="rhythm-body">
+        <div class="rhythm-name">Steve + Raju Alignment</div>
+        <div class="rhythm-who">Steve, Raju &bull; 45 min</div>
+        <div class="rhythm-desc">Scorecard review, Rock status, to-do review, IDS on top issues. Are we still aligned? What does the data say?</div>
+      </div>
+    </div>
+
+    <div class="rhythm-card">
+      <div class="rhythm-freq">Weekly</div>
+      <div class="rhythm-body">
+        <div class="rhythm-name">Pipeline Review</div>
+        <div class="rhythm-who">Steve, Jan &bull; 30&ndash;45 min</div>
+        <div class="rhythm-desc">Pipeline movement, deal-by-deal on top 10, blockers + next actions, forecast check.</div>
+      </div>
+    </div>
+
+    <div class="rhythm-card">
+      <div class="rhythm-freq">Monthly</div>
+      <div class="rhythm-body">
+        <div class="rhythm-name">Management Review</div>
+        <div class="rhythm-who">Leadership &bull; 2&ndash;3 hours</div>
+        <div class="rhythm-desc">Prior month review. Each function: what worked, what didn't, what's changing. Financial review. FACe/PACe health check.</div>
+      </div>
+    </div>
+
+    <div class="rhythm-card">
+      <div class="rhythm-freq">Quarterly</div>
+      <div class="rhythm-body">
+        <div class="rhythm-name">Quarterly Planning</div>
+        <div class="rhythm-who">Leadership + Key Contributors &bull; Half to full day</div>
+        <div class="rhythm-desc">Review quarterly performance. Run FACe diagnostic. Set new Rocks. Define the Critical Number. Cascade commitments to the team.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== IDS ==================== -->
+  <section id="ids">
+    <h2>7. IDS &mdash; Identify, Discuss, Solve</h2>
+    <p>The EOS process for resolving issues. Most teams discuss issues endlessly. We solve them &mdash; with a to-do, an owner, and a deadline.</p>
+
+    <div class="ids-flow">
+      <div class="ids-step">
+        <div class="step-num">I</div>
+        <div class="step-label">Identify</div>
+        <div class="step-desc">Name the real issue. Not the symptom. Get to the root cause in one sentence.</div>
+      </div>
+      <div class="ids-step">
+        <div class="step-num">D</div>
+        <div class="step-label">Discuss</div>
+        <div class="step-desc">Everyone shares their perspective once. No repeating. 10-minute max per issue. Stay on root cause.</div>
+      </div>
+      <div class="ids-step">
+        <div class="step-num">S</div>
+        <div class="step-label">Solve</div>
+        <div class="step-desc">Land on a to-do with an owner and a deadline. If it can't be solved in 10 minutes, break it into a smaller solve + a follow-up.</div>
+      </div>
+    </div>
+
+    <h3>Current Issues List</h3>
+    <p style="font-size:14px;color:var(--bm-secondary-text);">Issues are identified, added to the list, and IDS'd during weekly L10 meetings. The list is never "done" &mdash; it's a living queue. Vote on the top 3 each week, solve from #1 down.</p>
+
+    <ol style="font-size:14px;margin-left:20px;line-height:1.8;">
+      <li>Marketing seat unfilled &mdash; Jan carrying dual function</li>
+      <li>Publisher revenue model unvalidated &mdash; no signed partnerships generating revenue</li>
+      <li>Content Scanner timeline and AWS partnership undefined</li>
+      <li>Meeting rhythm inconsistent &mdash; no formal L10 established</li>
+      <li>HubSpot data doesn't match financial actuals</li>
+      <li>Pricing realization &mdash; are we closing at $3/student?</li>
+      <li>AI-first hiring model &mdash; can we recruit for this?</li>
+      <li>Expansion state selection criteria not formalized</li>
+      <li>Classroom Library Module &mdash; selling or stalling?</li>
+      <li>Team Rock-setting process needs to be built</li>
+    </ol>
+  </section>
+
+  <!-- ==================== TRADE-OFF HIERARCHY ==================== -->
+  <section id="tradeoffs">
+    <h2>8. Trade-Off Hierarchy</h2>
+    <p>Core Values tell us <strong>who we are</strong>. The Trade-Off Hierarchy tells us <strong>what happens when those values pull in different directions</strong>. Never sacrifice a higher tier for a lower one.</p>
+
+    <div class="tradeoff-tier t1">
+      <div class="tradeoff-label">Tier 1</div>
+      <div class="tradeoff-content">
+        <strong>Stakeholder Trust (never sacrifice &mdash; this is our moat)</strong><br>
+        Customer trust &gt; short-term efficiency. Data accuracy &gt; speed of delivery.<br>
+        <em>Districts in ESC networks talk. One burned relationship radiates through the network.</em>
+      </div>
+    </div>
+
+    <div class="tradeoff-tier t2">
+      <div class="tradeoff-label">Tier 2</div>
+      <div class="tradeoff-content">
+        <strong>Business Sustainability</strong><br>
+        Retention of existing customers &gt; acquisition of new ones.<br>
+        <em>Churned districts signal to ESC peers. NRR drives enterprise value.</em>
+      </div>
+    </div>
+
+    <div class="tradeoff-tier t3">
+      <div class="tradeoff-label">Tier 3</div>
+      <div class="tradeoff-content">
+        <strong>Organizational Character</strong><br>
+        Systems that scale &gt; one-time goals. Honesty &gt; avoiding hard conversations. Focus &gt; responding to every opportunity.
+      </div>
+    </div>
+
+    <h3>Hard Boundaries &mdash; Never Cross</h3>
+    <ul class="boundary-list">
+      <li>Never position Bookmarked as replacing librarians</li>
+      <li>Never use fear-based framing with customers</li>
+      <li>Never commit to timelines without engineering input</li>
+      <li>Never share customer data across district boundaries</li>
+      <li>Never send investor communications without Steve's review</li>
+      <li>Never auto-approve financial commitments above $5,000</li>
+    </ul>
+  </section>
+
+  <!-- ==================== AI-NATIVE ==================== -->
+  <section id="ai-native">
+    <h2>9. What Makes This AI-Native</h2>
+    <p>Bookmarked is an AI-native company. That means AI agents aren't tools we use &mdash; they're team members with seats, measurables, and decision boundaries. Same system. Same language. Same accountability.</p>
+
+    <div class="ai-native-box">
+      <h3>The Three Disciplines</h3>
+      <p>Organizations mature through three disciplines. Each is necessary but not sufficient.</p>
+      <div class="ai-grid">
+        <div class="ai-cat">
+          <div class="ai-cat-label">Discipline 1</div>
+          <div class="ai-cat-title">Prompt Engineering</div>
+          <div class="ai-cat-desc">How do I talk to AI? Individual productivity. Personal skill.</div>
+        </div>
+        <div class="ai-cat">
+          <div class="ai-cat-label">Discipline 2</div>
+          <div class="ai-cat-title">Context Engineering</div>
+          <div class="ai-cat-desc">What does AI need to know? Organizational knowledge infrastructure.</div>
+        </div>
+        <div class="ai-cat">
+          <div class="ai-cat-label">Discipline 3</div>
+          <div class="ai-cat-title">Intent Engineering</div>
+          <div class="ai-cat-desc">What does the org need AI to want? Purpose encoded as machine-actionable parameters.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="eos-grid">
+      <div class="eos-card">
+        <div class="card-label">Workflow Classification</div>
+        <div class="card-body">
+          Every workflow is one of three categories:<br><br>
+          <strong>Agent-Ready:</strong> Fully automated. Agent handles end-to-end. <em>(Pipeline data entry, report generation, ticket creation)</em><br><br>
+          <strong>Agent-Augmented:</strong> Human-in-the-loop. Agent does heavy lifting, human reviews. <em>(Sales decks, strategy analysis, content creation)</em><br><br>
+          <strong>Human-Only:</strong> Non-negotiable human work. <em>(Customer escalations, hiring/firing, investor relations, pricing)</em>
+        </div>
+      </div>
+
+      <div class="eos-card">
+        <div class="card-label">Agent Seat Fit</div>
+        <div class="card-body">
+          Adapted from GWC. Agents don't "want" things &mdash; they operate within boundaries.<br><br>
+          <strong>Scoped:</strong> Does it access exactly the right context?<br><br>
+          <strong>Bounded:</strong> Are decision boundaries clear and correctly encoded?<br><br>
+          <strong>Delivering:</strong> Is it producing quality output within boundaries?<br><br>
+          <em>Assessed bi-monthly during Agent Seat Review.</em>
+        </div>
+      </div>
+    </div>
+
+    <h4>Operating Principles</h4>
+    <ul style="font-size:14px;margin-left:20px;line-height:1.8;">
+      <li><strong>Act, Don't Ask:</strong> Agents bias toward action when the answer is clear. Don't defer judgment.</li>
+      <li><strong>Scalpel Principle:</strong> Skills should be focused and specific. Decompose when doing too many things.</li>
+      <li><strong>Agent Self-Advocacy:</strong> Agents surface what they can do vs. what a human should do &mdash; both directions.</li>
+      <li><strong>Reversibility Rule:</strong> Reversible &rarr; act fast. Irreversible &rarr; escalate. Unsure &rarr; treat as irreversible.</li>
+      <li><strong>Intent Before Expertise:</strong> Load organizational intent before domain knowledge. Always.</li>
+    </ul>
+  </section>
+
+  <!-- ==================== ROLLOUT ==================== -->
+  <section id="rollout">
+    <h2>10. Implementation Rollout</h2>
+    <p>Start small. Build consistency. Then expand. The seriousness with which we implement this &mdash; no excuses, no skipping &mdash; is the most important factor for success.</p>
+
+    <div class="timeline">
+      <div class="timeline-item active">
+        <div class="tl-date">April 2 (Today)</div>
+        <div class="tl-title">Session 1: Steve + Raju Align</div>
+        <div class="tl-desc">V/TO validation, accountability contract, lock MVS, set weekly meeting format, confirm Q2 Rocks.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">April 4&ndash;7</div>
+        <div class="tl-title">Session 2: Add Jan &mdash; Leadership Trio</div>
+        <div class="tl-desc">Present aligned V/TO to Jan. Validate. Confirm Jan's metrics and Rocks. Design full-team L10 together.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">Week of April 7</div>
+        <div class="tl-title">Session 3: First Full L10 with Patrick</div>
+        <div class="tl-desc">First week of Scorecard data on the board. All Q2 Rocks confirmed. Full IDS with the team. EOS becomes real for everyone.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">Before Session 3</div>
+        <div class="tl-title">Sarah 1:1: Role Transition</div>
+        <div class="tl-desc">Direct conversation about PO &rarr; Operations transition. Clarify her seat before assigning a metric or Rock.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">Week 4 (April 28)</div>
+        <div class="tl-title">MVS Review &mdash; Adjust or Expand</div>
+        <div class="tl-desc">4 consecutive L10s completed. Evaluate: Are metrics right? Expand Scorecard? Adjust Rocks? Formalize what's working.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">May</div>
+        <div class="tl-title">Daily Huddle + Monthly Management Review</div>
+        <div class="tl-desc">Add Daily Huddle once weekly L10 is habitual. First formal Monthly Management Review.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">End of Q2 (June)</div>
+        <div class="tl-title">First Quarterly Planning Session</div>
+        <div class="tl-desc">Full-day off-site. Review Q2 Rocks. FACe diagnostic. Set Q3 Rocks. Run 60-Day Acceleration check. First Bi-monthly Agent Seat Review.</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="page-footer">
+  <div class="footer-brand">Bookmarked</div>
+  The Book Intelligence Company &bull; EOS Implementation Blueprint &bull; April 2026 &bull; Confidential
+</div>
+
+</body>
+</html>
