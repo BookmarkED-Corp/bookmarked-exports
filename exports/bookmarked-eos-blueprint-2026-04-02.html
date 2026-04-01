@@ -3,29 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bookmarked EOS Blueprint</title>
+<title>EOS — The 6 Components</title>
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bm-eigengrau: #101828;
-  --bm-deep-green: #107569;
-  --bm-teal-accent: #12A38C;
-  --bm-white: #FFFFFF;
-  --bm-pumpkin: #FF692E;
-  --bm-bg-cool: #F8FAFC;
-  --bm-bg-warm: #F8F5F0;
-  --bm-bg-light: #F9FAFB;
-  --bm-border-light: #E5E7EB;
-  --bm-muted-gray: #9CA3AF;
-  --bm-secondary-text: #475467;
+  --eigen: #101828;
+  --green: #107569;
+  --teal: #12A38C;
+  --orange: #FF692E;
+  --white: #FFFFFF;
+  --cool: #F8FAFC;
+  --border: #E5E7EB;
+  --muted: #9CA3AF;
+  --secondary: #475467;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'Urbanist', Arial, sans-serif;
-  color: var(--bm-eigengrau);
-  background: var(--bm-white);
+  color: var(--eigen);
+  background: var(--white);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -33,353 +31,165 @@ body {
 .hero {
   background: linear-gradient(135deg, #0D5A52 0%, #107569 40%, #12A38C 100%);
   color: white;
-  padding: 48px 32px 40px;
+  padding: 44px 32px 36px;
 }
 
 .hero h1 {
-  font-size: 38px;
+  font-size: 36px;
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.1;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
-.hero .tagline {
-  font-size: 18px;
+.hero p {
+  font-size: 17px;
   font-weight: 500;
   opacity: 0.9;
-  max-width: 560px;
-}
-
-.hero .meta {
-  margin-top: 14px;
-  font-size: 13px;
-  opacity: 0.65;
+  max-width: 520px;
 }
 
 .container {
-  max-width: 880px;
+  max-width: 820px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
-/* Governing quote */
-.quote-bar {
-  background: var(--bm-bg-warm);
-  border-left: 4px solid var(--bm-pumpkin);
-  padding: 16px 20px;
-  margin: 28px 0;
-  border-radius: 0 8px 8px 0;
+.intro {
+  margin: 28px 0 32px;
   font-size: 15px;
-  font-weight: 600;
+  line-height: 1.7;
+  color: var(--secondary);
 }
 
-.quote-bar .attr {
-  font-weight: 400;
-  font-size: 13px;
-  color: var(--bm-secondary-text);
-  margin-top: 4px;
-}
-
-/* What is EOS */
-.eos-what {
-  margin: 28px 0 36px;
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-.eos-what p { margin-bottom: 10px; }
+.intro strong { color: var(--eigen); }
 
 /* Component cards */
-.component {
-  margin-bottom: 24px;
-  border: 1px solid var(--bm-border-light);
-  border-radius: 14px;
-  overflow: hidden;
-}
-
-.component-header {
+.comp {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-  background: var(--bm-bg-cool);
-  border-bottom: 1px solid var(--bm-border-light);
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
 }
 
-.component-header .comp-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+.comp:last-of-type { border-bottom: none; }
 
-.comp-number {
-  width: 36px;
-  height: 36px;
-  background: var(--bm-deep-green);
+.comp-num {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  background: var(--green);
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
-  font-size: 16px;
-  flex-shrink: 0;
-}
-
-.comp-title {
   font-size: 18px;
+  margin-top: 2px;
+}
+
+.comp-content { flex: 1; }
+
+.comp-name {
+  font-size: 20px;
   font-weight: 800;
-  color: var(--bm-eigengrau);
-}
-
-.comp-subtitle {
-  font-size: 13px;
-  color: var(--bm-secondary-text);
-  font-weight: 500;
-}
-
-.status-tag {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 4px 12px;
-  border-radius: 20px;
-  white-space: nowrap;
-}
-
-.status-have { background: #D1FAE5; color: #065F46; }
-.status-today { background: #FEF3C7; color: #92400E; }
-.status-later { background: var(--bm-bg-light); color: var(--bm-muted-gray); }
-
-.component-body {
-  padding: 16px 20px;
-}
-
-.component-body p {
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 10px;
-}
-
-.comp-section {
-  margin-top: 14px;
-}
-
-.comp-section-label {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--bm-teal-accent);
-  margin-bottom: 6px;
-}
-
-/* Simple lists inside components */
-.comp-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.comp-list li {
-  padding: 6px 0 6px 20px;
-  position: relative;
-  font-size: 14px;
-  line-height: 1.5;
-  border-bottom: 1px solid #F3F4F6;
-}
-
-.comp-list li:last-child { border-bottom: none; }
-
-.comp-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 12px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--bm-border-light);
-}
-
-.comp-list li.have::before { background: #34D399; }
-.comp-list li.gap::before { background: var(--bm-pumpkin); }
-.comp-list li.later::before { background: var(--bm-muted-gray); }
-
-/* Values chips */
-.value-chip {
-  display: inline-block;
-  background: var(--bm-deep-green);
-  color: white;
-  padding: 4px 14px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 600;
-  margin: 3px 4px 3px 0;
-}
-
-/* Simple table */
-.simple-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 10px 0;
-  font-size: 14px;
-}
-
-.simple-table th {
-  background: var(--bm-deep-green);
-  color: white;
-  padding: 8px 12px;
-  text-align: left;
-  font-weight: 600;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.simple-table th:first-child { border-radius: 6px 0 0 0; }
-.simple-table th:last-child { border-radius: 0 6px 0 0; }
-
-.simple-table td {
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--bm-border-light);
-  vertical-align: top;
-}
-
-.simple-table tbody tr:nth-child(even) { background: var(--bm-bg-light); }
-.simple-table .person { font-weight: 700; }
-.simple-table .metric { font-weight: 600; color: var(--bm-teal-accent); }
-
-/* IDS visual */
-.ids-row {
-  display: flex;
-  gap: 8px;
-  margin: 10px 0;
-}
-
-.ids-box {
-  flex: 1;
-  background: var(--bm-bg-cool);
-  border: 1px solid var(--bm-border-light);
-  border-radius: 10px;
-  padding: 14px;
-  text-align: center;
-}
-
-.ids-box .ids-letter {
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--bm-deep-green);
-}
-
-.ids-box .ids-word {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--bm-eigengrau);
+  color: var(--eigen);
   margin-bottom: 2px;
 }
 
-.ids-box .ids-desc {
-  font-size: 12px;
-  color: var(--bm-secondary-text);
+.comp-question {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--teal);
+  margin-bottom: 8px;
 }
 
-/* Meeting format */
-.meeting-row {
+.comp-body {
+  font-size: 14px;
+  color: var(--secondary);
+  line-height: 1.6;
+}
+
+.comp-body strong { color: var(--eigen); }
+
+.comp-tools {
+  margin-top: 10px;
   display: flex;
-  align-items: stretch;
-  border-bottom: 1px solid var(--bm-border-light);
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
-.meeting-row:last-child { border-bottom: none; }
-
-.meeting-time {
-  width: 50px;
-  min-width: 50px;
-  background: var(--bm-deep-green);
-  color: white;
+.tool-tag {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 16px;
+  background: var(--cool);
+  border: 1px solid var(--border);
+  color: var(--secondary);
+}
+
+/* How they connect */
+.connect {
+  background: var(--eigen);
+  color: white;
+  border-radius: 14px;
+  padding: 28px;
+  margin: 32px 0;
+}
+
+.connect h2 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+
+.connect p {
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.connect .flow {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 4px;
+  gap: 6px;
+  margin: 16px 0 8px;
+  flex-wrap: wrap;
 }
 
-.meeting-content {
-  padding: 8px 12px;
-  flex: 1;
-  font-size: 14px;
-}
-
-.meeting-content strong {
-  color: var(--bm-eigengrau);
-}
-
-.meeting-container {
-  border: 1px solid var(--bm-border-light);
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 10px 0;
-}
-
-/* Timeline */
-.rollout {
-  margin: 28px 0;
-}
-
-.rollout h2 {
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--bm-deep-green);
-  margin-bottom: 14px;
-  padding-bottom: 6px;
-  border-bottom: 2px solid var(--bm-teal-accent);
-}
-
-.phase-row {
-  display: flex;
-  align-items: flex-start;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--bm-border-light);
-}
-
-.phase-row:last-child { border-bottom: none; }
-
-.phase-when {
-  width: 100px;
-  min-width: 100px;
-  font-size: 12px;
+.flow-step {
+  background: rgba(255,255,255,0.1);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
   font-weight: 700;
-  color: var(--bm-teal-accent);
-  text-transform: uppercase;
-  padding-top: 2px;
 }
 
-.phase-what {
-  flex: 1;
-  font-size: 14px;
+.flow-arrow {
+  font-size: 16px;
+  opacity: 0.5;
 }
-
-.phase-what strong { color: var(--bm-eigengrau); }
 
 /* Footer */
-.page-footer {
-  background: var(--bm-bg-light);
+.footer {
   padding: 20px 32px;
   text-align: center;
   font-size: 12px;
-  color: var(--bm-muted-gray);
-  margin-top: 40px;
-  border-top: 1px solid var(--bm-border-light);
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  margin-top: 32px;
 }
 
 @media print {
-  .hero { padding: 24px 16px; }
+  .hero { padding: 20px 16px; }
   .hero h1 { font-size: 28px; }
-  .component { break-inside: avoid; }
+  .comp { break-inside: avoid; }
 }
 </style>
 </head>
@@ -387,298 +197,158 @@ body {
 
 <div class="hero">
   <div class="container">
-    <h1>Bookmarked EOS Blueprint</h1>
-    <div class="tagline">The 6 components of EOS, what we have, what we need, and where we start.</div>
-    <div class="meta">Steve + Raju &bull; April 2, 2026 &bull; Session 1</div>
+    <h1>EOS: The 6 Components</h1>
+    <p>A simple operating system for running a business. One page. Plain language.</p>
   </div>
 </div>
 
 <div class="container">
 
-  <div class="quote-bar">
-    "Start with the smallest, most easily implementable metric. Let them get used to it. Then keep adding."
-    <div class="attr">&mdash; Raju, March 28</div>
+  <div class="intro">
+    <strong>EOS (Entrepreneurial Operating System)</strong> says every business has six components. When all six are strong, the business runs well. When one is weak, you feel it everywhere. Most companies have the first one figured out. Most are missing the last one. Here are all six.
   </div>
 
-  <div class="eos-what">
-    <p><strong>EOS (Entrepreneurial Operating System)</strong> is a set of simple tools that align everything in the business &mdash; where we're going, who's accountable, how we measure, and how we solve problems. It's 6 components. That's it.</p>
-    <p>We're not implementing all 6 today. We're locking the ones that close the gap Raju identified: <strong>no consistent rhythm, no accountability, no way to know if commitments are being kept.</strong></p>
-  </div>
-
-  <!-- ==================== 1. VISION ==================== -->
-  <div class="component">
-    <div class="component-header">
-      <div class="comp-left">
-        <div class="comp-number">1</div>
-        <div>
-          <div class="comp-title">Vision</div>
-          <div class="comp-subtitle">Where are we going?</div>
-        </div>
+  <!-- 1 -->
+  <div class="comp">
+    <div class="comp-num">1</div>
+    <div class="comp-content">
+      <div class="comp-name">Vision</div>
+      <div class="comp-question">Where are we going and how do we plan to get there?</div>
+      <div class="comp-body">
+        The leadership team must be <strong>100% on the same page</strong> about where the company is going. Not 80%. Not "roughly aligned." 100%. This means answering 8 questions: What are our core values? What's our core focus? What's our 10-year target? What does 3 years look like? What's the 1-year plan? What are our quarterly priorities? What's our marketing strategy? What are the issues we need to solve?
+        <br><br>
+        The tool for this is the <strong>V/TO (Vision/Traction Organizer)</strong> &mdash; one document that captures all 8 answers.
       </div>
-      <span class="status-tag status-have">We have this</span>
-    </div>
-    <div class="component-body">
-      <p>The <strong>V/TO (Vision/Traction Organizer)</strong> answers 8 questions that get the leadership team 100% on the same page. We've answered most of them. Raju just needs to validate it.</p>
-
-      <div class="comp-section">
-        <div class="comp-section-label">Core Values (Discovered)</div>
-        <div style="margin:6px 0 12px;">
-          <span class="value-chip">Own It</span>
-          <span class="value-chip">Build With What You Have</span>
-          <span class="value-chip">Never Stop Learning</span>
-          <span class="value-chip">Care Enough to Be Honest</span>
-          <span class="value-chip">Focus Over Frenzy</span>
-        </div>
-      </div>
-
-      <ul class="comp-list">
-        <li class="have"><strong>Core Focus:</strong> Help everyone find the next great book. Niche = Book Intelligence.</li>
-        <li class="have"><strong>10-Year Target:</strong> The intelligence layer between every book and every reader, writer, and publisher.</li>
-        <li class="have"><strong>3-Year Picture &amp; 1-Year Plan:</strong> Revenue targets, scale targets, product milestones defined.</li>
-        <li class="have"><strong>Marketing Strategy:</strong> Target market, three uniques, proven process, guarantee defined.</li>
-        <li class="gap"><strong>Gap:</strong> Raju hasn't formally validated the V/TO. Today we get his buy-in or surface disagreements.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- ==================== 2. PEOPLE ==================== -->
-  <div class="component">
-    <div class="component-header">
-      <div class="comp-left">
-        <div class="comp-number">2</div>
-        <div>
-          <div class="comp-title">People</div>
-          <div class="comp-subtitle">Right people, right seats?</div>
-        </div>
-      </div>
-      <span class="status-tag status-today">Starting today</span>
-    </div>
-    <div class="component-body">
-      <p>The <strong>Accountability Chart</strong> puts one person accountable for each function. Then we evaluate everyone against two filters: <strong>Core Values fit</strong> (are they who we are?) and <strong>GWC</strong> (do they Get it, Want it, and have the Capacity to do it?).</p>
-
-      <div class="comp-section">
-        <div class="comp-section-label">Current Accountability Chart</div>
-      </div>
-
-      <table class="simple-table">
-        <thead>
-          <tr><th>Function</th><th>Accountable</th><th>Status</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>CEO / Visionary</td><td class="person">Steve</td><td style="color:#065F46;">Clear</td></tr>
-          <tr><td>Engineering</td><td class="person">Raju</td><td style="color:#065F46;">Clear</td></tr>
-          <tr><td>Sales</td><td class="person">Jan</td><td style="color:#065F46;">Clear</td></tr>
-          <tr><td>Customer Success</td><td class="person">Patrick</td><td style="color:#065F46;">Clear</td></tr>
-          <tr><td>Marketing</td><td class="person" style="color:var(--bm-pumpkin);">Jan (interim)</td><td style="color:var(--bm-pumpkin);">Gap &mdash; dual function</td></tr>
-          <tr><td>Product</td><td class="person" style="color:var(--bm-muted-gray);">Sarah (transitioning)</td><td style="color:var(--bm-pumpkin);">Gap &mdash; wrong seat</td></tr>
-        </tbody>
-      </table>
-
-      <ul class="comp-list">
-        <li class="gap"><strong>Sarah:</strong> Moving from Product to Operations. Needs a 1:1 conversation before Session 3.</li>
-        <li class="gap"><strong>Jan:</strong> Holding Sales + Marketing. Marketing seat needs to be filled (Q2 Rock).</li>
-        <li class="gap"><strong>Raju:</strong> Contract within 2 weeks, equity within 30 days (committed March 28).</li>
-        <li class="have"><strong>Everyone else:</strong> Steve, Patrick, Natasha, Teela &mdash; seats are clear.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- ==================== 3. DATA ==================== -->
-  <div class="component">
-    <div class="component-header">
-      <div class="comp-left">
-        <div class="comp-number">3</div>
-        <div>
-          <div class="comp-title">Data</div>
-          <div class="comp-subtitle">How do we know we're winning?</div>
-        </div>
-      </div>
-      <span class="status-tag status-today">Starting today</span>
-    </div>
-    <div class="component-body">
-      <p>The <strong>Scorecard</strong> is a handful of weekly numbers. No opinions. No stories. Green or red. On track or off. Reviewed every week in the L10.</p>
-      <p>Raju's rule: start with <strong>one metric per person</strong>. Build the habit first. Expand after 4 consistent weeks.</p>
-
-      <div class="comp-section">
-        <div class="comp-section-label">Proposed Minimum Viable Scorecard</div>
-      </div>
-
-      <table class="simple-table">
-        <thead>
-          <tr><th>Owner</th><th>Metric</th><th>Weekly Target</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="person">Steve</td><td>To-dos completed from prior week</td><td class="metric">90%</td></tr>
-          <tr><td class="person">Raju</td><td>Sprint commitment completion %</td><td class="metric">80%</td></tr>
-          <tr><td class="person">Jan</td><td>Qualified meetings held</td><td class="metric">3</td></tr>
-          <tr><td class="person">Patrick</td><td>Customer touchpoints</td><td class="metric">5</td></tr>
-        </tbody>
-      </table>
-
-      <p style="font-size:13px;color:var(--bm-secondary-text);margin-top:8px;">These are training wheels. They're probably not perfect. That's fine. We adjust after 4 weeks. The point is the habit, not the number.</p>
-    </div>
-  </div>
-
-  <!-- ==================== 4. ISSUES ==================== -->
-  <div class="component">
-    <div class="component-header">
-      <div class="comp-left">
-        <div class="comp-number">4</div>
-        <div>
-          <div class="comp-title">Issues</div>
-          <div class="comp-subtitle">What's in the way?</div>
-        </div>
-      </div>
-      <span class="status-tag status-have">We have this</span>
-    </div>
-    <div class="component-body">
-      <p>An open, honest list of everything blocking progress. Not a complaint board &mdash; a <strong>solve board</strong>. Every issue gets <strong>IDS'd</strong> in the weekly L10:</p>
-
-      <div class="ids-row">
-        <div class="ids-box">
-          <div class="ids-letter">I</div>
-          <div class="ids-word">Identify</div>
-          <div class="ids-desc">Name the root cause in one sentence. Not the symptom.</div>
-        </div>
-        <div class="ids-box">
-          <div class="ids-letter">D</div>
-          <div class="ids-word">Discuss</div>
-          <div class="ids-desc">Everyone shares once. No repeating. 10 min max.</div>
-        </div>
-        <div class="ids-box">
-          <div class="ids-letter">S</div>
-          <div class="ids-word">Solve</div>
-          <div class="ids-desc">A to-do with an owner and a deadline. Done.</div>
-        </div>
-      </div>
-
-      <ul class="comp-list">
-        <li class="have"><strong>We have 10 issues identified.</strong> Marketing gap, publisher model, Content Scanner timeline, meeting rhythm, data hygiene, pricing, hiring, expansion, classroom libraries, Rock-setting.</li>
-        <li class="gap"><strong>Gap:</strong> Raju adds anything missing today. We don't solve them today &mdash; we confirm the list is real and start IDS'ing them in future L10s.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- ==================== 5. PROCESS ==================== -->
-  <div class="component">
-    <div class="component-header">
-      <div class="comp-left">
-        <div class="comp-number">5</div>
-        <div>
-          <div class="comp-title">Process</div>
-          <div class="comp-subtitle">How do we do things here?</div>
-        </div>
-      </div>
-      <span class="status-tag status-later">Comes later</span>
-    </div>
-    <div class="component-body">
-      <p>Document the handful of core processes that run the business &mdash; how we sell, how we onboard, how we build, how we support. Not 50-page SOPs. Just the key steps so everyone does it the same way, every time.</p>
-      <p><strong>This is not a Day 1 problem.</strong> Get the rhythm and accountability working first. Process documentation comes after we've been running L10s consistently for 4+ weeks.</p>
-    </div>
-  </div>
-
-  <!-- ==================== 6. TRACTION ==================== -->
-  <div class="component">
-    <div class="component-header">
-      <div class="comp-left">
-        <div class="comp-number">6</div>
-        <div>
-          <div class="comp-title">Traction</div>
-          <div class="comp-subtitle">Are we doing what we said?</div>
-        </div>
-      </div>
-      <span class="status-tag status-today">Starting today</span>
-    </div>
-    <div class="component-body">
-      <p>This is the component that closes the gap Raju identified. Two tools:</p>
-
-      <div class="comp-section">
-        <div class="comp-section-label">Rocks &mdash; 90-Day Priorities</div>
-      </div>
-      <p>3&ndash;7 company priorities per quarter. Each one is owned by one person, has a clear "done" definition, and is either on track or off track. No gray area.</p>
-
-      <ul class="comp-list">
-        <li class="gap"><strong>Steve:</strong> EOS Operational Rhythm &mdash; 4 consecutive L10s with Scorecard data</li>
-        <li class="gap"><strong>Raju:</strong> Content Scanner Architecture &mdash; architecture sprint delivered and approved</li>
-        <li class="gap"><strong>Jan:</strong> Pipeline Target &mdash; close $[X] in new pipeline</li>
-        <li class="gap"><strong>Patrick:</strong> Renewal Playbook &mdash; systematic renewal process deployed</li>
-        <li class="gap"><strong>Steve:</strong> Marketing Seat &mdash; function staffed</li>
-        <li class="gap"><strong>Steve:</strong> Publisher Pipeline &mdash; 3+ active conversations, 1+ MOU</li>
-      </ul>
-
-      <div class="comp-section">
-        <div class="comp-section-label">The L10 Meeting &mdash; Weekly Pulse</div>
-      </div>
-      <p>Same day. Same time. Every week. Non-negotiable. This is where EOS becomes real.</p>
-
-      <div class="meeting-container">
-        <div class="meeting-row">
-          <div class="meeting-time">3 min</div>
-          <div class="meeting-content"><strong>Check-in</strong> &mdash; one win each</div>
-        </div>
-        <div class="meeting-row">
-          <div class="meeting-time">5 min</div>
-          <div class="meeting-content"><strong>Scorecard</strong> &mdash; numbers only, no discussion. Off track &rarr; Issues List.</div>
-        </div>
-        <div class="meeting-row">
-          <div class="meeting-time">5 min</div>
-          <div class="meeting-content"><strong>Rocks</strong> &mdash; on track or off track. Off track &rarr; Issues List.</div>
-        </div>
-        <div class="meeting-row">
-          <div class="meeting-time">5 min</div>
-          <div class="meeting-content"><strong>To-Dos</strong> &mdash; done or not done. Target: 90%.</div>
-        </div>
-        <div class="meeting-row" style="background:var(--bm-bg-cool);">
-          <div class="meeting-time" style="background:var(--bm-teal-accent);">25 min</div>
-          <div class="meeting-content"><strong>IDS</strong> &mdash; vote top 3, take #1, identify &rarr; discuss &rarr; solve. Repeat.</div>
-        </div>
-        <div class="meeting-row">
-          <div class="meeting-time">2 min</div>
-          <div class="meeting-content"><strong>Wrap</strong> &mdash; read back to-dos. Rate 1&ndash;10. Below 8 = issue for next week.</div>
-        </div>
+      <div class="comp-tools">
+        <span class="tool-tag">V/TO</span>
+        <span class="tool-tag">Core Values</span>
+        <span class="tool-tag">Core Focus</span>
+        <span class="tool-tag">10-Year Target</span>
       </div>
     </div>
   </div>
 
-  <!-- ==================== ROLLOUT ==================== -->
-  <div class="rollout">
-    <h2>Implementation Rollout</h2>
-
-    <div class="phase-row">
-      <div class="phase-when" style="color:var(--bm-pumpkin);">Today</div>
-      <div class="phase-what"><strong>Steve + Raju align.</strong> Validate V/TO. Lock Scorecard. Lock weekly meeting format. Confirm Rocks. Name the People gaps. Update Issues List.</div>
+  <!-- 2 -->
+  <div class="comp">
+    <div class="comp-num">2</div>
+    <div class="comp-content">
+      <div class="comp-name">People</div>
+      <div class="comp-question">Do we have the right people in the right seats?</div>
+      <div class="comp-body">
+        Two tests. <strong>Right person</strong> = they share your core values. Use the People Analyzer: rate every person +, +/&minus;, or &minus; on each value. Three minuses = wrong person, no matter how talented. <strong>Right seat</strong> = they GWC their role. <strong>G</strong>et it (they understand the job). <strong>W</strong>ant it (they genuinely want to do it). <strong>C</strong>apacity to do it (they have the skills and time).
+        <br><br>
+        The tool is the <strong>Accountability Chart</strong> &mdash; one function per seat, one person per seat, every seat has 5 major roles defined. Not an org chart &mdash; an accountability chart. If nobody owns it, nobody does it.
+      </div>
+      <div class="comp-tools">
+        <span class="tool-tag">Accountability Chart</span>
+        <span class="tool-tag">People Analyzer</span>
+        <span class="tool-tag">GWC</span>
+      </div>
     </div>
+  </div>
 
-    <div class="phase-row">
-      <div class="phase-when">This week</div>
-      <div class="phase-what"><strong>Add Jan.</strong> Present the aligned framework. Get her buy-in. Confirm her metrics and Rocks. Three-person leadership team is locked.</div>
+  <!-- 3 -->
+  <div class="comp">
+    <div class="comp-num">3</div>
+    <div class="comp-content">
+      <div class="comp-name">Data</div>
+      <div class="comp-question">Do we have a pulse on the business based on facts, not feelings?</div>
+      <div class="comp-body">
+        Run the business on <strong>a handful of numbers</strong>, not opinions. Every person has a number they own. Every week, that number is either on track or off track. No stories. No excuses. Green or red.
+        <br><br>
+        The tool is the <strong>Scorecard</strong> &mdash; 5&ndash;15 weekly activity-based numbers that tell leadership the health of the business at a glance. If a number is off track, it goes on the Issues List and gets solved.
+      </div>
+      <div class="comp-tools">
+        <span class="tool-tag">Scorecard</span>
+        <span class="tool-tag">Measurables</span>
+      </div>
     </div>
+  </div>
 
-    <div class="phase-row">
-      <div class="phase-when">Next week</div>
-      <div class="phase-what"><strong>First full L10 with Patrick.</strong> First Scorecard data on the board. Full IDS. EOS becomes real for the team.</div>
+  <!-- 4 -->
+  <div class="comp">
+    <div class="comp-num">4</div>
+    <div class="comp-content">
+      <div class="comp-name">Issues</div>
+      <div class="comp-question">Are we good at solving problems as they come up?</div>
+      <div class="comp-body">
+        Every company has issues. Strong companies <strong>solve them quickly</strong> instead of talking about them endlessly. Maintain one open list of everything in the way. Don't hide problems. Don't let them fester. Surface them, solve them, move on.
+        <br><br>
+        The tool is <strong>IDS (Identify, Discuss, Solve)</strong>. <strong>Identify</strong> the real root cause (not the symptom). <strong>Discuss</strong> it (everyone shares their view once &mdash; no repeating). <strong>Solve</strong> it (a to-do with an owner and a deadline). Takes 10 minutes per issue. Most meetings spend 60 minutes discussing and 0 minutes solving. IDS flips that.
+      </div>
+      <div class="comp-tools">
+        <span class="tool-tag">Issues List</span>
+        <span class="tool-tag">IDS</span>
+      </div>
     </div>
+  </div>
 
-    <div class="phase-row">
-      <div class="phase-when">Before L10</div>
-      <div class="phase-what"><strong>Sarah 1:1.</strong> Clarify her seat before assigning metrics or Rocks.</div>
+  <!-- 5 -->
+  <div class="comp">
+    <div class="comp-num">5</div>
+    <div class="comp-content">
+      <div class="comp-name">Process</div>
+      <div class="comp-question">Do we have a consistent way of doing our core things?</div>
+      <div class="comp-body">
+        Identify the <strong>handful of core processes</strong> that run the business &mdash; how you sell, how you onboard, how you build product, how you support customers. Document each one in simple steps. Not a 50-page manual. Just the 10&ndash;20 key steps so everyone does it the same way, every time.
+        <br><br>
+        The test: if the person who runs it got hit by a bus tomorrow, could someone else follow the steps? Process is how you <strong>scale without chaos</strong>.
+      </div>
+      <div class="comp-tools">
+        <span class="tool-tag">Core Processes</span>
+        <span class="tool-tag">Documented &amp; Followed by All</span>
+      </div>
     </div>
+  </div>
 
-    <div class="phase-row">
-      <div class="phase-when">Week 4</div>
-      <div class="phase-what"><strong>Evaluate and expand.</strong> 4 consecutive L10s done. Are the metrics right? Expand Scorecard. Adjust Rocks. Start Process documentation.</div>
+  <!-- 6 -->
+  <div class="comp">
+    <div class="comp-num">6</div>
+    <div class="comp-content">
+      <div class="comp-name">Traction</div>
+      <div class="comp-question">Are we actually executing &mdash; doing what we said we'd do?</div>
+      <div class="comp-body">
+        This is where most companies fall apart. The vision is great. The people are talented. But <strong>nothing happens consistently</strong>. Traction is discipline. Two tools make it work:
+        <br><br>
+        <strong>Rocks</strong> &mdash; 3 to 7 company priorities per quarter. Each one is owned by one person. Each has a clear definition of "done." At the end of 90 days, it's either done or it's not. No partial credit.
+        <br><br>
+        <strong>The Level 10 Meeting (L10)</strong> &mdash; a weekly meeting with the same agenda, same day, same time, every single week. Check-in. Scorecard review. Rock review. To-do review. Then spend the rest of the time solving issues with IDS. Rate the meeting 1&ndash;10 at the end. Ends on time even if you're not done. This is the heartbeat of the company.
+        <br><br>
+        <strong>To-Dos</strong> &mdash; every action item from the L10 has an owner and is due within 7 days. Done or not done. Target: 90% completion rate. If it's not getting done, it's an issue &mdash; IDS it.
+      </div>
+      <div class="comp-tools">
+        <span class="tool-tag">Rocks</span>
+        <span class="tool-tag">Level 10 Meeting</span>
+        <span class="tool-tag">To-Dos</span>
+      </div>
     </div>
+  </div>
 
-    <div class="phase-row">
-      <div class="phase-when">End of Q2</div>
-      <div class="phase-what"><strong>First Quarterly Planning.</strong> Full-day. Review all Rocks. FACe diagnostic. Set Q3 priorities. EOS is operational.</div>
+  <!-- How they connect -->
+  <div class="connect">
+    <h2>How the 6 Components Work Together</h2>
+    <p><strong>Vision</strong> tells everyone where we're going. <strong>People</strong> puts the right humans in the right seats to get there. <strong>Data</strong> gives us a weekly pulse so we know if we're on track. <strong>Issues</strong> gives us a way to solve what's in the way. <strong>Process</strong> makes sure we do things consistently. <strong>Traction</strong> makes sure we actually do what we said we'd do.</p>
+    <p>The L10 meeting is where it all comes together every week. That's where the Scorecard gets reviewed, Rocks get checked, issues get solved, and to-dos get assigned. <strong>Miss the L10, and the whole system breaks.</strong></p>
+
+    <div class="flow">
+      <span class="flow-step">Vision</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">People</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Data</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Issues</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Process</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-step">Traction</span>
     </div>
   </div>
 
 </div>
 
-<div class="page-footer">
-  Bookmarked &bull; EOS Implementation Blueprint &bull; April 2026 &bull; Confidential
+<div class="footer">
+  Entrepreneurial Operating System (EOS) &bull; Based on "Traction" by Gino Wickman &bull; April 2026
 </div>
 
 </body>
