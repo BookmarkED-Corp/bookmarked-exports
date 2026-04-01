@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EOS Session 1 — Steve + Raju | April 2, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bm-eigengrau: #101828;
+  --bm-deep-green: #107569;
+  --bm-teal-accent: #12A38C;
+  --bm-white: #FFFFFF;
+  --bm-pumpkin: #FF692E;
+  --bm-bg-cool: #F8FAFC;
+  --bm-bg-warm: #F8F5F0;
+  --bm-bg-light: #F9FAFB;
+  --bm-border-light: #E5E7EB;
+  --bm-muted-gray: #9CA3AF;
+  --bm-secondary-text: #475467;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Urbanist', Arial, sans-serif;
+  color: var(--bm-eigengrau);
+  background: var(--bm-white);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-header {
+  background: linear-gradient(135deg, #0D5A52, #107569, #12A38C);
+  color: white;
+  padding: 48px 32px 40px;
+}
+
+.page-header h1 {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.page-header .subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.page-header .meta {
+  margin-top: 16px;
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.governing-principle {
+  background: var(--bm-bg-warm);
+  border-left: 4px solid var(--bm-pumpkin);
+  padding: 20px 24px;
+  margin: 32px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.governing-principle p {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--bm-eigengrau);
+}
+
+.governing-principle .attribution {
+  font-size: 14px;
+  color: var(--bm-secondary-text);
+  margin-top: 8px;
+  font-weight: 400;
+}
+
+section {
+  margin: 40px 0;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--bm-deep-green);
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--bm-teal-accent);
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--bm-eigengrau);
+  margin: 24px 0 12px;
+}
+
+h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--bm-deep-green);
+  margin: 16px 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+p { margin-bottom: 12px; font-size: 15px; }
+
+/* Agenda blocks */
+.agenda-block {
+  background: var(--bm-white);
+  border: 1px solid var(--bm-border-light);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.agenda-block::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+}
+
+.agenda-block.critical::before { background: var(--bm-deep-green); }
+.agenda-block.overflow::before { background: var(--bm-muted-gray); }
+
+.agenda-block .block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.agenda-block .block-number {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--bm-white);
+  background: var(--bm-deep-green);
+  border-radius: 6px;
+  padding: 2px 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.agenda-block.overflow .block-number {
+  background: var(--bm-muted-gray);
+}
+
+.agenda-block .block-time {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--bm-muted-gray);
+}
+
+.agenda-block .block-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--bm-eigengrau);
+  margin-bottom: 8px;
+}
+
+.agenda-block .block-body {
+  font-size: 14px;
+  color: var(--bm-secondary-text);
+  line-height: 1.6;
+}
+
+.agenda-block .block-body ul {
+  margin: 8px 0 0 20px;
+}
+
+.agenda-block .block-body li {
+  margin-bottom: 4px;
+}
+
+.agenda-block .key-question {
+  background: var(--bm-bg-cool);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--bm-deep-green);
+}
+
+.agenda-block .key-question::before {
+  content: 'Key Question: ';
+  font-weight: 700;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+thead th {
+  background: var(--bm-deep-green);
+  color: white;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+thead th:first-child { border-radius: 8px 0 0 0; }
+thead th:last-child { border-radius: 0 8px 0 0; }
+
+tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--bm-border-light);
+  vertical-align: top;
+}
+
+tbody tr:nth-child(even) { background: var(--bm-bg-light); }
+
+tbody tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+tbody tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+
+.metric-owner {
+  font-weight: 700;
+  color: var(--bm-eigengrau);
+}
+
+.metric-target {
+  font-weight: 700;
+  color: var(--bm-teal-accent);
+}
+
+.tbd-row td {
+  color: var(--bm-muted-gray);
+  font-style: italic;
+}
+
+/* V/TO cards */
+.vto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+@media (max-width: 640px) {
+  .vto-grid { grid-template-columns: 1fr; }
+}
+
+.vto-card {
+  background: var(--bm-bg-cool);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--bm-border-light);
+}
+
+.vto-card .card-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--bm-teal-accent);
+  margin-bottom: 8px;
+}
+
+.vto-card .card-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--bm-eigengrau);
+  line-height: 1.4;
+}
+
+.vto-card.full-width {
+  grid-column: 1 / -1;
+}
+
+.core-value {
+  display: inline-block;
+  background: var(--bm-deep-green);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 3px 4px 3px 0;
+}
+
+/* L10 format */
+.l10-row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--bm-border-light);
+}
+
+.l10-row:last-child { border-bottom: none; }
+
+.l10-time {
+  width: 60px;
+  min-width: 60px;
+  background: var(--bm-deep-green);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 8px;
+}
+
+.l10-content {
+  padding: 12px 16px;
+  flex: 1;
+}
+
+.l10-content .l10-label {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--bm-eigengrau);
+}
+
+.l10-content .l10-desc {
+  font-size: 13px;
+  color: var(--bm-secondary-text);
+  margin-top: 2px;
+}
+
+.l10-container {
+  border: 1px solid var(--bm-border-light);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 16px 0;
+}
+
+/* Issues list */
+.issue-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--bm-border-light);
+  font-size: 14px;
+}
+
+.issue-item:last-child { border-bottom: none; }
+
+.issue-number {
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+  background: var(--bm-bg-cool);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--bm-deep-green);
+  margin-right: 12px;
+  margin-top: 2px;
+}
+
+/* Session sequence */
+.session-card {
+  background: var(--bm-bg-cool);
+  border: 1px solid var(--bm-border-light);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 12px;
+}
+
+.session-card .session-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--bm-teal-accent);
+  margin-bottom: 4px;
+}
+
+.session-card .session-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.session-card .session-desc {
+  font-size: 14px;
+  color: var(--bm-secondary-text);
+}
+
+/* Risks */
+.risk-item {
+  padding: 10px 16px;
+  background: var(--bm-bg-warm);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.risk-item strong {
+  color: var(--bm-pumpkin);
+}
+
+/* Success checklist */
+.success-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.success-check {
+  width: 22px;
+  min-width: 22px;
+  height: 22px;
+  border: 2px solid var(--bm-border-light);
+  border-radius: 4px;
+  margin-right: 12px;
+  margin-top: 1px;
+}
+
+/* Footer */
+.page-footer {
+  background: var(--bm-bg-light);
+  padding: 24px 32px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--bm-muted-gray);
+  margin-top: 48px;
+  border-top: 1px solid var(--bm-border-light);
+}
+
+/* Print */
+@media print {
+  .page-header { padding: 24px 16px; }
+  .page-header h1 { font-size: 28px; }
+  section { margin: 24px 0; }
+  .agenda-block { break-inside: avoid; }
+  .vto-card { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="container">
+    <h1>EOS Session 1</h1>
+    <div class="subtitle">Steve + Raju &mdash; Addison, TX</div>
+    <div class="meta">Wednesday, April 2, 2026 &bull; 1:00 PM &ndash; 3:00 PM &bull; Session 1 of 3</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="governing-principle">
+    <p>"Start with the smallest, most easily implementable metric for each person or department. Let them get used to it. Then we can get consistency, then keep adding to it."</p>
+    <div class="attribution">&mdash; Raju Datla, March 28 call</div>
+  </div>
+
+  <!-- ==================== AGENDA ==================== -->
+  <section>
+    <h2>Session Agenda</h2>
+    <p>Blocks 1&ndash;4 are non-negotiable. Blocks 5&ndash;6 can overflow to Session 2 if time runs short.</p>
+
+    <div class="agenda-block critical">
+      <div class="block-header">
+        <span class="block-number">Block 1</span>
+        <span class="block-time">20 min</span>
+      </div>
+      <div class="block-title">V/TO Alignment Check</div>
+      <div class="block-body">
+        Walk Raju through the V/TO for his validation. This is not a presentation &mdash; Raju confirms "I can hold people accountable to these" or flags disagreements. Disagreements go straight to the Issues List; they do not get solved in this block.
+        <ul>
+          <li>Core Values &mdash; do these match what Raju sees in the best people?</li>
+          <li>Core Focus &mdash; does "Book Intelligence" land as the category we own?</li>
+          <li>1-Year Plan &mdash; is $7M / 150&ndash;250 districts realistic from engineering's perspective?</li>
+        </ul>
+        <div class="key-question">What's the one thing in this V/TO that you think we'll fail at if we don't change something?</div>
+      </div>
+    </div>
+
+    <div class="agenda-block critical">
+      <div class="block-header">
+        <span class="block-number">Block 2</span>
+        <span class="block-time">25 min</span>
+      </div>
+      <div class="block-title">The Accountability Contract</div>
+      <div class="block-body">
+        This is the conversation that makes everything else work. Steve directly names Raju's March 28 concern: <em>"You told me my inconsistency in following through on small commitments erodes team trust. I heard you."</em>
+        <ul>
+          <li><strong>Steve commits to Raju (3&ndash;4 items):</strong> Follow through on small commitments. Protect focus &mdash; no new initiatives without retiring one. Show up to every L10 on time. Accept accountability without defensiveness.</li>
+          <li><strong>Raju commits to Steve (3&ndash;4 items):</strong> Flag problems in the moment, not weeks later. Deliver sprint commitments or name the gap early. Keep Steve honest on focus &mdash; push back in real time.</li>
+          <li><strong>The broken-commitment protocol:</strong> Not done = say "not done." No story. No excuse. Third consecutive miss on the same item &rarr; Issues List for IDS.</li>
+          <li><strong>Name Steve's ADHD explicitly:</strong> "The system has to catch my forgetfulness, not rely on my memory. When I forget, call it out."</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="agenda-block critical">
+      <div class="block-header">
+        <span class="block-number">Block 3</span>
+        <span class="block-time">30 min</span>
+      </div>
+      <div class="block-title">Minimum Viable Scorecard</div>
+      <div class="block-body">
+        ONE metric per person. Not the full 15-measurable Scorecard &mdash; that comes later. Each metric must be:
+        <ul>
+          <li>Measurable this week with &lt;5 minutes of effort</li>
+          <li>Owned by exactly one person</li>
+          <li>Obviously on-track or off-track (no ambiguity)</li>
+        </ul>
+        <p style="margin-top:12px;font-weight:600;">See the Proposed Scorecard section below. Raju debates and we lock it.</p>
+      </div>
+    </div>
+
+    <div class="agenda-block critical">
+      <div class="block-header">
+        <span class="block-number">Block 4</span>
+        <span class="block-time">20 min</span>
+      </div>
+      <div class="block-title">Weekly Steve + Raju Meeting</div>
+      <div class="block-body">
+        Lock the format, day, and time. Schedule the first one for next week. See the proposed L10 format below.
+        <ul>
+          <li>45 minutes, same day and time every week, no exceptions</li>
+          <li>Agenda-driven, not conversation-driven</li>
+          <li>Rate 1&ndash;10 at the end &mdash; below 8 becomes an issue to IDS</li>
+        </ul>
+        <div class="key-question">What day and time works for both of us every single week?</div>
+      </div>
+    </div>
+
+    <div class="agenda-block overflow">
+      <div class="block-header">
+        <span class="block-number">Block 5</span>
+        <span class="block-time">15 min</span>
+      </div>
+      <div class="block-title">Q2 Rocks &mdash; Confirm / Adjust</div>
+      <div class="block-body">
+        Validate Steve and Raju Rocks only. Redefine Steve's EOS Rock to match "start small" &mdash; the Rock isn't "implement full EOS" but "run 4 consecutive L10 meetings with Scorecard data."
+        <ul>
+          <li>Content Scanner architecture &mdash; Raju</li>
+          <li>EOS operational rhythm &mdash; Steve</li>
+          <li>Publisher pipeline &mdash; Steve</li>
+        </ul>
+        <div class="key-question">Does Raju want a personal Rock beyond Content Scanner?</div>
+      </div>
+    </div>
+
+    <div class="agenda-block overflow">
+      <div class="block-header">
+        <span class="block-number">Block 6</span>
+        <span class="block-time">10 min</span>
+      </div>
+      <div class="block-title">Issues List + Next Steps</div>
+      <div class="block-body">
+        Quick pass through the 10 existing issues. Raju adds any missing ones. Do not solve &mdash; just confirm the list is real. Lock Session 2 and Session 3 dates.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ==================== V/TO SUMMARY ==================== -->
+  <section>
+    <h2>V/TO Summary &mdash; For Raju's Validation</h2>
+
+    <div class="vto-grid">
+      <div class="vto-card full-width">
+        <div class="card-label">Core Values</div>
+        <div class="card-value">
+          <span class="core-value">Own It</span>
+          <span class="core-value">Build With What You Have</span>
+          <span class="core-value">Never Stop Learning</span>
+          <span class="core-value">Care Enough to Be Honest</span>
+          <span class="core-value">Focus Over Frenzy</span>
+        </div>
+      </div>
+
+      <div class="vto-card">
+        <div class="card-label">Core Focus / Purpose</div>
+        <div class="card-value">Help everyone find the next great book.</div>
+      </div>
+
+      <div class="vto-card">
+        <div class="card-label">Our Niche</div>
+        <div class="card-value">Book Intelligence &mdash; the category we created and own.</div>
+      </div>
+
+      <div class="vto-card">
+        <div class="card-label">10-Year Target</div>
+        <div class="card-value">The intelligence layer between every book and every reader, writer, and publisher.</div>
+      </div>
+
+      <div class="vto-card">
+        <div class="card-label">3-Year Picture (Feb 2029)</div>
+        <div class="card-value">$100&ndash;150M combined revenue. 30+ states. 1,000+ districts. Content Scanner live. Publisher marketplace operational. 20&ndash;30 people.</div>
+      </div>
+
+      <div class="vto-card full-width">
+        <div class="card-label">1-Year Plan (Feb 2027)</div>
+        <div class="card-value">$7M ARR &bull; 150&ndash;250 paying districts &bull; 2&ndash;3 expansion states &bull; First publisher partnership &bull; Break-even &bull; Content Scanner architecture shipped &bull; EOS rhythm established &bull; 12&ndash;15 team members</div>
+      </div>
+
+      <div class="vto-card">
+        <div class="card-label">Three Uniques</div>
+        <div class="card-value">
+          1. Proactive intelligence that never sleeps<br>
+          2. Legally defensible by design<br>
+          3. See the entire district &mdash; and optimize it
+        </div>
+      </div>
+
+      <div class="vto-card">
+        <div class="card-label">Guarantee</div>
+        <div class="card-value">If a book in your collection gets challenged and you followed the Bookmarked process, you will have the defensible record you need. Every time.</div>
+      </div>
+    </div>
+
+    <h3>Trade-Off Hierarchy</h3>
+    <p style="font-size:14px;color:var(--bm-secondary-text);margin-bottom:12px;">When two good things conflict, the hierarchy decides. Never sacrifice a higher tier for a lower one.</p>
+    <table>
+      <thead>
+        <tr><th>Tier</th><th>Rule</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>1 &mdash; Stakeholder Trust</strong></td><td>Customer trust > short-term efficiency. Data accuracy > speed of delivery.</td></tr>
+        <tr><td><strong>2 &mdash; Sustainability</strong></td><td>Retention of existing > acquisition of new.</td></tr>
+        <tr><td><strong>3 &mdash; Character</strong></td><td>Systems that scale > one-time goals. Honesty > avoiding hard conversations. Focus > frenzy.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ==================== MINIMUM VIABLE SCORECARD ==================== -->
+  <section>
+    <h2>Proposed Minimum Viable Scorecard</h2>
+    <p>The purpose is the <strong>habit</strong> of measurement, not the specific number. First metrics are training wheels. Adjust after 4 weeks.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Owner</th>
+          <th>Metric</th>
+          <th>Weekly Target</th>
+          <th>Source</th>
+          <th>Why This One</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="metric-owner">Jan</td>
+          <td>Qualified meetings held</td>
+          <td class="metric-target">3/week</td>
+          <td>HubSpot</td>
+          <td>Top of funnel, directly in her control, countable</td>
+        </tr>
+        <tr>
+          <td class="metric-owner">Raju</td>
+          <td>Sprint commitment completion %</td>
+          <td class="metric-target">80%</td>
+          <td>Jira sprint report</td>
+          <td>Engineering credibility = delivering what you commit to</td>
+        </tr>
+        <tr>
+          <td class="metric-owner">Patrick</td>
+          <td>Customer touchpoints</td>
+          <td class="metric-target">5/week</td>
+          <td>HubSpot activity</td>
+          <td>Renewal health is relationship health</td>
+        </tr>
+        <tr>
+          <td class="metric-owner">Steve</td>
+          <td>To-dos completed from prior week</td>
+          <td class="metric-target">90%</td>
+          <td>L10 to-do list</td>
+          <td>Directly addresses Raju's #1 concern: follow-through</td>
+        </tr>
+        <tr class="tbd-row">
+          <td class="metric-owner" style="color:var(--bm-muted-gray)">Sarah</td>
+          <td>TBD &mdash; resolve role transition first</td>
+          <td>&mdash;</td>
+          <td>&mdash;</td>
+          <td>Can't assign a metric to the wrong seat</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Discussion Points for Raju</h4>
+    <ul style="font-size:14px;margin-left:20px;">
+      <li>Is sprint commitment % the right engineering metric, or is there a better leading indicator?</li>
+      <li>What metric would Raju track for himself personally (beyond team sprint %)?</li>
+      <li>Does the Sarah situation need resolution before Session 2?</li>
+      <li>Should Natasha and Teela have individual metrics, or roll up under their function lead?</li>
+    </ul>
+  </section>
+
+  <!-- ==================== L10 FORMAT ==================== -->
+  <section>
+    <h2>Weekly Steve + Raju Meeting Format</h2>
+    <p>45 minutes, not 90. Earn the right to expand later. Same day, same time, no exceptions.</p>
+
+    <div class="l10-container">
+      <div class="l10-row">
+        <div class="l10-time">3 min</div>
+        <div class="l10-content">
+          <div class="l10-label">Check-In</div>
+          <div class="l10-desc">One personal win, one professional win each. Set the tone.</div>
+        </div>
+      </div>
+      <div class="l10-row">
+        <div class="l10-time">5 min</div>
+        <div class="l10-content">
+          <div class="l10-label">Scorecard Review</div>
+          <div class="l10-desc">MVS numbers. On track = checkmark. Off track = Issues List. No discussion here.</div>
+        </div>
+      </div>
+      <div class="l10-row">
+        <div class="l10-time">5 min</div>
+        <div class="l10-content">
+          <div class="l10-label">Rock Status</div>
+          <div class="l10-desc">On track / off track per person. Off track = Issues List.</div>
+        </div>
+      </div>
+      <div class="l10-row">
+        <div class="l10-time">5 min</div>
+        <div class="l10-content">
+          <div class="l10-label">To-Do Review</div>
+          <div class="l10-desc">Done or not done from last week. Target: 90% completion rate.</div>
+        </div>
+      </div>
+      <div class="l10-row" style="background:var(--bm-bg-cool);">
+        <div class="l10-time" style="background:var(--bm-teal-accent);">25 min</div>
+        <div class="l10-content">
+          <div class="l10-label">IDS &mdash; Identify, Discuss, Solve</div>
+          <div class="l10-desc">Vote top 3 issues. Take #1. Identify root cause. Discuss (10 min max per issue). Solve = a to-do with an owner and a deadline. Repeat.</div>
+        </div>
+      </div>
+      <div class="l10-row">
+        <div class="l10-time">2 min</div>
+        <div class="l10-content">
+          <div class="l10-label">Wrap</div>
+          <div class="l10-desc">Read back all to-dos. Cascading messages (who needs to know what). Rate the meeting 1&ndash;10.</div>
+        </div>
+      </div>
+    </div>
+
+    <h4>Rules for the First 4 Weeks</h4>
+    <ul style="font-size:14px;margin-left:20px;">
+      <li>Same day, same time &mdash; no rescheduling unless emergency</li>
+      <li>Meeting ends on time even if Issues List isn't empty</li>
+      <li>Below-8 rating becomes an issue to IDS the following week</li>
+      <li>No laptops during IDS (phones face-down)</li>
+    </ul>
+  </section>
+
+  <!-- ==================== Q2 ROCKS ==================== -->
+  <section>
+    <h2>Q2 2026 Rocks &mdash; Steve + Raju Only</h2>
+    <p>Jan, Patrick, and team Rocks will be confirmed in Sessions 2 and 3.</p>
+
+    <table>
+      <thead>
+        <tr><th>Rock</th><th>Owner</th><th>Proposed "Done" Definition</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>EOS Operational Rhythm</strong></td>
+          <td class="metric-owner">Steve</td>
+          <td>4 consecutive weekly L10 meetings held with Scorecard data reported. Session 3 (full team L10) completed by April 14.</td>
+          <td>Starting</td>
+        </tr>
+        <tr>
+          <td><strong>Content Scanner Architecture</strong></td>
+          <td class="metric-owner">Raju</td>
+          <td>Architecture sprint delivered. Document reviewed and approved by Steve. AWS partnership requirements scoped.</td>
+          <td>In flight</td>
+        </tr>
+        <tr>
+          <td><strong>Publisher Pipeline</strong></td>
+          <td class="metric-owner">Steve</td>
+          <td>3+ active publisher conversations. At least 1 MOU or signed partnership beyond Saddleback.</td>
+          <td>In flight</td>
+        </tr>
+        <tr>
+          <td><strong>Marketing Seat</strong></td>
+          <td class="metric-owner">Steve</td>
+          <td>Marketing function staffed (hire or fractional). Jan relieved of marketing dual-function.</td>
+          <td>Not started</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>For Raju to Consider</h4>
+    <p style="font-size:14px;">Does Raju want a personal Rock beyond Content Scanner? Examples: UAT automation to 80% coverage, sprint completion baseline to 85%, engineering hiring plan defined.</p>
+  </section>
+
+  <!-- ==================== ISSUES LIST ==================== -->
+  <section>
+    <h2>Issues List &mdash; For Quick Review</h2>
+    <p>Do not solve these tomorrow. Confirm the list is real. Raju adds missing ones. These get IDS'd in future L10s.</p>
+
+    <div class="issue-item">
+      <div class="issue-number">1</div>
+      <div>Marketing seat is unfilled &mdash; Jan is carrying dual function (sales + marketing)</div>
+    </div>
+    <div class="issue-item">
+      <div class="issue-number">2</div>
+      <div>Publisher revenue model is unvalidated &mdash; no signed partnerships generating revenue yet</div>
+    </div>
+    <div class="issue-item">
+      <div class="issue-number">3</div>
+      <div>Content Scanner timeline and AWS partnership need definition</div>
+    </div>
+    <div class="issue-item">
+      <div class="issue-number">4</div>
+      <div>Meeting rhythm is inconsistent &mdash; no formal L10 established yet</div>
+    </div>
+    <div class="issue-item">
+      <div class="issue-number">5</div>
+      <div>Data hygiene: HubSpot data doesn't match financial actuals</div>
+    </div>
+    <div class="issue-item">
+      <div class="issue-number">6</div>
+      <div>Pricing realization: Are we consistently closing at $3/student?</div>
+    </div>
+    <div class="issue-item">
+      <div class="issue-number">7</div>
+      <div>AI-first hiring model &mdash; do we know how to recruit for this?</div>
+    </div>
+    <div class="issue-item">
+      <div class="issue-number">8</div>
+      <div>Expansion state selection criteria not formalized</div>
+    </div>
+    <div class="issue-item">
+      <div class="issue-number">9</div>
+      <div>Classroom Library Module adoption &mdash; is it selling or stalling?</div>
+    </div>
+    <div class="issue-item">
+      <div class="issue-number">10</div>
+      <div>Team Rock-setting process needs to be built</div>
+    </div>
+
+    <h4 style="margin-top:20px;">Potential Additions from March 28 Call</h4>
+    <div class="issue-item">
+      <div class="issue-number">?</div>
+      <div>Sarah role transition &mdash; PO to operations. Timeline and communication plan needed.</div>
+    </div>
+    <div class="issue-item">
+      <div class="issue-number">?</div>
+      <div>Sprint completion rate baseline ~67% &mdash; below target. Root cause TBD.</div>
+    </div>
+    <div class="issue-item">
+      <div class="issue-number">?</div>
+      <div>Raju contract and equity &mdash; 2 weeks / 30 days commitment (made March 28).</div>
+    </div>
+    <div class="issue-item">
+      <div class="issue-number">?</div>
+      <div>AI hiring need &mdash; person for advanced ideation, local model experimentation.</div>
+    </div>
+  </section>
+
+  <!-- ==================== SESSION SEQUENCE ==================== -->
+  <section>
+    <h2>Session Sequence</h2>
+
+    <div class="session-card" style="border-left: 4px solid var(--bm-teal-accent);">
+      <div class="session-label">Session 1 &mdash; Tomorrow</div>
+      <div class="session-title">Steve + Raju Align (This Meeting)</div>
+      <div class="session-desc">V/TO validation, accountability contract, MVS, weekly format, Rocks. The two of you leave aligned before anyone else is involved.</div>
+    </div>
+
+    <div class="session-card">
+      <div class="session-label">Session 2 &mdash; Friday April 4 or Early Next Week</div>
+      <div class="session-title">Add Jan &mdash; Leadership Trio</div>
+      <div class="session-desc">Steve calls Jan beforehand to set context. Steve and Raju present the aligned V/TO. Jan validates or pushes back. Confirm Jan's Scorecard metric and Rocks. Design the full-team L10 together. The three of you leave as the aligned leadership team.</div>
+    </div>
+
+    <div class="session-card">
+      <div class="session-label">Session 3 &mdash; Week of April 7</div>
+      <div class="session-title">First Full L10 with Patrick</div>
+      <div class="session-desc">First week of MVS data on the board. All Q2 Rocks confirmed. Full IDS with the team. This is the moment EOS becomes real for everyone, not just leadership.</div>
+    </div>
+
+    <div class="session-card" style="border-left: 4px solid var(--bm-pumpkin);">
+      <div class="session-label">Before Session 3</div>
+      <div class="session-title">Sarah 1:1 &mdash; Role Transition</div>
+      <div class="session-desc">Steve has a direct conversation with Sarah about moving from Product Owner to an operational role supporting Jan and Teela. Must happen before assigning her a metric or Rock that reflects the wrong seat.</div>
+    </div>
+  </section>
+
+  <!-- ==================== RISKS ==================== -->
+  <section>
+    <h2>Session Risks &mdash; Watch For These</h2>
+
+    <div class="risk-item">
+      <strong>Steve tries to do too much.</strong> Raju said start small. If Blocks 5&ndash;6 get cut, that's fine. Four decisions are better than six half-decisions.
+    </div>
+    <div class="risk-item">
+      <strong>Conversation drifts into product/engineering details.</strong> Put them on the Issues List and move on. This session is about HOW we work, not WHAT we build.
+    </div>
+    <div class="risk-item">
+      <strong>Contract/equity conversation bleeds in.</strong> Acknowledge it's open. Keep it separate from the accountability conversation.
+    </div>
+    <div class="risk-item">
+      <strong>Steve introduces new ideas mid-meeting.</strong> The ADHD risk Raju called out. Write the idea on the Issues List and keep moving.
+    </div>
+    <div class="risk-item">
+      <strong>The MVS metrics are wrong.</strong> They probably are. That's fine. Adjust after 4 weeks. The first metrics are training wheels.
+    </div>
+  </section>
+
+  <!-- ==================== SUCCESS ==================== -->
+  <section>
+    <h2>What Success Looks Like</h2>
+    <p>Steve and Raju leave with these 7 things. If they get all 7, Session 1 is a 10.</p>
+
+    <div class="success-item"><div class="success-check"></div><div>Verbal V/TO alignment (or documented disagreements on Issues List)</div></div>
+    <div class="success-item"><div class="success-check"></div><div>A written accountability contract (3&ndash;4 commitments per person)</div></div>
+    <div class="success-item"><div class="success-check"></div><div>A locked Minimum Viable Scorecard (5&ndash;6 metrics)</div></div>
+    <div class="success-item"><div class="success-check"></div><div>A scheduled weekly Steve + Raju meeting with defined format</div></div>
+    <div class="success-item"><div class="success-check"></div><div>Confirmed Q2 Rocks with "done" definitions</div></div>
+    <div class="success-item"><div class="success-check"></div><div>Session 2 and Session 3 dates locked</div></div>
+    <div class="success-item"><div class="success-check"></div><div>An updated Issues List</div></div>
+  </section>
+
+</div>
+
+<div class="page-footer">
+  Bookmarked &bull; EOS Implementation &bull; Confidential<br>
+  Prepared March 31, 2026
+</div>
+
+</body>
+</html>
