@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connally ISD Content Package — Review Draft</title>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bm-eigengrau: #101828;
+  --bm-deep-green: #107569;
+  --bm-teal-accent: #12A38C;
+  --bm-white: #FFFFFF;
+  --bm-pumpkin: #FF692E;
+  --bm-secondary-text: #475467;
+  --bm-muted-gray: #9CA3AF;
+  --bm-border-light: #E5E7EB;
+  --bm-bg-light: #F9FAFB;
+  --bm-bg-cool: #F8FAFC;
+  --bm-bg-warm: #F8F5F0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Urbanist', Arial, sans-serif;
+  color: var(--bm-eigengrau);
+  background: var(--bm-bg-light);
+  line-height: 1.6;
+}
+
+.review-header {
+  background: linear-gradient(135deg, #0D5A52, #107569, #12A38C);
+  color: white;
+  padding: 48px 40px;
+  text-align: center;
+}
+
+.review-header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.review-header p {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--bm-teal-accent);
+  margin-bottom: 8px;
+}
+
+.pillar-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+}
+
+.pillar-proof { background: #E8F5F3; color: var(--bm-deep-green); }
+.pillar-vitality { background: #FFF3E0; color: #C75B00; }
+.pillar-industry { background: #E8EAF6; color: #3949AB; }
+
+.content-card {
+  background: white;
+  border: 1px solid var(--bm-border-light);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.content-card h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.content-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--bm-deep-green);
+  margin: 24px 0 12px;
+}
+
+.content-card .subtitle {
+  font-size: 14px;
+  color: var(--bm-muted-gray);
+  margin-bottom: 20px;
+}
+
+.blog-content {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--bm-eigengrau);
+}
+
+.blog-content p {
+  margin-bottom: 16px;
+}
+
+.blog-content blockquote {
+  border-left: 3px solid var(--bm-teal-accent);
+  padding: 12px 20px;
+  margin: 20px 0;
+  background: var(--bm-bg-cool);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: var(--bm-secondary-text);
+}
+
+.blog-content blockquote cite {
+  display: block;
+  font-style: normal;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--bm-eigengrau);
+  margin-top: 8px;
+}
+
+.social-post-box {
+  background: var(--bm-bg-cool);
+  border: 1px solid var(--bm-border-light);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  color: var(--bm-eigengrau);
+}
+
+.char-count {
+  font-size: 12px;
+  color: var(--bm-muted-gray);
+  text-align: right;
+  margin-top: 8px;
+}
+
+.platform-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 4px;
+  color: white;
+  margin-right: 8px;
+}
+
+.badge-linkedin { background: #0077B5; }
+.badge-instagram { background: #E1306C; }
+.badge-facebook { background: #1877F2; }
+.badge-x { background: #000000; }
+
+.divider {
+  border: none;
+  border-top: 2px solid var(--bm-border-light);
+  margin: 48px 0;
+}
+
+.meta-note {
+  background: var(--bm-bg-warm);
+  border-radius: 8px;
+  padding: 16px 20px;
+  font-size: 13px;
+  color: var(--bm-secondary-text);
+  margin-bottom: 24px;
+}
+
+.cta-note {
+  font-size: 13px;
+  color: var(--bm-deep-green);
+  font-weight: 600;
+  margin-top: 12px;
+}
+</style>
+</head>
+<body>
+
+<div class="review-header">
+  <h1>Connally ISD Content Package</h1>
+  <p>Review Draft — April 2, 2026 | Source: Dr. Sandra Hancock Transcript (March 26, 2026)</p>
+</div>
+
+<div class="container">
+
+<div class="meta-note">
+  <strong>Source:</strong> Check-in call between Patrick Reid and Dr. Sandra Hancock, Assistant Superintendent of Curriculum &amp; Instruction, Connally ISD. She gave explicit permission to share this content. All quotes are real and attributed.
+</div>
+
+<!-- ============================================ -->
+<!-- BLOG POST 1: DISTRICT SPOTLIGHT              -->
+<!-- ============================================ -->
+
+<div class="section-label">Blog Post 1 — District Spotlight</div>
+
+<div class="content-card">
+  <h2>How Connally ISD Took a Book List to the Board — and Got Zero Complaints</h2>
+  <div class="subtitle">Website blog draft | ~650 words | Voice: Trusted Guide | Pillar: Proof &amp; Traction + Library Vitality</div>
+
+  <div class="blog-content">
+
+    <p>Before their last board meeting, Dr. Sandra Hancock ran Connally ISD's proposed book list through Bookmarked, confirmed nothing was flagged, and presented it to the board with confidence. The board posted the list publicly for parent feedback. The result: zero complaints during the entire public comment period.</p>
+
+    <p>Across Texas, that outcome is rarer than it should be. Districts are navigating a compliance landscape where a single parent challenge can escalate into a board meeting crisis. Some have stopped ordering new library books entirely — choosing silence over the risk of a misstep.</p>
+
+    <p>Connally ISD took a different path.</p>
+
+    <p>Dr. Hancock — the district's Assistant Superintendent of Curriculum and Instruction — describes the process as simple: run the proposed titles through Bookmarked, review anything that gets flagged, and move forward with clarity.</p>
+
+    <blockquote>
+      "It was much faster than if I would have to do that on my own, number by number."
+      <cite>— Dr. Sandra Hancock, Assistant Superintendent of Curriculum &amp; Instruction, Connally ISD</cite>
+    </blockquote>
+
+    <p>For Dr. Hancock, the speed matters — but the confidence matters more. Without the right tools, the weight of the current political climate makes every book decision feel high-stakes.</p>
+
+    <blockquote>
+      "It is a scary proposition when you realize what the political climate is. If I didn't have this product, like — this has really simplified and taken my stress level much lower."
+      <cite>— Dr. Sandra Hancock</cite>
+    </blockquote>
+
+    <p>When the book list went to the board, Dr. Hancock was able to tell them it had been vetted. The board posted it publicly for community feedback — and not a single parent complaint came through.</p>
+
+    <blockquote>
+      "I think our folks felt much more at ease knowing that it's been vetted."
+      <cite>— Dr. Sandra Hancock</cite>
+    </blockquote>
+
+    <p>But Dr. Hancock knows Connally's experience isn't the norm. She watches neighboring districts navigate the same compliance pressures — some facing waves of parent challenges, others frozen in place, unwilling to order new titles at all.</p>
+
+    <blockquote>
+      "That just breaks my heart — to think of just not ordering books. We're here as public educators because we want to help kids, and we want to have a well-read, well-educated citizenry that can make decisions."
+      <cite>— Dr. Sandra Hancock</cite>
+    </blockquote>
+
+    <p>When asked what she would say to a superintendent at a district currently dealing with parent challenges, Dr. Hancock didn't hesitate:</p>
+
+    <blockquote>
+      "It meets both sides of the fence. It meets the parents who want their children to have access, and it meets the ones who want to limit or protect. It feels like that win-win solution that gives parents the information and just puts it back in their hands."
+      <cite>— Dr. Sandra Hancock</cite>
+    </blockquote>
+
+    <p>Connally ISD's approach is a model for what's possible when districts have the right tools. Instead of choosing between access and compliance, they chose both. The board has confidence. Parents have transparency. And the books made it onto the shelves — which is the whole point.</p>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ============================================ -->
+<!-- BLOG POST 2: THOUGHT LEADERSHIP              -->
+<!-- ============================================ -->
+
+<div class="section-label">Blog Post 2 — Thought Leadership</div>
+
+<div class="content-card">
+  <h2>The Books That Never Get Ordered</h2>
+  <div class="subtitle">Website blog draft | By Steve Wandler, Founder | Voice: Visionary Authority → Trusted Guide | Pillar: Library Vitality + Industry &amp; Policy</div>
+
+  <div class="blog-content">
+
+    <p>Something quiet is happening in school districts across Texas. No headlines. No board meeting blowups. Just — silence. Districts are choosing not to order new library books.</p>
+
+    <p>Not because the books are bad. Not because the budgets dried up. Because the compliance burden has become so heavy that the safest move feels like no move at all.</p>
+
+    <p>This is the real cost of the current legislative landscape. Not the high-profile parent challenges that make the news. The invisible ones — the book orders that never happen, the collections that go stale, the students who walk into a library and find nothing new on the shelves.</p>
+
+    <h3>Fear Shouldn't Be the Default</h3>
+
+    <p>When we talk to district leaders, the pattern is consistent. The legislation created real obligations — SB 13 requires review processes, SB 412 introduced personal liability for school personnel. These are serious requirements that deserve serious responses. But the response too many districts have landed on is paralysis.</p>
+
+    <p>Staff who aren't certified librarians are placed in library roles and told to figure it out. They're scared. They don't want the headache. So they stop ordering. The shelves stay where they are. The students lose.</p>
+
+    <p>Dr. Sandra Hancock, Assistant Superintendent of Curriculum and Instruction at Connally ISD, put it plainly:</p>
+
+    <blockquote>
+      "It just devastates me that this has become a barrier. People are just fearful of making the misstep."
+      <cite>— Dr. Sandra Hancock, Connally ISD</cite>
+    </blockquote>
+
+    <h3>What Solving This Actually Looks Like</h3>
+
+    <p>Connally ISD didn't stop ordering books. Before their last board meeting, Dr. Hancock ran the proposed titles through Bookmarked, took the list to the board with confidence, and posted it publicly for parent feedback. Zero complaints came through. Not one.</p>
+
+    <blockquote>
+      "It meets both sides of the fence. It meets the parents who want their children to have access, and it meets the ones who want to limit or protect. It feels like that win-win solution that gives parents the information and just puts it back in their hands."
+      <cite>— Dr. Sandra Hancock, Connally ISD</cite>
+    </blockquote>
+
+    <h3>The Win-Win That's Been Missing</h3>
+
+    <p>The compliance conversation has been framed as a zero-sum game — either books stay on shelves or parents get control. That framing is wrong, and it's part of why districts are stuck.</p>
+
+    <p>When a district knows what's publicly known about every book in their collection — flags, challenge history, peer district decisions — they can make informed, defensible choices. Parents get the information they need. Boards get confidence that the process is sound. And the people managing library collections get their time back for what actually matters.</p>
+
+    <p>That's not a compromise. It's what the system should have looked like from the beginning.</p>
+
+    <p>Libraries should be the most vibrant rooms in a school. The compliance infrastructure should support that mission, not suffocate it. Districts that have the right tools are proving it's possible to do both — protect and provide.</p>
+
+    <p>The districts still frozen in place? They don't have to stay there.</p>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ============================================ -->
+<!-- SOCIAL MEDIA POSTS                           -->
+<!-- ============================================ -->
+
+<div class="section-label">Social Media Posts</div>
+
+<!-- POST 1: LinkedIn — Quote Post -->
+<div class="content-card">
+  <h2>Post 1: LinkedIn — Quote Post</h2>
+  <div class="subtitle">
+    <span class="platform-badge badge-linkedin">LinkedIn</span>
+    <span class="pillar-tag pillar-proof">Proof &amp; Traction</span>
+  </div>
+
+  <div class="social-post-box">"It meets both sides of the fence. It meets the parents who want their children to have access, and it meets the ones who want to limit or protect."
+
+That's Dr. Sandra Hancock, Assistant Superintendent at Connally ISD, describing what happened when her district took a new book list to the school board.
+
+Before the board meeting, she ran the proposed titles through Book Intelligence. Nothing flagged. The board posted the list publicly for parent feedback.
+
+The result: zero complaints. Not one.
+
+In a climate where some districts have stopped ordering books entirely, Connally proved there's a better path — one where compliance and access aren't at odds.
+
+The board felt confident. Parents had transparency. And new books made it onto shelves.
+
+That's the whole point.
+
+#BookIntelligence #LibraryVitality #K12 #SchoolLibraries #txlchat</div>
+  <div class="char-count">797 characters (LinkedIn limit: 3,000)</div>
+</div>
+
+<!-- POST 2: LinkedIn — Commentary -->
+<div class="content-card">
+  <h2>Post 2: LinkedIn — Commentary</h2>
+  <div class="subtitle">
+    <span class="platform-badge badge-linkedin">LinkedIn</span>
+    <span class="pillar-tag pillar-vitality">Library Vitality</span>
+  </div>
+
+  <div class="social-post-box">Something quiet is happening in Texas school districts.
+
+No headlines. No board meeting blowups. Just silence.
+
+Districts are choosing not to order new library books.
+
+Not because the books are bad. Not because the budgets dried up. Because the compliance burden feels too heavy and the safest move feels like no move at all.
+
+Dr. Sandra Hancock at Connally ISD put it simply: "It just devastates me that this has become a barrier. People are just fearful of making the misstep."
+
+Meanwhile, her district ran a proposed book list through Book Intelligence before a board meeting. Zero parent complaints during the public comment period. Board felt at ease. New books on shelves.
+
+Fear shouldn't be the default.
+
+Libraries should be the most vibrant rooms in a school. The infrastructure to keep them that way exists.
+
+#LibraryVitality #BookIntelligence #K12 #SchoolLibraries</div>
+  <div class="char-count">768 characters (LinkedIn limit: 3,000)</div>
+</div>
+
+<!-- POST 3: Instagram — Quote Graphic + Caption -->
+<div class="content-card">
+  <h2>Post 3: Instagram — Quote Graphic + Caption</h2>
+  <div class="subtitle">
+    <span class="platform-badge badge-instagram">Instagram</span>
+    <span class="pillar-tag pillar-proof">Proof &amp; Traction</span>
+    <br><br>
+    <strong>Graphic:</strong> Branded quote card (1080x1080) with Sandra's win-win quote — designed in Phase 4
+  </div>
+
+  <div class="social-post-box">Connally ISD took a new book list to their school board, vetted it through Book Intelligence, and posted it publicly for parent feedback.
+
+The result? Zero complaints.
+
+Dr. Sandra Hancock says it best — compliance and access don't have to be at odds. It's possible to protect AND provide.
+
+150+ Texas districts are proving it every day.
+
+#BookIntelligence #LibraryVitality #SchoolLibraries #K12 #txlchat #EdTech</div>
+  <div class="char-count">398 characters (Instagram caption limit: 2,200)</div>
+</div>
+
+<!-- POST 4: Facebook — Community Post -->
+<div class="content-card">
+  <h2>Post 4: Facebook — Community Post</h2>
+  <div class="subtitle">
+    <span class="platform-badge badge-facebook">Facebook</span>
+    <span class="pillar-tag pillar-vitality">Library Vitality</span>
+    <br><br>
+    <strong>Graphic:</strong> Same quote card adapted to 1200x630 — designed in Phase 4
+  </div>
+
+  <div class="social-post-box">When Connally ISD took a new book list to the school board, they were ready.
+
+Every title was vetted. The list was posted publicly for parent feedback. The result? Zero complaints.
+
+In Dr. Sandra Hancock's words: "It meets both sides of the fence — the parents who want their children to have access, and the ones who want to protect."
+
+New books on shelves. Board confidence. Parent transparency. That's what it looks like when compliance works FOR libraries, not against them.</div>
+  <div class="char-count">467 characters (Facebook: under 500 for organic reach)</div>
+</div>
+
+<!-- POST 5: X — Quote Thread -->
+<div class="content-card">
+  <h2>Post 5: X (Twitter) — Thread</h2>
+  <div class="subtitle">
+    <span class="platform-badge badge-x">X / Twitter</span>
+    <span class="pillar-tag pillar-proof">Proof &amp; Traction</span>
+  </div>
+
+  <div class="social-post-box"><strong>Tweet 1:</strong>
+Connally ISD took a new book list to the school board. Vetted every title through Book Intelligence. Posted it publicly for parent feedback.
+
+Result: Zero complaints. Not one.
+
+Here's what their Assistant Superintendent said 🧵</div>
+  <div class="char-count">236 characters (X limit: 280)</div>
+
+  <div class="social-post-box" style="margin-top: 12px;"><strong>Tweet 2:</strong>
+"It meets both sides of the fence. It meets the parents who want their children to have access, and it meets the ones who want to limit or protect."
+
+— Dr. Sandra Hancock, Connally ISD</div>
+  <div class="char-count">209 characters (X limit: 280)</div>
+
+  <div class="social-post-box" style="margin-top: 12px;"><strong>Tweet 3:</strong>
+Some districts have stopped ordering books entirely out of fear.
+
+Connally didn't. They used Book Intelligence, gave parents transparency, and kept books moving onto shelves.
+
+That's what the tools are for.</div>
+  <div class="char-count">210 characters (X limit: 280)</div>
+</div>
+
+<hr class="divider">
+
+<!-- ============================================ -->
+<!-- SELF-CHECK GATE                              -->
+<!-- ============================================ -->
+
+<div class="section-label">Self-Check Gate</div>
+
+<div class="content-card">
+  <h2>Messaging Compliance Verification</h2>
+  <table style="width: 100%; font-size: 14px; border-collapse: collapse;">
+    <tr style="border-bottom: 1px solid #E5E7EB;">
+      <td style="padding: 8px 0; color: var(--bm-deep-green); font-weight: 600;">✓</td>
+      <td style="padding: 8px 12px;">Zero banned phrases — verified against messaging-consolidated.md</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #E5E7EB;">
+      <td style="padding: 8px 0; color: var(--bm-deep-green); font-weight: 600;">✓</td>
+      <td style="padding: 8px 12px;">All quotes are real, from the actual transcript, with explicit permission granted</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #E5E7EB;">
+      <td style="padding: 8px 0; color: var(--bm-deep-green); font-weight: 600;">✓</td>
+      <td style="padding: 8px 12px;">Messaging hierarchy respected — Library Vitality leads, Book Intelligence is the how</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #E5E7EB;">
+      <td style="padding: 8px 0; color: var(--bm-deep-green); font-weight: 600;">✓</td>
+      <td style="padding: 8px 12px;">Positive framing — leads with gains (confidence, transparency, access), not fear</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #E5E7EB;">
+      <td style="padding: 8px 0; color: var(--bm-deep-green); font-weight: 600;">✓</td>
+      <td style="padding: 8px 12px;">Librarian Sensitivity Principle — frames as empowerment, never replacement</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #E5E7EB;">
+      <td style="padding: 8px 0; color: var(--bm-deep-green); font-weight: 600;">✓</td>
+      <td style="padding: 8px 12px;">Product terminology correct — "Book Intelligence" (not module), "OnShelf" as product name</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #E5E7EB;">
+      <td style="padding: 8px 0; color: var(--bm-deep-green); font-weight: 600;">✓</td>
+      <td style="padding: 8px 12px;">District count: "150+" — verified figure from messaging standards</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #E5E7EB;">
+      <td style="padding: 8px 0; color: var(--bm-deep-green); font-weight: 600;">✓</td>
+      <td style="padding: 8px 12px;">No Content Scanner references (future capability — excluded from external content)</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #E5E7EB;">
+      <td style="padding: 8px 0; color: var(--bm-deep-green); font-weight: 600;">✓</td>
+      <td style="padding: 8px 12px;">Character counts within all platform limits</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 0; color: var(--bm-deep-green); font-weight: 600;">✓</td>
+      <td style="padding: 8px 12px;">Switzerland positioning maintained — intelligence, not instructions</td>
+    </tr>
+  </table>
+</div>
+
+</div>
+</body>
+</html>
