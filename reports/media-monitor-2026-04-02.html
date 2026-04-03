@@ -25,7 +25,6 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
 .confluence-badge:hover { background: rgba(255,255,255,0.3); }
 .container { max-width: 1100px; margin: 0 auto; padding: 28px 24px; }
 
-/* Summary Cards */
 .summary-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 24px; }
 .summary-card { background: white; border-radius: 10px; padding: 18px 14px; text-align: center; border: 1px solid var(--bm-border-light); }
 .summary-card .number { font-size: 30px; font-weight: 800; line-height: 1; }
@@ -33,23 +32,19 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
 .score-negative { color: #DC2626; } .score-mixed { color: var(--bm-pumpkin); }
 .score-neutral { color: var(--bm-muted-gray); } .score-positive { color: var(--bm-deep-green); }
 
-/* Charts */
 .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
 .chart-card { background: white; border-radius: 10px; padding: 20px; border: 1px solid var(--bm-border-light); }
 .chart-card h3 { font-size: 14px; font-weight: 700; color: var(--bm-deep-green); margin-bottom: 12px; }
 .chart-card canvas { max-height: 260px; }
 
-/* Sections */
 .section { margin-bottom: 32px; }
 .section h2 { font-size: 18px; font-weight: 700; color: var(--bm-deep-green); margin-bottom: 12px; padding-bottom: 5px; border-bottom: 2px solid var(--bm-teal-accent); }
 
-/* Tables */
 .data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .data-table th { background: var(--bm-bg-cool); padding: 10px 12px; text-align: left; font-size: 11px; font-weight: 700; color: var(--bm-muted-gray); text-transform: uppercase; letter-spacing: 0.4px; border-bottom: 2px solid var(--bm-border-light); }
 .data-table td { padding: 10px 12px; border-bottom: 1px solid var(--bm-border-light); }
 .data-table tr:hover { background: var(--bm-bg-cool); }
 
-/* Article Cards */
 .article-card { background: white; border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; border: 1px solid var(--bm-border-light); transition: opacity 0.2s; }
 .article-card.compact { padding: 12px 18px; }
 .article-card.hidden { display: none; }
@@ -78,22 +73,27 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
 .so-what-label { font-size: 10px; font-weight: 700; color: var(--bm-deep-green); text-transform: uppercase; letter-spacing: 0.4px; min-width: 50px; flex-shrink: 0; }
 .so-what-text { font-size: 13px; color: var(--bm-secondary-text); }
 .so-what-action { font-size: 13px; color: var(--bm-eigengrau); font-weight: 600; }
-.card-footer { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--bm-border-light); }
-.confluence-link { font-size: 12px; color: var(--bm-teal-accent); text-decoration: none; font-weight: 600; }
-.confluence-link:hover { text-decoration: underline; }
 
-/* Narrative grid */
+/* Comment section */
+.comment-section { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--bm-border-light); }
+.comment-list { margin-bottom: 6px; }
+.comment-item { background: var(--bm-bg-cool); border-radius: 6px; padding: 8px 12px; margin-bottom: 6px; }
+.comment-meta { font-size: 11px; color: var(--bm-muted-gray); margin-bottom: 2px; }
+.comment-meta strong { color: var(--bm-deep-green); }
+.comment-body { font-size: 13px; color: var(--bm-secondary-text); }
+.no-comments { font-size: 12px; color: var(--bm-muted-gray); font-style: italic; }
+.add-comment-link { font-size: 12px; color: var(--bm-teal-accent); text-decoration: none; font-weight: 600; }
+.add-comment-link:hover { text-decoration: underline; }
+
 .narrative-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .narrative-card { background: white; border-radius: 8px; padding: 14px; border: 1px solid var(--bm-border-light); text-align: center; }
 .narrative-card .count { font-size: 22px; font-weight: 800; color: var(--bm-deep-green); }
 .narrative-card .name { font-size: 11px; color: var(--bm-muted-gray); margin-top: 2px; }
 
-/* Product signals */
 .signal-card { background: var(--bm-bg-warm); border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; border-left: 4px solid var(--bm-pumpkin); }
 .signal-card .source { font-size: 11px; color: var(--bm-muted-gray); font-weight: 600; margin-bottom: 2px; }
 .signal-card .signal-text { font-size: 13px; color: var(--bm-eigengrau); }
 
-/* Filter bar */
 .filter-bar { background: white; border-radius: 10px; padding: 14px 18px; margin-bottom: 16px; border: 1px solid var(--bm-border-light); display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
 .filter-group { display: flex; align-items: center; gap: 6px; }
 .filter-group-label { font-size: 11px; font-weight: 700; color: var(--bm-muted-gray); text-transform: uppercase; letter-spacing: 0.4px; margin-right: 4px; }
@@ -129,7 +129,6 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
 
 <div class="container">
 
-  <!-- Summary Cards -->
   <div class="summary-grid">
     <div class="summary-card"><div class="number">25</div><div class="label">Total Tracked</div></div>
     <div class="summary-card"><div class="number score-negative">10</div><div class="label">Negative</div></div>
@@ -138,7 +137,6 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
     <div class="summary-card"><div class="number score-negative">-36</div><div class="label">Net Score</div></div>
   </div>
 
-  <!-- Charts -->
   <div class="chart-row">
     <div class="chart-card">
       <h3>Article Timeline by Reach & Sentiment</h3>
@@ -150,204 +148,55 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
     </div>
   </div>
 
-  <!-- Narrative Landscape -->
   <div class="section">
     <h2>Narrative Landscape</h2>
-    <div class="narrative-grid">
-      <div class="narrative-card"><div class="count">7</div><div class="name">Censorship Tool</div></div>
+    <div class="narrative-grid"><div class="narrative-card"><div class="count">7</div><div class="name">Censorship Tool</div></div>
 <div class="narrative-card"><div class="count">6</div><div class="name">Profit from Bans</div></div>
 <div class="narrative-card"><div class="count">4</div><div class="name">Insertion Opp.</div></div>
 <div class="narrative-card"><div class="count">3</div><div class="name">AI Overreach</div></div>
 <div class="narrative-card"><div class="count">2</div><div class="name">Political Framing</div></div>
 <div class="narrative-card"><div class="count">2</div><div class="name">Advocacy Criticism</div></div>
 <div class="narrative-card"><div class="count">1</div><div class="name">Industry Context</div></div>
-
-    </div>
+</div>
   </div>
 
-  <!-- Journalist Tracker -->
   <div class="section">
     <h2>Journalist Tracker</h2>
     <table class="data-table">
-      <thead>
-        <tr><th>Journalist</th><th>Outlet</th><th style="text-align:center;">Articles</th><th style="text-align:center;">Sentiment</th><th style="text-align:center;">Tone</th><th style="text-align:center;">Avg Reach</th><th>Last Published</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-        <td style="font-weight:600;">Kelly Jensen</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">Book Riot</td>
-        <td style="text-align:center;font-weight:700;">5</td>
-        <td style="text-align:center;"><span style="color:#DC2626;">&#9632;&#9632;&#9632;&#9632;&#9632;</span></td>
-        <td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#FEE2E2;color:#DC2626;">NEGATIVE</span></td>
-        <td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">64</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">2025-01-01</td>
-      </tr>
-<tr>
-        <td style="font-weight:600;">Claire Woodcock</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">404 Media</td>
-        <td style="text-align:center;font-weight:700;">1</td>
-        <td style="text-align:center;"><span style="color:#DC2626;">&#9632;</span></td>
-        <td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#FEE2E2;color:#DC2626;">NEGATIVE</span></td>
-        <td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">88</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">2026-04-01</td>
-      </tr>
-<tr>
-        <td style="font-weight:600;">Max Ufberg</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">Fast Company</td>
-        <td style="text-align:center;font-weight:700;">1</td>
-        <td style="text-align:center;"><span style="color:#DC2626;">&#9632;</span></td>
-        <td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#FEE2E2;color:#DC2626;">NEGATIVE</span></td>
-        <td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">85</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">2026-03-03</td>
-      </tr>
-<tr>
-        <td style="font-weight:600;">Bayliss Wagner</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">San Antonio Express-News</td>
-        <td style="text-align:center;font-weight:700;">1</td>
-        <td style="text-align:center;"><span style="color:#E65100;">&#9632;</span></td>
-        <td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#FFF3E0;color:#E65100;">MIXED</span></td>
-        <td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">62</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">2025-12-02</td>
-      </tr>
-<tr>
-        <td style="font-weight:600;">Elissa Malespina</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">AI School Librarian (Substack)</td>
-        <td style="text-align:center;font-weight:700;">1</td>
-        <td style="text-align:center;"><span style="color:#DC2626;">&#9632;</span></td>
-        <td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#FEE2E2;color:#DC2626;">NEGATIVE</span></td>
-        <td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">55</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">2026-03-19</td>
-      </tr>
-<tr>
-        <td style="font-weight:600;">Tasha Stevens</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">US 105 FM (Killeen, TX)</td>
-        <td style="text-align:center;font-weight:700;">1</td>
-        <td style="text-align:center;"><span style="color:#065F46;">&#9632;</span></td>
-        <td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#D1FAE5;color:#065F46;">POSITIVE</span></td>
-        <td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">25</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">2025-09-22</td>
-      </tr>
-<tr>
-        <td style="font-weight:600;">Naaz Modan</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">K-12 Dive</td>
-        <td style="text-align:center;font-weight:700;">1</td>
-        <td style="text-align:center;"><span style="color:#E65100;">&#9632;</span></td>
-        <td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#FFF3E0;color:#E65100;">MIXED</span></td>
-        <td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">85</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">2026-04-02</td>
-      </tr>
-<tr>
-        <td style="font-weight:600;">Sanhita SinhaRoy</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">American Libraries Magazine (ALA)</td>
-        <td style="text-align:center;font-weight:700;">1</td>
-        <td style="text-align:center;"><span style="color:#6B7280;">&#9632;</span></td>
-        <td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#F3F4F6;color:#6B7280;">NEUTRAL</span></td>
-        <td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">70</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">2026-01-02</td>
-      </tr>
-<tr>
-        <td style="font-weight:600;">Sarah Asch</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">Texas Standard</td>
-        <td style="text-align:center;font-weight:700;">1</td>
-        <td style="text-align:center;"><span style="color:#6B7280;">&#9632;</span></td>
-        <td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#F3F4F6;color:#6B7280;">NEUTRAL</span></td>
-        <td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">65</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">2025-11-03</td>
-      </tr>
-<tr>
-        <td style="font-weight:600;">Sarah Kuta</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">Smithsonian Magazine</td>
-        <td style="text-align:center;font-weight:700;">1</td>
-        <td style="text-align:center;"><span style="color:#6B7280;">&#9632;</span></td>
-        <td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#F3F4F6;color:#6B7280;">NEUTRAL</span></td>
-        <td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">60</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">2023-08-21</td>
-      </tr>
-<tr>
-        <td style="font-weight:600;">Frankie Elliott</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">LBC (UK)</td>
-        <td style="text-align:center;font-weight:700;">1</td>
-        <td style="text-align:center;"><span style="color:#6B7280;">&#9632;</span></td>
-        <td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#F3F4F6;color:#6B7280;">NEUTRAL</span></td>
-        <td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">55</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">2026-03-26</td>
-      </tr>
-
-      </tbody>
+      <thead><tr><th>Journalist</th><th>Outlet</th><th style="text-align:center;">Articles</th><th style="text-align:center;">Sentiment</th><th style="text-align:center;">Tone</th><th style="text-align:center;">Avg Reach</th><th>Last Published</th></tr></thead>
+      <tbody><tr><td style="font-weight:600;">Kelly Jensen</td><td style="color:var(--bm-muted-gray);font-size:12px;">Book Riot</td><td style="text-align:center;font-weight:700;">5</td><td style="text-align:center;"><span style="color:#DC2626;">&#9632;&#9632;&#9632;&#9632;&#9632;</span></td><td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#FEE2E2;color:#DC2626;">NEGATIVE</span></td><td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">64</td><td style="color:var(--bm-muted-gray);font-size:12px;">2025-01-01</td></tr>
+<tr><td style="font-weight:600;">Claire Woodcock</td><td style="color:var(--bm-muted-gray);font-size:12px;">404 Media</td><td style="text-align:center;font-weight:700;">1</td><td style="text-align:center;"><span style="color:#DC2626;">&#9632;</span></td><td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#FEE2E2;color:#DC2626;">NEGATIVE</span></td><td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">88</td><td style="color:var(--bm-muted-gray);font-size:12px;">2026-04-01</td></tr>
+<tr><td style="font-weight:600;">Max Ufberg</td><td style="color:var(--bm-muted-gray);font-size:12px;">Fast Company</td><td style="text-align:center;font-weight:700;">1</td><td style="text-align:center;"><span style="color:#DC2626;">&#9632;</span></td><td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#FEE2E2;color:#DC2626;">NEGATIVE</span></td><td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">85</td><td style="color:var(--bm-muted-gray);font-size:12px;">2026-03-03</td></tr>
+<tr><td style="font-weight:600;">Bayliss Wagner</td><td style="color:var(--bm-muted-gray);font-size:12px;">San Antonio Express-News</td><td style="text-align:center;font-weight:700;">1</td><td style="text-align:center;"><span style="color:#E65100;">&#9632;</span></td><td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#FFF3E0;color:#E65100;">MIXED</span></td><td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">62</td><td style="color:var(--bm-muted-gray);font-size:12px;">2025-12-02</td></tr>
+<tr><td style="font-weight:600;">Elissa Malespina</td><td style="color:var(--bm-muted-gray);font-size:12px;">AI School Librarian (Substack)</td><td style="text-align:center;font-weight:700;">1</td><td style="text-align:center;"><span style="color:#DC2626;">&#9632;</span></td><td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#FEE2E2;color:#DC2626;">NEGATIVE</span></td><td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">55</td><td style="color:var(--bm-muted-gray);font-size:12px;">2026-03-19</td></tr>
+<tr><td style="font-weight:600;">Tasha Stevens</td><td style="color:var(--bm-muted-gray);font-size:12px;">US 105 FM (Killeen, TX)</td><td style="text-align:center;font-weight:700;">1</td><td style="text-align:center;"><span style="color:#065F46;">&#9632;</span></td><td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#D1FAE5;color:#065F46;">POSITIVE</span></td><td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">25</td><td style="color:var(--bm-muted-gray);font-size:12px;">2025-09-22</td></tr>
+<tr><td style="font-weight:600;">Naaz Modan</td><td style="color:var(--bm-muted-gray);font-size:12px;">K-12 Dive</td><td style="text-align:center;font-weight:700;">1</td><td style="text-align:center;"><span style="color:#E65100;">&#9632;</span></td><td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#FFF3E0;color:#E65100;">MIXED</span></td><td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">85</td><td style="color:var(--bm-muted-gray);font-size:12px;">2026-04-02</td></tr>
+<tr><td style="font-weight:600;">Sanhita SinhaRoy</td><td style="color:var(--bm-muted-gray);font-size:12px;">American Libraries Magazine (ALA)</td><td style="text-align:center;font-weight:700;">1</td><td style="text-align:center;"><span style="color:#6B7280;">&#9632;</span></td><td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#F3F4F6;color:#6B7280;">NEUTRAL</span></td><td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">70</td><td style="color:var(--bm-muted-gray);font-size:12px;">2026-01-02</td></tr>
+<tr><td style="font-weight:600;">Sarah Asch</td><td style="color:var(--bm-muted-gray);font-size:12px;">Texas Standard</td><td style="text-align:center;font-weight:700;">1</td><td style="text-align:center;"><span style="color:#6B7280;">&#9632;</span></td><td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#F3F4F6;color:#6B7280;">NEUTRAL</span></td><td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">65</td><td style="color:var(--bm-muted-gray);font-size:12px;">2025-11-03</td></tr>
+<tr><td style="font-weight:600;">Sarah Kuta</td><td style="color:var(--bm-muted-gray);font-size:12px;">Smithsonian Magazine</td><td style="text-align:center;font-weight:700;">1</td><td style="text-align:center;"><span style="color:#6B7280;">&#9632;</span></td><td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#F3F4F6;color:#6B7280;">NEUTRAL</span></td><td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">60</td><td style="color:var(--bm-muted-gray);font-size:12px;">2023-08-21</td></tr>
+<tr><td style="font-weight:600;">Frankie Elliott</td><td style="color:var(--bm-muted-gray);font-size:12px;">LBC (UK)</td><td style="text-align:center;font-weight:700;">1</td><td style="text-align:center;"><span style="color:#6B7280;">&#9632;</span></td><td style="text-align:center;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;background:#F3F4F6;color:#6B7280;">NEUTRAL</span></td><td style="text-align:center;color:var(--bm-muted-gray);font-size:12px;">55</td><td style="color:var(--bm-muted-gray);font-size:12px;">2026-03-26</td></tr>
+</tbody>
     </table>
   </div>
 
-  <!-- District Exposure -->
   <div class="section">
     <h2>District Exposure</h2>
     <table class="data-table">
-      <thead>
-        <tr><th>District</th><th style="text-align:center;">Articles</th><th style="text-align:center;">Sentiment</th><th>Publications</th><th>Last Mentioned</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-        <td style="font-weight:600;">New Braunfels</td>
-        <td style="text-align:center;font-weight:700;">4</td>
-        <td style="text-align:center;"><span style="color:#DC2626;">&#9632;&#9632;</span><span style="color:#E65100;">&#9632;&#9632;</span></td>
-        <td style="color:var(--bm-secondary-text);font-size:12px;">404 Media, San Antonio Express-News, San Antonio Current, K-12 Dive</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">2026-04-02</td>
-      </tr>
-<tr>
-        <td style="font-weight:600;">Killeen</td>
-        <td style="text-align:center;font-weight:700;">4</td>
-        <td style="text-align:center;"><span style="color:#E65100;">&#9632;</span><span style="color:#065F46;">&#9632;&#9632;&#9632;</span></td>
-        <td style="color:var(--bm-secondary-text);font-size:12px;">San Antonio Express-News, US 105 FM (Killeen, TX), KCEN TV (Central Texas NBC), KDH News (Killeen Daily Herald)</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">2025-12-02</td>
-      </tr>
-<tr>
-        <td style="font-weight:600;">Mason City</td>
-        <td style="text-align:center;font-weight:700;">2</td>
-        <td style="text-align:center;"><span style="color:#DC2626;">&#9632;</span><span style="color:#6B7280;">&#9632;</span></td>
-        <td style="color:var(--bm-secondary-text);font-size:12px;">PEN America, Smithsonian Magazine</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">2023-08-21</td>
-      </tr>
-<tr>
-        <td style="font-weight:600;">Llano</td>
-        <td style="text-align:center;font-weight:700;">1</td>
-        <td style="text-align:center;"><span style="color:#E65100;">&#9632;</span></td>
-        <td style="color:var(--bm-secondary-text);font-size:12px;">San Antonio Express-News</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">2025-12-02</td>
-      </tr>
-<tr>
-        <td style="font-weight:600;">Krum</td>
-        <td style="text-align:center;font-weight:700;">1</td>
-        <td style="text-align:center;"><span style="color:#DC2626;">&#9632;</span></td>
-        <td style="color:var(--bm-secondary-text);font-size:12px;">Book Riot</td>
-        <td style="color:var(--bm-muted-gray);font-size:12px;">2025-01-01</td>
-      </tr>
-
-      </tbody>
+      <thead><tr><th>District</th><th style="text-align:center;">Articles</th><th style="text-align:center;">Sentiment</th><th>Publications</th><th>Last Mentioned</th></tr></thead>
+      <tbody><tr><td style="font-weight:600;">New Braunfels</td><td style="text-align:center;font-weight:700;">4</td><td style="text-align:center;"><span style="color:#DC2626;">&#9632;&#9632;</span><span style="color:#E65100;">&#9632;&#9632;</span></td><td style="color:var(--bm-secondary-text);font-size:12px;">404 Media, San Antonio Express-News, San Antonio Current, K-12 Dive</td><td style="color:var(--bm-muted-gray);font-size:12px;">2026-04-02</td></tr>
+<tr><td style="font-weight:600;">Killeen</td><td style="text-align:center;font-weight:700;">4</td><td style="text-align:center;"><span style="color:#E65100;">&#9632;</span><span style="color:#065F46;">&#9632;&#9632;&#9632;</span></td><td style="color:var(--bm-secondary-text);font-size:12px;">San Antonio Express-News, US 105 FM (Killeen, TX), KCEN TV (Central Texas NBC), KDH News (Killeen Daily Herald)</td><td style="color:var(--bm-muted-gray);font-size:12px;">2025-12-02</td></tr>
+<tr><td style="font-weight:600;">Mason City</td><td style="text-align:center;font-weight:700;">2</td><td style="text-align:center;"><span style="color:#DC2626;">&#9632;</span><span style="color:#6B7280;">&#9632;</span></td><td style="color:var(--bm-secondary-text);font-size:12px;">PEN America, Smithsonian Magazine</td><td style="color:var(--bm-muted-gray);font-size:12px;">2023-08-21</td></tr>
+<tr><td style="font-weight:600;">Llano</td><td style="text-align:center;font-weight:700;">1</td><td style="text-align:center;"><span style="color:#E65100;">&#9632;</span></td><td style="color:var(--bm-secondary-text);font-size:12px;">San Antonio Express-News</td><td style="color:var(--bm-muted-gray);font-size:12px;">2025-12-02</td></tr>
+<tr><td style="font-weight:600;">Krum</td><td style="text-align:center;font-weight:700;">1</td><td style="text-align:center;"><span style="color:#DC2626;">&#9632;</span></td><td style="color:var(--bm-secondary-text);font-size:12px;">Book Riot</td><td style="color:var(--bm-muted-gray);font-size:12px;">2025-01-01</td></tr>
+</tbody>
     </table>
   </div>
 
-  <!-- Product Signals -->
   <div class="section">
     <h2>Product Signals</h2>
-    <div class="signal-card">
-      <div class="source">404 Media — MM-2026-04-02-001</div>
-      <div class="signal-text">NBISD librarian reports over-flagging. Route to /feedback:product.</div>
-    </div>
-<div class="signal-card">
-      <div class="source">San Antonio Express-News — MM-2026-04-02-006</div>
-      <div class="signal-text">Low parent adoption (<0.04%) and librarian complaint about effectiveness. Route to /feedback:product.</div>
-    </div>
-<div class="signal-card">
-      <div class="source">Texas Standard — MM-2026-04-02-014</div>
-      <div class="signal-text">Some librarians calling product a failure — route to /feedback:product.</div>
-    </div>
-<div class="signal-card">
-      <div class="source">K-12 Dive — MM-2026-04-02-021</div>
-      <div class="signal-text">NBISD using AI to review 3,000+ books. Internal logs obtained via public records request by Texas Freedom to Read Project.</div>
-    </div>
-
+    <div class="signal-card"><div class="source">404 Media — MM-2026-04-02-001</div><div class="signal-text">NBISD librarian reports over-flagging. Route to /feedback:product.</div></div><div class="signal-card"><div class="source">San Antonio Express-News — MM-2026-04-02-006</div><div class="signal-text">Low parent adoption (<0.04%) and librarian complaint about effectiveness. Route to /feedback:product.</div></div><div class="signal-card"><div class="source">Texas Standard — MM-2026-04-02-014</div><div class="signal-text">Some librarians calling product a failure — route to /feedback:product.</div></div><div class="signal-card"><div class="source">K-12 Dive — MM-2026-04-02-021</div><div class="signal-text">NBISD using AI to review 3,000+ books. Internal logs obtained via public records request by Texas Freedom to Read Project.</div></div>
   </div>
 
-  <!-- Filter Bar + All Coverage -->
   <div class="section" id="coverage-section">
     <h2>All Coverage</h2>
     <div class="filter-bar">
@@ -369,7 +218,7 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
       <span class="filter-count" id="filter-count">25 articles</span>
     </div>
     <div id="filterable-articles">
-<div class="article-card" data-sentiment="negative" data-mention="mentioned">
+      <div class="article-card" data-sentiment="negative" data-mention="mentioned">
       <div class="article-top">
         <div><div class="reach-badge reach-high">88</div></div>
         <div class="article-info">
@@ -381,11 +230,12 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         <div><span class="sentiment-badge badge-negative">negative</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Highest-reach negative piece. Frames us alongside other AI censorship tools. NBISD librarian complaint is a product signal.</span></div>
-        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Monitor. Consider proactive outreach to 404 Media.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Highest-reach negative piece. NBISD librarian complaint is a product signal.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Monitor. Consider proactive outreach.</span></div>
       </div>
-      <div class="card-footer">
-        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-001"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/108101634" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card" data-sentiment="negative" data-mention="interviewed">
@@ -400,11 +250,12 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         <div><span class="sentiment-badge badge-negative">negative</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">National business publication. $80K lobbying figure and Moak Casey connection highlighted.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">National business pub. $80K lobbying + Moak Casey highlighted.</span></div>
         <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Draft counternarrative op-ed.</span></div>
       </div>
-      <div class="card-footer">
-        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-002"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/108036099" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card" data-sentiment="mixed" data-mention="interviewed">
@@ -419,11 +270,12 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         <div><span class="sentiment-badge badge-mixed">mixed</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Most detailed national coverage to date. Steve quoted extensively. NBISD data obtained via FOIA.</span></div>
-        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">High priority. Draft response. Reframe "win Texas" quote.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Most detailed national coverage. Steve quoted extensively. NBISD FOIA data.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">High priority. Draft response.</span></div>
       </div>
-      <div class="card-footer">
-        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-021"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/108167169" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card" data-sentiment="negative" data-mention="mentioned">
@@ -438,11 +290,12 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         <div><span class="sentiment-badge badge-negative">negative</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Persistent critic. Connects founders to ban movements and Moak Casey.</span></div>
-        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Monitor only. Do not engage.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Connects founders to ban movements and Moak Casey.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Monitor only.</span></div>
       </div>
-      <div class="card-footer">
-        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-003"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107872267" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card" data-sentiment="neutral" data-mention="industry">
@@ -457,11 +310,12 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         <div><span class="sentiment-badge badge-neutral">neutral</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">ALA publication. We are NOT mentioned. Earned media opportunity.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">We are NOT mentioned. Earned media opportunity.</span></div>
         <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Pitch for 2026 coverage.</span></div>
       </div>
-      <div class="card-footer">
-        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-022"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/108101655" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card" data-sentiment="negative" data-mention="mentioned">
@@ -476,11 +330,12 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         <div><span class="sentiment-badge badge-negative">negative</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Product-as-weapon framing by repeat critic.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Product-as-weapon framing.</span></div>
         <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Monitor only.</span></div>
       </div>
-      <div class="card-footer">
-        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-004"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107806743" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card" data-sentiment="negative" data-mention="industry">
@@ -495,11 +350,12 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         <div><span class="sentiment-badge badge-negative">negative</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">About Iowa/ChatGPT, not Bookmarked. Establishes PEN America position on AI + books.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">About Iowa/ChatGPT, not Bookmarked.</span></div>
         <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Background context.</span></div>
       </div>
-      <div class="card-footer">
-        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-011"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/108036119" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card" data-sentiment="negative" data-mention="mentioned">
@@ -514,11 +370,12 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         <div><span class="sentiment-badge badge-negative">negative</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Third Book Riot piece. Advocacy criticism angle.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Advocacy criticism angle.</span></div>
         <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Monitor only.</span></div>
       </div>
-      <div class="card-footer">
-        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-005"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107839491" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card" data-sentiment="neutral" data-mention="industry">
@@ -534,10 +391,11 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
       </div>
       <div class="so-what">
         <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Our space, we are not mentioned.</span></div>
-        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Earned media: pitch Steve as source.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Pitch Steve as source.</span></div>
       </div>
-      <div class="card-footer">
-        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-023"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/108068873" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card" data-sentiment="mixed" data-mention="mentioned">
@@ -552,11 +410,12 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         <div><span class="sentiment-badge badge-mixed">mixed</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text"><0.04% parent adoption across 8 districts. Librarian effectiveness complaints.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text"><0.04% parent adoption. Librarian effectiveness complaints.</span></div>
         <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Product team action needed.</span></div>
       </div>
-      <div class="card-footer">
-        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-006"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107839511" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card" data-sentiment="negative" data-mention="mentioned">
@@ -572,10 +431,11 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
       </div>
       <div class="so-what">
         <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Earliest Book Riot piece (2023).</span></div>
-        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Historical context only.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Historical context.</span></div>
       </div>
-      <div class="card-footer">
-        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-012"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/108199937" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card" data-sentiment="neutral" data-mention="industry">
@@ -590,11 +450,12 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         <div><span class="sentiment-badge badge-neutral">neutral</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Smithsonian on Iowa AI removal. Not about Bookmarked.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Smithsonian on Iowa. Not about us.</span></div>
         <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Earned media target.</span></div>
       </div>
-      <div class="card-footer">
-        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-024"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/108036139" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card" data-sentiment="mixed" data-mention="mentioned">
@@ -609,11 +470,12 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         <div><span class="sentiment-badge badge-mixed">mixed</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Syndicated version of Express-News investigation.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Syndicated Express-News.</span></div>
         <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Syndication tracking.</span></div>
       </div>
-      <div class="card-footer">
-        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-014"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107806763" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card" data-sentiment="negative" data-mention="mentioned">
@@ -628,11 +490,12 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         <div><span class="sentiment-badge badge-negative">negative</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Book Riot "cashing in" framing.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">"Cashing in" framing.</span></div>
         <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Monitor only.</span></div>
       </div>
-      <div class="card-footer">
-        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-013"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107708441" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card" data-sentiment="negative" data-mention="mentioned">
@@ -647,11 +510,12 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         <div><span class="sentiment-badge badge-negative">negative</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Librarian-audience Substack. Substantive. Notes we cannot read book content.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Substantive librarian critic. Notes we can't read content.</span></div>
         <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Consider respectful engagement.</span></div>
       </div>
-      <div class="card-footer">
-        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-015"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/108232705" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card" data-sentiment="neutral" data-mention="industry">
@@ -667,10 +531,11 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
       </div>
       <div class="so-what">
         <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">UK outlet. International pickup.</span></div>
-        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Earned media for international angle.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Earned media.</span></div>
       </div>
-      <div class="card-footer">
-        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-025"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741251" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card compact" data-sentiment="mixed" data-mention="mentioned">
@@ -682,6 +547,10 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         </div>
         <div><span class="sentiment-badge badge-mixed">mixed</span></div>
       </div>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-007"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/108167189" target="_blank">Add comment in Confluence</a>
+      </div>
     </div>
 <div class="article-card compact" data-sentiment="negative" data-mention="mentioned">
       <div class="article-top">
@@ -691,6 +560,10 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
           <div class="pub">San Antonio Current | — | 2026-01-01 <span class="mention-pill mention-direct">MENTIONED</span></div>
         </div>
         <div><span class="sentiment-badge badge-negative">negative</span></div>
+      </div>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-016"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/108036159" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card compact" data-sentiment="neutral" data-mention="mentioned">
@@ -702,6 +575,10 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         </div>
         <div><span class="sentiment-badge badge-neutral">neutral</span></div>
       </div>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-017"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/108003331" target="_blank">Add comment in Confluence</a>
+      </div>
     </div>
 <div class="article-card compact" data-sentiment="neutral" data-mention="mentioned">
       <div class="article-top">
@@ -711,6 +588,10 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
           <div class="pub">eSchool News | — | 2023-08-29 <span class="mention-pill mention-direct">MENTIONED</span></div>
         </div>
         <div><span class="sentiment-badge badge-neutral">neutral</span></div>
+      </div>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-018"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741271" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card compact" data-sentiment="positive" data-mention="mentioned">
@@ -722,6 +603,10 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         </div>
         <div><span class="sentiment-badge badge-positive">positive</span></div>
       </div>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-010"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/108134402" target="_blank">Add comment in Confluence</a>
+      </div>
     </div>
 <div class="article-card compact" data-sentiment="positive" data-mention="mentioned">
       <div class="article-top">
@@ -731,6 +616,10 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
           <div class="pub">US 105 FM (Killeen, TX) | Tasha Stevens | 2025-09-22 <span class="mention-pill mention-direct">MENTIONED</span></div>
         </div>
         <div><span class="sentiment-badge badge-positive">positive</span></div>
+      </div>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-008"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741291" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card compact" data-sentiment="positive" data-mention="mentioned">
@@ -742,6 +631,10 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         </div>
         <div><span class="sentiment-badge badge-positive">positive</span></div>
       </div>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-009"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107970563" target="_blank">Add comment in Confluence</a>
+      </div>
     </div>
 <div class="article-card compact" data-sentiment="neutral" data-mention="mentioned">
       <div class="article-top">
@@ -751,6 +644,10 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
           <div class="pub">CityBiz | — | 2023-08-01 <span class="mention-pill mention-direct">MENTIONED</span></div>
         </div>
         <div><span class="sentiment-badge badge-neutral">neutral</span></div>
+      </div>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-019"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107642898" target="_blank">Add comment in Confluence</a>
       </div>
     </div>
 <div class="article-card compact" data-sentiment="neutral" data-mention="mentioned">
@@ -762,6 +659,10 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
         </div>
         <div><span class="sentiment-badge badge-neutral">neutral</span></div>
       </div>
+      <div class="comment-section">
+        <div class="comment-list" id="comments-MM-2026-04-02-020"><span class="no-comments">No comments yet</span></div>
+        <a class="add-comment-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/108134422" target="_blank">Add comment in Confluence</a>
+      </div>
     </div>
 
     </div>
@@ -770,20 +671,14 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
 </div>
 
 <div class="footer">
-  Bookmarked Media Intelligence | Generated 2026-04-03 13:15 | /media-monitor |
+  Bookmarked Media Intelligence | Generated 2026-04-03 13:38 | /media-monitor |
   <a href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence">Confluence</a>
 </div>
 
 <script>
-// ── Chart Data ──
-const COLORS = {
-  negative: '#DC2626', mixed: '#FF692E', neutral: '#9CA3AF',
-  positive: '#12A38C', teal: '#12A38C', deepGreen: '#107569'
-};
-
+const COLORS = { negative: '#DC2626', mixed: '#FF692E', neutral: '#9CA3AF', positive: '#12A38C' };
 const timelineData = [{"x": "2026-04-01", "y": 88, "sentiment": "negative", "label": "404 Media: The Right Is Using AI Content Scanners t...", "mention": "mentioned"}, {"x": "2026-03-03", "y": 85, "sentiment": "negative", "label": "Fast Company: The startup that turned Texas's book ban...", "mention": "interviewed"}, {"x": "2023-08-14", "y": 65, "sentiment": "negative", "label": "PEN America: PEN America: Using Artificial Intelligen...", "mention": "industry"}, {"x": "2025-01-01", "y": 72, "sentiment": "negative", "label": "Book Riot: The People Behind BookmarkED Are Behind ...", "mention": "mentioned"}, {"x": "2025-01-01", "y": 68, "sentiment": "negative", "label": "Book Riot: How The BookmarkED/OnShelf App, Created ...", "mention": "mentioned"}, {"x": "2025-01-01", "y": 65, "sentiment": "negative", "label": "Book Riot: BookmarkED App Connected to Book Ban Eff...", "mention": "mentioned"}, {"x": "2023-08-01", "y": 60, "sentiment": "negative", "label": "Book Riot: The First App to 'Help' Libraries and Sc...", "mention": "mentioned"}, {"x": "2023-12-08", "y": 55, "sentiment": "negative", "label": "Book Riot: Manufacturing Problems with School and L...", "mention": "mentioned"}, {"x": "2025-12-02", "y": 62, "sentiment": "mixed", "label": "San Antonio Express-News: 'Antivirus for libraries': How a Texas s...", "mention": "mentioned"}, {"x": "2025-12-04", "y": 58, "sentiment": "mixed", "label": "Texas Standard: School libraries must comply with new la...", "mention": "mentioned"}, {"x": "2026-03-19", "y": 55, "sentiment": "negative", "label": "AI School Librarian (Substack): The Rise of Book-Ban Technology...", "mention": "mentioned"}, {"x": "2025-12-05", "y": 48, "sentiment": "mixed", "label": "HPPR News (High Plains Public Radio): School libraries must comply with new la...", "mention": "mentioned"}, {"x": "2026-01-01", "y": 45, "sentiment": "negative", "label": "San Antonio Current: New Braunfels ISD bans books written by ...", "mention": "mentioned"}, {"x": "2023-08-22", "y": 35, "sentiment": "neutral", "label": "BusinessWire: BookmarkED Addresses the State of Challe...", "mention": "mentioned"}, {"x": "2023-08-29", "y": 32, "sentiment": "neutral", "label": "eSchool News: BookmarkED Addresses the State of Challe...", "mention": "mentioned"}, {"x": "2025-09-22", "y": 25, "sentiment": "positive", "label": "US 105 FM (Killeen, TX): Bookmarked: Killeen ISD's Tool For Suppo...", "mention": "mentioned"}, {"x": "2025-09-01", "y": 28, "sentiment": "positive", "label": "KCEN TV (Central Texas NBC): Killeen ISD parents can track student re...", "mention": "mentioned"}, {"x": "2025-09-01", "y": 22, "sentiment": "positive", "label": "KDH News (Killeen Daily Herald): KISD expands library oversight for paren...", "mention": "mentioned"}, {"x": "2023-08-01", "y": 20, "sentiment": "neutral", "label": "CityBiz: BookmarkED Launches New Tech Solution to...", "mention": "mentioned"}, {"x": "2025-01-01", "y": 15, "sentiment": "neutral", "label": "Texans Wake Up: OnShelf by Bookmarked...", "mention": "mentioned"}, {"x": "2026-04-02", "y": 85, "sentiment": "mixed", "label": "K-12 Dive: As AI enters book ban disputes, here's w...", "mention": "interviewed"}, {"x": "2026-01-02", "y": 70, "sentiment": "neutral", "label": "American Libraries Magazine (ALA): 2025 Year in Review...", "mention": "industry"}, {"x": "2025-11-03", "y": 65, "sentiment": "neutral", "label": "Texas Standard: School districts turn to AI to comply wi...", "mention": "industry"}, {"x": "2023-08-21", "y": 60, "sentiment": "neutral", "label": "Smithsonian Magazine: Why This School District Used A.I. to He...", "mention": "industry"}, {"x": "2026-03-26", "y": 55, "sentiment": "neutral", "label": "LBC (UK): Librarian 'gobsmacked' after school uses...", "mention": "industry"}];
 
-// ── Article Timeline Chart ──
 const timelineCtx = document.getElementById('timelineChart').getContext('2d');
 new Chart(timelineCtx, {
   type: 'bubble',
@@ -792,22 +687,14 @@ new Chart(timelineCtx, {
       { label: 'Negative', data: timelineData.filter(d => d.sentiment === 'negative').map(d => ({x: d.x, y: d.y, r: Math.max(5, d.y / 10)})), backgroundColor: 'rgba(220,38,38,0.6)', borderColor: '#DC2626' },
       { label: 'Mixed', data: timelineData.filter(d => d.sentiment === 'mixed').map(d => ({x: d.x, y: d.y, r: Math.max(5, d.y / 10)})), backgroundColor: 'rgba(255,105,46,0.6)', borderColor: '#FF692E' },
       { label: 'Neutral', data: timelineData.filter(d => d.sentiment === 'neutral').map(d => ({x: d.x, y: d.y, r: Math.max(5, d.y / 10)})), backgroundColor: 'rgba(156,163,175,0.5)', borderColor: '#9CA3AF' },
-      { label: 'Positive', data: timelineData.filter(d => d.sentiment === 'positive').map(d => ({x: d.x, y: d.y, r: Math.max(5, d.y / 10)})), backgroundColor: 'rgba(18,163,140,0.6)', borderColor: '#12A38C' },
+      { label: 'Positive', data: timelineData.filter(d => d.sentiment === 'positive').map(d => ({x: d.x, y: d.y, r: Math.max(5, d.y / 10)})), backgroundColor: 'rgba(18,163,140,0.6)', borderColor: '#12A38C' }
     ]
   },
   options: {
-    responsive: true,
-    maintainAspectRatio: false,
+    responsive: true, maintainAspectRatio: false,
     plugins: {
       legend: { position: 'bottom', labels: { font: { family: "'Urbanist'", size: 11 }, boxWidth: 10, padding: 12 } },
-      tooltip: {
-        callbacks: {
-          label: function(ctx) {
-            var d = timelineData.filter(t => t.sentiment === ctx.dataset.label.toLowerCase())[ctx.dataIndex];
-            return d ? d.label : '';
-          }
-        }
-      }
+      tooltip: { callbacks: { label: function(ctx) { var d = timelineData.filter(t => t.sentiment === ctx.dataset.label.toLowerCase())[ctx.dataIndex]; return d ? d.label : ''; } } }
     },
     scales: {
       x: { type: 'category', labels: [...new Set(timelineData.map(d => d.x).sort())], ticks: { font: { size: 10 }, color: '#9CA3AF', maxRotation: 45 }, grid: { display: false } },
@@ -816,66 +703,35 @@ new Chart(timelineCtx, {
   }
 });
 
-// ── Coverage Breakdown Doughnut ──
 const breakdownCtx = document.getElementById('breakdownChart').getContext('2d');
 new Chart(breakdownCtx, {
   type: 'doughnut',
   data: {
     labels: ['Negative (10)', 'Mixed (4)', 'Neutral (8)', 'Positive (3)'],
-    datasets: [{
-      data: [10, 4, 8, 3],
-      backgroundColor: ['#DC2626', '#FF692E', '#D1D5DB', '#12A38C'],
-      borderWidth: 2,
-      borderColor: '#fff'
-    }]
+    datasets: [{ data: [10, 4, 8, 3], backgroundColor: ['#DC2626', '#FF692E', '#D1D5DB', '#12A38C'], borderWidth: 2, borderColor: '#fff' }]
   },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    cutout: '60%',
-    plugins: {
-      legend: { position: 'bottom', labels: { font: { family: "'Urbanist'", size: 11 }, padding: 12, boxWidth: 10 } }
-    }
-  }
+  options: { responsive: true, maintainAspectRatio: false, cutout: '60%', plugins: { legend: { position: 'bottom', labels: { font: { family: "'Urbanist'", size: 11 }, padding: 12, boxWidth: 10 } } } }
 });
 
-// ── Client-Side Filtering ──
-let activeSentiment = 'all';
-let activeMention = 'all';
-
+let activeSentiment = 'all', activeMention = 'all';
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', function() {
-    const group = this.dataset.filter;
-    const value = this.dataset.value;
-    
-    // Update active state in group
+    const group = this.dataset.filter, value = this.dataset.value;
     document.querySelectorAll(`.filter-btn[data-filter="${group}"]`).forEach(b => b.classList.remove('active'));
     this.classList.add('active');
-    
     if (group === 'sentiment') activeSentiment = value;
     if (group === 'mention') activeMention = value;
-    
-    applyFilters();
+    const cards = document.querySelectorAll('#filterable-articles .article-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const show = (activeSentiment === 'all' || card.dataset.sentiment === activeSentiment) &&
+                   (activeMention === 'all' || card.dataset.mention === activeMention);
+      card.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+    document.getElementById('filter-count').textContent = visible + ' article' + (visible !== 1 ? 's' : '');
   });
 });
-
-function applyFilters() {
-  const cards = document.querySelectorAll('#filterable-articles .article-card');
-  let visible = 0;
-  cards.forEach(card => {
-    const s = card.dataset.sentiment;
-    const m = card.dataset.mention;
-    const showSentiment = activeSentiment === 'all' || s === activeSentiment;
-    const showMention = activeMention === 'all' || m === activeMention;
-    if (showSentiment && showMention) {
-      card.classList.remove('hidden');
-      visible++;
-    } else {
-      card.classList.add('hidden');
-    }
-  });
-  document.getElementById('filter-count').textContent = visible + ' article' + (visible !== 1 ? 's' : '');
-}
 </script>
 </body>
 </html>
