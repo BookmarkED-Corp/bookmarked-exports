@@ -3,79 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Media Intelligence Portal — Bookmarked — April 2, 2026</title>
+<title>Media Intelligence — Bookmarked</title>
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bm-eigengrau: #101828;
-  --bm-deep-green: #107569;
-  --bm-teal-accent: #12A38C;
-  --bm-white: #FFFFFF;
-  --bm-pumpkin: #FF692E;
-  --bm-bg-cool: #F8FAFC;
-  --bm-bg-warm: #F8F5F0;
-  --bm-bg-light: #F9FAFB;
-  --bm-border-light: #E5E7EB;
-  --bm-muted-gray: #9CA3AF;
-  --bm-secondary-text: #475467;
+  --bm-eigengrau: #101828; --bm-deep-green: #107569; --bm-teal-accent: #12A38C;
+  --bm-white: #FFFFFF; --bm-pumpkin: #FF692E; --bm-bg-cool: #F8FAFC;
+  --bm-bg-warm: #F8F5F0; --bm-bg-light: #F9FAFB; --bm-border-light: #E5E7EB;
+  --bm-muted-gray: #9CA3AF; --bm-secondary-text: #475467;
   --bm-font-family: 'Urbanist', Arial, Helvetica, sans-serif;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); background: var(--bm-bg-light); line-height: 1.6; }
 
-/* Header */
 .header {
   background: linear-gradient(135deg, #0D5A52, #107569, #12A38C);
-  color: white; padding: 48px 40px 40px;
+  color: white; padding: 40px 40px 32px;
 }
-.header h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; }
-.header .subtitle { font-size: 16px; opacity: 0.85; }
-.header .meta { font-size: 13px; opacity: 0.65; margin-top: 12px; }
-.internal-badge { display: inline-block; background: rgba(18,163,140,0.9); color: white; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; margin-top: 8px; }
+.header h1 { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
+.header .meta { font-size: 13px; opacity: 0.65; margin-top: 8px; }
+.internal-badge { display: inline-block; background: rgba(18,163,140,0.85); color: white; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; margin-top: 8px; }
+.confluence-badge { display: inline-block; background: rgba(255,255,255,0.2); color: white; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 8px; text-decoration: none; }
+.confluence-badge:hover { background: rgba(255,255,255,0.3); }
 
-.container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
-
-/* Executive Summary */
-.exec-summary {
-  background: white; border-radius: 12px; padding: 28px 32px; margin-bottom: 32px;
-  border: 1px solid var(--bm-border-light); border-left: 4px solid var(--bm-deep-green);
-}
-.exec-summary h2 { font-size: 20px; font-weight: 700; color: var(--bm-deep-green); margin-bottom: 16px; }
-.exec-summary ul { padding-left: 20px; margin-bottom: 16px; }
-.exec-summary li { font-size: 14px; margin-bottom: 8px; color: var(--bm-secondary-text); }
-.exec-summary li strong { color: var(--bm-eigengrau); }
-.action-items { background: var(--bm-bg-warm); border-radius: 8px; padding: 16px 20px; margin-top: 16px; }
-.action-items h3 { font-size: 14px; font-weight: 700; color: var(--bm-pumpkin); margin-bottom: 8px; }
-.action-items ol { padding-left: 20px; }
-.action-items li { font-size: 13px; margin-bottom: 4px; }
+.container { max-width: 1100px; margin: 0 auto; padding: 28px 24px; }
 
 /* Summary Cards */
-.summary-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 32px; }
-.summary-card { background: white; border-radius: 12px; padding: 20px 16px; text-align: center; border: 1px solid var(--bm-border-light); }
-.summary-card .number { font-size: 32px; font-weight: 800; line-height: 1; }
-.summary-card .label { font-size: 12px; color: var(--bm-muted-gray); margin-top: 4px; font-weight: 500; }
-.score-negative { color: #DC2626; }
-.score-mixed { color: var(--bm-pumpkin); }
-.score-neutral { color: var(--bm-muted-gray); }
-.score-positive { color: var(--bm-deep-green); }
-.score-net { color: #DC2626; }
+.summary-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 28px; }
+.summary-card { background: white; border-radius: 10px; padding: 18px 14px; text-align: center; border: 1px solid var(--bm-border-light); }
+.summary-card .number { font-size: 30px; font-weight: 800; line-height: 1; }
+.summary-card .label { font-size: 11px; color: var(--bm-muted-gray); margin-top: 3px; font-weight: 500; }
+.score-negative { color: #DC2626; } .score-mixed { color: var(--bm-pumpkin); }
+.score-neutral { color: var(--bm-muted-gray); } .score-positive { color: var(--bm-deep-green); }
 
 /* Sections */
-.section { margin-bottom: 36px; }
-.section h2 { font-size: 20px; font-weight: 700; color: var(--bm-deep-green); margin-bottom: 14px; padding-bottom: 6px; border-bottom: 2px solid var(--bm-teal-accent); }
+.section { margin-bottom: 32px; }
+.section h2 { font-size: 18px; font-weight: 700; color: var(--bm-deep-green); margin-bottom: 12px; padding-bottom: 5px; border-bottom: 2px solid var(--bm-teal-accent); }
 
 /* Article Cards */
-.article-card { background: white; border-radius: 10px; padding: 20px 24px; margin-bottom: 14px; border: 1px solid var(--bm-border-light); }
-.article-top { display: grid; grid-template-columns: 52px 1fr 80px; gap: 16px; align-items: start; }
-.reach-badge { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800; color: white; }
-.reach-high { background: #DC2626; }
-.reach-med { background: var(--bm-pumpkin); }
-.reach-low { background: var(--bm-muted-gray); }
-.reach-safe { background: var(--bm-deep-green); }
-.article-info h3 { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+.article-card { background: white; border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; border: 1px solid var(--bm-border-light); }
+.article-card.compact { padding: 12px 18px; }
+.article-top { display: grid; grid-template-columns: 48px 1fr 80px; gap: 14px; align-items: start; }
+.reach-badge { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; color: white; }
+.reach-high { background: #DC2626; } .reach-med { background: var(--bm-pumpkin); }
+.reach-low { background: var(--bm-muted-gray); } .reach-safe { background: var(--bm-deep-green); }
+.article-info h3 { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
 .article-info h3 a { color: var(--bm-eigengrau); text-decoration: none; }
 .article-info h3 a:hover { color: var(--bm-teal-accent); text-decoration: underline; }
-.article-info .pub { font-size: 12px; color: var(--bm-muted-gray); margin-bottom: 6px; }
+.article-info .pub { font-size: 12px; color: var(--bm-muted-gray); margin-bottom: 5px; }
 .article-info .excerpt { font-size: 13px; color: var(--bm-secondary-text); line-height: 1.5; }
 .sentiment-badge { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
 .badge-negative { background: #FEE2E2; color: #DC2626; }
@@ -83,56 +58,43 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
 .badge-neutral { background: #F3F4F6; color: #6B7280; }
 .badge-positive { background: #D1FAE5; color: #065F46; }
 .tag { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 600; margin: 2px 2px 0 0; background: #EEF2FF; color: #4338CA; }
+.steve-quoted { font-size: 10px; color: var(--bm-pumpkin); font-weight: 700; margin-left: 6px; }
+.mention-pill { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 10px; font-weight: 700; letter-spacing: 0.3px; margin-left: 8px; vertical-align: middle; }
+.mention-direct { background: #DBEAFE; color: #1D4ED8; }
+.mention-industry { background: #F3F4F6; color: #6B7280; }
 
-/* So What section */
-.so-what { background: var(--bm-bg-cool); border-radius: 8px; padding: 14px 18px; margin-top: 12px; }
-.so-what-label { font-size: 11px; font-weight: 700; color: var(--bm-deep-green); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-.so-what-text { font-size: 13px; color: var(--bm-secondary-text); margin-bottom: 4px; }
+/* So What */
+.so-what { background: var(--bm-bg-cool); border-radius: 6px; padding: 10px 14px; margin-top: 10px; }
+.so-what-row { display: flex; gap: 8px; margin-bottom: 3px; align-items: baseline; }
+.so-what-label { font-size: 10px; font-weight: 700; color: var(--bm-deep-green); text-transform: uppercase; letter-spacing: 0.4px; min-width: 50px; flex-shrink: 0; }
+.so-what-text { font-size: 13px; color: var(--bm-secondary-text); }
 .so-what-action { font-size: 13px; color: var(--bm-eigengrau); font-weight: 600; }
 
-/* Action Buttons (briefing-actions pattern) */
-.action-btn-group { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
-.action-btn { display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; cursor: pointer; border: none; transition: all 0.15s; font-family: var(--bm-font-family); }
-.action-btn.primary { background: var(--bm-deep-green); color: white; }
-.action-btn.primary:hover { background: #0D5A52; }
-.action-btn.secondary { background: #374151; color: white; }
-.action-btn.secondary:hover { background: #1F2937; }
-.action-btn.tertiary { background: #EEF2FF; color: #4338CA; }
-.action-btn.tertiary:hover { background: #E0E7FF; }
-.action-btn.copied { background: var(--bm-teal-accent) !important; color: white !important; }
-
-/* Comment section */
-.comment-section { margin-top: 10px; display: none; }
-.comment-section.open { display: block; }
-.comment-toggle { font-size: 12px; color: var(--bm-teal-accent); cursor: pointer; font-weight: 600; margin-top: 8px; display: inline-block; }
-.comment-toggle:hover { text-decoration: underline; }
-.comment-input { width: 100%; padding: 8px 12px; border: 1px solid var(--bm-border-light); border-radius: 6px; font-size: 13px; font-family: var(--bm-font-family); resize: vertical; min-height: 60px; margin-top: 6px; }
-.comment-submit { margin-top: 6px; }
+/* Card footer */
+.card-footer { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--bm-border-light); }
+.confluence-link { font-size: 12px; color: var(--bm-teal-accent); text-decoration: none; font-weight: 600; }
+.confluence-link:hover { text-decoration: underline; }
 
 /* Narrative grid */
 .narrative-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .narrative-card { background: white; border-radius: 8px; padding: 14px; border: 1px solid var(--bm-border-light); text-align: center; }
-.narrative-card .count { font-size: 24px; font-weight: 800; color: var(--bm-deep-green); }
+.narrative-card .count { font-size: 22px; font-weight: 800; color: var(--bm-deep-green); }
 .narrative-card .name { font-size: 11px; color: var(--bm-muted-gray); margin-top: 2px; }
 
 /* Product signals */
-.signal-card { background: var(--bm-bg-warm); border-radius: 8px; padding: 14px 18px; margin-bottom: 10px; border-left: 4px solid var(--bm-pumpkin); }
-.signal-card .source { font-size: 11px; color: var(--bm-muted-gray); font-weight: 600; margin-bottom: 3px; }
+.signal-card { background: var(--bm-bg-warm); border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; border-left: 4px solid var(--bm-pumpkin); }
+.signal-card .source { font-size: 11px; color: var(--bm-muted-gray); font-weight: 600; margin-bottom: 2px; }
 .signal-card .signal-text { font-size: 13px; color: var(--bm-eigengrau); }
 
-/* Clipboard log */
-.clipboard-log { background: #1F2937; border-radius: 8px; padding: 16px 20px; margin-top: 24px; color: #D1D5DB; font-size: 12px; font-family: monospace; max-height: 200px; overflow-y: auto; display: none; }
-.clipboard-log.has-items { display: block; }
-.clipboard-log h3 { color: var(--bm-teal-accent); font-size: 12px; font-family: var(--bm-font-family); margin-bottom: 8px; }
-
 /* Footer */
-.footer { background: var(--bm-eigengrau); color: rgba(255,255,255,0.5); padding: 20px 40px; font-size: 12px; text-align: center; margin-top: 40px; }
+.footer { background: var(--bm-eigengrau); color: rgba(255,255,255,0.5); padding: 16px 40px; font-size: 12px; text-align: center; margin-top: 36px; }
+.footer a { color: rgba(255,255,255,0.5); text-decoration: underline; }
 
 @media (max-width: 768px) {
   .summary-grid { grid-template-columns: repeat(2, 1fr); }
   .article-top { grid-template-columns: 1fr; }
   .narrative-grid { grid-template-columns: repeat(2, 1fr); }
-  .header { padding: 32px 20px; }
+  .header { padding: 28px 20px; }
   .container { padding: 20px 16px; }
 }
 </style>
@@ -140,55 +102,24 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
 <body>
 
 <div class="header">
-  <h1>Media Intelligence Portal</h1>
-  <div class="subtitle">Bookmarked Reputation Monitor — Full Scan Results</div>
-  <div class="meta">Report generated April 2, 2026 | 25 articles tracked | Last enriched April 3, 2026</div>
-  <div class="internal-badge">BOOKMARKED INTERNAL</div>
+  <h1>Media Intelligence</h1>
+  <div class="meta">25 articles tracked | Last scan: April 2, 2026 | Last enriched: April 3, 2026</div>
+  <div>
+    <span class="internal-badge">BOOKMARKED INTERNAL</span>
+    <a class="confluence-badge" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">View in Confluence</a>
+  </div>
 </div>
 
 <div class="container">
 
-  <div class="exec-summary">
-    <h2>Executive Summary</h2>
-    <ul>
-      <li><strong>Coverage is net negative.</strong> 10 of 25 tracked articles frame Bookmarked critically. Only 3 are positive (all Killeen local media).</li>
-      <li><strong>K-12 Dive published a major Deep Dive</strong> on April 2 — the most detailed national coverage to date. Steve is quoted extensively. NBISD internal data was obtained via public records request.</li>
-      <li><strong>The "Switzerland" positioning isn't landing.</strong> Both Fast Company and K-12 Dive use Steve's own quote skeptically. The "win Texas, win the country" quote in K-12 Dive is being read as ambition, not mission.</li>
-      <li><strong>Product signals are real.</strong> Express-News investigation found &lt;0.04% parent adoption across 8 districts. A librarian told reporters the product "did nothing effectively." These need product team attention.</li>
-      <li><strong>Earned media opportunities exist.</strong> American Libraries Magazine, Texas Standard, and Smithsonian are writing about this space without talking to us.</li>
-    </ul>
-    <div class="action-items">
-      <h3>Top 3 Action Items</h3>
-      <ol>
-        <li><strong>Draft counternarrative</strong> for the K-12 Dive piece — Steve's quotes need reframing before they get syndicated further</li>
-        <li><strong>Product team: address parent adoption gap</strong> — &lt;0.04% is a critical metric that will keep appearing in coverage</li>
-        <li><strong>Pitch earned media</strong> — reach out to American Libraries Magazine and Texas Standard with Bookmarked's perspective</li>
-      </ol>
-    </div>
+  <div class="summary-grid">
+    <div class="summary-card"><div class="number">25</div><div class="label">Total Tracked</div></div>
+    <div class="summary-card"><div class="number score-negative">10</div><div class="label">Negative</div></div>
+    <div class="summary-card"><div class="number score-mixed">4</div><div class="label">Mixed</div></div>
+    <div class="summary-card"><div class="number score-positive">3</div><div class="label">Positive</div></div>
+    <div class="summary-card"><div class="number score-negative">-36</div><div class="label">Net Score</div></div>
   </div>
 
-  <div class="summary-grid">
-    <div class="summary-card">
-      <div class="number">25</div>
-      <div class="label">Total Tracked</div>
-    </div>
-    <div class="summary-card">
-      <div class="number score-negative">10</div>
-      <div class="label">Negative</div>
-    </div>
-    <div class="summary-card">
-      <div class="number score-mixed">4</div>
-      <div class="label">Mixed</div>
-    </div>
-    <div class="summary-card">
-      <div class="number score-positive">3</div>
-      <div class="label">Positive</div>
-    </div>
-    <div class="summary-card">
-      <div class="number score-net">-36</div>
-      <div class="label">Net Score</div>
-    </div>
-  </div>
   <div class="section">
     <h2>Narrative Landscape</h2>
     <div class="narrative-grid">
@@ -201,836 +132,443 @@ body { font-family: var(--bm-font-family); color: var(--bm-eigengrau); backgroun
       <div class="narrative-card"><div class="count">1</div><div class="name">Industry Context</div></div>
     </div>
   </div>
-  <div class="section">
-    <h2>Priority Coverage (Negative/Mixed, Reach &gt; 50)</h2>
 
-    <div class="article-card">
+  <div class="section">
+    <h2>Priority Coverage</h2>
+<div class="article-card">
       <div class="article-top">
         <div><div class="reach-badge reach-high">88</div></div>
         <div class="article-info">
           <h3><a href="https://www.404media.co/the-right-is-using-ai-content-scanners-to-try-to-supercharge-book-banning/" target="_blank">The Right Is Using AI Content Scanners to Try to Supercharge Book Banning</a></h3>
-          <div class="pub">404 Media | Claire Woodcock | 2026-04-01</div>
+          <div class="pub">404 Media | Claire Woodcock | 2026-04-01 <span class="mention-pill mention-direct">MENTIONED</span></div>
           <div class="excerpt">Frames Bookmarked alongside BLOCKADE, Rated Books, NarraTrue as tools supercharging book banning. Names NBISD ($9K contract). Librarian: 'I feel like BookmarkED is flagging more each time you run it.'</div>
           <div style="margin-top:5px;"><span class="tag">CENSORSHIP TOOL</span> <span class="tag">AI OVERREACH</span></div>
         </div>
         <div><span class="sentiment-badge badge-negative">negative</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-label">So What?</div>
-        <div class="so-what-text">Highest-reach negative piece. Frames us alongside other AI censorship tools. NBISD librarian complaint is a product signal.</div>
-        <div class="so-what-action">Action: Monitor. Consider proactive outreach to 404 Media with our perspective.</div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Highest-reach negative piece. Frames us alongside other AI censorship tools. NBISD librarian complaint is a product signal.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Monitor. Consider proactive outreach to 404 Media.</span></div>
       </div>
-      <div class="action-btn-group">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="/media-monitor:respond https://www.404media.co/the-right-is-using-ai-content-scanners-to-try-to-supercharge-book-banning/">Flag for Response</button>
-        <button class="action-btn tertiary" onclick="briefingAction(this)" data-action="Send Slack DM to Steve: Review media coverage — 404 Media: The Right Is Using AI Content Scanners t">Discuss in Slack</button>
-        <button class="action-btn secondary" onclick="briefingAction(this)" data-action="Update media tracker MM-2026-04-02-001 response_status to resolved">Mark Resolved</button>
-      </div>
-      <span class="comment-toggle" onclick="toggleComment('MM-2026-04-02-001')">+ Add Comment</span>
-      <div class="comment-section" id="comment-MM-2026-04-02-001">
-        <textarea class="comment-input" id="input-MM-2026-04-02-001" placeholder="Add your thoughts on this article..."></textarea>
-        <button class="action-btn primary comment-submit" onclick="submitComment('MM-2026-04-02-001')">Copy Comment</button>
+      <div class="card-footer">
+        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
       </div>
     </div>
-
-    <div class="article-card">
+<div class="article-card">
       <div class="article-top">
         <div><div class="reach-badge reach-high">85</div></div>
         <div class="article-info">
-          <h3><a href="https://www.fastcompany.com/91496176/bookmarked-steve-wandler-texas-book-bans" target="_blank">The startup that turned Texas's book ban law into big business</a> <span style="font-size:11px;color:var(--bm-pumpkin);" title="Steve quoted in this article">STEVE QUOTED</span></h3>
-          <div class="pub">Fast Company | Max Ufberg | 2026-03-03</div>
-          <div class="excerpt">Profiles Bookmarked as profiting from Texas book-ban legislation. Headline frames it as 'big business.' Cites $80K+ lobbying spend for SB 13, Moak Casey hired. Steve quoted: 'We try to be Switzerland. And it's hard to be Switzerland.' 150 districts (mix of paid/free pilots). Ange...</div>
+          <h3><a href="https://www.fastcompany.com/91496176/bookmarked-steve-wandler-texas-book-bans" target="_blank">The startup that turned Texas's book ban law into big business</a> <span class="steve-quoted">STEVE QUOTED</span></h3>
+          <div class="pub">Fast Company | Max Ufberg | 2026-03-03 <span class="mention-pill mention-direct">MENTIONED</span></div>
+          <div class="excerpt">Profiles Bookmarked as profiting from Texas book-ban legislation. Headline frames it as 'big business.' Cites $80K+ lobbying spend for SB 13, Moak Casey hired. Steve quoted: 'We try to be Switzerland. And it's hard to be Switzerland.' 150 districts (mix of paid/free pilots). Angel funded, seeking ad...</div>
           <div style="margin-top:5px;"><span class="tag">PROFIT FROM BANS</span></div>
         </div>
         <div><span class="sentiment-badge badge-negative">negative</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-label">So What?</div>
-        <div class="so-what-text">National business publication framing us as profiting from legislation. $80K lobbying figure and Moak Casey connection highlighted.</div>
-        <div class="so-what-action">Action: Draft counternarrative op-ed. "Switzerland" quote is being used against us.</div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">National business publication. $80K lobbying figure and Moak Casey connection highlighted.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Draft counternarrative op-ed.</span></div>
       </div>
-      <div class="action-btn-group">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="/media-monitor:respond https://www.fastcompany.com/91496176/bookmarked-steve-wandler-texas-book-bans">Flag for Response</button>
-        <button class="action-btn tertiary" onclick="briefingAction(this)" data-action="Send Slack DM to Steve: Review media coverage — Fast Company: The startup that turned Texas's book ban">Discuss in Slack</button>
-        <button class="action-btn secondary" onclick="briefingAction(this)" data-action="Update media tracker MM-2026-04-02-002 response_status to resolved">Mark Resolved</button>
-      </div>
-      <span class="comment-toggle" onclick="toggleComment('MM-2026-04-02-002')">+ Add Comment</span>
-      <div class="comment-section" id="comment-MM-2026-04-02-002">
-        <textarea class="comment-input" id="input-MM-2026-04-02-002" placeholder="Add your thoughts on this article..."></textarea>
-        <button class="action-btn primary comment-submit" onclick="submitComment('MM-2026-04-02-002')">Copy Comment</button>
+      <div class="card-footer">
+        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
       </div>
     </div>
-
-    <div class="article-card">
+<div class="article-card">
       <div class="article-top">
         <div><div class="reach-badge reach-high">85</div></div>
         <div class="article-info">
-          <h3><a href="https://www.k12dive.com/news/as-ai-enters-book-ban-disputes-heres-what-it-means-for-school-districts/816385/" target="_blank">As AI enters book ban disputes, here's what it means for school districts</a> <span style="font-size:11px;color:var(--bm-pumpkin);" title="Steve quoted in this article">STEVE QUOTED</span></h3>
-          <div class="pub">K-12 Dive | Naaz Modan | 2026-04-02</div>
-          <div class="excerpt">Deep Dive feature. New Braunfels ISD removed/restricted ~1,500 books, reviewed 3,000+ with AI. Steve quoted extensively: 'We want to be Switzerland,' 'If we win Texas, we win the country,' 'Librarians are aware of who are the loud voices out there... We're just showing them the d...</div>
+          <h3><a href="https://www.k12dive.com/news/as-ai-enters-book-ban-disputes-heres-what-it-means-for-school-districts/816385/" target="_blank">As AI enters book ban disputes, here's what it means for school districts</a> <span class="steve-quoted">STEVE QUOTED</span></h3>
+          <div class="pub">K-12 Dive | Naaz Modan | 2026-04-02 <span class="mention-pill mention-direct">MENTIONED</span></div>
+          <div class="excerpt">Deep Dive feature. New Braunfels ISD removed/restricted ~1,500 books, reviewed 3,000+ with AI. Steve quoted extensively: 'We want to be Switzerland,' 'If we win Texas, we win the country,' 'Librarians are aware of who are the loud voices out there... We're just showing them the data.' Moak Casey des...</div>
           <div style="margin-top:5px;"><span class="tag">PROFIT FROM BANS</span> <span class="tag">POLITICAL FRAMING</span> <span class="tag">ADVOCACY CRITICISM</span></div>
         </div>
         <div><span class="sentiment-badge badge-mixed">mixed</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-label">So What?</div>
-        <div class="so-what-text">Major K-12 trade publication Deep Dive. Most detailed coverage to date. Steve quoted extensively. FOIA data on NBISD. Published same day as our scan.</div>
-        <div class="so-what-action">Action: High priority. Draft response. The "win Texas, win the country" quote needs reframing.</div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Most detailed national coverage to date. Steve quoted extensively. NBISD data obtained via FOIA.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">High priority. Draft response. Reframe "win Texas" quote.</span></div>
       </div>
-      <div class="action-btn-group">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="/media-monitor:respond https://www.k12dive.com/news/as-ai-enters-book-ban-disputes-heres-what-it-means-for-school-districts/816385/">Flag for Response</button>
-        <button class="action-btn tertiary" onclick="briefingAction(this)" data-action="Send Slack DM to Steve: Review media coverage — K-12 Dive: As AI enters book ban disputes, here's w">Discuss in Slack</button>
-        <button class="action-btn secondary" onclick="briefingAction(this)" data-action="Update media tracker MM-2026-04-02-021 response_status to resolved">Mark Resolved</button>
-      </div>
-      <span class="comment-toggle" onclick="toggleComment('MM-2026-04-02-021')">+ Add Comment</span>
-      <div class="comment-section" id="comment-MM-2026-04-02-021">
-        <textarea class="comment-input" id="input-MM-2026-04-02-021" placeholder="Add your thoughts on this article..."></textarea>
-        <button class="action-btn primary comment-submit" onclick="submitComment('MM-2026-04-02-021')">Copy Comment</button>
+      <div class="card-footer">
+        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
       </div>
     </div>
-
-    <div class="article-card">
+<div class="article-card">
       <div class="article-top">
         <div><div class="reach-badge reach-med">72</div></div>
         <div class="article-info">
           <h3><a href="https://bookriot.com/the-people-behind-bookmarked-are-behind-book-bans-in-texas/" target="_blank">The People Behind BookmarkED Are Behind Book Bans in Texas</a></h3>
-          <div class="pub">Book Riot | Kelly Jensen | 2025-01-01</div>
+          <div class="pub">Book Riot | Kelly Jensen | 2025-01-01 <span class="mention-pill mention-direct">MENTIONED</span></div>
           <div class="excerpt">Investigates founders' ties to book-challenge movements. Names Jason Cochrane (Krum ISD superintendent) as co-owner. Cites Moak Casey lobbying firm equity stake.</div>
           <div style="margin-top:5px;"><span class="tag">CENSORSHIP TOOL</span> <span class="tag">POLITICAL FRAMING</span></div>
         </div>
         <div><span class="sentiment-badge badge-negative">negative</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-label">So What?</div>
-        <div class="so-what-text">Book Riot is a persistent critic. This piece connects founders to ban movements and Moak Casey.</div>
-        <div class="so-what-action">Action: Monitor only. Book Riot audience is already hostile. No engagement.</div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Persistent critic. Connects founders to ban movements and Moak Casey.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Monitor only. Do not engage.</span></div>
       </div>
-      <div class="action-btn-group">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="/media-monitor:respond https://bookriot.com/the-people-behind-bookmarked-are-behind-book-bans-in-texas/">Flag for Response</button>
-        <button class="action-btn tertiary" onclick="briefingAction(this)" data-action="Send Slack DM to Steve: Review media coverage — Book Riot: The People Behind BookmarkED Are Behind ">Discuss in Slack</button>
-        <button class="action-btn secondary" onclick="briefingAction(this)" data-action="Update media tracker MM-2026-04-02-003 response_status to resolved">Mark Resolved</button>
-      </div>
-      <span class="comment-toggle" onclick="toggleComment('MM-2026-04-02-003')">+ Add Comment</span>
-      <div class="comment-section" id="comment-MM-2026-04-02-003">
-        <textarea class="comment-input" id="input-MM-2026-04-02-003" placeholder="Add your thoughts on this article..."></textarea>
-        <button class="action-btn primary comment-submit" onclick="submitComment('MM-2026-04-02-003')">Copy Comment</button>
+      <div class="card-footer">
+        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
       </div>
     </div>
-
-    <div class="article-card">
+<div class="article-card">
       <div class="article-top">
         <div><div class="reach-badge reach-med">68</div></div>
         <div class="article-info">
           <h3><a href="https://bookriot.com/bookmarked-onshelf-book-banning-app/" target="_blank">How The BookmarkED/OnShelf App, Created to Help Schools Ban Books, Fuels Them Instead</a></h3>
-          <div class="pub">Book Riot | Kelly Jensen | 2025-01-01</div>
+          <div class="pub">Book Riot | Kelly Jensen | 2025-01-01 <span class="mention-pill mention-direct">MENTIONED</span></div>
           <div class="excerpt">Argues OnShelf was designed to facilitate book removal. Product-as-weapon framing.</div>
           <div style="margin-top:5px;"><span class="tag">CENSORSHIP TOOL</span></div>
         </div>
         <div><span class="sentiment-badge badge-negative">negative</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-label">So What?</div>
-        <div class="so-what-text">Product-as-weapon framing by Book Riot. Repeat critic.</div>
-        <div class="so-what-action">Action: Monitor only. Do not engage directly.</div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Product-as-weapon framing by repeat critic.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Monitor only.</span></div>
       </div>
-      <div class="action-btn-group">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="/media-monitor:respond https://bookriot.com/bookmarked-onshelf-book-banning-app/">Flag for Response</button>
-        <button class="action-btn tertiary" onclick="briefingAction(this)" data-action="Send Slack DM to Steve: Review media coverage — Book Riot: How The BookmarkED/OnShelf App, Created ">Discuss in Slack</button>
-        <button class="action-btn secondary" onclick="briefingAction(this)" data-action="Update media tracker MM-2026-04-02-004 response_status to resolved">Mark Resolved</button>
-      </div>
-      <span class="comment-toggle" onclick="toggleComment('MM-2026-04-02-004')">+ Add Comment</span>
-      <div class="comment-section" id="comment-MM-2026-04-02-004">
-        <textarea class="comment-input" id="input-MM-2026-04-02-004" placeholder="Add your thoughts on this article..."></textarea>
-        <button class="action-btn primary comment-submit" onclick="submitComment('MM-2026-04-02-004')">Copy Comment</button>
+      <div class="card-footer">
+        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
       </div>
     </div>
-
-    <div class="article-card">
+<div class="article-card">
       <div class="article-top">
         <div><div class="reach-badge reach-med">65</div></div>
         <div class="article-info">
           <h3><a href="https://pen.org/press-release/pen-america-using-artificial-intelligence-to-ban-books-only-makes-the-problem-worse/" target="_blank">PEN America: Using Artificial Intelligence to Ban Books Only Makes the Problem Worse</a></h3>
-          <div class="pub">PEN America |  | 2023-08-14</div>
-          <div class="excerpt">Press release about Iowa Mason City School District using ChatGPT to decide which books to remove. Does NOT mention Bookmarked directly. Relevant as industry context — establishes PEN America's position that AI in book removal is 'deeply misguided.' Liz Woolery quoted. Published ...</div>
+          <div class="pub">PEN America |  | 2023-08-14 <span class="mention-pill mention-industry">INDUSTRY</span></div>
+          <div class="excerpt">Press release about Iowa Mason City School District using ChatGPT to decide which books to remove. Does NOT mention Bookmarked directly. Relevant as industry context — establishes PEN America's position that AI in book removal is 'deeply misguided.' Liz Woolery quoted. Published August 2023, predate...</div>
           <div style="margin-top:5px;"><span class="tag">AI OVERREACH</span> <span class="tag">INDUSTRY NARRATIVE</span></div>
         </div>
         <div><span class="sentiment-badge badge-negative">negative</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-label">So What?</div>
-        <div class="so-what-text">PEN America opposes AI in book curation generally. This specific press release is about Iowa/ChatGPT, not us, but establishes their position.</div>
-        <div class="so-what-action">Action: Background context. PEN America will continue opposing. Prepare for future direct mentions.</div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">About Iowa/ChatGPT, not Bookmarked. Establishes PEN America position on AI + books.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Background context.</span></div>
       </div>
-      <div class="action-btn-group">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="/media-monitor:respond https://pen.org/press-release/pen-america-using-artificial-intelligence-to-ban-books-only-makes-the-problem-worse/">Flag for Response</button>
-        <button class="action-btn tertiary" onclick="briefingAction(this)" data-action="Send Slack DM to Steve: Review media coverage — PEN America: PEN America: Using Artificial Intelligen">Discuss in Slack</button>
-        <button class="action-btn secondary" onclick="briefingAction(this)" data-action="Update media tracker MM-2026-04-02-011 response_status to resolved">Mark Resolved</button>
-      </div>
-      <span class="comment-toggle" onclick="toggleComment('MM-2026-04-02-011')">+ Add Comment</span>
-      <div class="comment-section" id="comment-MM-2026-04-02-011">
-        <textarea class="comment-input" id="input-MM-2026-04-02-011" placeholder="Add your thoughts on this article..."></textarea>
-        <button class="action-btn primary comment-submit" onclick="submitComment('MM-2026-04-02-011')">Copy Comment</button>
+      <div class="card-footer">
+        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
       </div>
     </div>
-
-    <div class="article-card">
+<div class="article-card">
       <div class="article-top">
         <div><div class="reach-badge reach-med">65</div></div>
         <div class="article-info">
           <h3><a href="https://bookriot.com/bookmarked-app-to-ban-books/" target="_blank">BookmarkED App Connected to Book Ban Efforts in Texas</a></h3>
-          <div class="pub">Book Riot | Kelly Jensen | 2025-01-01</div>
+          <div class="pub">Book Riot | Kelly Jensen | 2025-01-01 <span class="mention-pill mention-direct">MENTIONED</span></div>
           <div class="excerpt">Connects BookmarkED to organized book-ban efforts. Names Jason Cochrane connection.</div>
           <div style="margin-top:5px;"><span class="tag">CENSORSHIP TOOL</span> <span class="tag">ADVOCACY CRITICISM</span></div>
         </div>
         <div><span class="sentiment-badge badge-negative">negative</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-label">So What?</div>
-        <div class="so-what-text">Third Book Riot piece. Advocacy criticism angle.</div>
-        <div class="so-what-action">Action: Monitor. Part of ongoing Book Riot narrative.</div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Third Book Riot piece. Advocacy criticism angle.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Monitor only.</span></div>
       </div>
-      <div class="action-btn-group">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="/media-monitor:respond https://bookriot.com/bookmarked-app-to-ban-books/">Flag for Response</button>
-        <button class="action-btn tertiary" onclick="briefingAction(this)" data-action="Send Slack DM to Steve: Review media coverage — Book Riot: BookmarkED App Connected to Book Ban Eff">Discuss in Slack</button>
-        <button class="action-btn secondary" onclick="briefingAction(this)" data-action="Update media tracker MM-2026-04-02-005 response_status to resolved">Mark Resolved</button>
-      </div>
-      <span class="comment-toggle" onclick="toggleComment('MM-2026-04-02-005')">+ Add Comment</span>
-      <div class="comment-section" id="comment-MM-2026-04-02-005">
-        <textarea class="comment-input" id="input-MM-2026-04-02-005" placeholder="Add your thoughts on this article..."></textarea>
-        <button class="action-btn primary comment-submit" onclick="submitComment('MM-2026-04-02-005')">Copy Comment</button>
+      <div class="card-footer">
+        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
       </div>
     </div>
-
-    <div class="article-card">
+<div class="article-card">
       <div class="article-top">
         <div><div class="reach-badge reach-med">62</div></div>
         <div class="article-info">
           <h3><a href="https://www.expressnews.com/news/education/article/antivirus-for-libraries-texas-company-helps-20005217.php" target="_blank">'Antivirus for libraries': How a Texas startup is capitalizing on school book bans</a></h3>
-          <div class="pub">San Antonio Express-News | Bayliss Wagner | 2025-12-02</div>
-          <div class="excerpt">Investigative feature. Bookmarked as 'antivirus for libraries.' $130K+ statewide contracts. Killeen ISD ~$40K, Llano ISD ~$3K. Pricing 25¢-$2/student. New Braunfels flagged 450 books. Key finding: <0.04% parent usage across 8 districts studied. Librarian complaints: product 'did ...</div>
+          <div class="pub">San Antonio Express-News | Bayliss Wagner | 2025-12-02 <span class="mention-pill mention-direct">MENTIONED</span></div>
+          <div class="excerpt">Investigative feature. Bookmarked as 'antivirus for libraries.' $130K+ statewide contracts. Killeen ISD ~$40K, Llano ISD ~$3K. Pricing 25¢-$2/student. New Braunfels flagged 450 books. Key finding: <0.04% parent usage across 8 districts studied. Librarian complaints: product 'did nothing that it said...</div>
           <div style="margin-top:5px;"><span class="tag">PROFIT FROM BANS</span></div>
         </div>
         <div><span class="sentiment-badge badge-mixed">mixed</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-label">So What?</div>
-        <div class="so-what-text">Investigative piece with hard data. <0.04% parent adoption is a product risk signal. Librarian effectiveness complaints.</div>
-        <div class="so-what-action">Action: Product team: address parent adoption. Jan: review librarian feedback. Consider proactive response.</div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text"><0.04% parent adoption across 8 districts. Librarian effectiveness complaints.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Product team action needed.</span></div>
       </div>
-      <div class="action-btn-group">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="/media-monitor:respond https://www.expressnews.com/news/education/article/antivirus-for-libraries-texas-company-helps-20005217.php">Flag for Response</button>
-        <button class="action-btn tertiary" onclick="briefingAction(this)" data-action="Send Slack DM to Steve: Review media coverage — San Antonio Express-News: 'Antivirus for libraries': How a Texas s">Discuss in Slack</button>
-        <button class="action-btn secondary" onclick="briefingAction(this)" data-action="Update media tracker MM-2026-04-02-006 response_status to resolved">Mark Resolved</button>
-      </div>
-      <span class="comment-toggle" onclick="toggleComment('MM-2026-04-02-006')">+ Add Comment</span>
-      <div class="comment-section" id="comment-MM-2026-04-02-006">
-        <textarea class="comment-input" id="input-MM-2026-04-02-006" placeholder="Add your thoughts on this article..."></textarea>
-        <button class="action-btn primary comment-submit" onclick="submitComment('MM-2026-04-02-006')">Copy Comment</button>
+      <div class="card-footer">
+        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
       </div>
     </div>
-
-    <div class="article-card">
+<div class="article-card">
       <div class="article-top">
         <div><div class="reach-badge reach-med">60</div></div>
         <div class="article-info">
           <h3><a href="https://bookriot.com/bookmarked-book-banning-app/" target="_blank">The First App to 'Help' Libraries and Schools with Book Bans Has Arrived — It's Not What It Seems</a></h3>
-          <div class="pub">Book Riot | Kelly Jensen | 2023-08-01</div>
+          <div class="pub">Book Riot | Kelly Jensen | 2023-08-01 <span class="mention-pill mention-direct">MENTIONED</span></div>
           <div class="excerpt">Earliest Book Riot coverage. Skeptical framing of BookmarkED's arrival as 'not what it seems.'</div>
           <div style="margin-top:5px;"><span class="tag">CENSORSHIP TOOL</span></div>
         </div>
         <div><span class="sentiment-badge badge-negative">negative</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-label">So What?</div>
-        <div class="so-what-text">Earliest Book Riot piece (2023). Established the negative narrative.</div>
-        <div class="so-what-action">Action: Historical context only. No action needed.</div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Earliest Book Riot piece (2023).</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Historical context only.</span></div>
       </div>
-      <div class="action-btn-group">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="/media-monitor:respond https://bookriot.com/bookmarked-book-banning-app/">Flag for Response</button>
-        <button class="action-btn tertiary" onclick="briefingAction(this)" data-action="Send Slack DM to Steve: Review media coverage — Book Riot: The First App to 'Help' Libraries and Sc">Discuss in Slack</button>
-        <button class="action-btn secondary" onclick="briefingAction(this)" data-action="Update media tracker MM-2026-04-02-012 response_status to resolved">Mark Resolved</button>
-      </div>
-      <span class="comment-toggle" onclick="toggleComment('MM-2026-04-02-012')">+ Add Comment</span>
-      <div class="comment-section" id="comment-MM-2026-04-02-012">
-        <textarea class="comment-input" id="input-MM-2026-04-02-012" placeholder="Add your thoughts on this article..."></textarea>
-        <button class="action-btn primary comment-submit" onclick="submitComment('MM-2026-04-02-012')">Copy Comment</button>
+      <div class="card-footer">
+        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
       </div>
     </div>
-
-    <div class="article-card">
+<div class="article-card">
       <div class="article-top">
         <div><div class="reach-badge reach-low">58</div></div>
         <div class="article-info">
           <h3><a href="https://www.texasstandard.org/stories/bookmarked-texas-sb-13-profane-indecent-library-book-ban/" target="_blank">School libraries must comply with new laws on book content. This company is selling a solution.</a></h3>
-          <div class="pub">Texas Standard |  | 2025-12-04</div>
+          <div class="pub">Texas Standard |  | 2025-12-04 <span class="mention-pill mention-direct">MENTIONED</span></div>
           <div class="excerpt">Original source of HPPR/KWBU/KTTZ syndication. $130K+ in contracts across Texas. Librarian feedback — some positive, some calling product a failure. NPR reach.</div>
           <div style="margin-top:5px;"><span class="tag">PROFIT FROM BANS</span></div>
         </div>
         <div><span class="sentiment-badge badge-mixed">mixed</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-label">So What?</div>
-        <div class="so-what-text">Syndicated version of Express-News investigation. Same $130K, <0.04% parent data.</div>
-        <div class="so-what-action">Action: Same as Express-News. Syndication amplified the reach.</div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Syndicated version of Express-News investigation.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Syndication tracking.</span></div>
       </div>
-      <div class="action-btn-group">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="/media-monitor:respond https://www.texasstandard.org/stories/bookmarked-texas-sb-13-profane-indecent-library-book-ban/">Flag for Response</button>
-        <button class="action-btn tertiary" onclick="briefingAction(this)" data-action="Send Slack DM to Steve: Review media coverage — Texas Standard: School libraries must comply with new la">Discuss in Slack</button>
-        <button class="action-btn secondary" onclick="briefingAction(this)" data-action="Update media tracker MM-2026-04-02-014 response_status to resolved">Mark Resolved</button>
-      </div>
-      <span class="comment-toggle" onclick="toggleComment('MM-2026-04-02-014')">+ Add Comment</span>
-      <div class="comment-section" id="comment-MM-2026-04-02-014">
-        <textarea class="comment-input" id="input-MM-2026-04-02-014" placeholder="Add your thoughts on this article..."></textarea>
-        <button class="action-btn primary comment-submit" onclick="submitComment('MM-2026-04-02-014')">Copy Comment</button>
+      <div class="card-footer">
+        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
       </div>
     </div>
-
-    <div class="article-card">
+<div class="article-card">
       <div class="article-top">
         <div><div class="reach-badge reach-low">55</div></div>
         <div class="article-info">
           <h3><a href="https://bookriot.com/organizations-cashing-in-on-book-bans" target="_blank">Manufacturing Problems with School and Library Books to Cash in on Solutions</a></h3>
-          <div class="pub">Book Riot | Kelly Jensen | 2023-12-08</div>
+          <div class="pub">Book Riot | Kelly Jensen | 2023-12-08 <span class="mention-pill mention-direct">MENTIONED</span></div>
           <div class="excerpt">Weekly censorship roundup grouping Bookmarked with organizations profiting from book ban movement.</div>
           <div style="margin-top:5px;"><span class="tag">PROFIT FROM BANS</span></div>
         </div>
         <div><span class="sentiment-badge badge-negative">negative</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-label">So What?</div>
-        <div class="so-what-text">Book Riot "cashing in" framing.</div>
-        <div class="so-what-action">Action: Monitor. Repeat narrative from known critic.</div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Book Riot "cashing in" framing.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Monitor only.</span></div>
       </div>
-      <div class="action-btn-group">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="/media-monitor:respond https://bookriot.com/organizations-cashing-in-on-book-bans">Flag for Response</button>
-        <button class="action-btn tertiary" onclick="briefingAction(this)" data-action="Send Slack DM to Steve: Review media coverage — Book Riot: Manufacturing Problems with School and L">Discuss in Slack</button>
-        <button class="action-btn secondary" onclick="briefingAction(this)" data-action="Update media tracker MM-2026-04-02-013 response_status to resolved">Mark Resolved</button>
-      </div>
-      <span class="comment-toggle" onclick="toggleComment('MM-2026-04-02-013')">+ Add Comment</span>
-      <div class="comment-section" id="comment-MM-2026-04-02-013">
-        <textarea class="comment-input" id="input-MM-2026-04-02-013" placeholder="Add your thoughts on this article..."></textarea>
-        <button class="action-btn primary comment-submit" onclick="submitComment('MM-2026-04-02-013')">Copy Comment</button>
+      <div class="card-footer">
+        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
       </div>
     </div>
-
-    <div class="article-card">
+<div class="article-card">
       <div class="article-top">
         <div><div class="reach-badge reach-low">55</div></div>
         <div class="article-info">
           <h3><a href="https://aischoollibrarian.substack.com/p/the-rise-of-book-ban-technology" target="_blank">The Rise of Book-Ban Technology</a></h3>
-          <div class="pub">AI School Librarian (Substack) | Elissa Malespina | 2026-03-19</div>
-          <div class="excerpt">Critical analysis of AI book-screening tools including Bookmarked and Class-Shelf Plus. 40+ Texas districts, $138K contracts cited. Key concern: shifts framework from 'should this book be removed?' to 'why should it remain?' Notes AI tools can't legally access copyrighted book co...</div>
+          <div class="pub">AI School Librarian (Substack) | Elissa Malespina | 2026-03-19 <span class="mention-pill mention-direct">MENTIONED</span></div>
+          <div class="excerpt">Critical analysis of AI book-screening tools including Bookmarked and Class-Shelf Plus. 40+ Texas districts, $138K contracts cited. Key concern: shifts framework from 'should this book be removed?' to 'why should it remain?' Notes AI tools can't legally access copyrighted book content. Predominantly...</div>
           <div style="margin-top:5px;"><span class="tag">CENSORSHIP TOOL</span> <span class="tag">AI OVERREACH</span></div>
         </div>
         <div><span class="sentiment-badge badge-negative">negative</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-label">So What?</div>
-        <div class="so-what-text">Librarian-audience Substack. Critical but substantive. Notes we cannot read book content — accurate.</div>
-        <div class="so-what-action">Action: Consider responding. Author is informed. Could become an ally if we engage respectfully.</div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Librarian-audience Substack. Substantive. Notes we cannot read book content.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Consider respectful engagement.</span></div>
       </div>
-      <div class="action-btn-group">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="/media-monitor:respond https://aischoollibrarian.substack.com/p/the-rise-of-book-ban-technology">Flag for Response</button>
-        <button class="action-btn tertiary" onclick="briefingAction(this)" data-action="Send Slack DM to Steve: Review media coverage — AI School Librarian (Substack): The Rise of Book-Ban Technology">Discuss in Slack</button>
-        <button class="action-btn secondary" onclick="briefingAction(this)" data-action="Update media tracker MM-2026-04-02-015 response_status to resolved">Mark Resolved</button>
-      </div>
-      <span class="comment-toggle" onclick="toggleComment('MM-2026-04-02-015')">+ Add Comment</span>
-      <div class="comment-section" id="comment-MM-2026-04-02-015">
-        <textarea class="comment-input" id="input-MM-2026-04-02-015" placeholder="Add your thoughts on this article..."></textarea>
-        <button class="action-btn primary comment-submit" onclick="submitComment('MM-2026-04-02-015')">Copy Comment</button>
+      <div class="card-footer">
+        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
       </div>
     </div>
   </div>
+
   <div class="section">
     <h2>Product Signals</h2>
-    <p style="font-size:13px;color:var(--bm-secondary-text);margin-bottom:12px;">These are product issues surfaced by media coverage. Route to /feedback:product for tracking.</p>
-
     <div class="signal-card">
       <div class="source">404 Media — MM-2026-04-02-001</div>
       <div class="signal-text">NBISD librarian reports over-flagging. Route to /feedback:product.</div>
-      <div class="action-btn-group" style="margin-top:8px;">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="/feedback:product Source: 404 Media. Signal: NBISD librarian reports over-flagging. Route to /feedback:product.">Log to Product Feedback</button>
-      </div>
     </div>
-
     <div class="signal-card">
       <div class="source">K-12 Dive — MM-2026-04-02-021</div>
       <div class="signal-text">NBISD using AI to review 3,000+ books. Internal logs obtained via public records request by Texas Freedom to Read Project.</div>
-      <div class="action-btn-group" style="margin-top:8px;">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="/feedback:product Source: K-12 Dive. Signal: NBISD using AI to review 3,000+ books. Internal logs obtained via public records request by Texas Fr">Log to Product Feedback</button>
-      </div>
     </div>
-
     <div class="signal-card">
       <div class="source">San Antonio Express-News — MM-2026-04-02-006</div>
       <div class="signal-text">Low parent adoption (<0.04%) and librarian complaint about effectiveness. Route to /feedback:product.</div>
-      <div class="action-btn-group" style="margin-top:8px;">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="/feedback:product Source: San Antonio Express-News. Signal: Low parent adoption (<0.04%) and librarian complaint about effectiveness. Route to /feedback:product">Log to Product Feedback</button>
-      </div>
     </div>
-
     <div class="signal-card">
       <div class="source">Texas Standard — MM-2026-04-02-014</div>
       <div class="signal-text">Some librarians calling product a failure — route to /feedback:product.</div>
-      <div class="action-btn-group" style="margin-top:8px;">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="/feedback:product Source: Texas Standard. Signal: Some librarians calling product a failure — route to /feedback:product.">Log to Product Feedback</button>
-      </div>
     </div>
   </div>
+
   <div class="section">
     <h2>Earned Media Opportunities</h2>
-    <p style="font-size:13px;color:var(--bm-secondary-text);margin-bottom:12px;">Publications covering our space where Bookmarked is not yet part of the conversation.</p>
-
-    <div class="article-card">
+<div class="article-card">
       <div class="article-top">
-        <div><div class="reach-badge reach-safe">70</div></div>
+        <div><div class="reach-badge reach-med">70</div></div>
         <div class="article-info">
           <h3><a href="https://americanlibrariesmagazine.org/2026/01/02/2025-year-in-review/" target="_blank">2025 Year in Review</a></h3>
-          <div class="pub">American Libraries Magazine (ALA) | Sanhita SinhaRoy | 2026-01-02</div>
+          <div class="pub">American Libraries Magazine (ALA) | Sanhita SinhaRoy | 2026-01-02 <span class="mention-pill mention-industry">INDUSTRY</span></div>
+          <div class="excerpt">ALA flagship publication. Extensive coverage of book access issues. Named ZERO technology solutions. Bookmarked absent from the librarian conversation it needs to be in.</div>
+          <div style="margin-top:5px;"><span class="tag">INSERTION OPPORTUNITY</span></div>
         </div>
-        <div><span class="sentiment-badge badge-neutral">opportunity</span></div>
+        <div><span class="sentiment-badge badge-neutral">neutral</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-label">Opportunity</div>
-        <div class="so-what-text">ALA publication year-in-review. We are NOT mentioned. This is an earned media opportunity.</div>
-        <div class="so-what-action">Action: Pitch Bookmarked perspective to American Libraries Magazine for 2026 coverage.</div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">ALA publication. We are NOT mentioned. Earned media opportunity.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Pitch for 2026 coverage.</span></div>
       </div>
-      <div class="action-btn-group">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="Draft journalist pitch for American Libraries Magazine (ALA) about Bookmarked perspective on library compliance technology">Draft Pitch</button>
+      <div class="card-footer">
+        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
       </div>
     </div>
-
-    <div class="article-card">
+<div class="article-card">
       <div class="article-top">
-        <div><div class="reach-badge reach-safe">65</div></div>
+        <div><div class="reach-badge reach-med">65</div></div>
         <div class="article-info">
           <h3><a href="https://www.texasstandard.org/stories/texas-school-library-books-law-sb-13-ai/" target="_blank">School districts turn to AI to comply with new state laws about library book content</a></h3>
-          <div class="pub">Texas Standard | Sarah Asch | 2025-11-03</div>
+          <div class="pub">Texas Standard | Sarah Asch | 2025-11-03 <span class="mention-pill mention-industry">INDUSTRY</span></div>
+          <div class="excerpt">Districts using ChatGPT for SB 13 compliance — Pearland ISD reviewed 1,400 books, ChatGPT incorrectly flagged content. Bookmarked NOT named despite covering exact problem Bookmarked solves.</div>
+          <div style="margin-top:5px;"><span class="tag">INSERTION OPPORTUNITY</span></div>
         </div>
-        <div><span class="sentiment-badge badge-neutral">opportunity</span></div>
+        <div><span class="sentiment-badge badge-neutral">neutral</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-label">Opportunity</div>
-        <div class="so-what-text">Texas Standard industry coverage. We are not mentioned but the topic is our exact space.</div>
-        <div class="so-what-action">Action: Earned media opportunity. Pitch Steve as a source for future Texas Standard coverage.</div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Our space, we are not mentioned.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Earned media: pitch Steve as source.</span></div>
       </div>
-      <div class="action-btn-group">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="Draft journalist pitch for Texas Standard about Bookmarked perspective on library compliance technology">Draft Pitch</button>
+      <div class="card-footer">
+        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
       </div>
     </div>
-
-    <div class="article-card">
+<div class="article-card">
       <div class="article-top">
-        <div><div class="reach-badge reach-safe">60</div></div>
+        <div><div class="reach-badge reach-med">60</div></div>
         <div class="article-info">
           <h3><a href="https://www.smithsonianmag.com/smart-news/why-this-school-district-used-ai-to-help-remove-library-books-180982762/" target="_blank">Why This School District Used A.I. to Help Determine Which Books to Ban</a></h3>
-          <div class="pub">Smithsonian Magazine | Sarah Kuta | 2023-08-21</div>
+          <div class="pub">Smithsonian Magazine | Sarah Kuta | 2023-08-21 <span class="mention-pill mention-industry">INDUSTRY</span></div>
+          <div class="excerpt">Iowa's Mason City used ChatGPT — removed 19 titles. Canonical 'districts using AI for book review' story. Evergreen contrast point: general AI vs. purpose-built tools.</div>
+          <div style="margin-top:5px;"><span class="tag">INSERTION OPPORTUNITY</span></div>
         </div>
-        <div><span class="sentiment-badge badge-neutral">opportunity</span></div>
+        <div><span class="sentiment-badge badge-neutral">neutral</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-label">Opportunity</div>
-        <div class="so-what-text">Smithsonian coverage of Iowa AI book removal. Not about Bookmarked.</div>
-        <div class="so-what-action">Action: Earned media target. Pitch our differentiated approach to Smithsonian.</div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">Smithsonian on Iowa AI removal. Not about Bookmarked.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Earned media target.</span></div>
       </div>
-      <div class="action-btn-group">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="Draft journalist pitch for Smithsonian Magazine about Bookmarked perspective on library compliance technology">Draft Pitch</button>
+      <div class="card-footer">
+        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
       </div>
     </div>
-
-    <div class="article-card">
+<div class="article-card">
       <div class="article-top">
-        <div><div class="reach-badge reach-safe">55</div></div>
+        <div><div class="reach-badge reach-low">55</div></div>
         <div class="article-info">
           <h3><a href="https://www.lbc.co.uk/article/librarian-gobsmacked-school-ai-remove-books-5HjdWsc_2/" target="_blank">Librarian 'gobsmacked' after school uses AI to remove 200 books including 1984 and Twilight</a></h3>
-          <div class="pub">LBC (UK) | Frankie Elliott | 2026-03-26</div>
+          <div class="pub">LBC (UK) | Frankie Elliott | 2026-03-26 <span class="mention-pill mention-industry">INDUSTRY</span></div>
+          <div class="excerpt">International signal. UK school used AI to flag 200 books. Librarian refused, faced investigation, resigned. Shows AI-in-libraries narrative going global.</div>
+          <div style="margin-top:5px;"><span class="tag">INSERTION OPPORTUNITY</span></div>
         </div>
-        <div><span class="sentiment-badge badge-neutral">opportunity</span></div>
+        <div><span class="sentiment-badge badge-neutral">neutral</span></div>
       </div>
       <div class="so-what">
-        <div class="so-what-label">Opportunity</div>
-        <div class="so-what-text">UK outlet covering Texas story. International pickup.</div>
-        <div class="so-what-action">Action: Earned media opportunity for international differentiation.</div>
+        <div class="so-what-row"><span class="so-what-label">Context</span> <span class="so-what-text">UK outlet. International pickup.</span></div>
+        <div class="so-what-row"><span class="so-what-label">Action</span> <span class="so-what-action">Earned media for international angle.</span></div>
       </div>
-      <div class="action-btn-group">
-        <button class="action-btn primary" onclick="briefingAction(this)" data-action="Draft journalist pitch for LBC (UK) about Bookmarked perspective on library compliance technology">Draft Pitch</button>
+      <div class="card-footer">
+        <a class="confluence-link" href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence" target="_blank">Comment in Confluence</a>
       </div>
     </div>
   </div>
+
   <div class="section">
-    <h2>Complete Coverage Log (25 articles)</h2>
-
-    <div class="article-card" style="padding:14px 20px;">
+    <h2>Positive Coverage</h2>
+<div class="article-card compact">
       <div class="article-top">
-        <div><div class="reach-badge reach-high" style="width:40px;height:40px;font-size:14px;">88</div></div>
+        <div><div class="reach-badge reach-safe">28</div></div>
         <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://www.404media.co/the-right-is-using-ai-content-scanners-to-try-to-supercharge-book-banning/" target="_blank">The Right Is Using AI Content Scanners to Try to Supercharge Book Banning</a></h3>
-          <div class="pub">404 Media | Claire Woodcock | 2026-04-01</div>
-        </div>
-        <div><span class="sentiment-badge badge-negative">negative</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-high" style="width:40px;height:40px;font-size:14px;">85</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://www.fastcompany.com/91496176/bookmarked-steve-wandler-texas-book-bans" target="_blank">The startup that turned Texas's book ban law into big business</a></h3>
-          <div class="pub">Fast Company | Max Ufberg | 2026-03-03</div>
-        </div>
-        <div><span class="sentiment-badge badge-negative">negative</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-high" style="width:40px;height:40px;font-size:14px;">85</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://www.k12dive.com/news/as-ai-enters-book-ban-disputes-heres-what-it-means-for-school-districts/816385/" target="_blank">As AI enters book ban disputes, here's what it means for school districts</a></h3>
-          <div class="pub">K-12 Dive | Naaz Modan | 2026-04-02</div>
-        </div>
-        <div><span class="sentiment-badge badge-mixed">mixed</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-med" style="width:40px;height:40px;font-size:14px;">72</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://bookriot.com/the-people-behind-bookmarked-are-behind-book-bans-in-texas/" target="_blank">The People Behind BookmarkED Are Behind Book Bans in Texas</a></h3>
-          <div class="pub">Book Riot | Kelly Jensen | 2025-01-01</div>
-        </div>
-        <div><span class="sentiment-badge badge-negative">negative</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-med" style="width:40px;height:40px;font-size:14px;">70</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://americanlibrariesmagazine.org/2026/01/02/2025-year-in-review/" target="_blank">2025 Year in Review</a></h3>
-          <div class="pub">American Libraries Magazine (ALA) | Sanhita SinhaRoy | 2026-01-02</div>
-        </div>
-        <div><span class="sentiment-badge badge-neutral">neutral</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-med" style="width:40px;height:40px;font-size:14px;">68</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://bookriot.com/bookmarked-onshelf-book-banning-app/" target="_blank">How The BookmarkED/OnShelf App, Created to Help Schools Ban Books, Fuels Them Instead</a></h3>
-          <div class="pub">Book Riot | Kelly Jensen | 2025-01-01</div>
-        </div>
-        <div><span class="sentiment-badge badge-negative">negative</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-med" style="width:40px;height:40px;font-size:14px;">65</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://pen.org/press-release/pen-america-using-artificial-intelligence-to-ban-books-only-makes-the-problem-worse/" target="_blank">PEN America: Using Artificial Intelligence to Ban Books Only Makes the Problem Worse</a></h3>
-          <div class="pub">PEN America |  | 2023-08-14</div>
-        </div>
-        <div><span class="sentiment-badge badge-negative">negative</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-med" style="width:40px;height:40px;font-size:14px;">65</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://bookriot.com/bookmarked-app-to-ban-books/" target="_blank">BookmarkED App Connected to Book Ban Efforts in Texas</a></h3>
-          <div class="pub">Book Riot | Kelly Jensen | 2025-01-01</div>
-        </div>
-        <div><span class="sentiment-badge badge-negative">negative</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-med" style="width:40px;height:40px;font-size:14px;">65</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://www.texasstandard.org/stories/texas-school-library-books-law-sb-13-ai/" target="_blank">School districts turn to AI to comply with new state laws about library book content</a></h3>
-          <div class="pub">Texas Standard | Sarah Asch | 2025-11-03</div>
-        </div>
-        <div><span class="sentiment-badge badge-neutral">neutral</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-med" style="width:40px;height:40px;font-size:14px;">62</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://www.expressnews.com/news/education/article/antivirus-for-libraries-texas-company-helps-20005217.php" target="_blank">'Antivirus for libraries': How a Texas startup is capitalizing on school book bans</a></h3>
-          <div class="pub">San Antonio Express-News | Bayliss Wagner | 2025-12-02</div>
-        </div>
-        <div><span class="sentiment-badge badge-mixed">mixed</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-med" style="width:40px;height:40px;font-size:14px;">60</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://bookriot.com/bookmarked-book-banning-app/" target="_blank">The First App to 'Help' Libraries and Schools with Book Bans Has Arrived — It's Not What It Seems</a></h3>
-          <div class="pub">Book Riot | Kelly Jensen | 2023-08-01</div>
-        </div>
-        <div><span class="sentiment-badge badge-negative">negative</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-med" style="width:40px;height:40px;font-size:14px;">60</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://www.smithsonianmag.com/smart-news/why-this-school-district-used-ai-to-help-remove-library-books-180982762/" target="_blank">Why This School District Used A.I. to Help Determine Which Books to Ban</a></h3>
-          <div class="pub">Smithsonian Magazine | Sarah Kuta | 2023-08-21</div>
-        </div>
-        <div><span class="sentiment-badge badge-neutral">neutral</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-low" style="width:40px;height:40px;font-size:14px;">58</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://www.texasstandard.org/stories/bookmarked-texas-sb-13-profane-indecent-library-book-ban/" target="_blank">School libraries must comply with new laws on book content. This company is selling a solution.</a></h3>
-          <div class="pub">Texas Standard |  | 2025-12-04</div>
-        </div>
-        <div><span class="sentiment-badge badge-mixed">mixed</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-low" style="width:40px;height:40px;font-size:14px;">55</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://bookriot.com/organizations-cashing-in-on-book-bans" target="_blank">Manufacturing Problems with School and Library Books to Cash in on Solutions</a></h3>
-          <div class="pub">Book Riot | Kelly Jensen | 2023-12-08</div>
-        </div>
-        <div><span class="sentiment-badge badge-negative">negative</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-low" style="width:40px;height:40px;font-size:14px;">55</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://aischoollibrarian.substack.com/p/the-rise-of-book-ban-technology" target="_blank">The Rise of Book-Ban Technology</a></h3>
-          <div class="pub">AI School Librarian (Substack) | Elissa Malespina | 2026-03-19</div>
-        </div>
-        <div><span class="sentiment-badge badge-negative">negative</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-low" style="width:40px;height:40px;font-size:14px;">55</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://www.lbc.co.uk/article/librarian-gobsmacked-school-ai-remove-books-5HjdWsc_2/" target="_blank">Librarian 'gobsmacked' after school uses AI to remove 200 books including 1984 and Twilight</a></h3>
-          <div class="pub">LBC (UK) | Frankie Elliott | 2026-03-26</div>
-        </div>
-        <div><span class="sentiment-badge badge-neutral">neutral</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-low" style="width:40px;height:40px;font-size:14px;">48</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://www.hppr.org/hppr-news/2025-12-05/school-libraries-must-comply-with-new-laws-on-book-content-this-company-is-selling-a-solution" target="_blank">School libraries must comply with new laws on book content. This company is selling a solution.</a></h3>
-          <div class="pub">HPPR News (High Plains Public Radio) |  | 2025-12-05</div>
-        </div>
-        <div><span class="sentiment-badge badge-mixed">mixed</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-low" style="width:40px;height:40px;font-size:14px;">45</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://www.sacurrent.com/news/texas-news/new-braunfels-isd-bans-books-written-by-obama-shakespeare-and-matthew-mcconaughey/" target="_blank">New Braunfels ISD bans books written by Obama, Shakespeare and Matthew McConaughey</a></h3>
-          <div class="pub">San Antonio Current |  | 2026-01-01</div>
-        </div>
-        <div><span class="sentiment-badge badge-negative">negative</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-low" style="width:40px;height:40px;font-size:14px;">35</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://www.businesswire.com/news/home/20230822381201/en/BookmarkED-Addresses-the-State-of-Challenged-Books-with-Industry-First-Technology-to-Enable-Parental-Choice-in-School-Libraries" target="_blank">BookmarkED Addresses the State of Challenged Books with Industry-First Technology</a></h3>
-          <div class="pub">BusinessWire |  | 2023-08-22</div>
-        </div>
-        <div><span class="sentiment-badge badge-neutral">neutral</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-low" style="width:40px;height:40px;font-size:14px;">32</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://www.eschoolnews.com/newsline/2023/08/29/bookmarked-addresses-the-state-of-challenged-books-with-industry-first-technology-to-enable-parental-choice-in-school-libraries/" target="_blank">BookmarkED Addresses the State of Challenged Books with Industry-First Technology</a></h3>
-          <div class="pub">eSchool News |  | 2023-08-29</div>
-        </div>
-        <div><span class="sentiment-badge badge-neutral">neutral</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-safe" style="width:40px;height:40px;font-size:14px;">28</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://www.kcentv.com/article/news/local/killeen-isd-unveils-bookmarked-connect-parents-with-student-reading-choices/500-60a2fb20-686e-43fa-aeab-1335a68c48f5" target="_blank">Killeen ISD parents can track student reading choices</a></h3>
-          <div class="pub">KCEN TV (Central Texas NBC) |  | 2025-09-01</div>
+          <h3><a href="https://www.kcentv.com/article/news/local/killeen-isd-unveils-bookmarked-connect-parents-with-student-reading-choices/500-60a2fb20-686e-43fa-aeab-1335a68c48f5" target="_blank">Killeen ISD parents can track student reading choices</a></h3>
+          <div class="pub">KCEN TV (Central Texas NBC) |  | 2025-09-01 <span class="mention-pill mention-direct">MENTIONED</span></div>
         </div>
         <div><span class="sentiment-badge badge-positive">positive</span></div>
       </div>
     </div>
-
-    <div class="article-card" style="padding:14px 20px;">
+<div class="article-card compact">
       <div class="article-top">
-        <div><div class="reach-badge reach-safe" style="width:40px;height:40px;font-size:14px;">25</div></div>
+        <div><div class="reach-badge reach-safe">25</div></div>
         <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://us105fm.com/killeen-bookmarked-library-service/" target="_blank">Bookmarked: Killeen ISD's Tool For Supporting Student Reading Habits</a></h3>
-          <div class="pub">US 105 FM (Killeen, TX) | Tasha Stevens | 2025-09-22</div>
+          <h3><a href="https://us105fm.com/killeen-bookmarked-library-service/" target="_blank">Bookmarked: Killeen ISD's Tool For Supporting Student Reading Habits</a></h3>
+          <div class="pub">US 105 FM (Killeen, TX) | Tasha Stevens | 2025-09-22 <span class="mention-pill mention-direct">MENTIONED</span></div>
         </div>
         <div><span class="sentiment-badge badge-positive">positive</span></div>
       </div>
     </div>
-
-    <div class="article-card" style="padding:14px 20px;">
+<div class="article-card compact">
       <div class="article-top">
-        <div><div class="reach-badge reach-safe" style="width:40px;height:40px;font-size:14px;">22</div></div>
+        <div><div class="reach-badge reach-safe">22</div></div>
         <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://kdhnews.com/news/education/kisd-expands-library-oversight-for-parents/article_502ca11a-b3f3-4607-a9a5-4f90b3ef87b5.html" target="_blank">KISD expands library oversight for parents</a></h3>
-          <div class="pub">KDH News (Killeen Daily Herald) |  | 2025-09-01</div>
+          <h3><a href="https://kdhnews.com/news/education/kisd-expands-library-oversight-for-parents/article_502ca11a-b3f3-4607-a9a5-4f90b3ef87b5.html" target="_blank">KISD expands library oversight for parents</a></h3>
+          <div class="pub">KDH News (Killeen Daily Herald) |  | 2025-09-01 <span class="mention-pill mention-direct">MENTIONED</span></div>
         </div>
         <div><span class="sentiment-badge badge-positive">positive</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-low" style="width:40px;height:40px;font-size:14px;">20</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://www.citybiz.co/article/459136/bookmarked-launches-new-tech-solution-to-aid-texas-schools" target="_blank">BookmarkED Launches New Tech Solution to Aid Texas Schools</a></h3>
-          <div class="pub">CityBiz |  | 2023-08-01</div>
-        </div>
-        <div><span class="sentiment-badge badge-neutral">neutral</span></div>
-      </div>
-    </div>
-
-    <div class="article-card" style="padding:14px 20px;">
-      <div class="article-top">
-        <div><div class="reach-badge reach-low" style="width:40px;height:40px;font-size:14px;">15</div></div>
-        <div class="article-info">
-          <h3 style="font-size:14px;"><a href="https://www.texanswakeup.com/post/onshelf-by-bookedmarked" target="_blank">OnShelf by Bookmarked</a></h3>
-          <div class="pub">Texans Wake Up |  | 2025-01-01</div>
-        </div>
-        <div><span class="sentiment-badge badge-neutral">neutral</span></div>
       </div>
     </div>
   </div>
 
-  <div class="clipboard-log" id="clipboard-log">
-    <h3>Action Log</h3>
-    <div id="log-entries"></div>
+  <div class="section">
+    <h2>Other Coverage (6 articles)</h2>
+<div class="article-card compact">
+      <div class="article-top">
+        <div><div class="reach-badge reach-low">48</div></div>
+        <div class="article-info">
+          <h3><a href="https://www.hppr.org/hppr-news/2025-12-05/school-libraries-must-comply-with-new-laws-on-book-content-this-company-is-selling-a-solution" target="_blank">School libraries must comply with new laws on book content. This company is selling a solution.</a></h3>
+          <div class="pub">HPPR News (High Plains Public Radio) |  | 2025-12-05 <span class="mention-pill mention-direct">MENTIONED</span></div>
+        </div>
+        <div><span class="sentiment-badge badge-mixed">mixed</span></div>
+      </div>
+    </div>
+<div class="article-card compact">
+      <div class="article-top">
+        <div><div class="reach-badge reach-low">45</div></div>
+        <div class="article-info">
+          <h3><a href="https://www.sacurrent.com/news/texas-news/new-braunfels-isd-bans-books-written-by-obama-shakespeare-and-matthew-mcconaughey/" target="_blank">New Braunfels ISD bans books written by Obama, Shakespeare and Matthew McConaughey</a></h3>
+          <div class="pub">San Antonio Current |  | 2026-01-01 <span class="mention-pill mention-direct">MENTIONED</span></div>
+        </div>
+        <div><span class="sentiment-badge badge-negative">negative</span></div>
+      </div>
+    </div>
+<div class="article-card compact">
+      <div class="article-top">
+        <div><div class="reach-badge reach-low">35</div></div>
+        <div class="article-info">
+          <h3><a href="https://www.businesswire.com/news/home/20230822381201/en/BookmarkED-Addresses-the-State-of-Challenged-Books-with-Industry-First-Technology-to-Enable-Parental-Choice-in-School-Libraries" target="_blank">BookmarkED Addresses the State of Challenged Books with Industry-First Technology</a></h3>
+          <div class="pub">BusinessWire |  | 2023-08-22 <span class="mention-pill mention-direct">MENTIONED</span></div>
+        </div>
+        <div><span class="sentiment-badge badge-neutral">neutral</span></div>
+      </div>
+    </div>
+<div class="article-card compact">
+      <div class="article-top">
+        <div><div class="reach-badge reach-low">32</div></div>
+        <div class="article-info">
+          <h3><a href="https://www.eschoolnews.com/newsline/2023/08/29/bookmarked-addresses-the-state-of-challenged-books-with-industry-first-technology-to-enable-parental-choice-in-school-libraries/" target="_blank">BookmarkED Addresses the State of Challenged Books with Industry-First Technology</a></h3>
+          <div class="pub">eSchool News |  | 2023-08-29 <span class="mention-pill mention-direct">MENTIONED</span></div>
+        </div>
+        <div><span class="sentiment-badge badge-neutral">neutral</span></div>
+      </div>
+    </div>
+<div class="article-card compact">
+      <div class="article-top">
+        <div><div class="reach-badge reach-low">20</div></div>
+        <div class="article-info">
+          <h3><a href="https://www.citybiz.co/article/459136/bookmarked-launches-new-tech-solution-to-aid-texas-schools" target="_blank">BookmarkED Launches New Tech Solution to Aid Texas Schools</a></h3>
+          <div class="pub">CityBiz |  | 2023-08-01 <span class="mention-pill mention-direct">MENTIONED</span></div>
+        </div>
+        <div><span class="sentiment-badge badge-neutral">neutral</span></div>
+      </div>
+    </div>
+<div class="article-card compact">
+      <div class="article-top">
+        <div><div class="reach-badge reach-low">15</div></div>
+        <div class="article-info">
+          <h3><a href="https://www.texanswakeup.com/post/onshelf-by-bookedmarked" target="_blank">OnShelf by Bookmarked</a></h3>
+          <div class="pub">Texans Wake Up |  | 2025-01-01 <span class="mention-pill mention-direct">MENTIONED</span></div>
+        </div>
+        <div><span class="sentiment-badge badge-neutral">neutral</span></div>
+      </div>
+    </div>
   </div>
 
 </div>
 
 <div class="footer">
-  Bookmarked Media Intelligence Portal | Generated 2026-04-03 12:38 | /media-monitor skill<br>
-  <a href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1" style="color:rgba(255,255,255,0.5);text-decoration:underline;">View in Confluence</a>
+  Bookmarked Media Intelligence | Generated 2026-04-03 12:55 | /media-monitor |
+  <a href="https://bookmarked-team.atlassian.net/wiki/spaces/SH1/pages/107741231/Media+PR+Intelligence">Confluence</a>
 </div>
 
-<script>
-function briefingAction(btn) {
-  var action = btn.getAttribute('data-action');
-  var origText = btn.textContent;
-  
-  // Try clipboard API first
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(action).then(function() {
-      showCopied(btn, origText);
-      logAction(action);
-    }).catch(function() {
-      fallbackCopy(action, btn, origText);
-    });
-  } else {
-    fallbackCopy(action, btn, origText);
-  }
-}
-
-function fallbackCopy(text, btn, origText) {
-  var ta = document.createElement('textarea');
-  ta.value = text;
-  ta.style.position = 'fixed';
-  ta.style.left = '-9999px';
-  document.body.appendChild(ta);
-  ta.select();
-  try {
-    document.execCommand('copy');
-    showCopied(btn, origText);
-    logAction(text);
-  } catch(e) {
-    btn.textContent = 'Failed';
-  }
-  document.body.removeChild(ta);
-}
-
-function showCopied(btn, origText) {
-  btn.classList.add('copied');
-  btn.textContent = 'Copied!';
-  setTimeout(function() {
-    btn.classList.remove('copied');
-    btn.textContent = origText;
-  }, 2000);
-}
-
-function logAction(action) {
-  var log = document.getElementById('clipboard-log');
-  var entries = document.getElementById('log-entries');
-  log.classList.add('has-items');
-  var time = new Date().toLocaleTimeString();
-  entries.innerHTML += '<div style="margin-bottom:4px;"><span style="color:#12A38C;">[' + time + ']</span> ' + action.substring(0, 120) + '</div>';
-  log.scrollTop = log.scrollHeight;
-}
-
-function toggleComment(id) {
-  var section = document.getElementById('comment-' + id);
-  section.classList.toggle('open');
-}
-
-function submitComment(id) {
-  var input = document.getElementById('input-' + id);
-  var comment = input.value.trim();
-  if (!comment) return;
-  var action = 'Add media monitor comment on ' + id + ': ' + comment;
-  
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(action).then(function() {
-      input.value = '';
-      logAction(action);
-      alert('Comment copied! Paste in Claude Code to sync to Confluence.');
-    });
-  } else {
-    var ta = document.createElement('textarea');
-    ta.value = action;
-    ta.style.position = 'fixed';
-    ta.style.left = '-9999px';
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    input.value = '';
-    logAction(action);
-    alert('Comment copied! Paste in Claude Code to sync to Confluence.');
-  }
-}
-</script>
 </body>
 </html>
