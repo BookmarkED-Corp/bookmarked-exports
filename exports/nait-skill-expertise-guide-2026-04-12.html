@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAIT Skill: Upstream Workflow Architecture | Bookmarked</title>
+<link rel="stylesheet" href="../design/bookmarked-brand.css">
+<style>
+  :root {
+    --bm-teal: #0D4F4F;
+    --bm-green: #2D8B4E;
+    --bm-gold: #F5A623;
+    --bm-cream: #FFF8F0;
+    --bm-slate: #2C3E50;
+    --bm-light: #F7F4EF;
+    --bm-border: #E8E2D9;
+    --bm-red: #C0392B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bm-cream);
+    color: var(--bm-slate);
+    line-height: 1.6;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, var(--bm-teal) 0%, #0A3D3D 100%);
+    color: white;
+    padding: 60px 40px 50px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero .subtitle {
+    font-size: 1.15rem;
+    opacity: 0.85;
+    max-width: 700px;
+    margin: 0 auto 24px;
+    font-weight: 400;
+  }
+
+  .hero .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 6px 18px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .tldr {
+    background: white;
+    border: 2px solid var(--bm-green);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: -30px auto 40px;
+    position: relative;
+    max-width: 900px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .tldr h2 {
+    color: var(--bm-green);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .tldr p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  section {
+    margin-bottom: 48px;
+  }
+
+  h2.section-title {
+    font-size: 1.5rem;
+    color: var(--bm-teal);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--bm-border);
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    color: var(--bm-slate);
+    margin: 20px 0 10px;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+
+  .card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px 22px;
+    border: 1px solid var(--bm-border);
+  }
+
+  .card h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--bm-green);
+    margin-bottom: 8px;
+  }
+
+  .card p, .card li {
+    font-size: 0.95rem;
+    color: #555;
+  }
+
+  .card ul {
+    padding-left: 18px;
+  }
+
+  .card ul li {
+    margin-bottom: 4px;
+  }
+
+  .step-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 20px 0;
+  }
+
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    position: relative;
+    padding-bottom: 24px;
+  }
+
+  .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 40px;
+    bottom: 0;
+    width: 2px;
+    background: var(--bm-border);
+  }
+
+  .step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bm-teal);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .step-content {
+    flex: 1;
+    padding-top: 6px;
+  }
+
+  .step-content h4 {
+    font-size: 1.05rem;
+    color: var(--bm-teal);
+    margin-bottom: 4px;
+  }
+
+  .step-content p {
+    font-size: 0.95rem;
+    color: #555;
+  }
+
+  .highlight-box {
+    background: #FEF3E2;
+    border-left: 4px solid var(--bm-gold);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 16px 0;
+  }
+
+  .highlight-box strong {
+    color: var(--bm-slate);
+  }
+
+  .criteria-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--bm-border);
+  }
+
+  .criteria-table th {
+    background: var(--bm-teal);
+    color: white;
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .criteria-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--bm-border);
+    font-size: 0.95rem;
+  }
+
+  .criteria-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .criteria-table tr:nth-child(even) td {
+    background: var(--bm-light);
+  }
+
+  .classification-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+
+  .class-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid var(--bm-border);
+    text-align: center;
+  }
+
+  .class-card.agent-ready { border-top: 4px solid var(--bm-green); }
+  .class-card.agent-augmented { border-top: 4px solid var(--bm-gold); }
+  .class-card.human-only { border-top: 4px solid var(--bm-red); }
+
+  .class-card h4 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .class-card.agent-ready h4 { color: var(--bm-green); }
+  .class-card.agent-augmented h4 { color: #C48A1A; }
+  .class-card.human-only h4 { color: var(--bm-red); }
+
+  .class-card p {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .example-block {
+    background: white;
+    border: 1px solid var(--bm-border);
+    border-radius: 10px;
+    padding: 24px;
+    margin: 16px 0;
+  }
+
+  .example-block .label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--bm-green);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .example-block pre {
+    background: var(--bm-light);
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 0.88rem;
+    overflow-x: auto;
+    line-height: 1.6;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    white-space: pre-wrap;
+  }
+
+  .benefit-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+  }
+
+  .benefit-list li {
+    padding: 12px 16px 12px 44px;
+    position: relative;
+    margin-bottom: 8px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--bm-border);
+    font-size: 0.95rem;
+  }
+
+  .benefit-list li::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    width: 16px;
+    height: 16px;
+    background: var(--bm-green);
+    border-radius: 50%;
+  }
+
+  .before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 16px 0;
+  }
+
+  .before, .after {
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+
+  .before {
+    background: #FDE8E8;
+    border: 1px solid #F5C6C6;
+  }
+
+  .before h4 {
+    color: var(--bm-red);
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .after {
+    background: #E8F5EE;
+    border: 1px solid #B8DECA;
+  }
+
+  .after h4 {
+    color: var(--bm-green);
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .before ul, .after ul {
+    padding-left: 18px;
+    font-size: 0.93rem;
+  }
+
+  .before li, .after li {
+    margin-bottom: 6px;
+  }
+
+  .footer {
+    background: var(--bm-teal);
+    color: white;
+    padding: 30px 40px;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-top: 60px;
+  }
+
+  .five-q-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--bm-border);
+  }
+
+  .five-q-table th {
+    background: var(--bm-teal);
+    color: white;
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .five-q-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--bm-border);
+    font-size: 0.9rem;
+    vertical-align: top;
+  }
+
+  .five-q-table tr:last-child td { border-bottom: none; }
+
+  @media (max-width: 700px) {
+    .card-grid, .before-after, .classification-grid { grid-template-columns: 1fr; }
+    .hero { padding: 40px 20px 36px; }
+    .hero h1 { font-size: 1.8rem; }
+    .container { padding: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">BOOKMARKED CEO OPERATING SYSTEM</div>
+  <h1 style="margin-top: 16px;">The NAIT Skill</h1>
+  <p class="subtitle">How Bookmarked ensures every automation, workflow, and AI task starts with a high-fidelity specification &mdash; before a single line of work gets executed.</p>
+</div>
+
+<div class="container">
+
+<div class="tldr">
+  <h2>The One-Liner</h2>
+  <p><strong>NAIT (Nate B. Jones &mdash; Ops Architect)</strong> is Bookmarked's upstream quality gate. It forces every workflow request through a structured specification pass &mdash; extracting acceptance criteria, classifying the right human/AI boundary, mapping context dependencies, and designing the handoff card &mdash; before any execution skill touches it. The result: prompts that are complete, bounded, and testable from day one.</p>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<section>
+  <h2 class="section-title">Why This Skill Exists</h2>
+  <p>Most AI failures aren't intelligence failures &mdash; they're specification failures. An agent given a vague request will produce vague output. An agent given a precise spec with acceptance criteria, context pointers, and a clear handoff will produce work that lands the first time.</p>
+
+  <div class="highlight-box">
+    <strong>The core insight:</strong> 60 seconds of structured specification upstream saves hours of rework, misalignment, and "that's not what I meant" downstream. NAIT enforces that discipline as a non-negotiable gate.
+  </div>
+
+  <div class="before-after">
+    <div class="before">
+      <h4>Without NAIT</h4>
+      <ul>
+        <li>"Build me an onboarding flow" &rarr; agent guesses scope, builds the wrong thing</li>
+        <li>No acceptance criteria &rarr; no way to know if the output succeeded</li>
+        <li>No handoff design &rarr; unclear where AI stops and human starts</li>
+        <li>Missing context &rarr; agent reinvents what already exists in Confluence</li>
+        <li>Rework loops burn team trust in the system</li>
+      </ul>
+    </div>
+    <div class="after">
+      <h4>With NAIT</h4>
+      <ul>
+        <li>"Build me an onboarding flow" &rarr; spec-checked with 3 testable criteria first</li>
+        <li>Acceptance criteria gate enforced &rarr; every output is measurable</li>
+        <li>Handoff card designed &rarr; agent and human roles are explicit</li>
+        <li>Context mapped &rarr; agent loads exactly the right pages/files</li>
+        <li>Execution skills consume specs without rework</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<section>
+  <h2 class="section-title">The Four-Step Single-Pass Workflow</h2>
+  <p>NAIT runs one continuous pass through four steps. No phase gates, no back-and-forth &mdash; one response, complete spec. Takes roughly 60 seconds.</p>
+
+  <div class="step-flow">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Problem + Acceptance Criteria</h4>
+        <p>Extracts the trigger, desired outcome, and stakeholder. Then drafts exactly <strong>3 acceptance criteria</strong>:</p>
+        <ul style="margin-top: 8px; padding-left: 18px; font-size: 0.95rem; color: #555;">
+          <li><strong>Success condition</strong> &mdash; The measurable proof the workflow worked</li>
+          <li><strong>Boundary condition</strong> &mdash; The proof the workflow did not overreach</li>
+          <li><strong>Constraint</strong> &mdash; The time, format, or resource limit</li>
+        </ul>
+        <div class="highlight-box" style="margin-top: 12px;">
+          <strong>Hard gate:</strong> If someone says "just build it" without criteria, NAIT refuses and drafts candidate criteria from their description instead. This is the only non-negotiable gate in the entire skill.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Context Pointers</h4>
+        <p>Identifies which Confluence pages and repo files the execution skill will need. Flags gaps ("you'll need a page for X &mdash; it doesn't exist yet"). Validates the workflow against the Intent Manifest's trade-off hierarchy and hard boundaries.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Handoff Card</h4>
+        <p>Defines the precise boundary between AI and human responsibility:</p>
+        <table class="criteria-table" style="margin-top: 8px;">
+          <tr><td style="font-weight: 600; width: 160px;">Claude delivers</td><td>Specific artifact or action the AI produces</td></tr>
+          <tr><td style="font-weight: 600;">Human verifies</td><td>What requires human judgment &mdash; tone, strategic fit, relationship sensitivity</td></tr>
+          <tr><td style="font-weight: 600;">Claude self-checks</td><td>What the AI validates before handoff &mdash; fields populated, format correct, saved correctly</td></tr>
+          <tr><td style="font-weight: 600;">Progress state</td><td>Where state lives if multi-session (session plugin, MEMORY.md, Confluence)</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Execution Routing</h4>
+        <p>Identifies which existing skill(s) should execute the spec, estimates session count, and lists dependencies (API access, human inputs, data availability, external coordination).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<section>
+  <h2 class="section-title">The Workflow Classification Engine</h2>
+  <p>Every workflow NAIT processes gets classified using five diagnostic questions. This classification determines the right human/AI boundary &mdash; not a guess, but a structured assessment.</p>
+
+  <table class="five-q-table">
+    <tr>
+      <th style="width: 40%;">Question</th>
+      <th style="width: 20%;">If Yes</th>
+      <th style="width: 20%;">If Partial</th>
+      <th style="width: 20%;">If No</th>
+    </tr>
+    <tr>
+      <td><strong>Q1:</strong> Can the decision logic be fully encoded?</td>
+      <td>Agent-Ready</td>
+      <td>Agent-Augmented</td>
+      <td>Human-Only</td>
+    </tr>
+    <tr>
+      <td><strong>Q2:</strong> Is the outcome reversible if AI errs?</td>
+      <td>Agent-Ready</td>
+      <td>Agent-Augmented</td>
+      <td>Human-Only</td>
+    </tr>
+    <tr>
+      <td><strong>Q3:</strong> Can success be measured without human interpretation?</td>
+      <td>Agent-Ready</td>
+      <td>Agent-Augmented</td>
+      <td>Agent-Augmented at best</td>
+    </tr>
+    <tr>
+      <td><strong>Q4:</strong> Is this internal (no external stakeholder expectations)?</td>
+      <td>Agent-Ready</td>
+      <td>Agent-Augmented</td>
+      <td>Human-Only</td>
+    </tr>
+    <tr>
+      <td><strong>Q5:</strong> Would a 2 AM agent produce the same quality as a human at 2 PM?</td>
+      <td>Agent-Ready</td>
+      <td>Agent-Augmented</td>
+      <td>Human-Only</td>
+    </tr>
+  </table>
+
+  <div class="classification-grid">
+    <div class="class-card agent-ready">
+      <h4>Agent-Ready</h4>
+      <p>AI executes end-to-end. Human sets boundaries and reviews occasionally.</p>
+    </div>
+    <div class="class-card agent-augmented">
+      <h4>Agent-Augmented</h4>
+      <p>AI does the heavy lifting. Human reviews at a defined gate before it ships.</p>
+    </div>
+    <div class="class-card human-only">
+      <h4>Human-Only</h4>
+      <p>AI prepares materials. Human leads, decides, and executes.</p>
+    </div>
+  </div>
+
+  <p style="font-size: 0.93rem; color: #666;">Classifications are not permanent. As decision boundaries mature and feedback loops prove alignment, workflows can be promoted. Demotions happen when quality degrades or new edge cases emerge.</p>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<section>
+  <h2 class="section-title">What the Output Looks Like</h2>
+  <p>Every NAIT pass produces a compact, structured workflow spec that any execution skill can consume without rework.</p>
+
+  <div class="example-block">
+    <div class="label">Example Output Structure</div>
+    <pre># Workflow Spec: [Name]
+
+Intent: [one line]  |  Classification: Agent-Augmented  |  Date: 2026-04-12
+
+## Problem
+Trigger:    What event or request starts this workflow
+Outcome:    What "done" looks like in concrete terms
+Stakeholder: Who reviews or receives the output
+
+## Acceptance Criteria
+1. Success:    [measurable condition proving it worked]
+2. Boundary:   [condition proving it did not overreach]
+3. Constraint: [time, format, or resource limit]
+
+## Context Needed
+- Confluence page / repo file &mdash; why needed
+- Gaps: what's missing and should be created
+
+## Handoff Card
+| Claude delivers   | [artifact/action]              |
+| Human verifies    | [sniff-checks]                 |
+| Claude self-checks| [validations]                  |
+| Progress state    | [where state lives]            |
+
+## Execute With
+Skill:        /[skill-name]
+Sessions:     [estimated count]
+Dependencies: [list]</pre>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<section>
+  <h2 class="section-title">The Expertise NAIT Brings</h2>
+
+  <div class="card-grid">
+    <div class="card">
+      <h4>Specification Rigor</h4>
+      <p>Forces every request through structured decomposition. Vague requests become testable specs. "Build me a thing" becomes trigger + outcome + 3 acceptance criteria.</p>
+    </div>
+    <div class="card">
+      <h4>Acceptance Criteria Enforcement</h4>
+      <p>The only non-negotiable gate: no workflow spec ships without 3 acceptance criteria (success, boundary, constraint). Refuses to proceed without them.</p>
+    </div>
+    <div class="card">
+      <h4>Human/AI Boundary Design</h4>
+      <p>Uses the 5 Classification Questions to determine exactly where AI should stop and human judgment should start. No guessing &mdash; structured diagnostic.</p>
+    </div>
+    <div class="card">
+      <h4>Context Dependency Mapping</h4>
+      <p>Identifies Confluence pages and repo files the execution skill will need. Flags gaps before work begins, not after.</p>
+    </div>
+    <div class="card">
+      <h4>Intent Alignment Validation</h4>
+      <p>Every spec is validated against the Intent Manifest's trade-off hierarchy and hard boundaries. Workflows that conflict with organizational intent get flagged immediately.</p>
+    </div>
+    <div class="card">
+      <h4>Execution Routing</h4>
+      <p>Identifies which existing skills should execute the spec, estimates session count, and lists dependencies &mdash; so execution starts without discovery overhead.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<section>
+  <h2 class="section-title">How This Helps the Team</h2>
+
+  <ul class="benefit-list">
+    <li><strong>Higher first-pass quality:</strong> When the spec is complete, execution skills produce work that lands the first time instead of requiring multiple revision cycles.</li>
+    <li><strong>Consistent AI behavior:</strong> Every team member who runs a workflow through NAIT gets the same structured specification process, regardless of how they phrase their request.</li>
+    <li><strong>Clear accountability:</strong> The handoff card makes it explicit what AI is responsible for and what the human is responsible for. No ambiguity about who owns what.</li>
+    <li><strong>Faster onboarding:</strong> New team members can see exactly what a well-specified prompt looks like &mdash; the output IS the training material.</li>
+    <li><strong>Reduced rework:</strong> Acceptance criteria defined upfront means you know if the output succeeded before it ships. No more "that's not what I meant."</li>
+    <li><strong>Organizational memory:</strong> Context pointers ensure execution skills load existing organizational knowledge instead of reinventing it.</li>
+    <li><strong>Audit trail:</strong> Every workflow spec is saved to <code>claude-output/exports/</code> &mdash; the team can review what was specified, what was executed, and whether they matched.</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<section>
+  <h2 class="section-title">The Decision Boundaries</h2>
+  <p>NAIT operates at <strong>Autonomy Level 3 (Advisor)</strong> &mdash; it recommends, you decide.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <h4>Can Autonomously</h4>
+      <ul>
+        <li>Run the single-pass spec-check</li>
+        <li>Search Confluence for context</li>
+        <li>Draft problem statements, criteria, and handoff cards</li>
+        <li>Classify workflows using the 5 questions</li>
+        <li>Audit existing specs for compliance</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Must Escalate When</h4>
+      <ul>
+        <li>Workflow involves external stakeholders (customers, partners, investors)</li>
+        <li>Proposed workflow overlaps &gt;30% with an existing skill</li>
+        <li>Workflow requires creating new Confluence pages</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Never Does</h4>
+      <ul>
+        <li>Produces a spec without acceptance criteria</li>
+        <li>Executes workflows &mdash; design only</li>
+        <li>Skips the handoff card</li>
+        <li>Creates Confluence pages directly</li>
+        <li>Duplicates referenced framework content</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Trade-Offs Authorized</h4>
+      <ul>
+        <li>Rigor over speed: building the wrong thing costs more than 60 seconds of spec work</li>
+        <li>Proportional context: a 1-step update doesn't need 5 Confluence pages mapped</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<section>
+  <h2 class="section-title">Review Mode</h2>
+  <p>NAIT also has a <strong>review mode</strong> (<code>/nate:review</code>) that audits existing workflows, session plugins, or specs for compliance. It checks for each required element and scores them as present, missing, or incomplete &mdash; then drafts what's missing.</p>
+
+  <table class="criteria-table">
+    <tr>
+      <th>Element Checked</th>
+      <th>What It Catches</th>
+    </tr>
+    <tr>
+      <td>Problem statement</td>
+      <td>Workflows without a clear trigger, outcome, or stakeholder</td>
+    </tr>
+    <tr>
+      <td>Acceptance criteria</td>
+      <td>Workflows with no way to measure success or detect overreach</td>
+    </tr>
+    <tr>
+      <td>Classification</td>
+      <td>Workflows misclassified as Agent-Ready when they need human gates</td>
+    </tr>
+    <tr>
+      <td>Context pointers</td>
+      <td>Workflows missing required Confluence or repo references</td>
+    </tr>
+    <tr>
+      <td>Handoff card</td>
+      <td>Workflows with unclear AI/human boundaries</td>
+    </tr>
+    <tr>
+      <td>Execution routing</td>
+      <td>Workflows with no clear path to implementation</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<section>
+  <h2 class="section-title">Where It Fits in the System</h2>
+  <p>NAIT sits <strong>upstream</strong> of every execution skill. It is the specification layer that ensures prompt fidelity before work begins.</p>
+
+  <div class="example-block">
+    <div class="label">Workflow Position</div>
+    <pre>
+  User Request
+       |
+       v
+  +-----------+
+  |   NAIT    |  &larr; Specification gate
+  | /nate     |     Acceptance criteria enforced
+  +-----------+     Classification determined
+       |            Context mapped
+       v            Handoff designed
+  +-----------+
+  | Execution |  &larr; Consumes the spec
+  | Skill     |     /collateral, /hubspot, /jira, etc.
+  +-----------+
+       |
+       v
+  Handoff Card
+  (AI delivers &rarr; Human verifies)
+    </pre>
+  </div>
+
+  <p>Related skills in the ecosystem:</p>
+  <table class="criteria-table">
+    <tr>
+      <th>Skill</th>
+      <th>Relationship to NAIT</th>
+    </tr>
+    <tr>
+      <td><code>/chief-of-staff</code></td>
+      <td>Daily orchestration &mdash; routes requests, NAIT specs them</td>
+    </tr>
+    <tr>
+      <td><code>/skill-creator</code></td>
+      <td>Builds new skills &mdash; NAIT specs what the skill should do first</td>
+    </tr>
+    <tr>
+      <td>Any execution skill</td>
+      <td>Consumes NAIT's workflow spec as input &mdash; no spec, no clean execution</td>
+    </tr>
+    <tr>
+      <td>Intent Manifest</td>
+      <td>NAIT validates every spec against the trade-off hierarchy and hard boundaries</td>
+    </tr>
+  </table>
+</section>
+
+</div>
+
+<div class="footer">
+  Bookmarked &mdash; NAIT Skill Expertise Guide &mdash; April 12, 2026<br>
+  Internal document for the Bookmarked team. Generated by the CEO Operating System.
+</div>
+
+</body>
+</html>
