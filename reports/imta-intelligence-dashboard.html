@@ -46,53 +46,89 @@ body {
 }
 .page { max-width: 1440px; margin: 0 auto; padding: 0 24px 60px; }
 
-/* Portal Navigation */
+/* Portal Navigation (button-style tabs) */
 .portal-nav {
   background: var(--white);
   border-bottom: 1px solid var(--border-light);
   margin: 0 -24px 24px;
-  padding: 12px 24px 0;
+  padding: 16px 24px;
   position: sticky; top: 0; z-index: 100;
   box-shadow: var(--shadow-sm);
 }
 .portal-nav-brand {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 1.5px;
   color: var(--muted-gray);
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 .portal-nav-tabs {
   display: flex;
-  gap: 4px;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 .portal-tab {
-  padding: 12px 18px;
-  border-bottom: 3px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--bg-light);
+  border: 1.5px solid var(--border-light);
+  border-radius: 999px;
   color: var(--secondary-text);
   font-weight: 600;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   transition: all 0.15s ease;
-  display: inline-flex; align-items: center; gap: 8px;
+  cursor: pointer;
+  white-space: nowrap;
 }
-.portal-tab:hover { color: var(--eigengrau); background: var(--bg-light); }
+.portal-tab:hover {
+  color: var(--eigengrau);
+  background: var(--white);
+  border-color: var(--deep-green);
+  box-shadow: 0 2px 6px rgba(18,163,140,0.12);
+  transform: translateY(-1px);
+}
 .portal-tab-active {
-  color: var(--deep-green);
-  border-bottom-color: var(--deep-green);
-  background: linear-gradient(180deg, transparent, rgba(18,163,140,0.04));
+  background: var(--deep-green);
+  color: var(--white);
+  border-color: var(--deep-green);
+  box-shadow: 0 4px 12px rgba(18,163,140,0.3);
+  pointer-events: none;
 }
-.portal-tab-soon { opacity: 0.7; cursor: not-allowed; pointer-events: none; }
-.soon-pill {
-  background: var(--bg-blue);
+.portal-tab-active:hover {
+  background: var(--deep-green);
+  color: var(--white);
+  transform: none;
+}
+.portal-tab-soon {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: var(--white);
+  border-style: dashed;
+}
+.portal-tab-soon:hover {
+  transform: none;
+  border-color: var(--border-light);
+  box-shadow: none;
+  background: var(--white);
   color: var(--secondary-text);
-  font-size: 0.65rem;
-  font-weight: 700;
+}
+.soon-pill {
+  background: rgba(16,24,40,0.08);
+  color: var(--secondary-text);
+  font-size: 0.62rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 2px 6px;
-  border-radius: 4px;
+  letter-spacing: 0.6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+.portal-tab-active .soon-pill {
+  background: rgba(255,255,255,0.25);
+  color: var(--white);
 }
 
 /* Header */
@@ -330,9 +366,9 @@ body {
 <body>
 <div class="page">
   <nav class="portal-nav">
-  <div class="portal-nav-brand">District Intelligence</div>
+  <div class="portal-nav-brand">District Intelligence Portal</div>
   <div class="portal-nav-tabs">
-    <a href="#" class="portal-tab portal-tab-soon">Combined Signal <span class="soon-pill">Coming Soon</span></a><a href="board-minutes-dashboard.html" class="portal-tab">Board Intelligence</a><a href="#" class="portal-tab portal-tab-soon">Texas ISD Book Intelligence <span class="soon-pill">Coming Soon</span></a><a href="imta-intelligence-dashboard.html" class="portal-tab portal-tab-active">IMTA Intelligence</a>
+    <a href="#" class="portal-tab portal-tab-soon" onclick="return false;"><span class="tab-label">Combined Signal</span> <span class="soon-pill">Soon</span></a><a href="board-minutes-dashboard.html" class="portal-tab"><span class="tab-label">Board Intelligence</span></a><a href="imta-intelligence-dashboard.html" class="portal-tab portal-tab-active"><span class="tab-label">IMTA Intelligence</span></a><a href="#" class="portal-tab portal-tab-soon" onclick="return false;"><span class="tab-label">Texas ISD Book Intelligence</span> <span class="soon-pill">Soon</span></a>
   </div>
 </nav>
   <header class="header">
