@@ -1,0 +1,719 @@
+{
+  "generated_at": "2026-04-23T15:12:06.552486",
+  "source": "hubspot_seed",
+  "total_assignments": 69,
+  "owner_counts": {
+    "Teela": 45,
+    "Jan": 15,
+    "Steve": 9
+  },
+  "unresolved_deals": [
+    "[479487253] 'ESC Region 10 - Richardson'",
+    "[479487253] 'ESC Region 16 - Amarillo'",
+    "[436425345] 'ESC Region 13 - Austin'",
+    "[436425345] 'ESC Region 8 - Mount Pleasant'",
+    "[436425345] 'Jefferson County Schools - Monticello FL - New Deal'",
+    "[436425345] 'Jefferson County Schools FL - New Deal'",
+    "[436425345] 'Wyoming City Schools - New Deal'",
+    "[479487253] 'Fort Vermilion School Division, AB'",
+    "[436425345] 'Mcalester Public Schools - New Deal'",
+    "[479487253] 'East Central Ohio Educational Service Center - New Deal'",
+    "[83343072] '25/26 RENEWAL | International Leadership Of Texas - 1M Students'",
+    "[83343072] 'Celina ISD - New November'",
+    "[479487253] 'Utah State Education Agency - NEW'",
+    "[83343072] 'Levy County School District - FL - New Deal February 2026'",
+    "[436425345] 'NTCA (North Tx Collegiate Academy) -26/27 Renewal'"
+  ],
+  "assignments": {
+    "socorro-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "14292151963",
+      "source_dealname": "Testing: Socorro ISD",
+      "source_dealstage_owner_modified": "2026-04-03T13:04:41.420Z",
+      "updated_at": "2026-04-23T15:12:04.057996",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "godley-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "14292157851",
+      "source_dealname": "Testing: Godley ISD",
+      "source_dealstage_owner_modified": "2026-04-03T13:08:27.812Z",
+      "updated_at": "2026-04-23T15:12:04.058009",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "north-lamar-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "14368635975",
+      "source_dealname": "Testing: North Lamar ISD",
+      "source_dealstage_owner_modified": "2026-04-03T13:05:08.205Z",
+      "updated_at": "2026-04-23T15:12:04.058011",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "decatur-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "14453853993",
+      "source_dealname": "Decatur ISD",
+      "source_dealstage_owner_modified": "2026-04-03T13:06:15.030Z",
+      "updated_at": "2026-04-23T15:12:04.058013",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "abilene-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "14721382010",
+      "source_dealname": "Testing: Abilene ISD",
+      "source_dealstage_owner_modified": "2026-04-03T13:07:28.330Z",
+      "updated_at": "2026-04-23T15:12:04.058014",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "troy-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "19070854049",
+      "source_dealname": "Renewal | Troy ISD",
+      "source_dealstage_owner_modified": "2026-04-03T13:05:56.658Z",
+      "updated_at": "2026-04-23T15:12:04.058015",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "gruver-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "19071326539",
+      "source_dealname": "Renewal | Gruver ISD",
+      "source_dealstage_owner_modified": "2026-04-03T13:06:12.725Z",
+      "updated_at": "2026-04-23T15:12:04.058016",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "archer-city-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "20172052565",
+      "source_dealname": "RENEWAL | Archer City ISD",
+      "source_dealstage_owner_modified": "2026-04-03T13:07:12.148Z",
+      "updated_at": "2026-04-23T15:12:04.058017",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "morgan-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "35359063942",
+      "source_dealname": "RENEWAL | RENEWAL | MORGAN ISD - New Deal",
+      "source_dealstage_owner_modified": "2026-04-10T17:25:55.746Z",
+      "updated_at": "2026-04-23T15:12:04.058018",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 2
+    },
+    "forsan-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "35351082501",
+      "source_dealname": "RENEWAL | RENEWAL | FORSAN ISD - New Deal",
+      "source_dealstage_owner_modified": "2026-04-22T15:10:10.147Z",
+      "updated_at": "2026-04-23T15:12:04.058019",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 2
+    },
+    "graham-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "21049283505",
+      "source_dealname": "RENEWAL | GRAHAM ISD - New Deal",
+      "source_dealstage_owner_modified": "2026-04-03T13:08:07.479Z",
+      "updated_at": "2026-04-23T15:12:04.058020",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "north-texas-collegiate-academy": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "21174331217",
+      "source_dealname": "RENEWAL | NORTH TEXAS COLLEGIATE ACADEMY - New Deal",
+      "source_dealstage_owner_modified": "2026-04-03T13:04:58.069Z",
+      "updated_at": "2026-04-23T15:12:04.058021",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "mullin-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "21783956291",
+      "source_dealname": "RENEWAL | Mullin ISD",
+      "source_dealstage_owner_modified": "2026-04-10T17:26:30.042Z",
+      "updated_at": "2026-04-23T15:12:04.058022",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "cranfills-gap-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "21993040290",
+      "source_dealname": "RENEWAL | CRANFILLS GAP ISD - New Deal",
+      "source_dealstage_owner_modified": "2026-04-11T10:47:47.836Z",
+      "updated_at": "2026-04-23T15:12:04.058023",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "holliday-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "22157504391",
+      "source_dealname": "RENEWAL | Holliday ISD",
+      "source_dealstage_owner_modified": "2026-04-03T13:05:46.020Z",
+      "updated_at": "2026-04-23T15:12:04.058024",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "fayetteville-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "23221749411",
+      "source_dealname": "RENEWAL | FAYETTEVILLE ISD - New Deal",
+      "source_dealstage_owner_modified": "2026-04-20T20:42:20.918Z",
+      "updated_at": "2026-04-23T15:12:04.058025",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "dripping-springs-isd": {
+      "owner": "Jan",
+      "source": "hubspot_seed",
+      "source_deal_id": "28693055653",
+      "source_dealname": "RENEWAL | Dripping Springs ISD",
+      "source_dealstage_owner_modified": "2026-04-23T18:54:07.526Z",
+      "updated_at": "2026-04-23T15:12:04.058026",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 2
+    },
+    "granbury-isd": {
+      "owner": "Steve",
+      "source": "hubspot_seed",
+      "source_deal_id": "32126602658",
+      "source_dealname": "GRANBURY ISD - New Deal",
+      "source_dealstage_owner_modified": "2026-03-31T05:01:53.445Z",
+      "updated_at": "2026-04-23T15:12:04.058027",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "presidio-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "33375118206",
+      "source_dealname": "RENEWAL | Presidio ISD - New Deal",
+      "source_dealstage_owner_modified": "2026-04-22T17:04:52.061Z",
+      "updated_at": "2026-04-23T15:12:04.058028",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "channing-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "33779039556",
+      "source_dealname": "RENEWAL | Channing ISD-New Deal - 1M Students",
+      "source_dealstage_owner_modified": "2026-04-22T17:23:08.764Z",
+      "updated_at": "2026-04-23T15:12:04.058029",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "wylie-isd": {
+      "owner": "Jan",
+      "source": "hubspot_seed",
+      "source_deal_id": "33900764244",
+      "source_dealname": "Wylie ISD - New Deal ",
+      "source_dealstage_owner_modified": "2026-04-18T10:42:53.178Z",
+      "updated_at": "2026-04-23T15:12:04.058030",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "midland-academy-charter-school": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "34031741446",
+      "source_dealname": "RENEWAL | Midland Academy Charter School - 1M Students",
+      "source_dealstage_owner_modified": "2026-04-20T14:57:26.715Z",
+      "updated_at": "2026-04-23T15:12:04.058031",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "miami-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "34328903534",
+      "source_dealname": "RENEWAL | Miami ISD - 1M Students",
+      "source_dealstage_owner_modified": "2026-04-11T10:46:17.058Z",
+      "updated_at": "2026-04-23T15:12:04.058032",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "dalhart-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "34329367657",
+      "source_dealname": "RENEWAL | Dalhart ISD - 1M Students",
+      "source_dealstage_owner_modified": "2026-04-11T10:48:09.887Z",
+      "updated_at": "2026-04-23T15:12:04.058033",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "dumas-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "34335807528",
+      "source_dealname": "RENEWAL | Dumas ISD - 1M Students",
+      "source_dealstage_owner_modified": "2026-04-03T13:06:44.763Z",
+      "updated_at": "2026-04-23T15:12:04.058034",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "childress-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "47720267114",
+      "source_dealname": "Childress ISD - October 2025",
+      "source_dealstage_owner_modified": "2026-04-03T13:05:28.520Z",
+      "updated_at": "2026-04-23T15:12:04.058035",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "eastland-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "35346788893",
+      "source_dealname": "RENEWAL | Renewal | Eastland ISD",
+      "source_dealstage_owner_modified": "2026-04-22T14:30:14.944Z",
+      "updated_at": "2026-04-23T15:12:04.058036",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "dodd-city-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "35343964179",
+      "source_dealname": "RENEWAL | Renewal | Dodd City",
+      "source_dealstage_owner_modified": "2026-04-22T19:21:54.152Z",
+      "updated_at": "2026-04-23T15:12:04.058037",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "highland-park-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "35344275532",
+      "source_dealname": "RENEWAL | Renewal | Highland Park ISD",
+      "source_dealstage_owner_modified": "2026-04-10T17:25:39.590Z",
+      "updated_at": "2026-04-23T15:12:04.058038",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "krum-isd": {
+      "owner": "Steve",
+      "source": "hubspot_seed",
+      "source_deal_id": "35364146456",
+      "source_dealname": "RENEWAL | Renewal | Krum ISD",
+      "source_dealstage_owner_modified": "2026-01-12T20:54:11.009Z",
+      "updated_at": "2026-04-23T15:12:04.058039",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "texas-leadership-public-schools": {
+      "owner": "Jan",
+      "source": "hubspot_seed",
+      "source_deal_id": "35501766161",
+      "source_dealname": "TEXAS LEADERSHIP PUBLIC SCHOOLS - 25/26 Renewal",
+      "source_dealstage_owner_modified": "2026-04-11T10:46:41.779Z",
+      "updated_at": "2026-04-23T15:12:04.058040",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "amarillo-isd": {
+      "owner": "Steve",
+      "source": "hubspot_seed",
+      "source_deal_id": "35608089980",
+      "source_dealname": "25/26 RENEWAL | Amarillo ISD - 1M Students",
+      "source_dealstage_owner_modified": "2025-10-27T13:26:49.750Z",
+      "updated_at": "2026-04-23T15:12:04.058041",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "keller-isd": {
+      "owner": "Steve",
+      "source": "hubspot_seed",
+      "source_deal_id": "35842241862",
+      "source_dealname": "25/26 RENEWAL | KELLER ISD",
+      "source_dealstage_owner_modified": "2026-02-19T22:33:32.632Z",
+      "updated_at": "2026-04-23T15:12:04.058042",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "waco-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "36316128515",
+      "source_dealname": "WACO ISD",
+      "source_dealstage_owner_modified": "2026-04-15T05:02:02.298Z",
+      "updated_at": "2026-04-23T15:12:04.058042",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "grand-prairie-isd": {
+      "owner": "Jan",
+      "source": "hubspot_seed",
+      "source_deal_id": "33899283735",
+      "source_dealname": "Grand Prairie ISD ",
+      "source_dealstage_owner_modified": "2026-04-20T16:17:28.796Z",
+      "updated_at": "2026-04-23T15:12:04.058043",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "garland-isd": {
+      "owner": "Steve",
+      "source": "hubspot_seed",
+      "source_deal_id": "33899284072",
+      "source_dealname": "Garland ISD",
+      "source_dealstage_owner_modified": "2026-04-21T21:29:08.605Z",
+      "updated_at": "2026-04-23T15:12:04.058044",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "red-oak-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "36419436608",
+      "source_dealname": "25/26 RENEWAL | Red Oak ISD - 1M Students",
+      "source_dealstage_owner_modified": "2026-04-18T10:43:24.973Z",
+      "updated_at": "2026-04-23T15:12:04.058045",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "cypress-fairbanks-isd": {
+      "owner": "Jan",
+      "source": "hubspot_seed",
+      "source_deal_id": "36604803880",
+      "source_dealname": "CYPRESS-FAIRBANKS ISD",
+      "source_dealstage_owner_modified": "2026-04-20T21:40:13.572Z",
+      "updated_at": "2026-04-23T15:12:04.058046",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "priority-charter-schools": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "36887188234",
+      "source_dealname": "25/26 RENEWAL | Priority Charter Schools",
+      "source_dealstage_owner_modified": "2026-04-11T10:38:56.762Z",
+      "updated_at": "2026-04-23T15:12:04.058047",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "san-elizario-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "36967412354",
+      "source_dealname": "25/26 RENEWAL | San Elizario ISD",
+      "source_dealstage_owner_modified": "2026-04-11T10:47:10.199Z",
+      "updated_at": "2026-04-23T15:12:04.058048",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "lovejoy-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "33899280523",
+      "source_dealname": "Lovejoy ISD ",
+      "source_dealstage_owner_modified": "2026-04-21T19:08:37.033Z",
+      "updated_at": "2026-04-23T15:12:04.058049",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "carrollton-farmers-branch-isd": {
+      "owner": "Jan",
+      "source": "hubspot_seed",
+      "source_deal_id": "33899283539",
+      "source_dealname": "Carrollton-Farmers Branch ISD - 1M Students",
+      "source_dealstage_owner_modified": "2026-03-19T18:54:22.149Z",
+      "updated_at": "2026-04-23T15:12:04.058050",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "stephenville-isd": {
+      "owner": "Jan",
+      "source": "hubspot_seed",
+      "source_deal_id": "37484976001",
+      "source_dealname": "STEPHENVILLE ISD",
+      "source_dealstage_owner_modified": "2026-04-21T20:11:28.113Z",
+      "updated_at": "2026-04-23T15:12:04.058051",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "pasadena-isd": {
+      "owner": "Jan",
+      "source": "hubspot_seed",
+      "source_deal_id": "38128226437",
+      "source_dealname": "Pasadena ISD",
+      "source_dealstage_owner_modified": "2026-03-19T18:51:53.482Z",
+      "updated_at": "2026-04-23T15:12:04.058052",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "tornillo-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "38206898304",
+      "source_dealname": "25/26 RENEWAL | Tornillo ISD",
+      "source_dealstage_owner_modified": "2026-04-03T13:08:11.096Z",
+      "updated_at": "2026-04-23T15:12:04.058053",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "midway-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "38727627392",
+      "source_dealname": "Midway ISD - Region 12",
+      "source_dealstage_owner_modified": "2026-04-18T10:42:42.562Z",
+      "updated_at": "2026-04-23T15:12:04.058054",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "desoto-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "38774276142",
+      "source_dealname": "Desoto ISD",
+      "source_dealstage_owner_modified": "2026-04-21T19:13:01.463Z",
+      "updated_at": "2026-04-23T15:12:04.058055",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "harlingen-cisd": {
+      "owner": "Jan",
+      "source": "hubspot_seed",
+      "source_deal_id": "39285524498",
+      "source_dealname": "HARLINGEN CISD",
+      "source_dealstage_owner_modified": "2026-03-19T18:50:28.889Z",
+      "updated_at": "2026-04-23T15:12:04.058056",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "angleton-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "41047374394",
+      "source_dealname": "ANGLETON ISD - New Deal",
+      "source_dealstage_owner_modified": "2026-04-21T18:04:29.050Z",
+      "updated_at": "2026-04-23T15:12:04.058057",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "san-benito-cisd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "41049841692",
+      "source_dealname": "SAN BENITO CISD",
+      "source_dealstage_owner_modified": "2026-04-21T19:05:53.906Z",
+      "updated_at": "2026-04-23T15:12:04.058060",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "port-arthur-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "41047374695",
+      "source_dealname": "PORT ARTHUR ISD",
+      "source_dealstage_owner_modified": "2026-04-23T14:20:57.420Z",
+      "updated_at": "2026-04-23T15:12:04.058062",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "crandall-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "41192940682",
+      "source_dealname": "Crandall ISD",
+      "source_dealstage_owner_modified": "2026-04-21T18:00:51.364Z",
+      "updated_at": "2026-04-23T15:12:04.058063",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "duncanville-isd": {
+      "owner": "Jan",
+      "source": "hubspot_seed",
+      "source_deal_id": "41705600793",
+      "source_dealname": "Duncanville ISD",
+      "source_dealstage_owner_modified": "2026-04-20T16:16:44.611Z",
+      "updated_at": "2026-04-23T15:12:04.058064",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "pearland-isd": {
+      "owner": "Jan",
+      "source": "hubspot_seed",
+      "source_deal_id": "42413768863",
+      "source_dealname": "PEARLAND ISD",
+      "source_dealstage_owner_modified": "2026-04-23T15:34:01.386Z",
+      "updated_at": "2026-04-23T15:12:04.058065",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "boerne-isd": {
+      "owner": "Jan",
+      "source": "hubspot_seed",
+      "source_deal_id": "42448729498",
+      "source_dealname": "BOERNE ISD - New Deal August 2025",
+      "source_dealstage_owner_modified": "2026-04-22T00:02:01.232Z",
+      "updated_at": "2026-04-23T15:12:04.058066",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "hillsboro-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "42448751407",
+      "source_dealname": "Hillsboro ISD - New Deal August 2025",
+      "source_dealstage_owner_modified": "2026-04-21T18:56:12.638Z",
+      "updated_at": "2026-04-23T15:12:04.058067",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "los-fresnos-cisd": {
+      "owner": "Steve",
+      "source": "hubspot_seed",
+      "source_deal_id": "43576134715",
+      "source_dealname": "LOS FRESNOS CISD - New Deal September",
+      "source_dealstage_owner_modified": "2026-04-21T20:29:26.997Z",
+      "updated_at": "2026-04-23T15:12:04.058067",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "tomball-isd": {
+      "owner": "Steve",
+      "source": "hubspot_seed",
+      "source_deal_id": "43595278415",
+      "source_dealname": "TOMBALL ISD - New Deal September",
+      "source_dealstage_owner_modified": "2026-04-22T14:08:35.951Z",
+      "updated_at": "2026-04-23T15:12:04.058068",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "midland-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "44454047880",
+      "source_dealname": "Midland ISD - 26/27 Renewal",
+      "source_dealstage_owner_modified": "2026-04-16T21:04:04.204Z",
+      "updated_at": "2026-04-23T15:12:04.058069",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "brock-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "45968042660",
+      "source_dealname": "Brock ISD - 26/27 Renewal",
+      "source_dealstage_owner_modified": "2026-04-03T13:07:06.972Z",
+      "updated_at": "2026-04-23T15:12:04.058070",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "aledo-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "48147780384",
+      "source_dealname": "Aledo ISD - Nov 2025",
+      "source_dealstage_owner_modified": "2026-04-04T10:44:00.403Z",
+      "updated_at": "2026-04-23T15:12:04.058071",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "northside-isd": {
+      "owner": "Steve",
+      "source": "hubspot_seed",
+      "source_deal_id": "48265884987",
+      "source_dealname": "NORTHSIDE ISD - New Deal November 2025",
+      "source_dealstage_owner_modified": "2026-04-21T20:29:53.695Z",
+      "updated_at": "2026-04-23T15:12:04.058072",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "hays-cisd": {
+      "owner": "Jan",
+      "source": "hubspot_seed",
+      "source_deal_id": "49530920868",
+      "source_dealname": "HAYS CISD - November 2025",
+      "source_dealstage_owner_modified": "2026-04-21T20:55:50.899Z",
+      "updated_at": "2026-04-23T15:12:04.058073",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "midlothian-isd": {
+      "owner": "Steve",
+      "source": "hubspot_seed",
+      "source_deal_id": "282383608553",
+      "source_dealname": "Midlothian ISD - New Deal",
+      "source_dealstage_owner_modified": "2026-04-17T21:06:14.855Z",
+      "updated_at": "2026-04-23T15:12:04.058074",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "mineola-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "296141381342",
+      "source_dealname": "Mineola ISD - New Deal February 2026",
+      "source_dealstage_owner_modified": "2026-04-21T18:07:08.442Z",
+      "updated_at": "2026-04-23T15:12:04.058075",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "wimberley-isd": {
+      "owner": "Jan",
+      "source": "hubspot_seed",
+      "source_deal_id": "316073428725",
+      "source_dealname": "WIMBERLEY ISD - New Deal March 2026",
+      "source_dealstage_owner_modified": "2026-04-21T14:08:21.056Z",
+      "updated_at": "2026-04-23T15:12:04.058076",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "liberty-hill-isd": {
+      "owner": "Jan",
+      "source": "hubspot_seed",
+      "source_deal_id": "316077011681",
+      "source_dealname": "Liberty Hill ISD - New Deal March 2026",
+      "source_dealstage_owner_modified": "2026-04-18T10:34:44.758Z",
+      "updated_at": "2026-04-23T15:12:04.058077",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "rankin-isd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "320490072817",
+      "source_dealname": "Rankin ISD - New Deal April 2026",
+      "source_dealstage_owner_modified": "2026-04-23T16:08:52.060Z",
+      "updated_at": "2026-04-23T15:12:04.058078",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    },
+    "san-marcos-cisd": {
+      "owner": "Teela",
+      "source": "hubspot_seed",
+      "source_deal_id": "321010467527",
+      "source_dealname": "San Marcos 26-27 Renewal ",
+      "source_dealstage_owner_modified": "2026-04-22T17:49:35.654Z",
+      "updated_at": "2026-04-23T15:12:04.058079",
+      "updated_by": "hubspot_seed_script",
+      "tied_deals": 1
+    }
+  }
+}

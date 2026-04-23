@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<meta name="build-version" content="20260423-072122">
+<meta name="build-version" content="20260423-151909">
 <style>
 :root {
   --eigengrau:#101828; --teal:#12A38C; --deep-green:#107569; --white:#fff;
@@ -283,6 +283,7 @@ footer.page-footer a { color:var(--deep-green); text-decoration:none; }
   .filter-bar { flex-direction:column; align-items:stretch; }
 }
 </style>
+<script src="assignments-config.js?v=20260423-151909"></script>
 </head>
 <body>
 <div id="app">
@@ -430,7 +431,7 @@ footer.page-footer a { color:var(--deep-green); text-decoration:none; }
   </section>
 
   <footer class="page-footer">
-    <p>Build 20260423-072122 · Data: <a href="https://github.com/BookmarkED-Corp/bookmarked-os/blob/main/claude-output/research/media-tracker.json" target="_blank" rel="noopener">media-tracker.json</a> · Confluence: <a href="https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/107708461" target="_blank" rel="noopener">Media &amp; PR Intelligence</a></p>
+    <p>Build 20260423-151909 · Data: <a href="https://github.com/BookmarkED-Corp/bookmarked-os/blob/main/claude-output/research/media-tracker.json" target="_blank" rel="noopener">media-tracker.json</a> · Confluence: <a href="https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/107708461" target="_blank" rel="noopener">Media &amp; PR Intelligence</a></p>
   </footer>
 </div>
 
@@ -466,15 +467,18 @@ function profileUrl(slug) {
   return `district-profile.html?d=${slug}`;
 }
 
-// Populate hot districts grid
-function renderHot() {
+// Populate hot districts grid (with owner pill if assignments loaded)
+async function renderHot() {
   const root = document.getElementById('hot-districts');
   const hot = DATA.hot_districts || [];
   if (!hot.length) {
     root.innerHTML = '<div class="empty">No Texas districts named in current media coverage.</div>';
     return;
   }
+  const assignments = await PortalAssignments.loadAssignments();
   root.innerHTML = hot.map(d => {
+    const owner = (assignments[d.slug] && assignments[d.slug].owner) || 'Unassigned';
+    const ownerPill = PortalAssignments.ownerPill(owner, {size:'sm'});
     return `<a class="hot-card" href="${profileUrl(d.slug)}">
       <div class="hot-card-name">
         ${d.name}
@@ -484,6 +488,8 @@ function renderHot() {
         <strong>${d.mention_count}</strong> ${d.mention_count === 1 ? 'mention' : 'mentions'}
         <span style="color:var(--muted-gray)">·</span>
         <span>Latest: ${fmtDate(d.latest_date)}</span>
+        <span style="color:var(--muted-gray)">·</span>
+        ${ownerPill}
       </div>
     </a>`;
   }).join('');

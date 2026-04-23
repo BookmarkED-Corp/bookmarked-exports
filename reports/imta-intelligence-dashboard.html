@@ -402,6 +402,7 @@ body {
 .page-footer p { margin: 4px 0; }
 
 </style>
+<script src="assignments-config.js"></script>
 </head>
 <body>
 <div class="page">
@@ -510,6 +511,17 @@ body {
         <option value="name">District name (A → Z)</option>
       </select>
     </div>
+    <div class="filter-group">
+      <label>OWNER</label>
+      <select id="filter-owner">
+        <option value="all">All owners</option>
+        <option value="__me__">My districts</option>
+        <option value="Unassigned">Unassigned</option>
+        <option value="Jan">Jan</option>
+        <option value="Teela">Teela</option>
+        <option value="Steve">Steve</option>
+      </select>
+    </div>
     <button class="export-btn" onclick="exportCsv()">⬇ Export CSV</button>
   </section>
 
@@ -604,6 +616,7 @@ function applyFilters() {
   const esc = document.getElementById('filter-esc').value;
   const search = document.getElementById('filter-search').value.trim().toLowerCase();
   const sort = document.getElementById('filter-sort').value;
+  const ownerSel = (document.getElementById('filter-owner') || {value:'all'}).value;
 
   let rows = DATA.entities.filter(e => {
     if (tier === 'any' && !e.board_intel_tier) return false;
@@ -614,6 +627,15 @@ function applyFilters() {
     if (search) {
       const hay = (e.district_name + ' ' + e.cdn + ' ' + (e.county||'') + ' ' + (e.city||'')).toLowerCase();
       if (!hay.includes(search)) return false;
+    }
+    if (ownerSel && ownerSel !== 'all') {
+      const target = ownerSel === '__me__' ? (window.PortalAssignments && PortalAssignments.getIdentity()) : ownerSel;
+      if (target) {
+        const slug = slugify(e.district_name);
+        const a = (window.PORTAL_ASSIGNMENTS || {})[slug];
+        const owner = (a && a.owner) || 'Unassigned';
+        if (owner !== target) return false;
+      }
     }
     return true;
   });
@@ -633,7 +655,7 @@ function renderTable(rows) {
   tbody.innerHTML = rows.slice(0, 500).map((e, i) => `
     <tr class="row-main" data-row-id="${i}" onclick="toggleRow(${i})">
       <td class="row-toggle"><span class="chevron" id="chev-${i}">▸</span></td>
-      <td class="cell-name"><a href="district-profile.html?d=${slugify(e.district_name)}" onclick="event.stopPropagation();" class="district-link">${e.district_name}</a>${portalTrendPill(e.district_name)}</td>
+      <td class="cell-name"><a href="district-profile.html?d=${slugify(e.district_name)}" onclick="event.stopPropagation();" class="district-link">${e.district_name}</a>${portalTrendPill(e.district_name)}${ownerPillFor(e.district_name)}</td>
       <td class="cell-mono">${e.cdn}</td>
       <td>${e.esc_region || '—'}</td>
       <td><span class="type-badge type-${e.entity_type}">${entityTypeLabel(e.entity_type)}</span></td>
@@ -738,12 +760,31 @@ function exportCsv() {
   URL.revokeObjectURL(url);
 }
 
-['filter-tier','filter-type','filter-esc','filter-search','filter-sort'].forEach(id => {
-  document.getElementById(id).addEventListener(id === 'filter-search' ? 'input' : 'change', applyFilters);
+['filter-tier','filter-type','filter-esc','filter-search','filter-sort','filter-owner'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener(id === 'filter-search' ? 'input' : 'change', applyFilters);
 });
+
+function ownerPillFor(name) {
+  if (!window.PORTAL_ASSIGNMENTS || !window.PortalAssignments) return '';
+  const s = slugify(name);
+  const a = window.PORTAL_ASSIGNMENTS[s];
+  const owner = (a && a.owner) || 'Unassigned';
+  if (owner === 'Unassigned') return '';
+  return ' ' + PortalAssignments.ownerPill(owner, {size:'sm'});
+}
+
+async function loadAssignmentsAsync() {
+  if (!window.PortalAssignments) return;
+  try {
+    window.PORTAL_ASSIGNMENTS = await PortalAssignments.loadAssignments();
+    applyFilters();
+  } catch (e) { console.warn('assignments load failed', e); }
+}
 
 renderHeatmap();
 applyFilters();
+loadAssignmentsAsync();
 </script>
 </body>
 </html>
