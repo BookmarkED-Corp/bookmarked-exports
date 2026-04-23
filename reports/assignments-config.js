@@ -12,9 +12,8 @@
  */
 (function (global) {
   const CONFIG = {
-    // TODO_GAS_URL: paste the webapp URL here after deploy, then rebuild portal.
-    // Example: "https://script.google.com/macros/s/AKfyc.../exec"
-    GAS_WEBAPP_URL: "",
+    // Deployed 2026-04-23 by Steve. Redeploy = update URL here.
+    GAS_WEBAPP_URL: "https://script.google.com/macros/s/AKfycbzS1BV8wsMOCAyXqs5sIewr9I9td_D6jsHv_SZFwzuQQGqZ9xFsy1zRvnpMR3jtGkA4/exec",
     OWNERS: ["Unassigned", "Jan", "Teela", "Steve"],
     SHEET_URL: "https://docs.google.com/spreadsheets/d/1YhHfA7fYCUFtgrtk32Q9JD2eJSJgPUnNE0msWMnEWJI/edit",
     NOTIFY: ["jan@bookmarked.com", "teela@bookmarked.com", "steve@bookmarked.com"],
