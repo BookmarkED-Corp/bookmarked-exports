@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Intelligence  Bookmarked District Intelligence Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="build-version" content="20260423-002901">
+<style>
+:root {
+  --eigengrau:#101828; --teal:#12A38C; --deep-green:#107569; --white:#fff;
+  --pumpkin:#FF692E; --amber:#F59E0B; --secondary-text:#475467;
+  --muted-gray:#9CA3AF; --border-light:#E5E7EB;
+  --bg-white:#fff; --bg-cool:#F8FAFC; --bg-light:#F9FAFB; --bg-blue:#F1F4F9;
+  --pos-bg:#ECFDF5; --pos-text:#065F46;
+  --neu-bg:#F1F4F9; --neu-text:#475467;
+  --mix-bg:#FFFBEB; --mix-text:#92400E;
+  --neg-bg:#FFF1EC; --neg-text:#C2410C;
+  --radius-sm:6px; --radius-md:10px; --radius-lg:14px;
+  --shadow-sm:0 1px 2px rgba(16,24,40,0.05);
+  --shadow-md:0 4px 12px rgba(16,24,40,0.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size:15px; }
+body {
+  font-family:'Urbanist',-apple-system,BlinkMacSystemFont,sans-serif;
+  color:var(--eigengrau); background:var(--bg-cool); line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+#app { max-width:1440px; margin:0 auto; padding:0 24px 60px; }
+
+/* Portal nav (matches other dashboards) */
+.portal-nav {
+  background:var(--white); border-bottom:1px solid var(--border-light);
+  margin:0 -24px 24px; padding:16px 24px;
+  position:sticky; top:0; z-index:100;
+  box-shadow:0 1px 2px rgba(16,24,40,0.05);
+}
+.portal-nav-brand {
+  font-size:0.72rem; font-weight:700; letter-spacing:1.5px;
+  color:var(--muted-gray); text-transform:uppercase; margin-bottom:12px;
+}
+.portal-nav-tabs { display:flex; gap:8px; flex-wrap:wrap; }
+.portal-tab {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:10px 18px; background:var(--bg-light);
+  border:1.5px solid var(--border-light); border-radius:999px;
+  color:var(--secondary-text); font-weight:600; text-decoration:none;
+  font-size:0.92rem; transition:all .15s ease; cursor:pointer;
+  white-space:nowrap;
+}
+.portal-tab:hover {
+  color:var(--eigengrau); background:var(--white);
+  border-color:var(--deep-green);
+  box-shadow:0 2px 6px rgba(18,163,140,0.12); transform:translateY(-1px);
+}
+.portal-tab-active {
+  background:var(--deep-green); color:var(--white);
+  border-color:var(--deep-green);
+  box-shadow:0 4px 12px rgba(18,163,140,0.3);
+  pointer-events:none;
+}
+.portal-tab-active:hover { background:var(--deep-green); color:var(--white); transform:none; }
+.portal-tab-soon {
+  opacity:.55; cursor:not-allowed; background:var(--white); border-style:dashed;
+}
+.portal-tab-soon:hover {
+  transform:none; border-color:var(--border-light); box-shadow:none;
+  background:var(--white); color:var(--secondary-text);
+}
+.soon-pill {
+  background:rgba(16,24,40,0.08); color:var(--secondary-text);
+  font-size:0.62rem; font-weight:800; text-transform:uppercase;
+  letter-spacing:0.6px; padding:2px 8px; border-radius:999px;
+}
+.portal-tab-active .soon-pill, .portal-tab-active .new-pill {
+  background:rgba(255,255,255,0.25); color:var(--white);
+}
+.portal-tab-new {
+  background:linear-gradient(135deg,#FFF7ED,#FFEDD5);
+  border-color:#FED7AA; color:#C2410C;
+}
+.portal-tab-active.portal-tab-new {
+  background:var(--deep-green); color:var(--white); border-color:var(--deep-green);
+}
+.new-pill {
+  background:var(--pumpkin); color:var(--white);
+  font-size:0.62rem; font-weight:800; text-transform:uppercase;
+  letter-spacing:0.6px; padding:2px 8px; border-radius:999px;
+}
+
+/* Header */
+.header {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:20px 0; border-bottom:1px solid var(--border-light); margin-bottom:24px;
+}
+.header-left { display:flex; align-items:center; gap:16px; }
+.brand-mark {
+  font-weight:800; font-size:1.35rem; color:var(--deep-green); letter-spacing:-0.3px;
+}
+.header-title {
+  font-size:1.35rem; font-weight:700; color:var(--eigengrau);
+  letter-spacing:-0.3px; padding-left:16px; border-left:2px solid var(--border-light);
+}
+.header-right { display:flex; gap:28px; }
+.header-meta { display:flex; flex-direction:column; align-items:flex-end; }
+.meta-label {
+  font-size:0.72rem; font-weight:600; text-transform:uppercase;
+  letter-spacing:0.6px; color:var(--muted-gray);
+}
+.meta-value { font-size:0.88rem; font-weight:600; color:var(--secondary-text); }
+
+/* KPI row */
+.kpi-row {
+  display:grid; grid-template-columns:repeat(6,1fr); gap:16px; margin-bottom:28px;
+}
+.kpi-card {
+  background:var(--white); border:1px solid var(--border-light);
+  border-radius:var(--radius-md); padding:18px 20px; box-shadow:var(--shadow-sm);
+}
+.kpi-label {
+  font-size:0.72rem; font-weight:600; text-transform:uppercase;
+  letter-spacing:0.6px; color:var(--muted-gray); margin-bottom:6px;
+}
+.kpi-value { font-size:1.8rem; font-weight:800; line-height:1.1; color:var(--eigengrau); }
+.kpi-sub { font-size:0.78rem; color:var(--secondary-text); margin-top:4px; }
+.kpi-neg .kpi-value { color:var(--pumpkin); }
+.kpi-green .kpi-value { color:var(--deep-green); }
+.kpi-amber .kpi-value { color:var(--amber); }
+
+/* Section */
+.section {
+  background:var(--white); border:1px solid var(--border-light);
+  border-radius:var(--radius-md); padding:24px; box-shadow:var(--shadow-sm);
+  margin-bottom:24px;
+}
+.section-head {
+  display:flex; justify-content:space-between; align-items:flex-end;
+  margin-bottom:16px;
+}
+.section-title {
+  font-size:1.05rem; font-weight:800; letter-spacing:-0.2px; color:var(--eigengrau);
+}
+.section-sub {
+  font-size:0.85rem; color:var(--secondary-text); font-weight:500;
+}
+
+/* Hot districts grid */
+.hot-grid {
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+  gap:14px;
+}
+.hot-card {
+  border:1px solid var(--border-light); border-radius:var(--radius-md);
+  padding:16px; background:var(--bg-cool); text-decoration:none;
+  color:inherit; transition:all .15s ease;
+  display:flex; flex-direction:column; gap:8px;
+}
+.hot-card:hover {
+  border-color:var(--deep-green); background:var(--white);
+  box-shadow:var(--shadow-md); transform:translateY(-1px);
+}
+.hot-card-name {
+  font-weight:700; font-size:1rem; color:var(--eigengrau);
+  display:flex; align-items:center; gap:8px;
+}
+.hot-card-meta {
+  display:flex; gap:8px; align-items:center; flex-wrap:wrap;
+  font-size:0.78rem; color:var(--secondary-text);
+}
+.hot-card-latest {
+  font-size:0.78rem; color:var(--secondary-text);
+}
+
+/* Sentiment badges */
+.badge {
+  display:inline-block; padding:2px 9px; border-radius:999px;
+  font-size:0.72rem; font-weight:700; letter-spacing:0.2px;
+  text-transform:uppercase; white-space:nowrap;
+}
+.badge-pos { background:var(--pos-bg); color:var(--pos-text); }
+.badge-neu { background:var(--neu-bg); color:var(--neu-text); }
+.badge-mix { background:var(--mix-bg); color:var(--mix-text); }
+.badge-neg { background:var(--neg-bg); color:var(--neg-text); }
+
+.tag-pill {
+  display:inline-block; padding:2px 8px; border-radius:999px;
+  font-size:0.68rem; font-weight:600; letter-spacing:0.3px;
+  background:var(--bg-blue); color:var(--secondary-text);
+  margin-right:4px; margin-bottom:3px;
+}
+
+/* Filters */
+.filter-bar {
+  display:flex; align-items:flex-end; gap:14px;
+  background:var(--white); border:1px solid var(--border-light);
+  border-radius:var(--radius-md); padding:16px 20px; margin-bottom:16px;
+  box-shadow:var(--shadow-sm);
+}
+.filter-group { display:flex; flex-direction:column; gap:4px; }
+.filter-group-search { flex:1; }
+.filter-label {
+  font-size:0.68rem; font-weight:700; text-transform:uppercase;
+  letter-spacing:0.5px; color:var(--muted-gray);
+}
+.filter-select, .filter-input {
+  font-family:inherit; font-size:0.85rem; font-weight:500;
+  border:1px solid var(--border-light); border-radius:var(--radius-sm);
+  padding:8px 12px; color:var(--eigengrau); background:var(--bg-cool); outline:none;
+  transition:border-color .15s ease;
+}
+.filter-select:focus, .filter-input:focus { border-color:var(--teal); }
+
+/* Mentions table */
+.table-wrap {
+  background:var(--white); border:1px solid var(--border-light);
+  border-radius:var(--radius-md); overflow-x:auto; box-shadow:var(--shadow-sm);
+}
+.data-table { width:100%; border-collapse:collapse; font-size:0.88rem; }
+.data-table th {
+  font-size:0.72rem; font-weight:700; text-transform:uppercase;
+  letter-spacing:0.5px; color:var(--muted-gray); background:var(--bg-cool);
+  padding:12px 14px; text-align:left; white-space:nowrap;
+  border-bottom:1px solid var(--border-light);
+}
+.data-table td {
+  padding:12px 14px; border-bottom:1px solid var(--border-light);
+  vertical-align:top;
+}
+.data-table tbody tr:hover { background:var(--bg-light); }
+.headline-link { color:var(--deep-green); text-decoration:none; font-weight:600; }
+.headline-link:hover { text-decoration:underline; color:var(--teal); }
+.col-headline { min-width:280px; max-width:480px; }
+.col-pub { min-width:140px; font-weight:500; color:var(--secondary-text); }
+.col-date { white-space:nowrap; font-variant-numeric:tabular-nums; color:var(--secondary-text); }
+.col-reach { text-align:right; font-variant-numeric:tabular-nums; font-weight:700; }
+.col-districts a {
+  display:inline-block; margin-right:4px; margin-bottom:2px;
+  padding:2px 8px; border-radius:999px;
+  background:var(--pos-bg); color:var(--pos-text);
+  text-decoration:none; font-size:0.72rem; font-weight:700;
+}
+.col-districts a:hover { background:var(--deep-green); color:var(--white); }
+
+/* Sentiment trend */
+.trend-row { display:flex; gap:4px; align-items:flex-end; height:60px; }
+.trend-bar {
+  flex:1; min-width:4px; background:var(--deep-green);
+  border-radius:3px 3px 0 0; opacity:0.8;
+}
+.trend-bar.neg { background:var(--pumpkin); }
+.trend-bar.mix { background:var(--amber); }
+.trend-bar.neu { background:var(--muted-gray); }
+
+/* Counternarratives */
+.cn-card {
+  border:1px solid var(--border-light); border-radius:var(--radius-md);
+  padding:16px; margin-bottom:12px; background:var(--bg-cool);
+}
+.cn-head { display:flex; justify-content:space-between; gap:12px; margin-bottom:8px; }
+.cn-title { font-weight:700; color:var(--eigengrau); }
+
+/* Empty state */
+.empty {
+  padding:28px; text-align:center; color:var(--muted-gray);
+  font-style:italic; background:var(--bg-light);
+  border:1px dashed var(--border-light); border-radius:var(--radius-md);
+}
+
+footer.page-footer {
+  margin-top:40px; padding-top:20px; border-top:1px solid var(--border-light);
+  font-size:0.78rem; color:var(--muted-gray); text-align:center;
+}
+footer.page-footer a { color:var(--deep-green); text-decoration:none; }
+
+@media (max-width:1100px) {
+  .kpi-row { grid-template-columns:repeat(3,1fr); }
+}
+@media (max-width:720px) {
+  .kpi-row { grid-template-columns:repeat(2,1fr); }
+  .filter-bar { flex-direction:column; align-items:stretch; }
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <nav class="portal-nav">
+  <div class="portal-nav-brand">District Intelligence Portal</div>
+  <div class="portal-nav-tabs">
+    <a href="#" class="portal-tab portal-tab-soon" onclick="return false;">
+      <span class="tab-label">Combined Signal</span><span class="soon-pill">Soon</span>
+    </a>
+    <a href="board-minutes-dashboard.html" class="portal-tab">
+      <span class="tab-label">Board Intelligence</span>
+    </a>
+    <a href="imta-intelligence-dashboard.html" class="portal-tab">
+      <span class="tab-label">IMTA Intelligence</span>
+    </a>
+    <a href="media-intelligence-dashboard.html" class="portal-tab portal-tab-active portal-tab-new">
+      <span class="tab-label">Media Intelligence</span><span class="new-pill">New</span>
+    </a>
+    <a href="#" class="portal-tab portal-tab-soon" onclick="return false;">
+      <span class="tab-label">Texas ISD Book Intelligence</span><span class="soon-pill">Soon</span>
+    </a>
+    <a href="district-profile.html" class="portal-tab">
+      <span class="tab-label">District Profile</span>
+    </a>
+  </div>
+</nav>
+
+  <header class="header">
+    <div class="header-left">
+      <span class="brand-mark">Bookmarked</span>
+      <h1 class="header-title">Media Intelligence</h1>
+    </div>
+    <div class="header-right">
+      <div class="header-meta">
+        <span class="meta-label">Last scan</span>
+        <span class="meta-value" id="last-scan"></span>
+      </div>
+      <div class="header-meta">
+        <span class="meta-label">Tracked mentions</span>
+        <span class="meta-value">25</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-label">Total mentions</div>
+      <div class="kpi-value">25</div>
+      <div class="kpi-sub">since tracker inception</div>
+    </div>
+    <div class="kpi-card kpi-green">
+      <div class="kpi-label">Positive</div>
+      <div class="kpi-value">3</div>
+      <div class="kpi-sub">amplification opportunities</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Neutral</div>
+      <div class="kpi-value">8</div>
+      <div class="kpi-sub">factual coverage</div>
+    </div>
+    <div class="kpi-card kpi-amber">
+      <div class="kpi-label">Mixed</div>
+      <div class="kpi-value">4</div>
+      <div class="kpi-sub">engage / clarify</div>
+    </div>
+    <div class="kpi-card kpi-neg">
+      <div class="kpi-label">Negative</div>
+      <div class="kpi-value">10</div>
+      <div class="kpi-sub">counternarrative targets</div>
+    </div>
+    <div class="kpi-card kpi-neg">
+      <div class="kpi-label">Districts in the news</div>
+      <div class="kpi-value">5</div>
+      <div class="kpi-sub">cross-referenced to portal</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-title">Districts in the News</div>
+        <div class="section-sub">Districts named in tracked media coverage  sorted by urgency (worst sentiment first), then recency.</div>
+      </div>
+    </div>
+    <div class="hot-grid" id="hot-districts"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-title">All tracked mentions</div>
+        <div class="section-sub">Every article in the media tracker. Filter by sentiment, publication, or district.</div>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <div class="filter-group">
+        <label class="filter-label" for="filter-sent">Sentiment</label>
+        <select id="filter-sent" class="filter-select">
+          <option value="all">All</option>
+          <option value="negative">Negative</option>
+          <option value="mixed">Mixed</option>
+          <option value="neutral">Neutral</option>
+          <option value="positive">Positive</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label" for="filter-district">District</label>
+        <select id="filter-district" class="filter-select">
+          <option value="all">All districts</option>
+          <option value="any">Any district named</option>
+          <option value="none">Industry / no district</option>
+        </select>
+      </div>
+      <div class="filter-group filter-group-search">
+        <label class="filter-label" for="filter-q">Search</label>
+        <input type="text" id="filter-q" class="filter-input" placeholder="Headline, publication, tag...">
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Publication</th>
+            <th>Headline</th>
+            <th>Sentiment</th>
+            <th>Reach</th>
+            <th>Districts</th>
+            <th>Narrative tags</th>
+          </tr>
+        </thead>
+        <tbody id="mentions-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="trend-section" style="display:none;">
+    <div class="section-head">
+      <div>
+        <div class="section-title">Sentiment trend</div>
+        <div class="section-sub">Net sentiment across scan history.</div>
+      </div>
+    </div>
+    <div class="trend-row" id="trend-bars"></div>
+  </section>
+
+  <footer class="page-footer">
+    <p>Build 20260423-002901 · Data: <a href="https://github.com/BookmarkED-Corp/bookmarked-os/blob/main/claude-output/research/media-tracker.json" target="_blank" rel="noopener">media-tracker.json</a> · Confluence: <a href="https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/107708461" target="_blank" rel="noopener">Media &amp; PR Intelligence</a></p>
+  </footer>
+</div>
+
+<script>
+const DATA = {"generated_at": "2026-04-23T00:26:49.916427", "source_tracker": "claude-output/research/media-tracker.json", "total_mentions": 25, "sentiment_counts": {"positive": 3, "neutral": 8, "mixed": 4, "negative": 10}, "net_sentiment": -7, "districts_in_news_count": 5, "last_scan": null, "mentions": [{"id": "MM-2026-04-02-021", "url": "https://www.k12dive.com/news/as-ai-enters-book-ban-disputes-heres-what-it-means-for-school-districts/816385/", "headline": "As AI enters book ban disputes, here's what it means for school districts", "publication": "K-12 Dive", "author": "Naaz Modan", "date_published": "2026-04-02", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "mixed", "narrative_tags": ["PROFIT_FROM_BANS", "POLITICAL_FRAMING", "ADVOCACY_CRITICISM"], "reach_score": 85, "publication_tier": 1, "content_excerpt": "Deep Dive feature. New Braunfels ISD removed/restricted ~1,500 books, reviewed 3,000+ with AI. Steve quoted extensively: 'We want to be Switzerland,' 'If we win Texas, we win the country,' 'Librarians are aware of who are the loud voices out there... We're just showing them the data.' Moak Casey described as having equity in Bookmarked and backing SB 13 lawmakers. PEN America's Kasey Meehan and TASA's Kevin Brown quoted. $2-3/student pricing. Notes Bookmarked doesn't search book content, uses external data.", "response_status": "none", "product_signal": "NBISD using AI to review 3,000+ books. Internal logs obtained via public records request by Texas Freedom to Read Project.", "scan_ids": ["SCAN-2026-04-02-FULL"], "content_accessible": true, "steve_quoted": true, "key_quotes": ["We want to be Switzerland. It's so politically charged — we're just trying to be able to protect books, protect literature, and allow people to read what they want to read.", "If we win Texas, we win the country. If we can solve it in Texas, we can solve it in the other states.", "Librarians are aware of who are the loud voices out there... We're just showing them the data.", "We went down that path of talking to school districts and figuring out: What is their problem, and how do we solve that?"], "sources_quoted": ["Steve Wandler (CEO)", "Kasey Meehan (PEN America)", "Kevin Brown (TASA)", "Michelle Harwood (NBISD spokesperson)"], "confluence_page_id": "108003351", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/108003351", "district_slugs": ["new-braunfels-isd"], "district_names": ["NEW BRAUNFELS ISD"]}, {"id": "MM-2026-04-02-001", "url": "https://www.404media.co/the-right-is-using-ai-content-scanners-to-try-to-supercharge-book-banning/", "headline": "The Right Is Using AI Content Scanners to Try to Supercharge Book Banning", "publication": "404 Media", "author": "Claire Woodcock", "date_published": "2026-04-01", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "negative", "narrative_tags": ["CENSORSHIP_TOOL", "AI_OVERREACH"], "reach_score": 88, "publication_tier": 1, "content_excerpt": "Frames Bookmarked alongside BLOCKADE, Rated Books, NarraTrue as tools supercharging book banning. Names NBISD ($9K contract). Librarian: 'I feel like BookmarkED is flagging more each time you run it.'", "response_status": "none", "product_signal": "NBISD librarian reports over-flagging. Route to /feedback:product.", "scan_ids": ["SCAN-2026-04-02-SEED", "SCAN-2026-04-02-FULL"], "confluence_page_id": "107806783", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/107806783", "district_slugs": ["new-braunfels-isd"], "district_names": ["NEW BRAUNFELS ISD"]}, {"id": "MM-2026-04-02-025", "url": "https://www.lbc.co.uk/article/librarian-gobsmacked-school-ai-remove-books-5HjdWsc_2/", "headline": "Librarian 'gobsmacked' after school uses AI to remove 200 books including 1984 and Twilight", "publication": "LBC (UK)", "author": "Frankie Elliott", "date_published": "2026-03-26", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "neutral", "narrative_tags": ["INSERTION_OPPORTUNITY"], "reach_score": 55, "publication_tier": 2, "content_excerpt": "International signal. UK school used AI to flag 200 books. Librarian refused, faced investigation, resigned. Shows AI-in-libraries narrative going global.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-FULL"], "confluence_page_id": "108036219", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/108036219", "district_slugs": [], "district_names": []}, {"id": "MM-2026-04-02-015", "url": "https://aischoollibrarian.substack.com/p/the-rise-of-book-ban-technology", "headline": "The Rise of Book-Ban Technology", "publication": "AI School Librarian (Substack)", "author": "Elissa Malespina", "date_published": "2026-03-19", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "negative", "narrative_tags": ["CENSORSHIP_TOOL", "AI_OVERREACH"], "reach_score": 55, "publication_tier": 3, "content_excerpt": "Critical analysis of AI book-screening tools including Bookmarked and Class-Shelf Plus. 40+ Texas districts, $138K contracts cited. Key concern: shifts framework from 'should this book be removed?' to 'why should it remain?' Notes AI tools can't legally access copyrighted book content. Predominantly cautionary/critical tone.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-FULL"], "content_accessible": true, "steve_quoted": false, "confluence_page_id": "108036199", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/108036199", "district_slugs": [], "district_names": []}, {"id": "MM-2026-04-02-002", "url": "https://www.fastcompany.com/91496176/bookmarked-steve-wandler-texas-book-bans", "headline": "The startup that turned Texas's book ban law into big business", "publication": "Fast Company", "author": "Max Ufberg", "date_published": "2026-03-03", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "negative", "narrative_tags": ["PROFIT_FROM_BANS"], "reach_score": 85, "publication_tier": 1, "content_excerpt": "Profiles Bookmarked as profiting from Texas book-ban legislation. Headline frames it as 'big business.' Cites $80K+ lobbying spend for SB 13, Moak Casey hired. Steve quoted: 'We try to be Switzerland. And it's hard to be Switzerland.' 150 districts (mix of paid/free pilots). Angel funded, seeking additional capital. $3/student pricing upcoming. PEN America's Tasslyn Magnusson quoted critically. First half read; paywall blocked remainder.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-SEED", "SCAN-2026-04-02-FULL"], "content_accessible": false, "steve_quoted": true, "key_quotes": ["We're just showing you what we find on the internet. We're not telling you what to do.", "We try to be Switzerland. And it's hard to be Switzerland."], "confluence_page_id": "107872287", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/107872287", "district_slugs": [], "district_names": []}, {"id": "MM-2026-04-02-022", "url": "https://americanlibrariesmagazine.org/2026/01/02/2025-year-in-review/", "headline": "2025 Year in Review", "publication": "American Libraries Magazine (ALA)", "author": "Sanhita SinhaRoy", "date_published": "2026-01-02", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "neutral", "narrative_tags": ["INSERTION_OPPORTUNITY"], "reach_score": 70, "publication_tier": 1, "content_excerpt": "ALA flagship publication. Extensive coverage of book access issues. Named ZERO technology solutions. Bookmarked absent from the librarian conversation it needs to be in.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-FULL"], "confluence_page_id": "107642918", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/107642918", "district_slugs": [], "district_names": []}, {"id": "MM-2026-04-02-016", "url": "https://www.sacurrent.com/news/texas-news/new-braunfels-isd-bans-books-written-by-obama-shakespeare-and-matthew-mcconaughey/", "headline": "New Braunfels ISD bans books written by Obama, Shakespeare and Matthew McConaughey", "publication": "San Antonio Current", "author": "", "date_published": "2026-01-01", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "negative", "narrative_tags": ["CENSORSHIP_TOOL"], "reach_score": 45, "publication_tier": 2, "content_excerpt": "Mentions Bookmarked in context of NBISD book removal decisions. References Texas Freedom to Read Project records requests.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-FULL"], "confluence_page_id": "108167229", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/108167229", "district_slugs": ["new-braunfels-isd"], "district_names": ["NEW BRAUNFELS ISD"]}, {"id": "MM-2026-04-02-007", "url": "https://www.hppr.org/hppr-news/2025-12-05/school-libraries-must-comply-with-new-laws-on-book-content-this-company-is-selling-a-solution", "headline": "School libraries must comply with new laws on book content. This company is selling a solution.", "publication": "HPPR News (High Plains Public Radio)", "author": "", "date_published": "2025-12-05", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "mixed", "narrative_tags": ["PROFIT_FROM_BANS"], "reach_score": 48, "publication_tier": 2, "content_excerpt": "Syndicated Texas Standard piece. Public radio framing. 'Selling a solution' implies commercial opportunism.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-SEED", "SCAN-2026-04-02-FULL"], "confluence_page_id": "107708481", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/107708481", "district_slugs": [], "district_names": []}, {"id": "MM-2026-04-02-014", "url": "https://www.texasstandard.org/stories/bookmarked-texas-sb-13-profane-indecent-library-book-ban/", "headline": "School libraries must comply with new laws on book content. This company is selling a solution.", "publication": "Texas Standard", "author": "", "date_published": "2025-12-04", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "mixed", "narrative_tags": ["PROFIT_FROM_BANS"], "reach_score": 58, "publication_tier": 2, "content_excerpt": "Original source of HPPR/KWBU/KTTZ syndication. $130K+ in contracts across Texas. Librarian feedback — some positive, some calling product a failure. NPR reach.", "response_status": "none", "product_signal": "Some librarians calling product a failure — route to /feedback:product.", "scan_ids": ["SCAN-2026-04-02-FULL"], "confluence_page_id": "108232725", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/108232725", "district_slugs": [], "district_names": []}, {"id": "MM-2026-04-02-006", "url": "https://www.expressnews.com/news/education/article/antivirus-for-libraries-texas-company-helps-20005217.php", "headline": "'Antivirus for libraries': How a Texas startup is capitalizing on school book bans", "publication": "San Antonio Express-News", "author": "Bayliss Wagner", "date_published": "2025-12-02", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "mixed", "narrative_tags": ["PROFIT_FROM_BANS"], "reach_score": 62, "publication_tier": 2, "content_excerpt": "Investigative feature. Bookmarked as 'antivirus for libraries.' $130K+ statewide contracts. Killeen ISD ~$40K, Llano ISD ~$3K. Pricing 25¢-$2/student. New Braunfels flagged 450 books. Key finding: <0.04% parent usage across 8 districts studied. Librarian complaints: product 'did nothing that it said it was going to do effectively.' Syndicated to Texas Standard, HPPR, KTTZ, KWBU.", "response_status": "none", "product_signal": "Low parent adoption (<0.04%) and librarian complaint about effectiveness. Route to /feedback:product.", "scan_ids": ["SCAN-2026-04-02-SEED", "SCAN-2026-04-02-FULL"], "content_accessible": true, "steve_quoted": false, "syndication": ["Texas Standard", "HPPR", "KTTZ", "KWBU"], "confluence_page_id": "108134442", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/108134442", "district_slugs": ["killeen-isd", "llano-isd", "new-braunfels-isd"], "district_names": ["KILLEEN ISD", "LLANO ISD", "NEW BRAUNFELS ISD"]}, {"id": "MM-2026-04-02-023", "url": "https://www.texasstandard.org/stories/texas-school-library-books-law-sb-13-ai/", "headline": "School districts turn to AI to comply with new state laws about library book content", "publication": "Texas Standard", "author": "Sarah Asch", "date_published": "2025-11-03", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "neutral", "narrative_tags": ["INSERTION_OPPORTUNITY"], "reach_score": 65, "publication_tier": 2, "content_excerpt": "Districts using ChatGPT for SB 13 compliance — Pearland ISD reviewed 1,400 books, ChatGPT incorrectly flagged content. Bookmarked NOT named despite covering exact problem Bookmarked solves.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-FULL"], "confluence_page_id": "108068893", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/108068893", "district_slugs": ["pearland-isd"], "district_names": ["PEARLAND ISD"]}, {"id": "MM-2026-04-02-008", "url": "https://us105fm.com/killeen-bookmarked-library-service/", "headline": "Bookmarked: Killeen ISD's Tool For Supporting Student Reading Habits", "publication": "US 105 FM (Killeen, TX)", "author": "Tasha Stevens", "date_published": "2025-09-22", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "positive", "narrative_tags": [], "reach_score": 25, "publication_tier": 3, "content_excerpt": "Positive local radio coverage. Parent engagement tools in Killeen ISD. No censorship framing.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-SEED", "SCAN-2026-04-02-FULL"], "confluence_page_id": "107839552", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/107839552", "district_slugs": ["killeen-isd"], "district_names": ["KILLEEN ISD"]}, {"id": "MM-2026-04-02-010", "url": "https://www.kcentv.com/article/news/local/killeen-isd-unveils-bookmarked-connect-parents-with-student-reading-choices/500-60a2fb20-686e-43fa-aeab-1335a68c48f5", "headline": "Killeen ISD parents can track student reading choices", "publication": "KCEN TV (Central Texas NBC)", "author": "", "date_published": "2025-09-01", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "positive", "narrative_tags": [], "reach_score": 28, "publication_tier": 3, "content_excerpt": "Local TV coverage. Positive parent access framing.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-SEED", "SCAN-2026-04-02-FULL"], "confluence_page_id": "108068933", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/108068933", "district_slugs": ["killeen-isd"], "district_names": ["KILLEEN ISD"]}, {"id": "MM-2026-04-02-009", "url": "https://kdhnews.com/news/education/kisd-expands-library-oversight-for-parents/article_502ca11a-b3f3-4607-a9a5-4f90b3ef87b5.html", "headline": "KISD expands library oversight for parents", "publication": "KDH News (Killeen Daily Herald)", "author": "", "date_published": "2025-09-01", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "positive", "narrative_tags": [], "reach_score": 22, "publication_tier": 3, "content_excerpt": "Local newspaper. Straightforward district tech adoption reporting.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-SEED", "SCAN-2026-04-02-FULL"], "confluence_page_id": "107872327", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/107872327", "district_slugs": ["killeen-isd"], "district_names": ["KILLEEN ISD"]}, {"id": "MM-2026-04-02-003", "url": "https://bookriot.com/the-people-behind-bookmarked-are-behind-book-bans-in-texas/", "headline": "The People Behind BookmarkED Are Behind Book Bans in Texas", "publication": "Book Riot", "author": "Kelly Jensen", "date_published": "2025-01-01", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "negative", "narrative_tags": ["CENSORSHIP_TOOL", "POLITICAL_FRAMING"], "reach_score": 72, "publication_tier": 2, "content_excerpt": "Investigates founders' ties to book-challenge movements. Names Jason Cochrane (Krum ISD superintendent) as co-owner. Cites Moak Casey lobbying firm equity stake.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-SEED", "SCAN-2026-04-02-FULL"], "confluence_page_id": "107872307", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/107872307", "district_slugs": ["krum-isd"], "district_names": ["KRUM ISD"]}, {"id": "MM-2026-04-02-004", "url": "https://bookriot.com/bookmarked-onshelf-book-banning-app/", "headline": "How The BookmarkED/OnShelf App, Created to Help Schools Ban Books, Fuels Them Instead", "publication": "Book Riot", "author": "Kelly Jensen", "date_published": "2025-01-01", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "negative", "narrative_tags": ["CENSORSHIP_TOOL"], "reach_score": 68, "publication_tier": 2, "content_excerpt": "Argues OnShelf was designed to facilitate book removal. Product-as-weapon framing.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-SEED", "SCAN-2026-04-02-FULL"], "confluence_page_id": "107806804", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/107806804", "district_slugs": [], "district_names": []}, {"id": "MM-2026-04-02-005", "url": "https://bookriot.com/bookmarked-app-to-ban-books/", "headline": "BookmarkED App Connected to Book Ban Efforts in Texas", "publication": "Book Riot", "author": "Kelly Jensen", "date_published": "2025-01-01", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "negative", "narrative_tags": ["CENSORSHIP_TOOL", "ADVOCACY_CRITICISM"], "reach_score": 65, "publication_tier": 2, "content_excerpt": "Connects BookmarkED to organized book-ban efforts. Names Jason Cochrane connection.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-SEED", "SCAN-2026-04-02-FULL"], "confluence_page_id": "107839532", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/107839532", "district_slugs": ["krum-isd"], "district_names": ["KRUM ISD"]}, {"id": "MM-2026-04-02-020", "url": "https://www.texanswakeup.com/post/onshelf-by-bookedmarked", "headline": "OnShelf by Bookmarked", "publication": "Texans Wake Up", "author": "", "date_published": "2025-01-01", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "neutral", "narrative_tags": [], "reach_score": 15, "publication_tier": 3, "content_excerpt": "Advocacy blog review of OnShelf product.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-FULL"], "confluence_page_id": "107839572", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/107839572", "district_slugs": [], "district_names": []}, {"id": "MM-2026-04-02-013", "url": "https://bookriot.com/organizations-cashing-in-on-book-bans", "headline": "Manufacturing Problems with School and Library Books to Cash in on Solutions", "publication": "Book Riot", "author": "Kelly Jensen", "date_published": "2023-12-08", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "negative", "narrative_tags": ["PROFIT_FROM_BANS"], "reach_score": 55, "publication_tier": 2, "content_excerpt": "Weekly censorship roundup grouping Bookmarked with organizations profiting from book ban movement.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-FULL"], "confluence_page_id": "108068913", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/108068913", "district_slugs": [], "district_names": []}, {"id": "MM-2026-04-02-018", "url": "https://www.eschoolnews.com/newsline/2023/08/29/bookmarked-addresses-the-state-of-challenged-books-with-industry-first-technology-to-enable-parental-choice-in-school-libraries/", "headline": "BookmarkED Addresses the State of Challenged Books with Industry-First Technology", "publication": "eSchool News", "author": "", "date_published": "2023-08-29", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "neutral", "narrative_tags": [], "reach_score": 32, "publication_tier": 2, "content_excerpt": "Ed-tech trade press pickup of BusinessWire release. Neutral coverage.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-FULL"], "confluence_page_id": "107708501", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/107708501", "district_slugs": [], "district_names": []}, {"id": "MM-2026-04-02-017", "url": "https://www.businesswire.com/news/home/20230822381201/en/BookmarkED-Addresses-the-State-of-Challenged-Books-with-Industry-First-Technology-to-Enable-Parental-Choice-in-School-Libraries", "headline": "BookmarkED Addresses the State of Challenged Books with Industry-First Technology", "publication": "BusinessWire", "author": "", "date_published": "2023-08-22", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "neutral", "narrative_tags": [], "reach_score": 35, "publication_tier": 2, "content_excerpt": "Official launch press release. BookmarkED as industry-first technology for parental choice in school libraries.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-FULL"], "confluence_page_id": "107806824", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/107806824", "district_slugs": [], "district_names": []}, {"id": "MM-2026-04-02-024", "url": "https://www.smithsonianmag.com/smart-news/why-this-school-district-used-ai-to-help-remove-library-books-180982762/", "headline": "Why This School District Used A.I. to Help Determine Which Books to Ban", "publication": "Smithsonian Magazine", "author": "Sarah Kuta", "date_published": "2023-08-21", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "neutral", "narrative_tags": ["INSERTION_OPPORTUNITY"], "reach_score": 60, "publication_tier": 1, "content_excerpt": "Iowa's Mason City used ChatGPT — removed 19 titles. Canonical 'districts using AI for book review' story. Evergreen contrast point: general AI vs. purpose-built tools.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-FULL"], "confluence_page_id": "108167209", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/108167209", "district_slugs": [], "district_names": []}, {"id": "MM-2026-04-02-011", "url": "https://pen.org/press-release/pen-america-using-artificial-intelligence-to-ban-books-only-makes-the-problem-worse/", "headline": "PEN America: Using Artificial Intelligence to Ban Books Only Makes the Problem Worse", "publication": "PEN America", "author": "", "date_published": "2023-08-14", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "negative", "narrative_tags": ["AI_OVERREACH", "INDUSTRY_NARRATIVE"], "reach_score": 65, "publication_tier": 1, "content_excerpt": "Press release about Iowa Mason City School District using ChatGPT to decide which books to remove. Does NOT mention Bookmarked directly. Relevant as industry context — establishes PEN America's position that AI in book removal is 'deeply misguided.' Liz Woolery quoted. Published August 2023, predates Bookmarked's current market presence.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-FULL"], "content_accessible": true, "steve_quoted": false, "bookmarked_mentioned": false, "relevance_note": "Industry context only — PEN America opposes AI in book curation generally. This position frames their criticism of Bookmarked in later articles.", "confluence_page_id": "108036179", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/108036179", "district_slugs": [], "district_names": []}, {"id": "MM-2026-04-02-012", "url": "https://bookriot.com/bookmarked-book-banning-app/", "headline": "The First App to 'Help' Libraries and Schools with Book Bans Has Arrived — It's Not What It Seems", "publication": "Book Riot", "author": "Kelly Jensen", "date_published": "2023-08-01", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "negative", "narrative_tags": ["CENSORSHIP_TOOL"], "reach_score": 60, "publication_tier": 2, "content_excerpt": "Earliest Book Riot coverage. Skeptical framing of BookmarkED's arrival as 'not what it seems.'", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-FULL"], "confluence_page_id": "107642938", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/107642938", "district_slugs": [], "district_names": []}, {"id": "MM-2026-04-02-019", "url": "https://www.citybiz.co/article/459136/bookmarked-launches-new-tech-solution-to-aid-texas-schools", "headline": "BookmarkED Launches New Tech Solution to Aid Texas Schools", "publication": "CityBiz", "author": "", "date_published": "2023-08-01", "date_discovered": "2026-04-02", "last_seen": "2026-04-02", "sentiment": "neutral", "narrative_tags": [], "reach_score": 20, "publication_tier": 3, "content_excerpt": "Launch coverage. Neutral business announcement.", "response_status": "none", "product_signal": null, "scan_ids": ["SCAN-2026-04-02-FULL"], "confluence_page_id": "108232745", "confluence_url": "https://bookmarked-team.atlassian.net/wiki/spaces/TS1/pages/108232745", "district_slugs": [], "district_names": []}], "district_index": {"new-braunfels-isd": ["MM-2026-04-02-001", "MM-2026-04-02-006", "MM-2026-04-02-016", "MM-2026-04-02-021"], "krum-isd": ["MM-2026-04-02-003", "MM-2026-04-02-005"], "killeen-isd": ["MM-2026-04-02-006", "MM-2026-04-02-008", "MM-2026-04-02-010", "MM-2026-04-02-009"], "llano-isd": ["MM-2026-04-02-006"], "pearland-isd": ["MM-2026-04-02-023"]}, "hot_districts": [{"slug": "new-braunfels-isd", "name": "NEW BRAUNFELS ISD", "mention_count": 4, "latest_date": "2026-04-02", "worst_sentiment": "negative", "mention_ids": ["MM-2026-04-02-001", "MM-2026-04-02-006", "MM-2026-04-02-016", "MM-2026-04-02-021"]}, {"slug": "krum-isd", "name": "KRUM ISD", "mention_count": 2, "latest_date": "2025-01-01", "worst_sentiment": "negative", "mention_ids": ["MM-2026-04-02-003", "MM-2026-04-02-005"]}, {"slug": "killeen-isd", "name": "KILLEEN ISD", "mention_count": 4, "latest_date": "2025-12-02", "worst_sentiment": "mixed", "mention_ids": ["MM-2026-04-02-006", "MM-2026-04-02-008", "MM-2026-04-02-010", "MM-2026-04-02-009"]}, {"slug": "llano-isd", "name": "LLANO ISD", "mention_count": 1, "latest_date": "2025-12-02", "worst_sentiment": "mixed", "mention_ids": ["MM-2026-04-02-006"]}, {"slug": "pearland-isd", "name": "PEARLAND ISD", "mention_count": 1, "latest_date": "2025-11-03", "worst_sentiment": "neutral", "mention_ids": ["MM-2026-04-02-023"]}]};
+const TREND = [{"scan_id": "SCAN-2026-04-02-SEED", "date": "2026-04-02", "positive": 3, "neutral": 0, "mixed": 2, "negative": 5, "total": 10, "net_sentiment": -0.2}, {"scan_id": "SCAN-2026-04-02-FULL", "date": "2026-04-02", "positive": 3, "neutral": 6, "mixed": 4, "negative": 8, "total": 21, "net_sentiment": -0.24, "industry_narratives": 4}];
+
+const SENTIMENT_CLASS = {
+  positive: 'badge-pos', neutral: 'badge-neu',
+  mixed: 'badge-mix', negative: 'badge-neg'
+};
+const SENTIMENT_LABEL = {
+  positive: 'Positive', neutral: 'Neutral',
+  mixed: 'Mixed', negative: 'Negative'
+};
+
+function sentBadge(s) {
+  const cls = SENTIMENT_CLASS[s] || 'badge-neu';
+  const lbl = SENTIMENT_LABEL[s] || s;
+  return `<span class="badge ${cls}">${lbl}</span>`;
+}
+
+function fmtDate(d) {
+  if (!d) return '';
+  try {
+    const dt = new Date(d);
+    if (isNaN(dt.getTime())) return d;
+    return dt.toLocaleDateString('en-US', {year:'numeric', month:'short', day:'numeric'});
+  } catch (e) { return d; }
+}
+
+function profileUrl(slug) {
+  return `district-profile.html?d=${slug}`;
+}
+
+// Populate hot districts grid
+function renderHot() {
+  const root = document.getElementById('hot-districts');
+  const hot = DATA.hot_districts || [];
+  if (!hot.length) {
+    root.innerHTML = '<div class="empty">No Texas districts named in current media coverage.</div>';
+    return;
+  }
+  root.innerHTML = hot.map(d => {
+    return `<a class="hot-card" href="${profileUrl(d.slug)}">
+      <div class="hot-card-name">
+        ${d.name}
+        ${sentBadge(d.worst_sentiment)}
+      </div>
+      <div class="hot-card-meta">
+        <strong>${d.mention_count}</strong> ${d.mention_count === 1 ? 'mention' : 'mentions'}
+        <span style="color:var(--muted-gray)">·</span>
+        <span>Latest: ${fmtDate(d.latest_date)}</span>
+      </div>
+    </a>`;
+  }).join('');
+}
+
+// District filter dropdown population
+function populateDistrictFilter() {
+  const sel = document.getElementById('filter-district');
+  const districts = DATA.hot_districts || [];
+  for (const d of districts) {
+    const opt = document.createElement('option');
+    opt.value = d.slug;
+    opt.textContent = d.name + ' (' + d.mention_count + ')';
+    sel.appendChild(opt);
+  }
+}
+
+// Render mentions table
+function renderMentions() {
+  const sent = document.getElementById('filter-sent').value;
+  const distFilter = document.getElementById('filter-district').value;
+  const q = document.getElementById('filter-q').value.trim().toLowerCase();
+
+  const rows = (DATA.mentions || []).filter(m => {
+    if (sent !== 'all' && m.sentiment !== sent) return false;
+    if (distFilter === 'any' && (!m.district_slugs || !m.district_slugs.length)) return false;
+    if (distFilter === 'none' && (m.district_slugs || []).length > 0) return false;
+    if (distFilter !== 'all' && distFilter !== 'any' && distFilter !== 'none') {
+      if (!(m.district_slugs || []).includes(distFilter)) return false;
+    }
+    if (q) {
+      const hay = (m.headline + ' ' + m.publication + ' ' + (m.narrative_tags||[]).join(' ') + ' ' + (m.content_excerpt||'')).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+
+  const tbody = document.getElementById('mentions-body');
+  if (!rows.length) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--muted-gray);padding:24px;">No mentions match your filters.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = rows.map(m => {
+    const districts = (m.district_slugs || []).map((slug, i) => {
+      const name = (m.district_names || [])[i] || slug;
+      return `<a href="${profileUrl(slug)}">${name}</a>`;
+    }).join('') || '<span style="color:var(--muted-gray)">—</span>';
+    const tags = (m.narrative_tags || []).map(t => `<span class="tag-pill">${t}</span>`).join('');
+    return `<tr>
+      <td class="col-date">${fmtDate(m.date_published)}</td>
+      <td class="col-pub">${m.publication || ''}</td>
+      <td class="col-headline"><a class="headline-link" href="${m.url}" target="_blank" rel="noopener">${m.headline}</a></td>
+      <td>${sentBadge(m.sentiment)}</td>
+      <td class="col-reach">${m.reach_score ?? ''}</td>
+      <td class="col-districts">${districts}</td>
+      <td>${tags || ''}</td>
+    </tr>`;
+  }).join('');
+}
+
+// Sentiment trend sparkline
+function renderTrend() {
+  if (!TREND || !TREND.length) return;
+  document.getElementById('trend-section').style.display = '';
+  const max = Math.max(...TREND.map(t => Math.abs(t.net_sentiment || 0)), 1);
+  const bars = document.getElementById('trend-bars');
+  bars.innerHTML = TREND.map(t => {
+    const val = t.net_sentiment || 0;
+    const height = Math.abs(val) / max * 100;
+    const cls = val < 0 ? 'neg' : val === 0 ? 'neu' : '';
+    return `<div class="trend-bar ${cls}" style="height:${height}%" title="${t.date || ''}: ${val}"></div>`;
+  }).join('');
+}
+
+// Wire filters
+document.getElementById('filter-sent').addEventListener('change', renderMentions);
+document.getElementById('filter-district').addEventListener('change', renderMentions);
+document.getElementById('filter-q').addEventListener('input', renderMentions);
+
+// Initial render
+renderHot();
+populateDistrictFilter();
+renderMentions();
+renderTrend();
+</script>
+</body>
+</html>
