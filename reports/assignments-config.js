@@ -113,9 +113,11 @@
       throw new Error("Deploy pending  webapp URL not yet configured. Assignments are read-only until the webapp is deployed.");
     }
     const body = { action: "assign", district_slug, district_name, esc_region, owner, actor };
+    // Use text/plain to avoid CORS preflight (Apps Script webapps don't respond to OPTIONS).
+    // doPost() parses e.postData.contents as JSON regardless of content-type.
     const resp = await fetch(CONFIG.GAS_WEBAPP_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify(body),
       redirect: "follow",
     });
