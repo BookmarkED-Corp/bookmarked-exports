@@ -450,14 +450,21 @@
       <h3><span class="section-num">10</span>Tool Access</h3>
       <div class="what-to-write">
         <span class="label">What you write</span>
-        <p>The actual permission scope the agent needs. If you don't know what scope is right, write "TBD — confirm with Raju."</p>
+        <p>For <strong>every</strong> tool the agent needs to connect to (Slack, HubSpot, Confluence, Jira, Gmail, Google Drive, etc.), list two things:</p>
+        <ol>
+          <li><strong>Which tool / service</strong> Hermes needs to connect to.</li>
+          <li><strong>What access controls / permissions</strong> the agent should have inside that software — read-only vs. write, which channels, which CRM objects, which spaces, which folders. Be as narrow as possible; least privilege wins.</li>
+        </ol>
+        <p>If you don't know the right scope, write <strong>"I don't know — check with Steve"</strong> next to the tool. Do not guess.</p>
+        <p>Format each line as: <code>[Tool]: [what it connects to] — [access level / scope]</code></p>
       </div>
       <div class="example">
         <span class="label">Example — Rex</span>
         <ul>
-          <li>HubSpot: Full CRM access (Contacts, Companies, Deals, Sequences, Tasks)</li>
-          <li>Confluence: Sales Playbooks space</li>
-          <li>Slack: Post to #sales-pipeline; monitor #sales-team for updates</li>
+          <li><strong>HubSpot:</strong> Full CRM access — read/write on Contacts, Companies, Deals, Sequences, Tasks. No access to billing or Settings.</li>
+          <li><strong>Confluence:</strong> Sales Playbooks space — read only.</li>
+          <li><strong>Slack:</strong> Post to <code>#sales-pipeline</code>; read/monitor <code>#sales-team</code>; DM Teela and Zig only. No access to other channels.</li>
+          <li><strong>Google Calendar:</strong> Read/write on the shared <code>#sales-calendar</code> only — no personal calendar access.</li>
         </ul>
       </div>
     </div>
